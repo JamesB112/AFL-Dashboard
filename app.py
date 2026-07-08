@@ -396,7 +396,7 @@ elif page == "Ladder Projection":
     c1, c2, c3 = st.columns(3)
     c1.metric("Current round",       f"{meta['latest_season']} R{meta['latest_round']}")
     c2.metric("Games remaining",      int(ladder["Games_Remaining"].iloc[0]) if not ladder.empty else "—")
-    c3.metric("Clubs in finals range","8")  # top 8
+    c3.metric("Clubs in finals range","10")  # top 8
 
     st.divider()
 
@@ -424,7 +424,7 @@ elif page == "Ladder Projection":
         mode="markers",
         marker=dict(
             size=12,
-            color=[GREEN if r <= 8 else SLATE for r in df_chart["Projected_Rank_Median"]],
+            color=[GREEN if r <= 10 else SLATE for r in df_chart["Projected_Rank_Median"]],
             symbol="diamond",
         ),
         hovertemplate=(
@@ -471,7 +471,7 @@ elif page == "Ladder Projection":
     display["Movement"] = display.apply(fmt_movement, axis=1)
     display["Proj. Range"] = display.apply(fmt_range, axis=1)
     display["In Finals?"] = display["Projected_Rank_Median"].apply(
-        lambda r: "✅ Yes" if r <= 8 else "⬜ No"
+        lambda r: "✅ Yes" if r <= 10 else "⬜ No"
     )
 
     show_cols = {
@@ -503,15 +503,15 @@ elif page == "Ladder Projection":
 
     st.divider()
 
-    # --- top 8 probability callout ---
+    # --- top 10 probability callout ---
     st.subheader("Finals picture")
-    top8 = ladder[ladder["Projected_Rank_Median"] <= 8].sort_values("Projected_Rank_Median")
-    bubble = ladder[(ladder["Rank_Range_Best"] <= 8) & (ladder["Projected_Rank_Median"] > 8)].sort_values("Projected_Rank_Median")
+    top10 = ladder[ladder["Projected_Rank_Median"] <= 10].sort_values("Projected_Rank_Median")
+    bubble = ladder[(ladder["Rank_Range_Best"] <= 10) & (ladder["Projected_Rank_Median"] > 10)].sort_values("Projected_Rank_Median")
 
     col_top, col_bub = st.columns(2)
     with col_top:
-        st.markdown("**Projected top 8**")
-        for _, row in top8.iterrows():
+        st.markdown("**Projected top 10**")
+        for _, row in top10.iterrows():
             st.markdown(
                 f"**{int(row['Projected_Rank_Median'])}.** {row['Team']} "
                 f"<span style='color:{SLATE};font-size:0.85rem;'>({int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])})</span>",
@@ -528,7 +528,7 @@ elif page == "Ladder Projection":
                 )
         else:
             st.markdown("**On the bubble**")
-            st.caption("No clubs outside the projected top 8 have a best-case finals finish.")
+            st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
 
 
 # ========================================================================
@@ -693,17 +693,24 @@ elif page == "Model Predictions":
     st.divider()
     st.subheader("Every prediction")
 
-    scored_games = dl.get_completed_predictions()    
+    scored_games = dl.get_predictions()    
     st.caption(f"{len(scored_games):,} scored predictions")
 
-    fc1, fc2, fc3 = st.columns(3)
+    fc1, fc2, fc3, fc4 = st.columns(4)
+
     with fc1:
         all_seasons = ["All seasons"] + sorted(scored_games["Season"].unique().tolist(), reverse=True)
         s_filter = st.selectbox("Season", all_seasons, key="pred_season")
+
     with fc2:
         all_teams = ["All teams"] + sorted(scored_games["Team"].dropna().unique().tolist())
         t_filter = st.selectbox("Team", all_teams, key="pred_team")
+
     with fc3:
+        all_rounds = ["All rounds"] + sorted(scored_games["RoundNumber"].dropna().unique().tolist())
+        r_filter = st.selectbox("Round", all_rounds, key="pred_round")
+
+    with fc4:
         if fmt == "new":
             outcome_opts = ["Correct & incorrect","LOGIT correct","LOGIT incorrect",
                             "OLS correct","OLS incorrect"]
@@ -712,8 +719,10 @@ elif page == "Model Predictions":
         o_filter = st.selectbox("Outcome", outcome_opts)
 
     pg = scored_games.copy()
+
     if s_filter != "All seasons": pg = pg[pg["Season"] == s_filter]
     if t_filter != "All teams":   pg = pg[pg["Team"] == t_filter]
+    if r_filter != "All rounds":  pg = pg[pg["RoundNumber"] == r_filter]
     if fmt == "new":
         if o_filter == "LOGIT correct":    pg = pg[pg["Correct_LOGIT"]]
         elif o_filter == "LOGIT incorrect": pg = pg[~pg["Correct_LOGIT"]]

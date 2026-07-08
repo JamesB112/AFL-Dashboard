@@ -246,6 +246,14 @@ def get_player_rankings():
 def get_latest_rankings():
     df = get_player_rankings()
 
+    # Add the Round Status manually
+    lookup = get_game_lookup()
+
+    lookup = lookup[lookup['RoundStatus'] != 'Future Round']
+    lookup = lookup[['RoundNumber', 'Season']].drop_duplicates()
+
+    df = df.merge(lookup, on = ['RoundNumber', 'Season'])
+
     latest_season = df["Season"].max()
     latest_round = df.loc[df["Season"]==latest_season, "RoundNumber"].max()
     latest = df[
@@ -348,6 +356,9 @@ def get_predictions():
     df = add_round_status(df)
     df["Season"] = df["Season"].astype(str)
     df["RoundNumber"] = pd.to_numeric(df["RoundNumber"], errors="coerce")
+
+    # Filter to only include the home row
+    df = df[df['IsHome'] == 1]
 
     fmt = _detect_predictions_format(df)
 
