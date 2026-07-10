@@ -3022,69 +3022,69 @@ Date,Round,Team,Goals,Behinds,Points,Opposition_Team,Opposition_Goals,Opposition
 2026-07-04,R17,Richmond,10,12,72,Carlton,10,14,74,MCG,-2,2026,Regular,17,11545.0,5.50,1.18,33.0,15.0,8.0,34.0,9.0,15.0,22.0,10.0,72.0,74.0,3034.0,18.0,18.0,-26.0,-8.0,-6.0,-14.0,12.0,-2.0,Y,L,N
 2026-07-05,R17,Essendon,7,8,50,St Kilda,17,15,117,Marvel Stadium,-67,2026,Regular,17,11540.0,4.35,1.22,13.0,34.0,8.0,52.0,8.0,8.0,21.0,23.0,50.0,117.0,3039.0,-21.0,-21.0,-44.0,-65.0,0.0,-65.0,-2.0,-67.0,Y,L,N
 2026-07-05,R17,Port Adelaide,10,13,73,North Melbourne,7,10,52,Adelaide Oval,21,2026,Regular,17,11547.0,1.43,2.9,9.0,9.0,27.0,8.0,15.0,34.0,22.0,1.0,73.0,52.0,3038.0,0.0,0.0,19.0,19.0,-19.0,0.0,21.0,21.0,Y,W,N
-2026-07-09,R18,Fremantle,0,1,1,Sydney,0,0,0,Optus Stadium,1,2026,Regular,18,11549.0,1.51,2.65,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3040.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-10,R18,Collingwood,0,1,1,North Melbourne,0,0,0,Marvel Stadium,1,2026,Regular,18,11550.0,1.39,3.1,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3041.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-11,R18,Adelaide,0,1,1,Gold Coast,0,0,0,Adelaide Oval,1,2026,Regular,18,11551.0,1.37,3.25,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3046.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-11,R18,Carlton,0,1,1,Hawthorn,0,0,0,MCG,1,2026,Regular,18,11552.0,2.60,1.51,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3045.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-11,R18,GWS,0,1,1,Geelong,0,0,0,ENGIE Stadium,1,2026,Regular,18,11553.0,2.33,1.62,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3044.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-11,R18,St Kilda,0,1,1,Port Adelaide,0,0,0,Marvel Stadium,1,2026,Regular,18,11554.0,1.58,2.4,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3042.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-12,R18,Brisbane,0,1,1,Essendon,0,0,0,Gabba,1,2026,Regular,18,11555.0,1.03,15.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3049.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-12,R18,Melbourne,0,1,1,Richmond,0,0,0,MCG,1,2026,Regular,18,11556.0,1.10,7.5,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3047.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-12,R18,Western Bulldogs,0,1,1,West Coast,0,0,0,Marvel Stadium,1,2026,Regular,18,11557.0,1.13,6.25,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3048.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
-2026-07-16,R19,Geelong,0,1,1,St Kilda,0,0,0,GMHBA Stadium,1,2026,Regular,19,11558.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-17,R19,Sydney,0,1,1,Adelaide,0,0,0,SCG,1,2026,Regular,19,11559.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-18,R19,Collingwood,0,1,1,Carlton,0,0,0,MCG,1,2026,Regular,19,11560.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-18,R19,North Melbourne,0,1,1,Melbourne,0,0,0,Marvel Stadium,1,2026,Regular,19,11561.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-18,R19,Port Adelaide,0,1,1,Fremantle,0,0,0,Adelaide Oval,1,2026,Regular,19,11562.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-18,R19,West Coast,0,1,1,Brisbane,0,0,0,Optus Stadium,1,2026,Regular,19,11563.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-19,R19,Essendon,0,1,1,GWS,0,0,0,Marvel Stadium,1,2026,Regular,19,11564.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-19,R19,Gold Coast,0,1,1,Western Bulldogs,0,0,0,People First Stadium,1,2026,Regular,19,11565.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-19,R19,Richmond,0,1,1,Hawthorn,0,0,0,MCG,1,2026,Regular,19,11566.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-23,R20,Adelaide,0,1,1,Collingwood,0,0,0,Adelaide Oval,1,2026,Regular,20,11567.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-24,R20,Fremantle,0,1,1,West Coast,0,0,0,Optus Stadium,1,2026,Regular,20,11568.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-24,R20,Melbourne,0,1,1,Geelong,0,0,0,MCG,1,2026,Regular,20,11569.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-25,R20,Carlton,0,1,1,Gold Coast,0,0,0,Marvel Stadium,1,2026,Regular,20,11570.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-25,R20,GWS,0,1,1,Sydney,0,0,0,ENGIE Stadium,1,2026,Regular,20,11571.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-25,R20,Hawthorn,0,1,1,Essendon,0,0,0,MCG,1,2026,Regular,20,11572.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-25,R20,Western Bulldogs,0,1,1,Richmond,0,0,0,Marvel Stadium,1,2026,Regular,20,11573.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-26,R20,Brisbane,0,1,1,Port Adelaide,0,0,0,Gabba,1,2026,Regular,20,11574.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-26,R20,North Melbourne,0,1,1,St Kilda,0,0,0,Marvel Stadium,1,2026,Regular,20,11575.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-30,R21,Collingwood,0,1,1,Geelong,0,0,0,MCG,1,2026,Regular,21,11576.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-07-31,R21,Fremantle,0,1,1,Western Bulldogs,0,0,0,Optus Stadium,1,2026,Regular,21,11577.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-01,R21,Carlton,0,1,1,Brisbane,0,0,0,Marvel Stadium,1,2026,Regular,21,11578.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-01,R21,Hawthorn,0,1,1,North Melbourne,0,0,0,UTAS Stadium,1,2026,Regular,21,11579.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-01,R21,Port Adelaide,0,1,1,GWS,0,0,0,Adelaide Oval,1,2026,Regular,21,11580.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-01,R21,St Kilda,0,1,1,Sydney,0,0,0,Marvel Stadium,1,2026,Regular,21,11581.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-02,R21,Essendon,0,1,1,Adelaide,0,0,0,Marvel Stadium,1,2026,Regular,21,11582.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-02,R21,Gold Coast,0,1,1,Melbourne,0,0,0,People First Stadium,1,2026,Regular,21,11583.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-02,R21,Richmond,0,1,1,West Coast,0,0,0,MCG,1,2026,Regular,21,11584.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-06,R22,Western Bulldogs,0,1,1,North Melbourne,0,0,0,Marvel Stadium,1,2026,Regular,22,11585.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-07,R22,Brisbane,0,1,1,Hawthorn,0,0,0,Gabba,1,2026,Regular,22,11586.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-08,R22,Adelaide,0,1,1,Richmond,0,0,0,Adelaide Oval,1,2026,Regular,22,11587.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-08,R22,Geelong,0,1,1,Essendon,0,0,0,GMHBA Stadium,1,2026,Regular,22,11588.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-08,R22,Melbourne,0,1,1,Fremantle,0,0,0,MCG,1,2026,Regular,22,11589.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-08,R22,Sydney,0,1,1,Port Adelaide,0,0,0,SCG,1,2026,Regular,22,11590.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-09,R22,GWS,0,1,1,Gold Coast,0,0,0,Manuka Oval,1,2026,Regular,22,11591.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-09,R22,St Kilda,0,1,1,Carlton,0,0,0,Marvel Stadium,1,2026,Regular,22,11592.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-09,R22,West Coast,0,1,1,Collingwood,0,0,0,Optus Stadium,1,2026,Regular,22,11593.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,Brisbane,0,1,1,Gold Coast,0,0,0,Gabba,1,2026,Regular,23,11594.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,Essendon,0,1,1,Sydney,0,0,0,MCG,1,2026,Regular,23,11595.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,Fremantle,0,1,1,Adelaide,0,0,0,Optus Stadium,1,2026,Regular,23,11596.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,GWS,0,1,1,West Coast,0,0,0,ENGIE Stadium,1,2026,Regular,23,11597.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,Hawthorn,0,1,1,Collingwood,0,0,0,MCG,1,2026,Regular,23,11598.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,North Melbourne,0,1,1,Geelong,0,0,0,Marvel Stadium,1,2026,Regular,23,11599.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,Port Adelaide,0,1,1,Melbourne,0,0,0,Adelaide Oval,1,2026,Regular,23,11600.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,Richmond,0,1,1,St Kilda,0,0,0,MCG,1,2026,Regular,23,11601.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-10,R23,Western Bulldogs,0,1,1,Carlton,0,0,0,Marvel Stadium,1,2026,Regular,23,11602.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,Adelaide,0,1,1,GWS,0,0,0,Adelaide Oval,1,2026,Regular,24,11603.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,Collingwood,0,1,1,Brisbane,0,0,0,MCG,1,2026,Regular,24,11604.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,Carlton,0,1,1,Fremantle,0,0,0,Marvel Stadium,1,2026,Regular,24,11605.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,Essendon,0,1,1,Port Adelaide,0,0,0,Marvel Stadium,1,2026,Regular,24,11606.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,Geelong,0,1,1,Richmond,0,0,0,GMHBA Stadium,1,2026,Regular,24,11607.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,Melbourne,0,1,1,Western Bulldogs,0,0,0,MCG,1,2026,Regular,24,11608.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,St Kilda,0,1,1,Gold Coast,0,0,0,Marvel Stadium,1,2026,Regular,24,11609.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,Sydney,0,1,1,North Melbourne,0,0,0,SCG,1,2026,Regular,24,11610.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
-2026-08-17,R24,West Coast,0,1,1,Hawthorn,0,0,0,Optus Stadium,1,2026,Regular,24,11611.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-09,R18,Fremantle,0,1,1,Sydney,0,0,0,Optus Stadium,1,2026,Regular,18,11557.0,1.51,2.65,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3040.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-10,R18,Collingwood,0,1,1,North Melbourne,0,0,0,Marvel Stadium,1,2026,Regular,18,11558.0,1.39,3.1,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3041.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-11,R18,Adelaide,0,1,1,Gold Coast,0,0,0,Adelaide Oval,1,2026,Regular,18,11559.0,1.37,3.25,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3046.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-11,R18,Carlton,0,1,1,Hawthorn,0,0,0,MCG,1,2026,Regular,18,11560.0,2.60,1.51,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3045.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-11,R18,GWS,0,1,1,Geelong,0,0,0,ENGIE Stadium,1,2026,Regular,18,11561.0,2.33,1.62,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3044.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-11,R18,St Kilda,0,1,1,Port Adelaide,0,0,0,Marvel Stadium,1,2026,Regular,18,11562.0,1.58,2.4,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3042.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-12,R18,Brisbane,0,1,1,Essendon,0,0,0,Gabba,1,2026,Regular,18,11563.0,1.03,15.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3049.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-12,R18,Melbourne,0,1,1,Richmond,0,0,0,MCG,1,2026,Regular,18,11564.0,1.10,7.5,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3047.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-12,R18,Western Bulldogs,0,1,1,West Coast,0,0,0,Marvel Stadium,1,2026,Regular,18,11565.0,1.13,6.25,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,3048.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,Y,W,N
+2026-07-16,R19,Geelong,0,1,1,St Kilda,0,0,0,GMHBA Stadium,1,2026,Regular,19,11566.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-17,R19,Sydney,0,1,1,Adelaide,0,0,0,SCG,1,2026,Regular,19,11567.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-18,R19,Collingwood,0,1,1,Carlton,0,0,0,MCG,1,2026,Regular,19,11568.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-18,R19,North Melbourne,0,1,1,Melbourne,0,0,0,Marvel Stadium,1,2026,Regular,19,11569.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-18,R19,Port Adelaide,0,1,1,Fremantle,0,0,0,Adelaide Oval,1,2026,Regular,19,11570.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-18,R19,West Coast,0,1,1,Brisbane,0,0,0,Optus Stadium,1,2026,Regular,19,11571.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-19,R19,Essendon,0,1,1,GWS,0,0,0,Marvel Stadium,1,2026,Regular,19,11572.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-19,R19,Gold Coast,0,1,1,Western Bulldogs,0,0,0,People First Stadium,1,2026,Regular,19,11573.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-19,R19,Richmond,0,1,1,Hawthorn,0,0,0,MCG,1,2026,Regular,19,11574.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-23,R20,Adelaide,0,1,1,Collingwood,0,0,0,Adelaide Oval,1,2026,Regular,20,11575.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-24,R20,Fremantle,0,1,1,West Coast,0,0,0,Optus Stadium,1,2026,Regular,20,11576.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-24,R20,Melbourne,0,1,1,Geelong,0,0,0,MCG,1,2026,Regular,20,11577.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-25,R20,Carlton,0,1,1,Gold Coast,0,0,0,Marvel Stadium,1,2026,Regular,20,11578.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-25,R20,GWS,0,1,1,Sydney,0,0,0,ENGIE Stadium,1,2026,Regular,20,11579.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-25,R20,Hawthorn,0,1,1,Essendon,0,0,0,MCG,1,2026,Regular,20,11580.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-25,R20,Western Bulldogs,0,1,1,Richmond,0,0,0,Marvel Stadium,1,2026,Regular,20,11581.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-26,R20,Brisbane,0,1,1,Port Adelaide,0,0,0,Gabba,1,2026,Regular,20,11582.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-26,R20,North Melbourne,0,1,1,St Kilda,0,0,0,Marvel Stadium,1,2026,Regular,20,11583.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-30,R21,Collingwood,0,1,1,Geelong,0,0,0,MCG,1,2026,Regular,21,11584.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-07-31,R21,Fremantle,0,1,1,Western Bulldogs,0,0,0,Optus Stadium,1,2026,Regular,21,11585.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-01,R21,Carlton,0,1,1,Brisbane,0,0,0,Marvel Stadium,1,2026,Regular,21,11586.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-01,R21,Hawthorn,0,1,1,North Melbourne,0,0,0,UTAS Stadium,1,2026,Regular,21,11587.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-01,R21,Port Adelaide,0,1,1,GWS,0,0,0,Adelaide Oval,1,2026,Regular,21,11588.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-01,R21,St Kilda,0,1,1,Sydney,0,0,0,Marvel Stadium,1,2026,Regular,21,11589.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-02,R21,Essendon,0,1,1,Adelaide,0,0,0,Marvel Stadium,1,2026,Regular,21,11590.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-02,R21,Gold Coast,0,1,1,Melbourne,0,0,0,People First Stadium,1,2026,Regular,21,11591.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-02,R21,Richmond,0,1,1,West Coast,0,0,0,MCG,1,2026,Regular,21,11592.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-06,R22,Western Bulldogs,0,1,1,North Melbourne,0,0,0,Marvel Stadium,1,2026,Regular,22,11593.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-07,R22,Brisbane,0,1,1,Hawthorn,0,0,0,Gabba,1,2026,Regular,22,11594.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-08,R22,Adelaide,0,1,1,Richmond,0,0,0,Adelaide Oval,1,2026,Regular,22,11595.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-08,R22,Geelong,0,1,1,Essendon,0,0,0,GMHBA Stadium,1,2026,Regular,22,11596.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-08,R22,Melbourne,0,1,1,Fremantle,0,0,0,MCG,1,2026,Regular,22,11597.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-08,R22,Sydney,0,1,1,Port Adelaide,0,0,0,SCG,1,2026,Regular,22,11598.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-09,R22,GWS,0,1,1,Gold Coast,0,0,0,Manuka Oval,1,2026,Regular,22,11599.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-09,R22,St Kilda,0,1,1,Carlton,0,0,0,Marvel Stadium,1,2026,Regular,22,11600.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-09,R22,West Coast,0,1,1,Collingwood,0,0,0,Optus Stadium,1,2026,Regular,22,11601.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,Brisbane,0,1,1,Gold Coast,0,0,0,Gabba,1,2026,Regular,23,11602.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,Essendon,0,1,1,Sydney,0,0,0,MCG,1,2026,Regular,23,11603.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,Fremantle,0,1,1,Adelaide,0,0,0,Optus Stadium,1,2026,Regular,23,11604.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,GWS,0,1,1,West Coast,0,0,0,ENGIE Stadium,1,2026,Regular,23,11605.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,Hawthorn,0,1,1,Collingwood,0,0,0,MCG,1,2026,Regular,23,11606.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,North Melbourne,0,1,1,Geelong,0,0,0,Marvel Stadium,1,2026,Regular,23,11607.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,Port Adelaide,0,1,1,Melbourne,0,0,0,Adelaide Oval,1,2026,Regular,23,11608.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,Richmond,0,1,1,St Kilda,0,0,0,MCG,1,2026,Regular,23,11609.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-10,R23,Western Bulldogs,0,1,1,Carlton,0,0,0,Marvel Stadium,1,2026,Regular,23,11610.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,Adelaide,0,1,1,GWS,0,0,0,Adelaide Oval,1,2026,Regular,24,11611.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,Collingwood,0,1,1,Brisbane,0,0,0,MCG,1,2026,Regular,24,11612.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,Carlton,0,1,1,Fremantle,0,0,0,Marvel Stadium,1,2026,Regular,24,11613.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,Essendon,0,1,1,Port Adelaide,0,0,0,Marvel Stadium,1,2026,Regular,24,11614.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,Geelong,0,1,1,Richmond,0,0,0,GMHBA Stadium,1,2026,Regular,24,11615.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,Melbourne,0,1,1,Western Bulldogs,0,0,0,MCG,1,2026,Regular,24,11616.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,St Kilda,0,1,1,Gold Coast,0,0,0,Marvel Stadium,1,2026,Regular,24,11617.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,Sydney,0,1,1,North Melbourne,0,0,0,SCG,1,2026,Regular,24,11618.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
+2026-08-17,R24,West Coast,0,1,1,Hawthorn,0,0,0,Optus Stadium,1,2026,Regular,24,11619.0,,,,,,,,,,,,,,,,,,,,,,Y,W,N
 2012-03-24,R1,Sydney,14,16,100,GWS,5,7,37,Accor Stadium,63,2012,Regular,1,5343.0,1.01,17,25.0,8.0,27.0,13.0,34.0,1.0,14.0,15.0,37.0,100.0,1.0,17.0,17.0,14.0,31.0,33.0,64.0,-1.0,63.0,N,W,N
 2012-03-29,R1,Carlton,18,17,125,Richmond,12,9,81,MCG,44,2012,Regular,1,5344.0,1.54,2.51,20.0,22.0,35.0,14.0,24.0,31.0,46.0,14.0,81.0,125.0,9.0,-2.0,-2.0,21.0,19.0,-7.0,12.0,32.0,44.0,N,W,N
 2012-03-30,R1,Collingwood,16,19,115,Hawthorn,20,17,137,MCG,-22,2012,Regular,1,5345.0,2.28,1.65,19.0,13.0,32.0,53.0,37.0,28.0,27.0,43.0,137.0,115.0,10.0,6.0,6.0,-21.0,-15.0,9.0,-6.0,-16.0,-22.0,N,L,N
@@ -6108,66 +6108,66 @@ Date,Round,Team,Goals,Behinds,Points,Opposition_Team,Opposition_Goals,Opposition
 2026-07-04,R17,Carlton,10,14,74,Richmond,10,12,72,MCG,2,2026,Regular,17,11545.0,1.18,5.50,15.0,33.0,34.0,8.0,15.0,9.0,10.0,22.0,72.0,74.0,3034.0,-18.0,-18.0,26.0,8.0,6.0,14.0,-12.0,2.0,N,W,N
 2026-07-05,R17,St Kilda,17,15,117,Essendon,7,8,50,Marvel Stadium,67,2026,Regular,17,11540.0,1.22,4.35,34.0,13.0,52.0,8.0,8.0,8.0,23.0,21.0,50.0,117.0,3039.0,21.0,21.0,44.0,65.0,-0.0,65.0,2.0,67.0,N,W,N
 2026-07-05,R17,North Melbourne,7,10,52,Port Adelaide,10,13,73,Adelaide Oval,-21,2026,Regular,17,11547.0,2.9,1.43,9.0,9.0,8.0,27.0,34.0,15.0,1.0,22.0,73.0,52.0,3038.0,-0.0,-0.0,-19.0,-19.0,19.0,-0.0,-21.0,-21.0,N,L,Y
-2026-07-09,R18,Sydney,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,18,11549.0,2.65,1.51,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3040.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
-2026-07-10,R18,North Melbourne,0,0,0,Collingwood,0,1,1,Marvel Stadium,-1,2026,Regular,18,11550.0,3.1,1.39,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3041.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,N
-2026-07-11,R18,Gold Coast,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,18,11551.0,3.25,1.37,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3046.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
-2026-07-11,R18,Hawthorn,0,0,0,Carlton,0,1,1,MCG,-1,2026,Regular,18,11552.0,1.51,2.60,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3045.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,N
-2026-07-11,R18,Geelong,0,0,0,GWS,0,1,1,ENGIE Stadium,-1,2026,Regular,18,11553.0,1.62,2.33,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3044.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
-2026-07-11,R18,Port Adelaide,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,18,11554.0,2.4,1.58,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3042.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
-2026-07-12,R18,Essendon,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,18,11555.0,15.0,1.03,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3049.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
-2026-07-12,R18,Richmond,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,18,11556.0,7.5,1.10,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3047.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,N
-2026-07-12,R18,West Coast,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,18,11557.0,6.25,1.13,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3048.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
-2026-07-16,R19,St Kilda,0,0,0,Geelong,0,1,1,GMHBA Stadium,-1,2026,Regular,19,11558.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-17,R19,Adelaide,0,0,0,Sydney,0,1,1,SCG,-1,2026,Regular,19,11559.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-18,R19,Carlton,0,0,0,Collingwood,0,1,1,MCG,-1,2026,Regular,19,11560.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-18,R19,Melbourne,0,0,0,North Melbourne,0,1,1,Marvel Stadium,-1,2026,Regular,19,11561.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-18,R19,Fremantle,0,0,0,Port Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,19,11562.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-18,R19,Brisbane,0,0,0,West Coast,0,1,1,Optus Stadium,-1,2026,Regular,19,11563.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-19,R19,GWS,0,0,0,Essendon,0,1,1,Marvel Stadium,-1,2026,Regular,19,11564.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-19,R19,Western Bulldogs,0,0,0,Gold Coast,0,1,1,People First Stadium,-1,2026,Regular,19,11565.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-19,R19,Hawthorn,0,0,0,Richmond,0,1,1,MCG,-1,2026,Regular,19,11566.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-23,R20,Collingwood,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,20,11567.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-24,R20,West Coast,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,20,11568.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-24,R20,Geelong,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,20,11569.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-25,R20,Gold Coast,0,0,0,Carlton,0,1,1,Marvel Stadium,-1,2026,Regular,20,11570.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-25,R20,Sydney,0,0,0,GWS,0,1,1,ENGIE Stadium,-1,2026,Regular,20,11571.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-25,R20,Essendon,0,0,0,Hawthorn,0,1,1,MCG,-1,2026,Regular,20,11572.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-25,R20,Richmond,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,20,11573.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-26,R20,Port Adelaide,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,20,11574.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-07-26,R20,St Kilda,0,0,0,North Melbourne,0,1,1,Marvel Stadium,-1,2026,Regular,20,11575.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-30,R21,Geelong,0,0,0,Collingwood,0,1,1,MCG,-1,2026,Regular,21,11576.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-07-31,R21,Western Bulldogs,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,21,11577.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-01,R21,Brisbane,0,0,0,Carlton,0,1,1,Marvel Stadium,-1,2026,Regular,21,11578.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-01,R21,North Melbourne,0,0,0,Hawthorn,0,1,1,UTAS Stadium,-1,2026,Regular,21,11579.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-01,R21,GWS,0,0,0,Port Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,21,11580.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-01,R21,Sydney,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,21,11581.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-02,R21,Adelaide,0,0,0,Essendon,0,1,1,Marvel Stadium,-1,2026,Regular,21,11582.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-02,R21,Melbourne,0,0,0,Gold Coast,0,1,1,People First Stadium,-1,2026,Regular,21,11583.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-02,R21,West Coast,0,0,0,Richmond,0,1,1,MCG,-1,2026,Regular,21,11584.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-06,R22,North Melbourne,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,22,11585.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-07,R22,Hawthorn,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,22,11586.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-08,R22,Richmond,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,22,11587.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-08,R22,Essendon,0,0,0,Geelong,0,1,1,GMHBA Stadium,-1,2026,Regular,22,11588.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-08,R22,Fremantle,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,22,11589.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-08,R22,Port Adelaide,0,0,0,Sydney,0,1,1,SCG,-1,2026,Regular,22,11590.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-09,R22,Gold Coast,0,0,0,GWS,0,1,1,Manuka Oval,-1,2026,Regular,22,11591.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-09,R22,Carlton,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,22,11592.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-09,R22,Collingwood,0,0,0,West Coast,0,1,1,Optus Stadium,-1,2026,Regular,22,11593.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-10,R23,Gold Coast,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,23,11594.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-10,R23,Sydney,0,0,0,Essendon,0,1,1,MCG,-1,2026,Regular,23,11595.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-10,R23,Adelaide,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,23,11596.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-10,R23,West Coast,0,0,0,GWS,0,1,1,ENGIE Stadium,-1,2026,Regular,23,11597.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-10,R23,Collingwood,0,0,0,Hawthorn,0,1,1,MCG,-1,2026,Regular,23,11598.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-10,R23,Geelong,0,0,0,North Melbourne,0,1,1,Marvel Stadium,-1,2026,Regular,23,11599.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-10,R23,Melbourne,0,0,0,Port Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,23,11600.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-10,R23,St Kilda,0,0,0,Richmond,0,1,1,MCG,-1,2026,Regular,23,11601.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-10,R23,Carlton,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,23,11602.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-17,R24,GWS,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,24,11603.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-17,R24,Brisbane,0,0,0,Collingwood,0,1,1,MCG,-1,2026,Regular,24,11604.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-17,R24,Fremantle,0,0,0,Carlton,0,1,1,Marvel Stadium,-1,2026,Regular,24,11605.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-17,R24,Port Adelaide,0,0,0,Essendon,0,1,1,Marvel Stadium,-1,2026,Regular,24,11606.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-17,R24,Richmond,0,0,0,Geelong,0,1,1,GMHBA Stadium,-1,2026,Regular,24,11607.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-17,R24,Western Bulldogs,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,24,11608.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
-2026-08-17,R24,Gold Coast,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,24,11609.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-17,R24,North Melbourne,0,0,0,Sydney,0,1,1,SCG,-1,2026,Regular,24,11610.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
-2026-08-17,R24,Hawthorn,0,0,0,West Coast,0,1,1,Optus Stadium,-1,2026,Regular,24,11611.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-09,R18,Sydney,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,18,11557.0,2.65,1.51,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3040.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
+2026-07-10,R18,North Melbourne,0,0,0,Collingwood,0,1,1,Marvel Stadium,-1,2026,Regular,18,11558.0,3.1,1.39,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3041.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,N
+2026-07-11,R18,Gold Coast,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,18,11559.0,3.25,1.37,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3046.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
+2026-07-11,R18,Hawthorn,0,0,0,Carlton,0,1,1,MCG,-1,2026,Regular,18,11560.0,1.51,2.60,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3045.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,N
+2026-07-11,R18,Geelong,0,0,0,GWS,0,1,1,ENGIE Stadium,-1,2026,Regular,18,11561.0,1.62,2.33,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3044.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
+2026-07-11,R18,Port Adelaide,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,18,11562.0,2.4,1.58,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3042.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
+2026-07-12,R18,Essendon,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,18,11563.0,15.0,1.03,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3049.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
+2026-07-12,R18,Richmond,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,18,11564.0,7.5,1.10,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3047.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,N
+2026-07-12,R18,West Coast,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,18,11565.0,6.25,1.13,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,3048.0,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0,-1.0,-1.0,N,L,Y
+2026-07-16,R19,St Kilda,0,0,0,Geelong,0,1,1,GMHBA Stadium,-1,2026,Regular,19,11566.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-17,R19,Adelaide,0,0,0,Sydney,0,1,1,SCG,-1,2026,Regular,19,11567.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-18,R19,Carlton,0,0,0,Collingwood,0,1,1,MCG,-1,2026,Regular,19,11568.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-18,R19,Melbourne,0,0,0,North Melbourne,0,1,1,Marvel Stadium,-1,2026,Regular,19,11569.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-18,R19,Fremantle,0,0,0,Port Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,19,11570.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-18,R19,Brisbane,0,0,0,West Coast,0,1,1,Optus Stadium,-1,2026,Regular,19,11571.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-19,R19,GWS,0,0,0,Essendon,0,1,1,Marvel Stadium,-1,2026,Regular,19,11572.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-19,R19,Western Bulldogs,0,0,0,Gold Coast,0,1,1,People First Stadium,-1,2026,Regular,19,11573.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-19,R19,Hawthorn,0,0,0,Richmond,0,1,1,MCG,-1,2026,Regular,19,11574.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-23,R20,Collingwood,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,20,11575.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-24,R20,West Coast,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,20,11576.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-24,R20,Geelong,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,20,11577.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-25,R20,Gold Coast,0,0,0,Carlton,0,1,1,Marvel Stadium,-1,2026,Regular,20,11578.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-25,R20,Sydney,0,0,0,GWS,0,1,1,ENGIE Stadium,-1,2026,Regular,20,11579.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-25,R20,Essendon,0,0,0,Hawthorn,0,1,1,MCG,-1,2026,Regular,20,11580.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-25,R20,Richmond,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,20,11581.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-26,R20,Port Adelaide,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,20,11582.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-07-26,R20,St Kilda,0,0,0,North Melbourne,0,1,1,Marvel Stadium,-1,2026,Regular,20,11583.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-30,R21,Geelong,0,0,0,Collingwood,0,1,1,MCG,-1,2026,Regular,21,11584.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-07-31,R21,Western Bulldogs,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,21,11585.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-01,R21,Brisbane,0,0,0,Carlton,0,1,1,Marvel Stadium,-1,2026,Regular,21,11586.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-01,R21,North Melbourne,0,0,0,Hawthorn,0,1,1,UTAS Stadium,-1,2026,Regular,21,11587.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-01,R21,GWS,0,0,0,Port Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,21,11588.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-01,R21,Sydney,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,21,11589.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-02,R21,Adelaide,0,0,0,Essendon,0,1,1,Marvel Stadium,-1,2026,Regular,21,11590.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-02,R21,Melbourne,0,0,0,Gold Coast,0,1,1,People First Stadium,-1,2026,Regular,21,11591.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-02,R21,West Coast,0,0,0,Richmond,0,1,1,MCG,-1,2026,Regular,21,11592.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-06,R22,North Melbourne,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,22,11593.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-07,R22,Hawthorn,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,22,11594.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-08,R22,Richmond,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,22,11595.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-08,R22,Essendon,0,0,0,Geelong,0,1,1,GMHBA Stadium,-1,2026,Regular,22,11596.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-08,R22,Fremantle,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,22,11597.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-08,R22,Port Adelaide,0,0,0,Sydney,0,1,1,SCG,-1,2026,Regular,22,11598.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-09,R22,Gold Coast,0,0,0,GWS,0,1,1,Manuka Oval,-1,2026,Regular,22,11599.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-09,R22,Carlton,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,22,11600.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-09,R22,Collingwood,0,0,0,West Coast,0,1,1,Optus Stadium,-1,2026,Regular,22,11601.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-10,R23,Gold Coast,0,0,0,Brisbane,0,1,1,Gabba,-1,2026,Regular,23,11602.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-10,R23,Sydney,0,0,0,Essendon,0,1,1,MCG,-1,2026,Regular,23,11603.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-10,R23,Adelaide,0,0,0,Fremantle,0,1,1,Optus Stadium,-1,2026,Regular,23,11604.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-10,R23,West Coast,0,0,0,GWS,0,1,1,ENGIE Stadium,-1,2026,Regular,23,11605.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-10,R23,Collingwood,0,0,0,Hawthorn,0,1,1,MCG,-1,2026,Regular,23,11606.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-10,R23,Geelong,0,0,0,North Melbourne,0,1,1,Marvel Stadium,-1,2026,Regular,23,11607.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-10,R23,Melbourne,0,0,0,Port Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,23,11608.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-10,R23,St Kilda,0,0,0,Richmond,0,1,1,MCG,-1,2026,Regular,23,11609.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-10,R23,Carlton,0,0,0,Western Bulldogs,0,1,1,Marvel Stadium,-1,2026,Regular,23,11610.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-17,R24,GWS,0,0,0,Adelaide,0,1,1,Adelaide Oval,-1,2026,Regular,24,11611.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-17,R24,Brisbane,0,0,0,Collingwood,0,1,1,MCG,-1,2026,Regular,24,11612.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-17,R24,Fremantle,0,0,0,Carlton,0,1,1,Marvel Stadium,-1,2026,Regular,24,11613.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-17,R24,Port Adelaide,0,0,0,Essendon,0,1,1,Marvel Stadium,-1,2026,Regular,24,11614.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-17,R24,Richmond,0,0,0,Geelong,0,1,1,GMHBA Stadium,-1,2026,Regular,24,11615.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-17,R24,Western Bulldogs,0,0,0,Melbourne,0,1,1,MCG,-1,2026,Regular,24,11616.0,,,,,,,,,,,,,,,,,,,,,,N,L,N
+2026-08-17,R24,Gold Coast,0,0,0,St Kilda,0,1,1,Marvel Stadium,-1,2026,Regular,24,11617.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-17,R24,North Melbourne,0,0,0,Sydney,0,1,1,SCG,-1,2026,Regular,24,11618.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y
+2026-08-17,R24,Hawthorn,0,0,0,West Coast,0,1,1,Optus Stadium,-1,2026,Regular,24,11619.0,,,,,,,,,,,,,,,,,,,,,,N,L,Y

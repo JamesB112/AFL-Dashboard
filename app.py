@@ -1,5 +1,5 @@
 """
-Boundary Line — AFL Analytics
+Tippo — AFL Analytics
 A personal portfolio app covering team performance, player rankings,
 ladder projections, and a margin/win-probability prediction model.
 """
@@ -13,7 +13,7 @@ import plotly.express as px
 import data_loader as dl
 
 st.set_page_config(
-    page_title="Boundary Line — AFL Analytics",
+    page_title="Tippo — AFL Analytics",
     page_icon="🏉",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -92,6 +92,43 @@ def movement_icon(n):
         return f'<span class="movement-down">▼ {abs(int(n))}</span>'
     return '<span class="movement-flat">—</span>'
 
+# =========================================================================
+# ===============================  UTILS  ================================
+# =========================================================================
+
+def first_col(df: pd.DataFrame, candidates: list, default=None):
+    """Return the first column name in `candidates` that exists in df."""
+    for c in candidates:
+        if c in df.columns:
+            return c
+    return default
+
+
+def safe_get(row, col, default="—"):
+    if col is None or col not in row.index:
+        return default
+    val = row[col]
+    if pd.isna(val):
+        return default
+    return val
+
+
+def fmt_pct(x, decimals=1):
+    if x is None or pd.isna(x):
+        return "—"
+    return f"{x:.{decimals}f}%"
+
+
+def fmt_num(x, decimals=1):
+    if x is None or pd.isna(x):
+        return "—"
+    return f"{x:.{decimals}f}"
+
+
+TEAM_COL_CANDIDATES = ["Team", "Home_Team", "HomeTeam"]
+OPP_COL_CANDIDATES = ["Opposition_Team", "Opposition", "Away_Team", "AwayTeam", "Opponent"]
+DATE_COL_CANDIDATES = ["Date", "Match_Date", "Game_Date"]
+VENUE_COL_CANDIDATES = ["Venue", "Ground"]
 
 # ----------------------------------------------------------------------
 # DATA CHECK
@@ -111,13 +148,12 @@ if not all_present:
 # ----------------------------------------------------------------------
 
 with st.sidebar:
-    st.markdown("### 🏉 Boundary Line")
+    st.markdown("### 🏉 Tippo")
     st.caption("AFL Analytics — a personal project")
     st.markdown("---")
     page = st.radio(
         "Navigate",
-        ["Home", "Team Performance", "Player Performance",
-         "Ladder Projection", "Model Predictions", "Methodology", "Blog / Q&A"],
+        ["Home", "Team Performance", "Player Performance","Model Predictions", "Methodology", "Blog / Q&A"],
         label_visibility="collapsed",
     )
     st.markdown("---")
@@ -131,70 +167,327 @@ with st.sidebar:
 # ========================================================================
 
 if page == "Home":
-    col1, col2 = st.columns([1.4, 1])
+
+    # ---------------------------------------------------
+    # HERO
+    # ---------------------------------------------------
+
+    col1, col2 = st.columns([1.6, 1])
+
     with col1:
-        st.markdown('<div class="bl-eyebrow">A personal AFL analytics project</div>', unsafe_allow_html=True)
-        st.title("Footy, measured.")
         st.markdown(
-            '<p class="bl-lede">Fourteen seasons of AFL results, player box scores, a ladder projection '
-            "model, and a win-probability + margin model, all graded in public.</p>",
+            '<div class="bl-eyebrow">A personal AFL analytics project</div>',
             unsafe_allow_html=True,
         )
+
+        st.title("Footy, measured.")
+
+        st.markdown(
+            """
+            <p class="bl-lede">
+            Predicting every AFL game, projecting the final ladder,
+            and tracking where the 2026 AFL season is heading.
+            </p>
+            """,
+            unsafe_allow_html=True,
+        )
+
     with col2:
-        acc = meta["model_accuracy_pct"]
-        acc_label = f"{acc}%" if acc else "—"
-        st.metric("Model win/loss accuracy, all-time", acc_label,
-                  help=f"{meta['model_games_scored']:,} games scored")
-        st.metric("Latest data", f"{meta['latest_season']} · Round {meta['latest_round']}")
+            acc = round((meta['current_season_correct'] / meta['current_season_games']) * 100.0,2) 
+            acc_label = f"{acc}%" if acc else "—"
+
+            c_correct = meta["current_season_correct"]
+            c_games = meta["current_season_games"]
+            fraction_label = f"{c_correct}/{c_games}" if c_games else "—"
+
+            st.metric(
+                "Model Accuracy",
+                acc_label,
+                delta=fraction_label,
+                delta_color="off",
+                help=f"{meta['model_games_scored']:,} games graded all-time · {fraction_label} correct this season",
+            )
+
+            st.metric(
+                "Current Round",
+                f"{meta['latest_season']} · Round {meta['latest_round']}",
+            )
+
+    st.divider()
+    
+    # ===================================================
+    # CURRENT ROUND
+    # ===================================================
+
+    st.subheader("Predictions")
+    st.caption("Win probabilities and expected margins for all future games")
+
+    current_df = dl.get_current_round_predictions()
+
+    if current_df.empty:
+        st.info("No games marked as 'Next Round' in the data right now.")
+
+    else:
+        team_col = first_col(current_df, TEAM_COL_CANDIDATES)
+        opp_col = first_col(current_df, OPP_COL_CANDIDATES)
+        date_col = first_col(current_df, DATE_COL_CANDIDATES)
+        venue_col = first_col(current_df, VENUE_COL_CANDIDATES)
+        fmt = current_df["_fmt"].iloc[0]
+
+        # -----------------
+        # Filters
+        # -----------------
+
+        fc1, fc2 = st.columns(2)
+
+        with fc1:
+            teams = sorted(
+                set(current_df[team_col].dropna())
+                | set(current_df[opp_col].dropna())
+            )
+
+            t_filter = st.selectbox(
+                "Team",
+                ["All teams"] + teams,
+                key="current_round_team",
+            )
+
+        with fc2:
+
+
+            all_rounds = ["All rounds"] + sorted(
+                current_df["RoundNumber"].dropna().unique().tolist()
+            )
+
+            default_round = meta['latest_round']
+
+            default_index = (
+                all_rounds.index(default_round)
+                if default_round in all_rounds
+                else 0
+            )
+
+            if "RoundNumber" in current_df.columns:
+                r_filter = st.selectbox(
+                    "Round",
+                    all_rounds,
+                    index=default_index,
+                    key="current_round_round",
+                )
+            else:
+                r_filter = "All rounds"
+
+        # -----------------
+        # Apply filters
+        # -----------------
+
+        current_disp = current_df.copy()
+
+        if t_filter != "All teams":
+            current_disp = current_disp[
+                (current_disp[team_col] == t_filter)
+                | (current_disp[opp_col] == t_filter)
+            ]
+
+        if r_filter != "All rounds":
+            current_disp = current_disp[
+                current_disp["RoundNumber"] == r_filter
+            ]
+
+        # Parse and sort by date
+        if date_col:
+            current_disp["_date_parsed"] = pd.to_datetime(
+                current_disp[date_col],
+                format="mixed",
+                dayfirst=True,
+                errors="coerce",
+            )
+            current_disp = current_disp.sort_values("_date_parsed")
+
+        display_df = pd.DataFrame()
+
+        # Match
+        display_df["Match"] = (
+            current_disp[team_col].astype(str)
+            + " vs "
+            + current_disp[opp_col].astype(str)
+        )
+
+        # Date
+        if date_col:
+            display_df["Date"] = current_disp["_date_parsed"].dt.strftime("%a %d %b")
+
+        # Venue
+        if venue_col:
+            display_df["Venue"] = current_disp[venue_col]
+
+        if fmt == "new":
+
+            display_df["Prediction"] = np.where(
+                current_disp["Predicted_Prob_LOGIT"] >= 0.5,
+                current_disp[team_col],
+                current_disp[opp_col],
+            )
+
+            display_df["Win Probability"] = np.where(
+                current_disp["Predicted_Prob_LOGIT"] >= 0.5,
+                current_disp["Predicted_Prob_LOGIT"],
+                1 - current_disp["Predicted_Prob_LOGIT"],
+            ) * 100
+
+            display_df["Predicted Margin"] = np.where(
+                current_disp["Predicted_Margin_OLS"] >= 0,
+                current_disp["Predicted_Margin_OLS"],
+                -current_disp["Predicted_Margin_OLS"],
+            )
+
+        else:
+
+            display_df["Prediction"] = np.where(
+                current_disp["Predicted_Margin_Adjusted"] >= 0,
+                current_disp[team_col],
+                current_disp[opp_col],
+            )
+
+            display_df["Predicted Margin"] = (
+                current_disp["Predicted_Margin_Adjusted"]
+            )
+
+        st.dataframe(
+            display_df,
+            hide_index=True,
+            use_container_width=True,
+            column_config={
+                "Date": st.column_config.TextColumn(
+                    "Date",
+                    width="small",
+                ),
+                "Match": st.column_config.TextColumn(
+                    "Match",
+                    width="medium",
+                ),
+                "Venue": st.column_config.TextColumn(
+                    "Venue",
+                    width="medium",
+                ),
+                "Prediction": st.column_config.TextColumn(
+                    "Prediction",
+                    width="medium",
+                ),
+                "Win Probability": (
+                    st.column_config.ProgressColumn(
+                        "Win Probability",
+                        format="%.1f%%",
+                        min_value=0,
+                        max_value=100,
+                    )
+                    if fmt == "new"
+                    else None
+                ),
+                "Predicted Margin": st.column_config.NumberColumn(
+                    "Predicted Margin",
+                    format="%.1f pts",
+                ),
+            },
+        )
 
     st.divider()
 
-    c1, c2, c3, c4 = st.columns(4)
-    seasons = dl.get_all_seasons()
-    c1.metric("Seasons covered", f"{seasons[-1]}–{seasons[0]}")
-    if meta["model_mae"]:
-        c2.metric("Model MAE (OLS margin)", f"{meta['model_mae']:.1f} pts")
-    c3.metric("Predictions graded", f"{meta['model_games_scored']:,}")
-    c4.metric("Clubs tracked", meta["teams_tracked"])
+    # ===================================================
+    # PROJECTED LADDER
+    # ===================================================
+
+    left, right = st.columns([1.8, 1])
+
+    with left:
+
+        st.subheader("Projected Final Ladder")
+        st.caption("Modelled finishing position for every club.")
+
+
+    ladder = dl.get_ladder_projection()
+    if ladder is None:
+        st.info("Ladder projection data not found — add `Ladder_Projection.csv` to the `data/` folder.")
+        st.stop()
+
+    def fmt_movement(row):
+        m = row["Rank_Movement"]
+        if pd.isna(m) or m == 0:
+            return "—"
+        return f"▲{abs(int(m))}" if m > 0 else f"▼{abs(int(m))}"
+
+    def fmt_range(row):
+        return f"{int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])}"
+
+    display = ladder.copy()
+    display["Movement"] = display.apply(fmt_movement, axis=1)
+    display["Proj. Range"] = display.apply(fmt_range, axis=1)
+    display["In Finals?"] = display["Projected_Rank"].apply(
+        lambda r: "✅ Yes" if r <= 10 else "⬜ No"
+    )
+
+    show_cols = {
+        "Team": "Club",
+        "Current_Rank": "Rank",
+        "Wins": "W",
+        "Draws": "D",
+        "Losses": "L",
+        "Current_Points": "Pts",
+        "Current_Percentage": "%",
+        "Games_Remaining": "Left",
+        "Projected_Rank": "Proj.",
+        "Proj. Range": "Range",
+        "In Finals?": "Finals?",
+    }
+
+    st.dataframe(
+        display[list(show_cols.keys())].rename(columns=show_cols),
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Rank":   st.column_config.NumberColumn(format="%d", width="small"),
+            "W":      st.column_config.NumberColumn(width="small"),
+            "D":      st.column_config.NumberColumn(width="small"),
+            "L":      st.column_config.NumberColumn(width="small"),
+            "Pts":    st.column_config.NumberColumn(width="small"),
+            "%":      st.column_config.NumberColumn(format="%.1f", width="small"),
+            "Left":   st.column_config.NumberColumn(width="small"),
+            "Proj.":  st.column_config.NumberColumn(format="%d", width="small"),
+            "Range":  st.column_config.TextColumn(width="medium"),
+            "Finals?": st.column_config.TextColumn(width="small"),
+            "Club":   st.column_config.TextColumn(width="medium"),
+        },
+        height=560,
+    )
 
     st.divider()
-    st.subheader("Explore the data")
 
-    r1c1, r1c2, r1c3 = st.columns(3)
-    with r1c1:
-        st.markdown("""<div class="bl-card">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#707B85;">01 / Team Performance</span>
-        <h4>Club form, season by season</h4>
-        <p>Wins, margins, percentage and trends for all 18 clubs back to 2012.</p>
-        </div>""", unsafe_allow_html=True)
-    with r1c2:
-        st.markdown("""<div class="bl-card">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#707B85;">02 / Player Performance</span>
-        <h4>Season-long player rankings</h4>
-        <p>Composite ranking model + raw stat leaderboards for every player.</p>
-        </div>""", unsafe_allow_html=True)
-    with r1c3:
-        st.markdown("""<div class="bl-card">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#707B85;">03 / Ladder Projection</span>
-        <h4>Where every club is likely to finish</h4>
-        <p>Projected final ladder position with best/worst case range per club.</p>
-        </div>""", unsafe_allow_html=True)
+    # --- top 10 probability callout ---
+    st.subheader("Finals picture")
+    top10 = ladder[ladder["Projected_Rank"] <= 10].sort_values("Projected_Rank")
+    bubble = ladder[(ladder["Rank_Range_Best"] <= 10) & (ladder["Projected_Rank"] > 10)].sort_values("Projected_Rank")
 
-    st.write("")
-    r2c1, r2c2, _ = st.columns(3)
-    with r2c1:
-        st.markdown("""<div class="bl-card">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#707B85;">04 / Model Predictions</span>
-        <h4>Grading the model, in public</h4>
-        <p>Win probability (LOGIT) and margin (OLS) — every prediction scored, wins and misses both shown.</p>
-        </div>""", unsafe_allow_html=True)
-    with r2c2:
-        st.markdown("""<div class="bl-card">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#707B85;">05 / Methodology</span>
-        <h4>How this is actually built</h4>
-        <p>The data pipeline, player ranking composite, and prediction models explained in plain terms.</p>
-        </div>""", unsafe_allow_html=True)
-
+    col_top, col_bub = st.columns(2)
+    with col_top:
+        st.markdown("**Projected top 10**")
+        for _, row in top10.iterrows():
+            st.markdown(
+                f"**{int(row['Projected_Rank'])}.** {row['Team']} "
+                f"<span style='color:{SLATE};font-size:0.85rem;'>({int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])})</span>",
+                unsafe_allow_html=True,
+            )
+    with col_bub:
+        if not bubble.empty:
+            st.markdown("**On the bubble** *(best case makes finals)*")
+            for _, row in bubble.iterrows():
+                st.markdown(
+                    f"**{row['Team']}** — proj. {int(row['Projected_Rank'])}, "
+                    f"<span style='color:{SLATE};font-size:0.85rem;'>best case {int(row['Rank_Range_Best'])}</span>",
+                    unsafe_allow_html=True,
+                )
+        else:
+            st.markdown("**On the bubble**")
+            st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
 
 # ========================================================================
 # TEAM PERFORMANCE
@@ -371,166 +664,6 @@ elif page == "Player Performance":
         use_container_width=True, hide_index=True, height=460,
     )
 
-
-# ========================================================================
-# LADDER PROJECTION
-# ========================================================================
-
-elif page == "Ladder Projection":
-    st.markdown('<div class="bl-eyebrow">03 / Ladder Projection</div>', unsafe_allow_html=True)
-    st.title("Where every club is likely to finish")
-    st.markdown(
-        '<p class="bl-lede">Projected final ladder position for all 18 clubs, based on current standings '
-        "and simulated remaining games. The range shows best-case and worst-case finishing positions "
-        "from the simulation runs.</p>",
-        unsafe_allow_html=True,
-    )
-    st.divider()
-
-    ladder = dl.get_ladder_projection()
-    if ladder is None:
-        st.info("Ladder projection data not found — add `Ladder_Projection.csv` to the `data/` folder.")
-        st.stop()
-
-    meta = dl.get_meta()
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Current round",       f"{meta['latest_season']} R{meta['latest_round']}")
-    c2.metric("Games remaining",      int(ladder["Games_Remaining"].iloc[0]) if not ladder.empty else "—")
-    c3.metric("Clubs in finals range","10")  # top 8
-
-    st.divider()
-
-    # --- range chart ---
-    st.subheader("Projected finish — range chart")
-    st.caption("Bar = projected median rank. Error bars show best/worst case from simulation.")
-
-    df_chart = ladder.sort_values("Projected_Rank_Median")
-
-    fig = go.Figure()
-
-    # range bars (worst → best, plotted as low-opacity filled region via error bars)
-    fig.add_trace(go.Scatter(
-        x=df_chart["Team"],
-        y=df_chart["Projected_Rank_Median"],
-        error_y=dict(
-            type="data",
-            symmetric=False,
-            array=(df_chart["Rank_Range_Worst"] - df_chart["Projected_Rank_Median"]).clip(lower=0),
-            arrayminus=(df_chart["Projected_Rank_Median"] - df_chart["Rank_Range_Best"]).clip(lower=0),
-            color=SLATE,
-            thickness=4,
-            width=8,
-        ),
-        mode="markers",
-        marker=dict(
-            size=12,
-            color=[GREEN if r <= 10 else SLATE for r in df_chart["Projected_Rank_Median"]],
-            symbol="diamond",
-        ),
-        hovertemplate=(
-            "<b>%{x}</b><br>"
-            "Projected: %{y:.0f}<br>"
-            "Best case: %{customdata[0]}<br>"
-            "Worst case: %{customdata[1]}<extra></extra>"
-        ),
-        customdata=df_chart[["Rank_Range_Best","Rank_Range_Worst"]].values,
-        name="Projected rank",
-    ))
-
-    # finals cut line
-    fig.add_hline(y=10.5, line_dash="dot", line_color=CLAY, line_width=1.5,
-                  annotation_text="Finals cut", annotation_position="top right",
-                  annotation_font_color=CLAY)
-
-    layout_no_yaxis = {k:v for k,v in PLOTLY_BASE.items() if k != "yaxis"}
-    fig.update_layout(
-        **layout_no_yaxis,
-        height=420,
-        xaxis_title=None,
-        yaxis=dict(**PLOTLY_BASE["yaxis"], autorange="reversed", title="Ladder position",
-                   tickvals=list(range(1,19))),
-        showlegend=False,
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
-    st.divider()
-
-    # --- detailed table ---
-    st.subheader("Full projection table")
-
-    def fmt_movement(row):
-        m = row["Rank_Movement"]
-        if pd.isna(m) or m == 0:
-            return "—"
-        return f"▲{abs(int(m))}" if m > 0 else f"▼{abs(int(m))}"
-
-    def fmt_range(row):
-        return f"{int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])}"
-
-    display = ladder.copy()
-    display["Movement"] = display.apply(fmt_movement, axis=1)
-    display["Proj. Range"] = display.apply(fmt_range, axis=1)
-    display["In Finals?"] = display["Projected_Rank_Median"].apply(
-        lambda r: "✅ Yes" if r <= 10 else "⬜ No"
-    )
-
-    show_cols = {
-        "Team": "Club",
-        "Current_Rank": "Current Rank",
-        "Movement": "Movement",
-        "Played": "Played",
-        "Wins": "W",
-        "Draws": "D",
-        "Losses": "L",
-        "Current_Points": "Points",
-        "Current_Percentage": "Pct",
-        "Games_Remaining": "Remaining",
-        "Projected_Rank_Median": "Proj. Rank",
-        "Proj. Range": "Range (Best–Worst)",
-        "In Finals?": "Finals?",
-    }
-
-    st.dataframe(
-        display[list(show_cols.keys())].rename(columns=show_cols),
-        use_container_width=True, hide_index=True,
-        column_config={
-            "Current Rank":   st.column_config.NumberColumn(format="%d"),
-            "Proj. Rank":     st.column_config.NumberColumn(format="%.1f"),
-            "Pct":            st.column_config.NumberColumn(format="%.2f"),
-        },
-        height=560,
-    )
-
-    st.divider()
-
-    # --- top 10 probability callout ---
-    st.subheader("Finals picture")
-    top10 = ladder[ladder["Projected_Rank_Median"] <= 10].sort_values("Projected_Rank_Median")
-    bubble = ladder[(ladder["Rank_Range_Best"] <= 10) & (ladder["Projected_Rank_Median"] > 10)].sort_values("Projected_Rank_Median")
-
-    col_top, col_bub = st.columns(2)
-    with col_top:
-        st.markdown("**Projected top 10**")
-        for _, row in top10.iterrows():
-            st.markdown(
-                f"**{int(row['Projected_Rank_Median'])}.** {row['Team']} "
-                f"<span style='color:{SLATE};font-size:0.85rem;'>({int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])})</span>",
-                unsafe_allow_html=True,
-            )
-    with col_bub:
-        if not bubble.empty:
-            st.markdown("**On the bubble** *(best case makes finals)*")
-            for _, row in bubble.iterrows():
-                st.markdown(
-                    f"**{row['Team']}** — proj. {int(row['Projected_Rank_Median'])}, "
-                    f"<span style='color:{SLATE};font-size:0.85rem;'>best case {int(row['Rank_Range_Best'])}</span>",
-                    unsafe_allow_html=True,
-                )
-        else:
-            st.markdown("**On the bubble**")
-            st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
-
-
 # ========================================================================
 # MODEL PREDICTIONS
 # ========================================================================
@@ -676,24 +809,11 @@ elif page == "Model Predictions":
                          "Mean Abs Error": st.column_config.NumberColumn(format="%.1f pts"),
                      })
 
-    # --- upcoming fixture (both formats) ---
-    st.divider()
-    st.subheader("Upcoming fixture")
-    st.caption("Predictions populate once the round is complete")
-    upcoming = dl.get_upcoming_fixture()
-    if upcoming.empty:
-        st.info("No upcoming fixture in the current export.")
-    else:
-        up_cols = ["Date","Round","HomeTeam","AwayTeam","Venue"]
-        up_cols = [c for c in up_cols if c in upcoming.columns]
-        st.dataframe(upcoming[up_cols].rename(columns={"HomeTeam":"Home","AwayTeam":"Away"}).head(12),
-                     use_container_width=True, hide_index=True)
-
     # --- game explorer (both formats) ---
     st.divider()
-    st.subheader("Every prediction")
+    st.subheader("Past prediction")
 
-    scored_games = dl.get_predictions()    
+    scored_games = dl.get_completed_predictions()    
     st.caption(f"{len(scored_games):,} scored predictions")
 
     fc1, fc2, fc3, fc4 = st.columns(4)
@@ -703,11 +823,21 @@ elif page == "Model Predictions":
         s_filter = st.selectbox("Season", all_seasons, key="pred_season")
 
     with fc2:
-        all_teams = ["All teams"] + sorted(scored_games["Team"].dropna().unique().tolist())
-        t_filter = st.selectbox("Team", all_teams, key="pred_team")
+        teams = sorted(
+            set(scored_games["Team"].dropna())
+            | set(scored_games["Opposition_Team"].dropna())
+        )
+
+        all_teams = ["All teams"] + teams
+
+        t_filter = st.selectbox(
+            "Team",
+            all_teams,
+            key="pred_team",
+        )
 
     with fc3:
-        all_rounds = ["All rounds"] + sorted(scored_games["RoundNumber"].dropna().unique().tolist())
+        all_rounds = ["All rounds"] + sorted(scored_games["Match_id"].dropna().unique().tolist())
         r_filter = st.selectbox("Round", all_rounds, key="pred_round")
 
     with fc4:
@@ -720,17 +850,32 @@ elif page == "Model Predictions":
 
     pg = scored_games.copy()
 
-    if s_filter != "All seasons": pg = pg[pg["Season"] == s_filter]
-    if t_filter != "All teams":   pg = pg[pg["Team"] == t_filter]
-    if r_filter != "All rounds":  pg = pg[pg["RoundNumber"] == r_filter]
+    if s_filter != "All seasons":
+        pg = pg[pg["Season"] == s_filter]
+
+    if t_filter != "All teams":
+        pg = pg[
+            (pg["Team"] == t_filter) |
+            (pg["Opposition_Team"] == t_filter)
+        ]
+
+    if r_filter != "All rounds":
+        pg = pg[pg["RoundNumber"] == r_filter]
+
     if fmt == "new":
-        if o_filter == "LOGIT correct":    pg = pg[pg["Correct_LOGIT"]]
-        elif o_filter == "LOGIT incorrect": pg = pg[~pg["Correct_LOGIT"]]
-        elif o_filter == "OLS correct":    pg = pg[pg["Correct_OLS"]]
-        elif o_filter == "OLS incorrect":  pg = pg[~pg["Correct_OLS"]]
+        if o_filter == "LOGIT correct":
+            pg = pg[pg["Correct_LOGIT"]]
+        elif o_filter == "LOGIT incorrect":
+            pg = pg[~pg["Correct_LOGIT"]]
+        elif o_filter == "OLS correct":
+            pg = pg[pg["Correct_OLS"]]
+        elif o_filter == "OLS incorrect":
+            pg = pg[~pg["Correct_OLS"]]
     else:
-        if o_filter == "Correct only":    pg = pg[pg["Correct"]]
-        elif o_filter == "Incorrect only": pg = pg[~pg["Correct"]]
+        if o_filter == "Correct only":
+            pg = pg[pg["Correct"]]
+        elif o_filter == "Incorrect only":
+            pg = pg[~pg["Correct"]]
 
     pg = pg.sort_values("Date", ascending=False)
 
@@ -770,7 +915,6 @@ elif page == "Model Predictions":
 
     st.dataframe(pg_disp, use_container_width=True, hide_index=True, height=460,
                  column_config=col_cfg)
-
 
 # ========================================================================
 # METHODOLOGY
@@ -870,4 +1014,4 @@ elif page == "Blog / Q&A":
         </div>""", unsafe_allow_html=True)
 
 st.divider()
-st.caption("Boundary Line — a personal AFL analytics project. Data updated after each round.")
+st.caption("Tippo — a personal AFL analytics project. Data updated after each round.")

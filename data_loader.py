@@ -128,7 +128,7 @@ def add_round_status(df):
     whether a game is:
 
     - Past Round
-    - Current Round
+    - Next Round
     - Future Round
     """
 
@@ -265,7 +265,37 @@ def get_latest_rankings():
 @st.cache_data(show_spinner=False)
 def get_player_rank_history(draft_id, season):
     df = get_player_rankings()
-    df = add_round_status(df)
+
+    # Manually join the season status column
+    lookup = get_game_lookup()
+
+    cols = [
+        c for c in [
+            "Season",
+            "RoundNumber",
+            "RoundStatus"
+        ]
+        if c in lookup.columns
+    ]
+
+    lookup = lookup[cols].drop_duplicates()
+
+    df = df.drop(
+        columns=[
+            c for c in [
+                "RoundStatus"
+            ]
+            if c in df.columns
+        ],
+        errors="ignore"
+    )
+
+    df = df.merge(
+        lookup,
+        on=['Season', 'RoundNumber'],
+        how="left"
+    )
+
 
     df = df[
         df["RoundStatus"] != "Future Round"
@@ -332,7 +362,12 @@ def get_current_round_predictions():
     df = get_predictions()
 
     return df[
-        df["RoundStatus"] == "Current Round"
+        df["RoundStatus"].isin(
+            [
+                "Next Round",
+                "Future Round"
+            ]
+        )
     ].copy()
 
 
@@ -353,7 +388,7 @@ def get_future_predictions():
 def get_predictions():
     df = load_raw("predictions")
 
-    df = add_round_status(df)
+    # df = add_round_status(df)
     df["Season"] = df["Season"].astype(str)
     df["RoundNumber"] = pd.to_numeric(df["RoundNumber"], errors="coerce")
 
@@ -364,6 +399,11 @@ def get_predictions():
 
     df["Margin"] = pd.to_numeric(df["Margin"], errors="coerce")
 
+    # Update draws
+    # Draws count as correct regardless of which team the model favoured
+    df.loc[df["Margin"] == 0, "Prediction_Outcome_LOGIT"] = 1
+    df.loc[df["Margin"] == 0, "Prediction_Outcome_OLS"] = 1
+    
     if fmt == "new":
         # ---- NEW FORMAT: LOGIT + OLS models ----
         df["Predicted_Prob_LOGIT"] = pd.to_numeric(df.get("Predicted_Prob_LOGIT"), errors="coerce")
@@ -410,7 +450,6 @@ def get_prediction_format():
     df = load_raw("predictions")
     return _detect_predictions_format(df)
 
-
 @st.cache_data(show_spinner=False)
 def get_prediction_summary():
     df = get_predictions()
@@ -420,6 +459,10 @@ def get_prediction_summary():
     scored = df[
         df["RoundStatus"] == "Past Round"
     ].copy()
+
+    # Current season = most recent season with any scored games
+    current_season = scored["Season"].max() if len(scored) else None
+    current_scored = scored[scored["Season"] == current_season] if current_season is not None else scored.iloc[0:0]
 
     if fmt == "new":
         by_season_logit = scored.groupby("Season", as_index=False).agg(
@@ -445,12 +488,16 @@ def get_prediction_summary():
         by_season = by_season.sort_values("Season")
 
         n = len(scored)
+        n_current = len(current_scored)
         overall = {
             "games": n,
             "accuracy_logit": round(scored["Correct_LOGIT"].sum() / n * 100, 1) if n else None,
             "accuracy_ols":   round(scored["Correct_OLS"].sum()   / n * 100, 1) if n else None,
             "mae_ols":        round(scored["Abs_Error_OLS"].mean(), 2) if n else None,
             "fmt": "new",
+            "current_season": current_season,
+            "current_season_games": n_current,
+            "current_season_correct": int(current_scored["Correct_LOGIT"].sum()) if n_current else 0,
         }
     else:
         by_season = scored.groupby("Season", as_index=False).agg(
@@ -463,12 +510,16 @@ def get_prediction_summary():
         by_season = by_season.sort_values("Season")
 
         n = len(scored)
+        n_current = len(current_scored)
         overall = {
             "games": n,
             "correct": int(scored["Correct"].sum()),
             "accuracy_pct": round(scored["Correct"].sum() / n * 100, 1) if n else None,
             "mae": round(scored["Abs_Error"].mean(), 2) if n else None,
             "fmt": "old",
+            "current_season": current_season,
+            "current_season_games": n_current,
+            "current_season_correct": int(current_scored["Correct"].sum()) if n_current else 0,
         }
 
     return by_season, overall
@@ -480,7 +531,7 @@ def get_upcoming_fixture():
     upcoming = df[
         df["RoundStatus"].isin(
             [
-                "Current Round",
+                "Next Round",
                 "Future Round"
             ]
         )
@@ -498,6 +549,7 @@ def get_ladder_projection():
         return None
     df = load_raw("ladder_projection")
     df["Current_Rank"] = pd.to_numeric(df["Current_Rank"], errors="coerce")
+    df["Projected_Rank"] = pd.to_numeric(df["Projected_Rank"], errors="coerce")
     df["Projected_Rank_Median"] = pd.to_numeric(df["Projected_Rank_Median"], errors="coerce")
     df["Rank_Movement"] = pd.to_numeric(df["Rank_Movement"], errors="coerce")
     df["Rank_Range_Best"] = pd.to_numeric(df["Rank_Range_Best"], errors="coerce")
@@ -529,12 +581,14 @@ def get_meta():
         games = pred_overall.get("games", 0)
 
     return {
-        "teams_tracked":        len(teams),
-        "latest_season":        latest_season,
-        "latest_round":         latest_round,
-        "model_accuracy_pct":   acc,
-        "model_mae":            mae,
-        "model_games_scored":   games,
-        "players_tracked":      len(latest_rankings),
-        "predictions_fmt":      fmt,
+        "teams_tracked":              len(teams),
+        "latest_season":              latest_season,
+        "latest_round":               latest_round,
+        "model_accuracy_pct":         acc,
+        "model_mae":                  mae,
+        "model_games_scored":         games,
+        "players_tracked":            len(latest_rankings),
+        "predictions_fmt":            fmt,
+        "current_season_correct":     pred_overall.get("current_season_correct", 0),
+        "current_season_games":       pred_overall.get("current_season_games", 0),
     }
