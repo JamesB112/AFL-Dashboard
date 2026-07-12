@@ -31,6 +31,7 @@ FILES = {
     "player_linkage":       "STG_Player_Linkage.csv",
     "player_rankings":      "STG_Player_Rankings.csv",
     "ladder_projection":    "Ladder_Projection.csv",
+    "Elo":                  "FTG_Elo_Ratings.csv"  
 }
 
 NUMERIC_STAT_COLS = [
@@ -194,6 +195,17 @@ def get_team_results():
     df["Margin"] = pd.to_numeric(df["Margin"], errors="coerce")
     df["Points"] = pd.to_numeric(df["Points"], errors="coerce")
     df["Opposition_Points"] = pd.to_numeric(df["Opposition_Points"], errors="coerce")
+
+    # Update the date column
+    df["Date"] = pd.to_datetime(
+                    df["Date"],
+                    format="mixed",
+                    dayfirst=False,
+                    errors="coerce",
+                )
+    
+    df["Date"] = df["Date"].dt.strftime("%a %d %b")
+
     return df
 
 
@@ -214,6 +226,7 @@ def get_team_season_summary():
         grp["Points_For"] / grp["Points_Against"].replace(0, np.nan) * 100
     ).round(1)
     grp["Avg_Margin"] = grp["Avg_Margin"].round(1)
+    
     return grp.sort_values(["Season","Win_Pct"], ascending=[False,False])
 
 
@@ -395,6 +408,9 @@ def get_predictions():
     # Filter to only include the home row
     df = df[df['IsHome'] == 1]
 
+    # Filter for regular season games
+    # df = df[df['Round.Type'] == 'Regular']
+
     fmt = _detect_predictions_format(df)
 
     df["Margin"] = pd.to_numeric(df["Margin"], errors="coerce")
@@ -524,6 +540,27 @@ def get_prediction_summary():
 
     return by_season, overall
 
+@st.cache_data(show_spinner=False)
+def get_team_season_accuracy(season):
+    df = get_predictions()
+    fmt = df["_fmt"].iloc[0] if len(df) else "old"
+
+    scored = df[df["RoundStatus"] == "Past Round"].copy()
+    scored = scored[scored["Season"] == season]
+
+    correct_col = "Correct_LOGIT" if fmt == "new" else "Correct"
+    scored["Binary"] = scored[correct_col].astype(int)
+
+    out = (
+        scored
+        .groupby("Team")
+        .agg(Games=("Binary", "size"), Accuracy=("Binary", "mean"))
+        .reset_index()
+    )
+    out["Accuracy"] = (out["Accuracy"] * 100).round(1)
+    out = out.sort_values("Accuracy", ascending=False)
+
+    return out
 
 @st.cache_data(show_spinner=False)
 def get_upcoming_fixture():
@@ -558,6 +595,81 @@ def get_ladder_projection():
     df["Current_Percentage"] = pd.to_numeric(df["Current_Percentage"], errors="coerce")
     df["Games_Remaining"] = pd.to_numeric(df["Games_Remaining"], errors="coerce")
     return df.sort_values("Current_Rank")
+
+# ----------------------------------------------------------------------
+# ELO Rankings
+# ----------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False)
+def get_elo_ratings():
+    """Load the full Elo ratings history (one row per team per game)."""
+    df = load_raw("Elo")
+
+    df["Date"] = pd.to_datetime(df["Date"], format="%d/%m/%Y", errors="coerce")
+    df["Elo"] = pd.to_numeric(df["Elo"], errors="coerce")
+    df["Season"] = df["Season"].astype(int)
+    df["RoundNumber"] = df["RoundNumber"].astype(int)
+
+    return df.sort_values(["Team", "Date"]).reset_index(drop=True)
+
+@st.cache_data(show_spinner=False)
+def get_team_elo_history(season=None):
+    """Elo history with bye rounds added.
+
+    Missing team/round combinations are inserted and Elo is forward-filled
+    within each season so a team's rating remains constant through bye rounds.
+    """
+    df = get_elo_ratings().copy()
+
+    # All season/round combinations
+    rounds = (
+        df[["Season", "RoundNumber"]]
+        .drop_duplicates()
+    )
+
+    # All teams in each season
+    teams = (
+        df[["Season", "Team"]]
+        .drop_duplicates()
+    )
+
+    # Cartesian product of teams x rounds within each season
+    full = teams.merge(rounds, on="Season", how="inner")
+
+    # Merge original data
+    df = full.merge(
+        df,
+        on=["Season", "RoundNumber", "Team"],
+        how="left",
+        suffixes=("", "_orig"),
+    )
+
+    # Sort for filling
+    df = df.sort_values(["Season", "Team", "RoundNumber"])
+
+    # Carry Elo through bye rounds
+    df["Elo"] = (
+        df.groupby(["Team"])["Elo"]
+        .bfill()
+    )
+
+    # Optional: fill Match Date for plotting
+    df["Date"] = (
+        df.groupby(["Season", "RoundNumber"])["Date"]
+        .transform("first")
+    )
+
+    if season is not None:
+        df = df[df["Season"] == int(season)]
+
+    return df.sort_values(["Season", "RoundNumber", "Team"])
+
+@st.cache_data(show_spinner=False)
+def get_latest_elo():
+    """Each team's most recent Elo rating, for a quick leaderboard/default team list."""
+    df = get_elo_ratings()
+    idx = df.groupby("Team")["Date"].idxmax()
+    return df.loc[idx].sort_values("Elo", ascending=False).reset_index(drop=True)
 
 
 # ----------------------------------------------------------------------

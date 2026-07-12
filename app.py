@@ -14,11 +14,9 @@ import data_loader as dl
 
 st.set_page_config(
     page_title="Tippo — AFL Analytics",
-    page_icon="🏉",
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
 # ----------------------------------------------------------------------
 # GLOBAL STYLE
 # ----------------------------------------------------------------------
@@ -27,9 +25,21 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-h1, h2, h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 600 !important; letter-spacing: -0.01em; }
+/* Page background: White */
+[data-testid="stAppViewContainer"] {
+    background: #FFFFFF;
+}
+[data-testid="stHeader"] {
+    background: rgba(238, 242, 243, 0);
+}
+section[data-testid="stSidebar"] {
+    background: #E4EAEC;
+    border-right: 1px solid #C7D3D6;
+}
 
-[data-testid="stMetricValue"] { font-family: 'JetBrains Mono', monospace; }
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 600 !important; letter-spacing: -0.01em; color: #1B2B2E; }
+
+[data-testid="stMetricValue"] { font-family: 'JetBrains Mono', monospace; color: #1B2B2E; }
 
 .bl-eyebrow {
     font-family: 'JetBrains Mono', monospace;
@@ -40,31 +50,35 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 60
     margin-bottom: 0.3rem;
 }
 
-.bl-lede { font-size: 1.05rem; color: #3A3F45; max-width: 70ch; }
+.bl-lede { font-size: 1.05rem; color: #3A4A4F; max-width: 70ch; }
 
 .bl-card {
     background: #FFFFFF;
-    border: 1px solid #E3E1D9;
+    border: 1px solid #C7D3D6;
+    border-top: 3px solid #3E6E82;
     border-radius: 6px;
     padding: 1.1rem 1.3rem;
     height: 100%;
 }
-.bl-card h4 { margin: 0 0 0.4rem 0; font-family: 'Fraunces', serif; font-size: 1.15rem; }
-.bl-card p  { margin: 0; color: #3A3F45; font-size: 0.92rem; }
+.bl-card h4 { margin: 0 0 0.4rem 0; font-family: 'Fraunces', serif; font-size: 1.15rem; color: #1B2B2E; }
+.bl-card p  { margin: 0; color: #3A4A4F; font-size: 0.92rem; }
 
 .movement-up   { color: #1F6F50; font-weight: 600; }
 .movement-down { color: #B3492C; font-weight: 600; }
-.movement-flat { color: #707B85; }
+.movement-flat { color: #5C6E76; }
+
+hr, [data-testid="stDivider"] { border-color: #C7D3D6 !important; }
 </style>
 """, unsafe_allow_html=True)
 
-GREEN   = "#1F6F50"
-CLAY    = "#B3492C"
-GOLD    = "#B68A2E"
-SLATE   = "#707B85"
-INK     = "#14171A"
-PAPER   = "#FFFFFF"
-HAIRLINE= "#E3E1D9"
+GREEN    = "#1F6F50"
+CLAY     = "#B3492C"
+GOLD     = "#B68A2E"
+SLATE    = "#5C6E76"
+BLUE     = "#3E6E82"
+INK      = "#1B2B2E"
+PAPER    = "#FFFFFF"
+HAIRLINE = "#C7D3D6"
 
 PLOTLY_BASE = dict(
     font=dict(family="Inter, sans-serif", color=INK),
@@ -74,7 +88,6 @@ PLOTLY_BASE = dict(
     xaxis=dict(gridcolor=HAIRLINE, zeroline=False),
     yaxis=dict(gridcolor=HAIRLINE, zeroline=False),
 )
-
 
 def signed(n, decimals=0):
     if n is None or (isinstance(n, float) and np.isnan(n)):
@@ -148,18 +161,17 @@ if not all_present:
 # ----------------------------------------------------------------------
 
 with st.sidebar:
-    st.markdown("### 🏉 Tippo")
-    st.caption("AFL Analytics — a personal project")
+    st.markdown("### Tippo")
+    st.caption("AFL Games Tipper")
     st.markdown("---")
     page = st.radio(
         "Navigate",
-        ["Home", "Team Performance", "Player Performance","Model Predictions", "Methodology", "Blog / Q&A"],
+        ["Home", "Team Performance", "Player Performance","Model Performance", "Methodology", "Blog / Q&A"],
         label_visibility="collapsed",
     )
     st.markdown("---")
     meta = dl.get_meta()
     st.caption(f"Data through **{meta['latest_season']}, Round {meta['latest_round']}**")
-    st.caption(f"{meta['teams_tracked']} clubs · {meta['players_tracked']:,} players tracked")
 
 
 # ========================================================================
@@ -180,13 +192,15 @@ if page == "Home":
             unsafe_allow_html=True,
         )
 
-        st.title("Footy, measured.")
+        st.title("Tipping made easy")
 
         st.markdown(
             """
             <p class="bl-lede">
-            Predicting every AFL game, projecting the final ladder,
-            and tracking where the 2026 AFL season is heading.
+            Predicting every game, projecting the final ladder,
+            and providing easy acess team and player performace.
+
+            Data is refreshed every Thursday and Friday, once lineups are released.
             </p>
             """,
             unsafe_allow_html=True,
@@ -213,14 +227,13 @@ if page == "Home":
                 f"{meta['latest_season']} · Round {meta['latest_round']}",
             )
 
-    st.divider()
+    # st.divider()
     
     # ===================================================
     # CURRENT ROUND
     # ===================================================
 
-    st.subheader("Predictions")
-    st.caption("Win probabilities and expected margins for all future games")
+    st.subheader("Upcoming Predictions")
 
     current_df = dl.get_current_round_predictions()
 
@@ -324,7 +337,7 @@ if page == "Home":
         if fmt == "new":
 
             display_df["Prediction"] = np.where(
-                current_disp["Predicted_Prob_LOGIT"] >= 0.5,
+                current_disp["Predicted_Margin_OLS"] >= 0.5,
                 current_disp[team_col],
                 current_disp[opp_col],
             )
@@ -492,12 +505,11 @@ if page == "Home":
 # ========================================================================
 # TEAM PERFORMANCE
 # ========================================================================
-
 elif page == "Team Performance":
     st.markdown('<div class="bl-eyebrow">01 / Team Performance</div>', unsafe_allow_html=True)
-    st.title("Club form, season by season")
-    st.markdown('<p class="bl-lede">Every club\'s results since 2012 — wins, margins, percentage, '
-                'and trends. Pick a season to compare clubs, or select a club to see its full game log.</p>',
+    st.title("Team Performance and Rankings")
+    st.markdown('<p class="bl-lede">Every club\'s standings since 2012.'
+                ' Pick a season to compare clubs, or select a club to see its full game log.</p>',
                 unsafe_allow_html=True)
     st.divider()
 
@@ -507,24 +519,59 @@ elif page == "Team Performance":
     season_sel = st.selectbox("Season", seasons, index=0)
     season_rows = summary[summary["Season"] == season_sel].sort_values("Win_Pct", ascending=False)
 
-    st.dataframe(
-        season_rows[["Team","Played","Wins","Losses","Draws","Win_Pct",
-                     "Points_For","Points_Against","Percentage","Avg_Margin"]
-        ].rename(columns={"Win_Pct":"Win %","Points_For":"PF",
-                           "Points_Against":"PA","Avg_Margin":"Avg Margin"}),
-        use_container_width=True, hide_index=True, height=460,
-        column_config={
-            "Win %":      st.column_config.NumberColumn(format="%.1f%%"),
-            "Avg Margin": st.column_config.NumberColumn(format="%+.1f"),
-            "Pct":        st.column_config.NumberColumn(format="%.1f"),
-        },
-    )
+    # --- Elo rating history (replaces the season standings table) ---
+    st.subheader("Elo rating history")
+    st.caption("Team strength over time, as tracked by the Elo model. Higher = stronger.")
+
+    elo_season_hist = dl.get_team_elo_history(season=season_sel)
+
+    if elo_season_hist.empty:
+        st.info(f"No Elo data found for {season_sel}.")
+    else:
+        all_season_teams = sorted(elo_season_hist["Team"].unique().tolist())
+
+        elo_plot_df = elo_season_hist
+
+        # Distinct categorical colors for team lines — separate from the brand
+        # GREEN/CLAY/GOLD/SLATE palette, since those are semantic (win/loss,
+        # correct/incorrect), not team identity, and won't scale to 18 lines.
+        team_colors = px.colors.qualitative.Alphabet
+
+        fig_elo = go.Figure()
+        for i, team in enumerate(all_season_teams):
+            if team not in elo_plot_df["Team"].unique():
+                continue
+            t_data = elo_plot_df[elo_plot_df["Team"] == team].sort_values("RoundNumber")
+            fig_elo.add_trace(go.Scatter(
+                x=t_data["RoundNumber"], y=t_data["Elo"],
+                name=team, mode="lines",
+                line=dict(color=team_colors[i % len(team_colors)], width=2),
+                hovertemplate=f"{team}<br>" + "%{x|%d %b %Y}<br>Elo: %{y:.0f}<extra></extra>",
+            ))
+
+        layout_no_yaxis = {k: v for k, v in PLOTLY_BASE.items() if k != "yaxis"}
+        fig_elo.update_layout(
+            **layout_no_yaxis,
+            height=460,
+            xaxis_title="Round",
+            yaxis=dict(**PLOTLY_BASE["yaxis"], title="Elo rating"),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="left",
+                x=0,
+            ),
+            hovermode="closest",
+        )
+        st.plotly_chart(fig_elo, use_container_width=True)
 
     st.divider()
     st.subheader("Club detail")
     team_sel = st.selectbox("Select a club", dl.get_all_teams())
 
     team_games = dl.get_team_results()
+
     tg = team_games[(team_games["Team"]==team_sel) & (team_games["Season"]==season_sel)].sort_values("RoundNumber")
 
     if tg.empty:
@@ -565,16 +612,14 @@ elif page == "Team Performance":
 
 elif page == "Player Performance":
     st.markdown('<div class="bl-eyebrow">02 / Player Performance</div>', unsafe_allow_html=True)
-    st.title("Who's actually playing well")
-    st.markdown('<p class="bl-lede">A composite ranking model scores every player after each round. '
-                'Raw leaderboards for box-score stats sit underneath.</p>', unsafe_allow_html=True)
+    st.title("Player Performance and Rankings")
+    st.markdown('<p class="bl-lede">Custom player ranking model plus stats leaderboard </p>', unsafe_allow_html=True)
     st.divider()
 
     latest, latest_season, latest_round = dl.get_latest_rankings()
 
-    st.subheader("Composite ranking — current round")
-    st.caption(f"Season {latest_season}, Round {latest_round} · {len(latest)} players ranked")
-    st.markdown("Rank is season-to-date, recalculated every round. Composite score normalised 0–1 within the round. "
+    st.subheader("Composite ranking")
+    st.markdown("Ranks as at current, calculated on a Team, Position and Overall basis. "
                 "See **Methodology** for how it's built.")
 
     fc1, fc2, fc3 = st.columns(3)
@@ -665,156 +710,123 @@ elif page == "Player Performance":
     )
 
 # ========================================================================
-# MODEL PREDICTIONS
+# MODEL Performance
 # ========================================================================
 
-elif page == "Model Predictions":
-    st.markdown('<div class="bl-eyebrow">04 / Model Predictions</div>', unsafe_allow_html=True)
-    st.title("Grading the model, in public")
+elif page == "Model Performance":
+    st.markdown('<div class="bl-eyebrow">04 / Model Performance</div>', unsafe_allow_html=True)
+    st.title("Model Performance")
 
     predictions = dl.get_predictions()
     by_season, overall = dl.get_prediction_summary()
     fmt = overall.get("fmt","old")
 
-    if fmt == "new":
-        st.markdown(
-            '<p class="bl-lede">Two models run on every game: a <strong>LOGIT</strong> classifier for '
-            "win/loss probability, and an <strong>OLS</strong> regression for predicted margin. "
-            "Both are graded below — wins and misses included.</p>",
-            unsafe_allow_html=True,
-        )
-        st.divider()
+    st.markdown(
+        '<p class="bl-lede">Two regression models run for each game: a <strong>LOGIT</strong> classifier for '
+        "win/loss probability, and an <strong>OLS</strong> regression for predicted margin. "
+        "</p>",
+        unsafe_allow_html=True,
+    )
+    st.divider()
 
-        oc1, oc2, oc3 = st.columns(3)
-        oc1.metric("LOGIT win/loss accuracy", f"{overall['accuracy_logit']}%",
-                   help="Did the predicted winner match the actual result?")
-        oc2.metric("OLS win/loss accuracy",   f"{overall['accuracy_ols']}%",
-                   help="Did the sign of the OLS margin match the actual result?")
-        oc3.metric("OLS mean abs. error",     f"{overall['mae_ols']:.1f} pts",
-                   help="Average distance between predicted and actual margin")
+    oc1, oc2, oc3 = st.columns(3)
+    oc1.metric("LOGIT win/loss accuracy", f"{overall['accuracy_logit']}%",
+                help="Did the predicted winner match the actual result?")
+    oc2.metric("OLS win/loss accuracy",   f"{overall['accuracy_ols']}%",
+                help="Did the sign of the OLS margin match the actual result?")
+    oc3.metric("OLS mean abs. error",     f"{overall['mae_ols']:.1f} pts",
+                help="Average distance between predicted and actual margin")
 
-        st.subheader("Accuracy by season — both models")
+    st.subheader("Accuracy by season")
 
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            x=by_season["Season"], y=by_season["Accuracy_LOGIT"],
-            name="LOGIT accuracy", mode="lines+markers",
-            line=dict(color=GREEN, width=2.5), marker=dict(size=7),
-            hovertemplate="%{x}<br>LOGIT: %{y:.1f}%<extra></extra>",
-        ))
-        fig.add_trace(go.Scatter(
-            x=by_season["Season"], y=by_season["Accuracy_OLS"],
-            name="OLS accuracy", mode="lines+markers",
-            line=dict(color=GOLD, width=2, dash="dot"), marker=dict(size=6),
-            hovertemplate="%{x}<br>OLS accuracy: %{y:.1f}%<extra></extra>",
-        ))
-        fig.add_trace(go.Scatter(
-            x=by_season["Season"], y=by_season["MAE_OLS"],
-            name="OLS MAE (pts)", mode="lines+markers",
-            line=dict(color=CLAY, width=2, dash="dash"), marker=dict(size=6),
-            yaxis="y2",
-            hovertemplate="%{x}<br>MAE: %{y:.1f} pts<extra></extra>",
-        ))
-        layout_no_yaxis = {k:v for k,v in PLOTLY_BASE.items() if k not in ("yaxis",)}
-        fig.update_layout(
-            **layout_no_yaxis, height=380,
-            yaxis=dict(title="Win/loss accuracy (%)", gridcolor=HAIRLINE, zeroline=False),
-            yaxis2=dict(title="Mean abs. error (pts)", overlaying="y", side="right", showgrid=False),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
-        )
-        st.plotly_chart(fig, use_container_width=True)
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=by_season["Season"], y=by_season["Accuracy_LOGIT"],
+        name="LOGIT accuracy", mode="lines+markers",
+        line=dict(color=GREEN, width=2.5), marker=dict(size=7),
+        hovertemplate="%{x}<br>LOGIT: %{y:.1f}%<extra></extra>",
+    ))
+    fig.add_trace(go.Scatter(
+        x=by_season["Season"], y=by_season["Accuracy_OLS"],
+        name="OLS accuracy", mode="lines+markers",
+        line=dict(color=GOLD, width=2, dash="dot"), marker=dict(size=6),
+        hovertemplate="%{x}<br>OLS accuracy: %{y:.1f}%<extra></extra>",
+    ))
+    fig.add_trace(go.Scatter(
+        x=by_season["Season"], y=by_season["MAE_OLS"],
+        name="OLS MAE (pts)", mode="lines+markers",
+        line=dict(color=CLAY, width=2, dash="dash"), marker=dict(size=6),
+        yaxis="y2",
+        hovertemplate="%{x}<br>MAE: %{y:.1f} pts<extra></extra>",
+    ))
+    layout_no_yaxis = {k:v for k,v in PLOTLY_BASE.items() if k not in ("yaxis",)}
+    fig.update_layout(
+        **layout_no_yaxis, height=380,
+        yaxis=dict(title="Win/loss accuracy (%)", gridcolor=HAIRLINE, zeroline=False),
+        yaxis2=dict(title="Mean abs. error (pts)", overlaying="y", side="right", showgrid=False),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
-        season_disp = by_season.rename(columns={
-            "Games":"Games","Correct_LOGIT":"LOGIT Correct","Accuracy_LOGIT":"LOGIT Acc.",
-            "Accuracy_OLS":"OLS Acc.","MAE_OLS":"OLS MAE",
-        }).sort_values("Season", ascending=False)
-        st.dataframe(season_disp, use_container_width=True, hide_index=True,
-                     column_config={
-                         "LOGIT Acc.": st.column_config.NumberColumn(format="%.1f%%"),
-                         "OLS Acc.":   st.column_config.NumberColumn(format="%.1f%%"),
-                         "OLS MAE":    st.column_config.NumberColumn(format="%.1f pts"),
-                     })
+    st.divider()
 
-        # Feature importance section
-        imp_cols_present = [c for c in dl.IMPORTANCE_COLS if c in predictions.columns]
-        if imp_cols_present:
-            st.divider()
-            st.subheader("What's driving the OLS predictions?")
-            st.caption("Average feature group importance across all scored games (team perspective)")
+    # --- team accuracy by season (new format) ---
+    st.subheader("Accuracy by Team")
 
-            scored = dl.get_completed_predictions()            
-            imp_means = scored[imp_cols_present].mean()
-            imp_labels = [dl.IMPORTANCE_LABELS.get(c, c) for c in imp_cols_present]
+    scored_games_ts = dl.get_completed_predictions()
+    all_seasons_ts = sorted(scored_games_ts["Season"].unique().tolist(), reverse=True)
+    ts_season = st.selectbox(
+        "Season", all_seasons_ts, index=0, key="team_season_filter"
+    )
 
-            fig_imp = go.Figure(go.Bar(
-                x=imp_means.values,
-                y=imp_labels,
-                orientation="h",
-                marker_color=GREEN,
-                hovertemplate="%{y}: %{x:,.1f}<extra></extra>",
-            ))
-            layout_no_yaxis = {
-                k: v
-                for k, v in PLOTLY_BASE.items()
-                if k != "yaxis"
-            }
+    team_season = dl.get_team_season_accuracy(ts_season)
 
-            fig_imp.update_layout(
-                **layout_no_yaxis,
-                height=320,
-                xaxis_title="Average importance (sum of marginal contributions)",
-                yaxis=dict(
-                    **PLOTLY_BASE["yaxis"],
-                    autorange="reversed"
-                )
-            )
-            st.plotly_chart(fig_imp, use_container_width=True)
+    overall_acc = team_season["Accuracy"].mean().round(1) if len(team_season) else 0
 
-    else:
-        # Old single-model format
-        st.markdown(
-            '<p class="bl-lede">An XGBoost model predicts the margin of every game. '
-            "Graded on win/loss accuracy and margin error, season by season.</p>",
-            unsafe_allow_html=True,
-        )
-        st.divider()
+    fig_ts = go.Figure(go.Bar(
+        x=team_season["Accuracy"],
+        y=team_season["Team"],
+        orientation="h",
+        marker_color=[GREEN if v >= 50 else CLAY for v in team_season["Accuracy"]],
+        text=team_season["Accuracy"].map(lambda v: f"{v:.1f}%"),
+        textposition="outside",
+        customdata=team_season["Games"],
+        hovertemplate="%{y}<br>Accuracy: %{x:.1f}%<br>Games: %{customdata}<extra></extra>",
+    ))
+    fig_ts.add_vline(x=50, line_dash="dot", line_color=HAIRLINE)
 
-        oc1, oc2 = st.columns(2)
-        correct_count = overall.get("correct", overall.get("games", 0))
-        oc1.metric("Win/loss accuracy, all-time", f"{overall['accuracy_pct']}%",
-                   help=f"{correct_count:,} of {overall['games']:,} games correct")
-        oc2.metric("Mean abs. margin error",      f"{overall['mae']:.1f} pts")
-
-        st.subheader("Accuracy by season")
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=by_season["Season"], y=by_season["Accuracy_Pct"],
-                                 name="Win/loss accuracy", mode="lines+markers",
-                                 line=dict(color=GREEN, width=2.5), marker=dict(size=7)))
-        fig.add_trace(go.Scatter(x=by_season["Season"], y=by_season["MAE"],
-                                 name="MAE", mode="lines+markers",
-                                 line=dict(color=CLAY, width=2, dash="dot"), marker=dict(size=6),
-                                 yaxis="y2"))
-        layout_no_yaxis = {k:v for k,v in PLOTLY_BASE.items() if k not in ("yaxis",)}
-        fig.update_layout(**layout_no_yaxis, height=360,
-                          yaxis=dict(title="Accuracy (%)", gridcolor=HAIRLINE, zeroline=False),
-                          yaxis2=dict(title="MAE (pts)", overlaying="y", side="right", showgrid=False),
-                          legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0))
-        st.plotly_chart(fig, use_container_width=True)
-
-        st.dataframe(by_season.rename(columns={"Accuracy_Pct":"Accuracy","MAE":"Mean Abs Error"})
-                     .sort_values("Season", ascending=False),
-                     use_container_width=True, hide_index=True,
-                     column_config={
-                         "Accuracy":       st.column_config.NumberColumn(format="%.1f%%"),
-                         "Mean Abs Error": st.column_config.NumberColumn(format="%.1f pts"),
-                     })
+    # Strip BOTH axes from the base layout, then merge our overrides on top
+    # of PLOTLY_BASE's own axis settings (dict(**a, key=val) fails if `key`
+    # already exists in `a`, so use a plain dict merge instead).
+    layout_no_axes = {k: v for k, v in PLOTLY_BASE.items() if k not in ("xaxis", "yaxis")}
+    fig_ts.update_layout(
+        **layout_no_axes,
+        height=max(320, 28 * len(team_season)),
+        xaxis={
+            **PLOTLY_BASE.get("xaxis", {}),
+            "title": "Accuracy (%)",
+            "range": [0, 105],
+            "gridcolor": HAIRLINE,
+            "zeroline": False,
+        },
+        yaxis={
+            **PLOTLY_BASE.get("yaxis", {}),
+            "autorange": "reversed",
+        },
+        showlegend=False,
+    )
+    st.plotly_chart(fig_ts, use_container_width=True)
+    st.caption(f"{ts_season} average across teams: {overall_acc}%")
+    
 
     # --- game explorer (both formats) ---
     st.divider()
     st.subheader("Past prediction")
 
     scored_games = dl.get_completed_predictions()    
-    st.caption(f"{len(scored_games):,} scored predictions")
+    # st.caption(f"{len(scored_games):,} scored predictions")
+    st.caption("All margins and predictions below are in respect to the **home team**. "
+               "I.e. a positive margin or predicted margin means the home team is favoured/won.")
 
     fc1, fc2, fc3, fc4 = st.columns(4)
 
@@ -834,6 +846,7 @@ elif page == "Model Predictions":
             "Team",
             all_teams,
             key="pred_team",
+            help="Filters games where this team appears as either home or away.",
         )
 
     with fc3:
@@ -881,17 +894,17 @@ elif page == "Model Predictions":
 
     if fmt == "new":
         disp_cols = {
-            "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Team",
-            "Opposition_Team":"Opponent","Margin":"Actual",
-            "Predicted_Margin_OLS":"Pred Margin","Abs_Error_OLS":"Margin Err",
-            "Predicted_Prob_LOGIT":"LOGIT Prob",
+            "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Home Team",
+            "Opposition_Team":"Away Team","Margin":"Actual (Home)",
+            "Predicted_Margin_OLS":"Pred Margin (Home)","Abs_Error_OLS":"Margin Err",
+            "Predicted_Prob_LOGIT":"LOGIT Prob (Home)",
             "Correct_LOGIT":"LOGIT ✓","Correct_OLS":"OLS ✓",
         }
     else:
         disp_cols = {
-            "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Team",
-            "Opposition_Team":"Opponent","Margin":"Actual",
-            "Predicted_Margin_Adjusted":"Predicted","Abs_Error":"Error","Correct":"Correct",
+            "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Home Team",
+            "Opposition_Team":"Away Team","Margin":"Actual (Home)",
+            "Predicted_Margin_Adjusted":"Predicted (Home)","Abs_Error":"Error","Correct":"Correct",
         }
 
     avail = {k:v for k,v in disp_cols.items() if k in pg.columns}
@@ -904,14 +917,18 @@ elif page == "Model Predictions":
         pg_disp["OLS ✓"] = pg_disp["OLS ✓"].map({True:"✅",False:"❌"})
 
     col_cfg = {}
-    for c in ["Actual","Predicted","Pred Margin"]:
+    for c in ["Actual (Home)","Predicted (Home)","Pred Margin (Home)"]:
         if c in pg_disp.columns:
-            col_cfg[c] = st.column_config.NumberColumn(format="%+d")
+            col_cfg[c] = st.column_config.NumberColumn(
+                format="%+d", help="Positive = home team win/favoured margin."
+            )
     for c in ["Error","Margin Err"]:
         if c in pg_disp.columns:
             col_cfg[c] = st.column_config.NumberColumn(format="%.1f")
-    if "LOGIT Prob" in pg_disp.columns:
-        col_cfg["LOGIT Prob"] = st.column_config.NumberColumn(format="%.3f")
+    if "LOGIT Prob (Home)" in pg_disp.columns:
+        col_cfg["LOGIT Prob (Home)"] = st.column_config.NumberColumn(
+            format="%.3f", help="Model's estimated probability that the home team wins."
+        )
 
     st.dataframe(pg_disp, use_container_width=True, hide_index=True, height=460,
                  column_config=col_cfg)
@@ -924,42 +941,54 @@ elif page == "Methodology":
     st.markdown('<div class="bl-eyebrow">Methodology</div>', unsafe_allow_html=True)
     st.title("How this is actually built")
     st.markdown(
-        '<p class="bl-lede">Four things sit behind the site: a data pipeline, a player ranking composite, '
-        "a ladder projection model, and win-probability + margin prediction models.</p>",
+        '<p class="bl-lede">The end to end modelling pipeline operates across five core stages, moving from raw data acquisition through to feature construction, '
+        "selection, and rolling window prediction.</p>",
         unsafe_allow_html=True,
     )
     st.divider()
     st.markdown("""
-### 1. The data pipeline
+### 1. Web Scraping & Data Collection
 
-Match results, player box scores, fixtures, coaches' votes, and player rankings are pulled from round-by-round
-exports going back to 2012. This app reads those CSVs directly and caches the aggregations in memory — to
-update the data after a new round, just overwrite the CSVs in the `data/` folder and reload the app.
+Primary AFL datasets, including player statistics, coaches’ votes, match results, and historical performance, 
+are sourced via the Fitzroy R package, supplemented by custom scrapers for:
+                
+- Player bios (Footywire)
+- Market odds (OddsPortal)
 
-### 2. The player ranking composite
+### 2. Data Standardisation, Adjustments & Imputation
 
-Each player gets a `composite_score` calculated after every round, normalised 0–1 within that round. Overall
-rank, position rank, and club rank are all derived from the same score. It's season-to-date — rankings settle
-as the season progresses and early small-sample ties wash out.
+Due to variations in the source data, a structured process has been delevoped to ensure compatibility, as well as applying certain adjustments.
+                
+This process includes:
+                
+- **Standardisation**: Alignment of round numbers, team names and venue labels.
+- **Name Matching Framework**: A multi layered system iterates from strict (exact match) to flexible (fuzzy match) methods, with a validation layer that flags uncertain cases for manual review.
+- **Data Adjustments**: Targeted corrections are applied to account for:
+    - Early game injuries
+    - Non standard seasons (e.g., shortened quarters in 2020)
+    - Ambiguous or inconsistent positional data (e.g., substitutes)
+- **Imputation**: Where datasets are incomplete for specific games, imputation strategies have been applied, including:
+    - Scoreworm simulations based on historical team scoring profiles
+    - Coaches’ votes inferred from player performance metrics
 
-### 3. The ladder projection model
+### 3. Feature Engineering
 
-The ladder projection simulates the remaining games of the season to produce a projected finishing rank for
-each club, along with a best-case and worst-case range across simulation runs. Updated each round when the
-new `Ladder_Projection.csv` export is dropped in.
+Features are generated across four major domains:
+                
+- **Player Statistics**: Player ratings and projected performance for listed players
+- **Team Statistics**: Team level metrics, historical form, and Elo ratings
+- **Scoreworm Dynamics**: Momentum indicators and in game scoring pattern features
+- **Game Results & Market Data**: Win/loss trends and odds movements
+                
+Features are aggregated across multiple time horizons (e.g., last 3 games) and multiple grains (e.g. venue, matchup). Additional scaling is applied using team Elo ratings, reducing inflation from strong performances against weaker opponents.
 
-### 4. The prediction models
+### 4. Feature Selection
 
-Two models run on every game:
+A cross season evaluation framework is used to identify the most predictive and consistent variables. Shapley Additive Explanations (SHAP) values had been used on refine the feature set down to 25 high impact predictors.
 
-- **LOGIT** — a logistic regression that outputs a win probability (0–1). Graded on whether the predicted
-  winner matched the actual result.
-- **OLS (margin regression)** — a linear model predicting the final margin. Graded both on win/loss
-  accuracy (sign of predicted margin) and mean absolute error (how many points off the prediction was).
+### 5. Modelling & Prediction
 
-Feature importances for the OLS model are decomposed into seven groups: External Factors, In-Game Tempo,
-Midfield Control, Offensive Output, Player Ranking, Ruck & Ball Movement, and Team Defense — visible in the
-Predictions page for any game where the model has scored it.
+Both the linear and logistic models are trained and deployed using a rolling season‑round window, where all matches prior to the target round form the training set. Predictions are then generated for the upcoming round, with all outputs stored and surfaced through this dashboard.
 
 > Questions about a specific modelling decision? Ask on the **Blog / Q&A** page.
 """)
@@ -973,44 +1002,68 @@ elif page == "Blog / Q&A":
     st.markdown('<div class="bl-eyebrow">05 / Blog &amp; Q&amp;A</div>', unsafe_allow_html=True)
     st.title("Notes on building this")
     st.markdown(
-        '<p class="bl-lede">Write-ups on modelling decisions, data quirks, and reader Q&A. '
-        "Posts below are placeholders — swap them for your own as you publish.</p>",
+        '<p class="bl-lede">Write-ups on modelling decisions, data quirks, and insights. </p>',
         unsafe_allow_html=True,
     )
     st.divider()
 
     main_col, side_col = st.columns([2, 1])
     posts = [
-        {"tag":"Modelling","date":"Placeholder",
-         "title":"Why I score the model on margin error, not just win/loss",
-         "excerpt":"Picking winners is the easy headline. Here's why MAE matters just as much."},
-        {"tag":"Modelling","date":"Placeholder",
-         "title":"LOGIT vs OLS — why run two models on the same game?",
-         "excerpt":"Each optimises for a different thing. Here's what you learn from comparing them."},
-        {"tag":"Data pipeline","date":"Placeholder",
-         "title":"How the weekly data refresh actually works",
-         "excerpt":"A walkthrough of the CSV-in, cached-aggregation-out pattern."},
-        {"tag":"Q&A","date":"Placeholder",
-         "title":'"Why is my favourite player ranked so low?"',
-         "excerpt":"A reader question about the composite ranking system and what it does (and doesn't) reward."},
+        {
+            "tag": "Q&A",
+            "date": "12/07/2026",
+            "title": "Why is my favourite player ranked so low?",
+            "excerpt": """
+    The ranking methodology is built upon a weighted, three-season lookback window.
+
+    Feature importance is position-dependent, with differential weighting used to prioritise the statistics most relevant to each role. For example, disposal volume is given greater importance for midfielders than forwards.
+
+    Each player's performance is converted into a game score for every match, with games significantly impacted by injury adjusted accordingly. These game scores are then aggregated into a cumulative player score that is recalculated after every round.
+
+    To account for absences through injury or non-selection, a decay factor is applied based on the player's most recent performance. This prevents long periods without games from leaving a player's ranking artificially unchanged.
+
+    Finally, player scores are standardised against others in the same position, producing a normalised rating between 0 and 1.
+
+    I don't claim this methodology is perfect, but it performs well as a practical way of distinguishing between stronger and weaker players.
+    """
+        },
+        {
+            "tag": "Q&A",
+            "date": "12/07/2026",
+            "title": "Why have you included the 2020 season?",
+            "excerpt": """
+    I'm still not completely convinced that the 2020 season should be included, but it wasn't added without careful consideration.
+
+    To minimise the season's unique effects, each feature was scaled relative to the surrounding seasons (2019 and 2021). This helps reduce distributional shifts and keeps the data closer to the rest of the training set.
+
+    The main reason for retaining 2020 is that the model only has data back to 2015. Removing an entire season would significantly reduce the amount of training data available.
+    """
+        }
     ]
 
     with main_col:
         for p in posts:
+            formatted_excerpt = "<br><br>".join(
+                paragraph.strip()
+                for paragraph in p["excerpt"].strip().split("\n\n")
+            )
+
             st.markdown(f"""
             <div style="padding:1.1rem 0;border-bottom:1px solid #E3E1D9;">
                 <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:#707B85;text-transform:uppercase;letter-spacing:0.04em;">
                     {p['tag']} &middot; {p['date']}
                 </div>
                 <h3 style="margin:0.3rem 0;">{p['title']}</h3>
-                <p style="color:#3A3F45;margin:0;">{p['excerpt']}</p>
+                <p style="color:#3A3F45;margin:0;line-height:1.7;">
+                    {formatted_excerpt}
+                </p>
             </div>
             """, unsafe_allow_html=True)
 
     with side_col:
         st.markdown("""<div class="bl-card" style="margin-bottom:1rem;">
         <h4>Got a question?</h4>
-        <p>Ask anything about the model, the data, or a specific prediction — answers get added here.</p>
+        <p>Send an email to: rtdt87@outlook.com</p>
         </div>""", unsafe_allow_html=True)
 
 st.divider()
