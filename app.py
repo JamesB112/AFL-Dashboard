@@ -521,7 +521,7 @@ elif page == "Team Performance":
 
     # --- Elo rating history (replaces the season standings table) ---
     st.subheader("Elo rating history")
-    st.caption("Team strength over time, as tracked by the Elo model. Higher = stronger.")
+    st.caption("Team strength over time tracked using the [Elo model framework](https://thestatwire.com/guides/elo-ratings-explained).")
 
     elo_season_hist = dl.get_team_elo_history(season=season_sel)
 
