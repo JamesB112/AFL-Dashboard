@@ -1,0 +1,15 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#1C2B27"/>
+
+  <!-- predicted trajectory: the "tip" arcing toward goal -->
+  <path d="M 9 55 Q 14 30 33 25" fill="none" stroke="#9CFFB0"
+        stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.5 6"
+        opacity="0.65"/>
+
+  <!-- goalposts -->
+  <line x1="21" y1="12" x2="21" y2="50" stroke="#9CFFB0" stroke-width="4.4" stroke-linecap="round"/>
+  <line x1="45" y1="12" x2="45" y2="50" stroke="#9CFFB0" stroke-width="4.4" stroke-linecap="round"/>
+
+  <!-- the ball, mid-flight through the goals -->
+  <circle cx="33" cy="25" r="5.2" fill="#9CFFB0"/>
+</svg>

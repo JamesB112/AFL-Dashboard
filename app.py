@@ -8,12 +8,15 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
+import base64
+from pathlib import Path
 
 import data_loader as dl
 
 st.set_page_config(
     page_title="Tippo — AFL Analytics",
     layout="wide",
+    page_icon="assets/favicon.png",
     initial_sidebar_state="expanded",
 )
 
@@ -316,6 +319,14 @@ OPP_COL_CANDIDATES = ["Opposition_Team", "Opposition", "Away_Team", "AwayTeam", 
 DATE_COL_CANDIDATES = ["Date", "Match_Date", "Game_Date"]
 VENUE_COL_CANDIDATES = ["Venue", "Ground"]
 
+@st.cache_data
+def _img_data_uri(path: str) -> str:
+    """Base64-encode a local image so it can be embedded in st.markdown HTML.
+    st.markdown can only render images from a URL — not a filesystem path —
+    so any local logo/icon needs to go through this to appear inline."""
+    data = Path(path).read_bytes()
+    return f"data:image/png;base64,{base64.b64encode(data).decode()}"
+
 # ----------------------------------------------------------------------
 # DATA CHECK
 # ----------------------------------------------------------------------
@@ -334,7 +345,18 @@ if not all_present:
 # ----------------------------------------------------------------------
 
 with st.sidebar:
-    st.markdown("### Tippo")
+    st.markdown(
+        f"""
+        <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:0.1rem;">
+            <img src="{_img_data_uri('assets/favicon.png')}" width="30" style="border-radius:7px;">
+            <span style="font-family:'{THEME['font_display']}',sans-serif;
+                         font-weight:600;font-size:1.6rem;color:{THEME['sidebar_text']};">
+                Tippo
+            </span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     st.caption("AFL Games Tipper")
     st.markdown("---")
     page = st.radio(
@@ -707,6 +729,8 @@ elif page == "Team Performance":
         highlight = set(all_season_teams)
 
         fig_elo = go.Figure()
+        label_teams = []  # collect end-of-line label candidates, position them after the loop
+
         for team in all_season_teams:
             t_data = elo_season_hist[elo_season_hist["Team"] == team].sort_values("RoundNumber")
             if t_data.empty:
@@ -721,15 +745,12 @@ elif page == "Team Performance":
                 hovertemplate=f"<b>{team}</b><br>" + "Round %{x}<br>Elo: %{y:.0f}<extra></extra>",
                 showlegend=is_hl,
             ))
-            # Direct end-of-line labels for highlighted clubs — easier to
-            # read at a glance than hunting through an 18-entry legend.
             if is_hl:
                 last = t_data.iloc[-1]
-                fig_elo.add_annotation(
-                    x=last["RoundNumber"], y=last["Elo"],
-                    text=f"  {team}", showarrow=False, xanchor="left", align="left",
-                    font=dict(size=11, color=color, family=f'{THEME["font_mono"]}, monospace'),
-                )
+                label_teams.append({
+                    "team": team, "color": color,
+                    "x": last["RoundNumber"], "y": last["Elo"],
+                })
 
         # League-average reference line so a club's trajectory reads against
         # the competition, not just in isolation.
@@ -741,20 +762,52 @@ elif page == "Team Performance":
             hovertemplate="League average<br>Round %{x}<br>Elo: %{y:.0f}<extra></extra>",
         ))
 
+        # ---- De-overlap end-of-line labels ----
+        # Without this, clubs that finish the season with similar Elo ratings
+        # get labels stacked on top of each other. We convert the chart's
+        # Elo range into an approximate pixel scale, then greedily push
+        # labels apart (highest to lowest) so each keeps a minimum gap from
+        # the one above it. A thin leader line marks any label nudged far
+        # enough from its true value that the connection isn't obvious.
+        CHART_HEIGHT_PX = 480
+        PLOT_HEIGHT_PX = CHART_HEIGHT_PX - 30 - 40  # minus top/bottom margins
+        LABEL_PX_HEIGHT = 16                        # ~11px font + padding
+
+        if label_teams:
+            y_min, y_max = elo_season_hist["Elo"].min(), elo_season_hist["Elo"].max()
+            data_per_px = (y_max - y_min) / PLOT_HEIGHT_PX if PLOT_HEIGHT_PX else 1
+            min_gap = LABEL_PX_HEIGHT * data_per_px
+
+            label_teams.sort(key=lambda d: d["y"], reverse=True)
+            for i, item in enumerate(label_teams):
+                if i == 0:
+                    item["y_label"] = item["y"]
+                else:
+                    item["y_label"] = min(item["y"], label_teams[i - 1]["y_label"] - min_gap)
+
+            for item in label_teams:
+                fig_elo.add_annotation(
+                    x=item["x"], y=item["y_label"],
+                    text=f"  {item['team']}", showarrow=False, xanchor="left", align="left",
+                    font=dict(size=11, color=item["color"], family=f'{THEME["font_mono"]}, monospace'),
+                )
+                if abs(item["y_label"] - item["y"]) > min_gap * 0.5:
+                    fig_elo.add_shape(
+                        type="line",
+                        x0=item["x"], x1=item["x"] + 0.4,
+                        y0=item["y"], y1=item["y_label"],
+                        line=dict(color=item["color"], width=0.75),
+                        opacity=0.5,
+                    )
+
         layout_no_yaxis_margin = {k: v for k, v in PLOTLY_BASE.items() if k not in ("yaxis", "margin")}
         fig_elo.update_layout(
             **layout_no_yaxis_margin,
-            height=480,
-            margin=dict(l=40, r=95, t=30, b=40),  # room for end-of-line labels
+            height=CHART_HEIGHT_PX,
+            margin=dict(l=40, r=105, t=30, b=40),  # slightly wider — room for longer club names
             xaxis_title="Round",
             yaxis=dict(**PLOTLY_BASE["yaxis"], title="Elo rating"),
-            legend=dict(
-                orientation="h",
-                yanchor="bottom",
-                y=1.02,
-                xanchor="left",
-                x=0,
-            ),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
             hovermode="closest",
         )
         st.plotly_chart(fig_elo, use_container_width=True)
