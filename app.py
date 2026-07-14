@@ -8,7 +8,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-import plotly.express as px
 
 import data_loader as dl
 
@@ -68,6 +67,66 @@ h1, h2, h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 60
 .movement-flat { color: #5C6E76; }
 
 hr, [data-testid="stDivider"] { border-color: #C7D3D6 !important; }
+
+/* ---- Metrics as branded cards, not bare Streamlit chrome ---- */
+[data-testid="stMetric"] {
+    background: #FFFFFF;
+    border: 1px solid #C7D3D6;
+    border-top: 3px solid #1F6F50;
+    border-radius: 6px;
+    padding: 0.85rem 1.1rem 0.7rem 1.1rem;
+}
+[data-testid="stMetricLabel"] {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #5C6E76 !important;
+}
+[data-testid="stMetricValue"] { font-size: 1.55rem; }
+
+/* ---- Inputs & selects: house green instead of Streamlit's default red focus ring ---- */
+div[data-baseweb="select"] > div,
+.stTextInput input,
+.stMultiSelect div[data-baseweb="select"] > div {
+    border-color: #C7D3D6 !important;
+    border-radius: 5px !important;
+}
+div[data-baseweb="select"]:focus-within > div,
+.stTextInput input:focus {
+    border-color: #1F6F50 !important;
+    box-shadow: 0 0 0 1px #1F6F50 !important;
+}
+.stTextInput input:focus, .stNumberInput input:focus { outline-color: #1F6F50 !important; }
+
+/* Multiselect tags in the house green rather than default Streamlit red */
+span[data-baseweb="tag"] {
+    background-color: #1F6F50 !important;
+}
+
+/* ---- Sidebar nav: quiet radio dots, hover feedback, feels like tabs ---- */
+section[data-testid="stSidebar"] div[role="radiogroup"] label {
+    padding: 0.3rem 0.45rem;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {
+    background: rgba(31, 111, 80, 0.09);
+}
+
+/* ---- Tables: quieter header instead of default Streamlit grey ---- */
+[data-testid="stDataFrame"] thead tr th,
+[data-testid="stTable"] thead tr th {
+    background: #EEF2F3 !important;
+    color: #1B2B2E !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.74rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Radio pills used inline (e.g. per-game mode toggle) */
+div[role="radiogroup"] label[data-baseweb="radio"] { margin-right: 0.4rem; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -79,6 +138,32 @@ BLUE     = "#3E6E82"
 INK      = "#1B2B2E"
 PAPER    = "#FFFFFF"
 HAIRLINE = "#C7D3D6"
+
+# Curated club colors for the Elo chart — real club identity reads far
+# better across 18 lines than an arbitrary qualitative palette. Keys are
+# matched case-sensitively against the "Team" column; add/adjust aliases
+# here if your data uses different club name strings. Unmatched teams
+# fall back to SLATE automatically (see get_team_elo_history usage below).
+TEAM_COLORS = {
+    "Adelaide": "#0F1E44", "Adelaide Crows": "#0F1E44",
+    "Brisbane Lions": "#7A1A3B", "Brisbane": "#7A1A3B",
+    "Carlton": "#031440", "Carlton Blues": "#031440",
+    "Collingwood": "#2B2B2B", "Collingwood Magpies": "#2B2B2B",
+    "Essendon": "#CC2031", "Essendon Bombers": "#CC2031",
+    "Fremantle": "#4A0E63", "Fremantle Dockers": "#4A0E63",
+    "Geelong": "#153157", "Geelong Cats": "#153157",
+    "Gold Coast": "#E8380D", "Gold Coast Suns": "#E8380D",
+    "GWS Giants": "#F58220", "Greater Western Sydney": "#F58220", "GWS": "#F58220",
+    "Hawthorn": "#6B3410", "Hawthorn Hawks": "#6B3410",
+    "Melbourne": "#00285E", "Melbourne Demons": "#00285E",
+    "North Melbourne": "#0F49A6", "North Melbourne Kangaroos": "#0F49A6", "Kangaroos": "#0F49A6",
+    "Port Adelaide": "#00879B", "Port Adelaide Power": "#00879B",
+    "Richmond": "#C9A227", "Richmond Tigers": "#C9A227",
+    "St Kilda": "#ED0F05", "St Kilda Saints": "#ED0F05",
+    "Sydney": "#A31F2C", "Sydney Swans": "#A31F2C",
+    "West Coast": "#003087", "West Coast Eagles": "#003087",
+    "Western Bulldogs": "#014896", "Bulldogs": "#014896",
+}
 
 PLOTLY_BASE = dict(
     font=dict(family="Inter, sans-serif", color=INK),
@@ -335,37 +420,23 @@ if page == "Home":
         if venue_col:
             display_df["Venue"] = current_disp[venue_col]
 
-        if fmt == "new":
+        display_df["Prediction"] = np.where(
+            current_disp["Predicted_Margin_OLS"] >= 0.5,
+            current_disp[team_col],
+            current_disp[opp_col],
+        )
 
-            display_df["Prediction"] = np.where(
-                current_disp["Predicted_Margin_OLS"] >= 0.5,
-                current_disp[team_col],
-                current_disp[opp_col],
-            )
+        display_df["Win Probability"] = np.where(
+            current_disp["Predicted_Prob_LOGIT"] >= 0.5,
+            current_disp["Predicted_Prob_LOGIT"],
+            1 - current_disp["Predicted_Prob_LOGIT"],
+        ) * 100
 
-            display_df["Win Probability"] = np.where(
-                current_disp["Predicted_Prob_LOGIT"] >= 0.5,
-                current_disp["Predicted_Prob_LOGIT"],
-                1 - current_disp["Predicted_Prob_LOGIT"],
-            ) * 100
-
-            display_df["Predicted Margin"] = np.where(
-                current_disp["Predicted_Margin_OLS"] >= 0,
-                current_disp["Predicted_Margin_OLS"],
-                -current_disp["Predicted_Margin_OLS"],
-            )
-
-        else:
-
-            display_df["Prediction"] = np.where(
-                current_disp["Predicted_Margin_Adjusted"] >= 0,
-                current_disp[team_col],
-                current_disp[opp_col],
-            )
-
-            display_df["Predicted Margin"] = (
-                current_disp["Predicted_Margin_Adjusted"]
-            )
+        display_df["Predicted Margin"] = np.where(
+            current_disp["Predicted_Margin_OLS"] >= 0,
+            current_disp["Predicted_Margin_OLS"],
+            -current_disp["Predicted_Margin_OLS"],
+        )
 
         st.dataframe(
             display_df,
@@ -395,8 +466,6 @@ if page == "Home":
                         min_value=0,
                         max_value=100,
                     )
-                    if fmt == "new"
-                    else None
                 ),
                 "Predicted Margin": st.column_config.NumberColumn(
                     "Predicted Margin",
@@ -531,29 +600,64 @@ elif page == "Team Performance":
     else:
         all_season_teams = sorted(elo_season_hist["Team"].unique().tolist())
 
-        elo_plot_df = elo_season_hist
+        # Default to the teams actually worth looking at right now — the
+        # top 3 and bottom 3 by their most recent Elo this season — rather
+        # than an arbitrary/alphabetical subset.
+        latest_by_team = (
+            elo_season_hist.sort_values("RoundNumber")
+            .groupby("Team")["Elo"].last()
+            .sort_values(ascending=False)
+        )
+        default_highlight = latest_by_team.head(3).index.tolist() + latest_by_team.tail(3).index.tolist()
 
-        # Distinct categorical colors for team lines — separate from the brand
-        # GREEN/CLAY/GOLD/SLATE palette, since those are semantic (win/loss,
-        # correct/incorrect), not team identity, and won't scale to 18 lines.
-        team_colors = px.colors.qualitative.Alphabet
+        highlight_sel = st.multiselect(
+            "Highlight clubs",
+            all_season_teams,
+            default=[t for t in default_highlight if t in all_season_teams],
+            help="The rest fade into the background so the chart stays readable with 18 lines on it.",
+        )
+        highlight = set(highlight_sel) if highlight_sel else set(all_season_teams)
 
         fig_elo = go.Figure()
-        for i, team in enumerate(all_season_teams):
-            if team not in elo_plot_df["Team"].unique():
+        for team in all_season_teams:
+            t_data = elo_season_hist[elo_season_hist["Team"] == team].sort_values("RoundNumber")
+            if t_data.empty:
                 continue
-            t_data = elo_plot_df[elo_plot_df["Team"] == team].sort_values("RoundNumber")
+            is_hl = team in highlight
+            color = TEAM_COLORS.get(team, SLATE)
             fig_elo.add_trace(go.Scatter(
                 x=t_data["RoundNumber"], y=t_data["Elo"],
                 name=team, mode="lines",
-                line=dict(color=team_colors[i % len(team_colors)], width=2),
-                hovertemplate=f"{team}<br>" + "%{x|%d %b %Y}<br>Elo: %{y:.0f}<extra></extra>",
+                line=dict(color=color if is_hl else HAIRLINE, width=2.6 if is_hl else 1.3),
+                opacity=1.0 if is_hl else 0.7,
+                hovertemplate=f"<b>{team}</b><br>" + "Round %{x}<br>Elo: %{y:.0f}<extra></extra>",
+                showlegend=is_hl,
             ))
+            # Direct end-of-line labels for highlighted clubs — easier to
+            # read at a glance than hunting through an 18-entry legend.
+            if is_hl:
+                last = t_data.iloc[-1]
+                fig_elo.add_annotation(
+                    x=last["RoundNumber"], y=last["Elo"],
+                    text=f"  {team}", showarrow=False, xanchor="left", align="left",
+                    font=dict(size=11, color=color, family="JetBrains Mono, monospace"),
+                )
 
-        layout_no_yaxis = {k: v for k, v in PLOTLY_BASE.items() if k != "yaxis"}
+        # League-average reference line so a club's trajectory reads against
+        # the competition, not just in isolation.
+        league_avg = elo_season_hist.groupby("RoundNumber", as_index=True)["Elo"].mean()
+        fig_elo.add_trace(go.Scatter(
+            x=league_avg.index, y=league_avg.values,
+            name="League average", mode="lines",
+            line=dict(color=INK, width=1, dash="dot"),
+            hovertemplate="League average<br>Round %{x}<br>Elo: %{y:.0f}<extra></extra>",
+        ))
+
+        layout_no_yaxis_margin = {k: v for k, v in PLOTLY_BASE.items() if k not in ("yaxis", "margin")}
         fig_elo.update_layout(
-            **layout_no_yaxis,
-            height=460,
+            **layout_no_yaxis_margin,
+            height=480,
+            margin=dict(l=40, r=95, t=30, b=40),  # room for end-of-line labels
             xaxis_title="Round",
             yaxis=dict(**PLOTLY_BASE["yaxis"], title="Elo rating"),
             legend=dict(
@@ -566,6 +670,7 @@ elif page == "Team Performance":
             hovermode="closest",
         )
         st.plotly_chart(fig_elo, use_container_width=True)
+        st.caption(f"Highlighting {len(highlight)} of {len(all_season_teams)} clubs. Pick clubs above to compare specific rivalries or premiership form.")
 
     st.divider()
     st.subheader("Club detail")
@@ -652,32 +757,93 @@ elif page == "Player Performance":
 
     if player_sel:
         prow = latest[latest["Player"]==player_sel].iloc[0]
+        draft_id = prow.get("Draft_Player_Id")
+
         pc1,pc2,pc3,pc4 = st.columns(4)
         pc1.metric("Overall rank",    int(prow["Rank_Overall"]) if pd.notna(prow["Rank_Overall"]) else "—")
         pc2.metric("Position rank",   int(prow["Rank_By_Position"]) if pd.notna(prow["Rank_By_Position"]) else "—")
         pc3.metric("Club",            prow["Team"])
         pc4.metric("Composite score", f"{prow['composite_score']:.3f}" if pd.notna(prow["composite_score"]) else "—")
 
-        hist = dl.get_player_rank_history(prow.get("Draft_Player_Id"), latest_season)
-        if not hist.empty:
-            fig = go.Figure(go.Scatter(
-                x=hist["RoundNumber"], y=hist["Rank_Overall"],
-                mode="lines+markers", line=dict(color=GREEN, width=2.5), marker=dict(size=6),
-                hovertemplate="Round %{x}<br>Rank %{y}<extra></extra>",
-            ))
-            layout_no_yaxis = {k:v for k,v in PLOTLY_BASE.items() if k != "yaxis"}
-            fig.update_layout(**layout_no_yaxis,
-                              title=f"Rank trend, {latest_season} — {player_sel}", height=280,
-                              xaxis_title="Round", yaxis_title="Overall rank",
-                              yaxis=dict(**PLOTLY_BASE["yaxis"], autorange="reversed"))
-            st.plotly_chart(fig, use_container_width=True)
+        season_summary = dl.get_player_season_rank_summary(draft_id)
+
+        trend_col, summary_col = st.columns([2, 1])
+
+        with trend_col:
+            available_seasons = (
+                sorted(season_summary["Season"].unique().tolist(), reverse=True)
+                if not season_summary.empty else [latest_season]
+            )
+            default_idx = available_seasons.index(latest_season) if latest_season in available_seasons else 0
+            trend_season = st.selectbox(
+                "Season", available_seasons, index=default_idx, key="player_trend_season",
+                help="Independent of the composite ranking table above — pick any season this player has data for.",
+            )
+
+            hist = dl.get_player_rank_history(draft_id, trend_season)
+            if not hist.empty:
+                fig = go.Figure()
+                fig.add_trace(go.Scatter(
+                    x=hist["RoundNumber"], y=hist["Rank_Overall"],
+                    name="Overall rank", mode="lines+markers",
+                    line=dict(color=GREEN, width=2.5), marker=dict(size=6),
+                    hovertemplate="Round %{x}<br>Overall rank: %{y}<extra></extra>",
+                ))
+                if "Rank_By_Position" in hist.columns and hist["Rank_By_Position"].notna().any():
+                    fig.add_trace(go.Scatter(
+                        x=hist["RoundNumber"], y=hist["Rank_By_Position"],
+                        name="Position rank", mode="lines+markers",
+                        line=dict(color=BLUE, width=2, dash="dot"), marker=dict(size=5),
+                        hovertemplate="Round %{x}<br>Position rank: %{y}<extra></extra>",
+                    ))
+                layout_no_yaxis = {k:v for k,v in PLOTLY_BASE.items() if k != "yaxis"}
+                fig.update_layout(**layout_no_yaxis,
+                                #   title=f"Rank trend, {trend_season} — {player_sel}", 
+                                  height=500,
+                                  xaxis_title="Round", yaxis_title="Rank",
+                                  yaxis=dict(**PLOTLY_BASE["yaxis"], autorange="reversed"),
+                                  legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0))
+                st.plotly_chart(fig, use_container_width=True)
+            else:
+                st.info(f"No ranking data for {player_sel} in {trend_season}.")
+
+        with summary_col:
+            st.markdown("**Average rank by season**")
+            if season_summary.empty:
+                st.caption("No historical ranking data available for this player.")
+            else:
+                for _, srow in season_summary.iterrows():
+                    change_html = (
+                        movement_icon(srow["Change"])
+                        if pd.notna(srow["Change"])
+                        else '<span class="movement-flat"></span>'
+                    )
+                    st.markdown(
+                        f"""<div style="
+                            display:grid;
+                            grid-template-columns:1fr auto 1fr;
+                            align-items:baseline;
+                            padding:0.45rem 0;
+                            border-bottom:1px solid {HAIRLINE};
+                        ">
+                            <span style="justify-self:start;">{srow['Season']}</span>
+                            <span style="justify-self:center;font-weight:600;">
+                                {srow['Avg_Rank_Overall']:.1f}
+                            </span>
+                            <span style="justify-self:end;">
+                                {change_html}
+                            </span>
+                        </div>""",
+                        unsafe_allow_html=True,
+                    )
+                st.caption("Change vs. the previous season's average. ▲ = rank improved (lower number).")
 
         career_log = dl.get_player_career_log(player_sel)
         if not career_log.empty:
-            log_cols = ["Season","RoundNumber","Opposition","D","K","HB","M","G","T","AF"]
+            log_cols = ["Season","RoundNumber","Opposition","D","K","HB","M","G","T","SC"]
             log_cols = [c for c in log_cols if c in career_log.columns]
             st.dataframe(
-                career_log[log_cols].rename(columns={"RoundNumber":"Rd","Opposition":"Opponent","AF":"Fantasy"})
+                career_log[log_cols].rename(columns={"RoundNumber":"Rd","Opposition":"Opponent","SC":"SuperCoach"})
                           .sort_values(["Season","Rd"], ascending=[False,False]),
                 use_container_width=True, hide_index=True, height=350,
             )
@@ -715,7 +881,7 @@ elif page == "Player Performance":
 # ========================================================================
 
 elif page == "Model Performance":
-    st.markdown('<div class="bl-eyebrow">04 / Model Performance</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">03 / Model Performance</div>', unsafe_allow_html=True)
     st.title("Model Performance")
 
     predictions = dl.get_predictions()
@@ -855,11 +1021,8 @@ elif page == "Model Performance":
         r_filter = st.selectbox("Round", all_rounds, key="pred_round")
 
     with fc4:
-        if fmt == "new":
-            outcome_opts = ["Correct & incorrect","LOGIT correct","LOGIT incorrect",
-                            "OLS correct","OLS incorrect"]
-        else:
-            outcome_opts = ["Correct & incorrect","Correct only","Incorrect only"]
+        outcome_opts = ["Correct & incorrect","LOGIT correct","LOGIT incorrect",
+                        "OLS correct","OLS incorrect"]
         o_filter = st.selectbox("Outcome", outcome_opts)
 
     pg = scored_games.copy()
@@ -876,37 +1039,24 @@ elif page == "Model Performance":
     if r_filter != "All rounds":
         pg = pg[pg["RoundNumber"] == r_filter]
 
-    if fmt == "new":
-        if o_filter == "LOGIT correct":
-            pg = pg[pg["Correct_LOGIT"]]
-        elif o_filter == "LOGIT incorrect":
-            pg = pg[~pg["Correct_LOGIT"]]
-        elif o_filter == "OLS correct":
-            pg = pg[pg["Correct_OLS"]]
-        elif o_filter == "OLS incorrect":
-            pg = pg[~pg["Correct_OLS"]]
-    else:
-        if o_filter == "Correct only":
-            pg = pg[pg["Correct"]]
-        elif o_filter == "Incorrect only":
-            pg = pg[~pg["Correct"]]
+    if o_filter == "LOGIT correct":
+        pg = pg[pg["Correct_LOGIT"]]
+    elif o_filter == "LOGIT incorrect":
+        pg = pg[~pg["Correct_LOGIT"]]
+    elif o_filter == "OLS correct":
+        pg = pg[pg["Correct_OLS"]]
+    elif o_filter == "OLS incorrect":
+        pg = pg[~pg["Correct_OLS"]]
 
     pg = pg.sort_values("Date", ascending=False)
 
-    if fmt == "new":
-        disp_cols = {
-            "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Home Team",
-            "Opposition_Team":"Away Team","Margin":"Actual (Home)",
-            "Predicted_Margin_OLS":"Pred Margin (Home)","Abs_Error_OLS":"Margin Err",
-            "Predicted_Prob_LOGIT":"LOGIT Prob (Home)",
-            "Correct_LOGIT":"LOGIT ✓","Correct_OLS":"OLS ✓",
-        }
-    else:
-        disp_cols = {
-            "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Home Team",
-            "Opposition_Team":"Away Team","Margin":"Actual (Home)",
-            "Predicted_Margin_Adjusted":"Predicted (Home)","Abs_Error":"Error","Correct":"Correct",
-        }
+    disp_cols = {
+        "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Home Team",
+        "Opposition_Team":"Away Team","Margin":"Actual (Home)",
+        "Predicted_Margin_OLS":"Pred Margin (Home)","Abs_Error_OLS":"Margin Err",
+        "Predicted_Prob_LOGIT":"LOGIT Prob (Home)",
+        "Correct_LOGIT":"LOGIT ✓","Correct_OLS":"OLS ✓",
+    }
 
     avail = {k:v for k,v in disp_cols.items() if k in pg.columns}
     pg_disp = pg[list(avail.keys())].rename(columns=avail)
@@ -939,7 +1089,7 @@ elif page == "Model Performance":
 # ========================================================================
 
 elif page == "Methodology":
-    st.markdown('<div class="bl-eyebrow">Methodology</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">04 / Methodology</div>', unsafe_allow_html=True)
     st.title("How this is actually built")
     st.markdown(
         '<p class="bl-lede">The end to end modelling pipeline operates across five core stages, moving from raw data acquisition through to feature construction, '
@@ -1063,7 +1213,7 @@ elif page == "Blog / Q&A":
 
     with side_col:
         st.markdown("""<div class="bl-card" style="margin-bottom:1rem;">
-        <h4>Got a question?</h4>
+        <h4>Got a query?</h4>
         <p>Send an email to: rtdt87@outlook.com</p>
         </div>""", unsafe_allow_html=True)
 

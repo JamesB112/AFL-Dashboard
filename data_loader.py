@@ -319,6 +319,35 @@ def get_player_rank_history(draft_id, season):
 
 
 @st.cache_data(show_spinner=False)
+def get_player_season_rank_summary(draft_id):
+    """Average Rank_Overall per season for a player, plus the change vs.
+    the previous season. A positive Change means the player's average
+    rank improved (the rank number went down)."""
+    df = get_player_rankings()
+
+    lookup = get_game_lookup()
+    cols = [c for c in ["Season", "RoundNumber", "RoundStatus"] if c in lookup.columns]
+    lookup = lookup[cols].drop_duplicates()
+
+    df = df.merge(lookup, on=["Season", "RoundNumber"], how="left")
+    df = df[df["RoundStatus"] != "Future Round"]
+
+    h = df[df["Draft_Player_Id"] == draft_id].copy()
+    if h.empty:
+        return h
+
+    summary = h.groupby("Season", as_index=False).agg(
+        Avg_Rank_Overall=("Rank_Overall", "mean"),
+        Best_Rank=("Rank_Overall", "min"),
+        Rounds=("RoundNumber", "count"),
+    )
+    summary["Avg_Rank_Overall"] = summary["Avg_Rank_Overall"].round(1)
+    summary = summary.sort_values("Season")
+    summary["Change"] = -summary["Avg_Rank_Overall"].diff()
+    return summary.sort_values("Season", ascending=False).reset_index(drop=True)
+
+
+@st.cache_data(show_spinner=False)
 def get_player_game_log():
     df = load_raw("game_player_combined")
 
@@ -326,9 +355,8 @@ def get_player_game_log():
 
     df = df[
         df["RoundStatus"] == "Past Round"
-    ].copy()
+    ]
 
-    df = load_raw("game_player_combined")
     df["Season"] = df["Season"].astype(str)
     df["RoundNumber"] = pd.to_numeric(df["RoundNumber"], errors="coerce")
     for col in NUMERIC_STAT_COLS:
