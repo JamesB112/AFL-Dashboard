@@ -16,128 +16,216 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ----------------------------------------------------------------------
+# THEME TOKENS
+# ----------------------------------------------------------------------
+# Single source of truth for color/type. Everything below — the CSS block,
+# Plotly charts, and inline markdown — reads from these constants rather
+# than hardcoding hex values in more than one place. To retheme the whole
+# app, change values here (and the matching .streamlit/config.toml).
+
+THEME = {
+    # core surfaces
+    "bg":            "#FFFFFF",   # page background
+    "surface":       "#F5F8F6",   # card/table background
+    "sidebar_bg":    "#1C2B27",   # deep forest rail — lighter than near-black, still reads as "dark"
+    "sidebar_text":  "#EAF3EE",
+    "sidebar_muted": "#8FA79D",
+    "border":        "#E2E6E4",
+    "header_bg":     "#1C2B27",   # matches sidebar for a cohesive scoreboard strip
+    "header_text":   "#9CFFB0",   # slightly softer mint-neon than before
+
+    "input_bg":      "#EEF2F0",
+
+    # text
+    "ink":           "#1E2B27",   # dark green-charcoal, lighter than pure black
+    "body_text":     "#3F4F49",
+    "muted":         "#6E8079",
+
+    # accents
+    "primary":       "#2FA968",   # lighter, more vibrant green than the old #128A4E
+    "neon":          "#9CFFB0",   # softer mint-lime, less harsh than pure lime
+    "accent_blue":   "#2F6FED",
+    "accent_gold":   "#FFB020",
+    "negative":      "#E14C63",   # slightly lighter crimson to match the softer palette
+
+    # type — unchanged
+    "font_display":  "Space Grotesk",
+    "font_mono":     "JetBrains Mono",
+    "font_body":     "Inter",
+    "google_fonts_url": (
+        "https://fonts.googleapis.com/css2?"
+        "family=Space+Grotesk:wght@500;600;700"
+        "&family=JetBrains+Mono:wght@400;500;600"
+        "&family=Inter:wght@400;500;600"
+        "&display=swap"
+    ),
+}
+
+# Back-compat short names — used throughout the rest of the file (Plotly
+# figures, inline st.markdown snippets, movement icons, etc). Keeping these
+# aliases means the rest of the app didn't need a mechanical find/replace,
+# while still only defining each color once, in THEME above.
+GREEN    = THEME["primary"]
+CLAY     = THEME["negative"]
+GOLD     = THEME["accent_gold"]
+SLATE    = THEME["muted"]
+BLUE     = THEME["accent_blue"]
+INK      = THEME["ink"]
+PAPER    = THEME["surface"]
+HAIRLINE = THEME["border"]
+NEON     = THEME["neon"]
+
 # ----------------------------------------------------------------------
 # GLOBAL STYLE
 # ----------------------------------------------------------------------
 
-st.markdown("""
+st.markdown(f"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('{THEME["google_fonts_url"]}');
 
-/* Page background: White */
-[data-testid="stAppViewContainer"] {
-    background: #FFFFFF;
-}
-[data-testid="stHeader"] {
-    background: rgba(238, 242, 243, 0);
-}
-section[data-testid="stSidebar"] {
-    background: #E4EAEC;
-    border-right: 1px solid #C7D3D6;
-}
+/* Page background */
+[data-testid="stAppViewContainer"] {{
+    background: {THEME["bg"]};
+}}
+[data-testid="stHeader"] {{
+    background: rgba(11, 15, 14, 0);
+}}
 
-h1, h2, h3 { font-family: 'Fraunces', Georgia, serif !important; font-weight: 600 !important; letter-spacing: -0.01em; color: #1B2B2E; }
+/* ---- Sidebar: dark rail — the sports-tech signature against the light canvas ---- */
+section[data-testid="stSidebar"] {{
+    background: {THEME["sidebar_bg"]};
+    border-right: 1px solid {THEME["sidebar_bg"]};
+}}
+section[data-testid="stSidebar"] * {{ color: {THEME["sidebar_text"]}; }}
+section[data-testid="stSidebar"] .bl-eyebrow,
+section[data-testid="stSidebar"] h3 {{ color: {THEME["neon"]} !important; }}
+section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {{ color: {THEME["sidebar_muted"]} !important; }}
+section[data-testid="stSidebar"] hr {{ border-color: rgba(241,245,243,0.14) !important; }}
 
-[data-testid="stMetricValue"] { font-family: 'JetBrains Mono', monospace; color: #1B2B2E; }
+h1, h2, h3 {{
+    font-family: '{THEME["font_display"]}', 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
+    color: {THEME["ink"]};
+}}
 
-.bl-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
+body, p, div, span, label {{
+    font-family: '{THEME["font_body"]}', sans-serif;
+}}
+
+[data-testid="stMetricValue"] {{
+    font-family: '{THEME["font_mono"]}', monospace;
+    color: {THEME["ink"]};
+}}
+
+.bl-eyebrow {{
+    font-family: '{THEME["font_mono"]}', monospace;
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #1F6F50;
+    color: {THEME["primary"]};
     margin-bottom: 0.3rem;
-}
+}}
 
-.bl-lede { font-size: 1.05rem; color: #3A4A4F; max-width: 70ch; }
+.bl-lede {{ font-size: 1.05rem; color: {THEME["body_text"]}; max-width: 70ch; }}
 
-.bl-card {
-    background: #FFFFFF;
-    border: 1px solid #C7D3D6;
-    border-top: 3px solid #3E6E82;
+.bl-card {{
+    background: {THEME["surface"]};
+    border: 1px solid {THEME["border"]};
+    border-top: 3px solid {THEME["accent_blue"]};
     border-radius: 6px;
     padding: 1.1rem 1.3rem;
     height: 100%;
-}
-.bl-card h4 { margin: 0 0 0.4rem 0; font-family: 'Fraunces', serif; font-size: 1.15rem; color: #1B2B2E; }
-.bl-card p  { margin: 0; color: #3A4A4F; font-size: 0.92rem; }
+}}
+.bl-card h4 {{ margin: 0 0 0.4rem 0; font-family: '{THEME["font_display"]}', sans-serif; font-size: 1.15rem; color: {THEME["ink"]}; }}
+.bl-card p  {{ margin: 0; color: {THEME["body_text"]}; font-size: 0.92rem; }}
 
-.movement-up   { color: #1F6F50; font-weight: 600; }
-.movement-down { color: #B3492C; font-weight: 600; }
-.movement-flat { color: #5C6E76; }
+.movement-up   {{ color: {THEME["primary"]};  font-weight: 700; }}
+.movement-down {{ color: {THEME["negative"]}; font-weight: 700; }}
+.movement-flat {{ color: {THEME["muted"]}; }}
 
-hr, [data-testid="stDivider"] { border-color: #C7D3D6 !important; }
+hr, [data-testid="stDivider"] {{ border-color: {THEME["border"]} !important; }}
 
-/* ---- Metrics as branded cards, not bare Streamlit chrome ---- */
-[data-testid="stMetric"] {
-    background: #FFFFFF;
-    border: 1px solid #C7D3D6;
-    border-top: 3px solid #1F6F50;
-    border-radius: 6px;
-    padding: 0.85rem 1.1rem 0.7rem 1.1rem;
-}
-[data-testid="stMetricLabel"] {
-    font-family: 'JetBrains Mono', monospace;
+/* ---- Metrics as scoreboard chips: dark tile, neon mono readout ---- */
+[data-testid="stMetric"] {{
+    background: {THEME["ink"]};
+    border: 1px solid {THEME["ink"]};
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem 0.75rem 1.1rem;
+    box-shadow: inset 0 0 0 1px rgba(140,255,79,0.12);
+}}
+[data-testid="stMetricLabel"] {{
+    font-family: '{THEME["font_mono"]}', monospace;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #5C6E76 !important;
-}
-[data-testid="stMetricValue"] { font-size: 1.55rem; }
+    color: {THEME["sidebar_muted"]} !important;
+}}
+[data-testid="stMetricValue"] {{
+    font-size: 1.6rem;
+    color: {THEME["neon"]} !important;
+    text-shadow: 0 0 14px rgba(140,255,79,0.35);
+}}
+[data-testid="stMetricDelta"] {{ color: {THEME["sidebar_text"]} !important; }}
 
-/* ---- Inputs & selects: house green instead of Streamlit's default red focus ring ---- */
+/* ---- Inputs & selects: give them a real fill so they don't disappear into a white page ---- */
 div[data-baseweb="select"] > div,
 .stTextInput input,
-.stMultiSelect div[data-baseweb="select"] > div {
-    border-color: #C7D3D6 !important;
+.stNumberInput input,
+.stMultiSelect div[data-baseweb="select"] > div {{
+    background-color: {THEME["input_bg"]} !important;
+    border-color: {THEME["border"]} !important;
     border-radius: 5px !important;
-}
+}}
 div[data-baseweb="select"]:focus-within > div,
-.stTextInput input:focus {
-    border-color: #1F6F50 !important;
-    box-shadow: 0 0 0 1px #1F6F50 !important;
-}
-.stTextInput input:focus, .stNumberInput input:focus { outline-color: #1F6F50 !important; }
+.stTextInput input:focus {{
+    border-color: {THEME["primary"]} !important;
+    box-shadow: 0 0 0 1px {THEME["primary"]}, 0 0 8px rgba(140,255,79,0.35) !important;
+}}
+.stTextInput input:focus, .stNumberInput input:focus {{ outline-color: {THEME["primary"]} !important; }}
 
-/* Multiselect tags in the house green rather than default Streamlit red */
-span[data-baseweb="tag"] {
-    background-color: #1F6F50 !important;
-}
+/* Multiselect tags in the house accent rather than default Streamlit red */
+span[data-baseweb="tag"] {{
+    background-color: {THEME["primary"]} !important;
+}}
 
-/* ---- Sidebar nav: quiet radio dots, hover feedback, feels like tabs ---- */
-section[data-testid="stSidebar"] div[role="radiogroup"] label {
-    padding: 0.3rem 0.45rem;
+/* ---- Sidebar nav: neon-lit active feel on the dark rail ---- */
+section[data-testid="stSidebar"] div[role="radiogroup"] label {{
+    padding: 0.35rem 0.5rem;
     border-radius: 4px;
-    transition: background 0.15s ease;
-}
-section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {
-    background: rgba(31, 111, 80, 0.09);
-}
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}}
+section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {{
+    background: rgba(140,255,79,0.10);
+}}
+section[data-testid="stSidebar"] div[role="radiogroup"] input:checked + div {{
+    box-shadow: 0 0 0 1px {THEME["neon"]} inset;
+}}
+section[data-testid="stSidebar"] div[data-baseweb="radio"] > div:first-child {{
+    border-color: {THEME["sidebar_muted"]} !important;
+}}
+section[data-testid="stSidebar"] div[data-baseweb="radio"] input:checked ~ div:first-child {{
+    border-color: {THEME["neon"]} !important;
+    background: {THEME["neon"]} !important;
+}}
 
-/* ---- Tables: quieter header instead of default Streamlit grey ---- */
+/* ---- Tables: dark scoreboard strip for headers ---- */
 [data-testid="stDataFrame"] thead tr th,
-[data-testid="stTable"] thead tr th {
-    background: #EEF2F3 !important;
-    color: #1B2B2E !important;
-    font-family: 'JetBrains Mono', monospace !important;
+[data-testid="stTable"] thead tr th {{
+    background: {THEME["header_bg"]} !important;
+    color: {THEME["header_text"]} !important;
+    font-family: '{THEME["font_mono"]}', monospace !important;
     font-size: 0.74rem !important;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
+    letter-spacing: 0.04em;
+}}
 
 /* Radio pills used inline (e.g. per-game mode toggle) */
-div[role="radiogroup"] label[data-baseweb="radio"] { margin-right: 0.4rem; }
+div[role="radiogroup"] label[data-baseweb="radio"] {{ margin-right: 0.4rem; }}
 </style>
 """, unsafe_allow_html=True)
-
-GREEN    = "#1F6F50"
-CLAY     = "#B3492C"
-GOLD     = "#B68A2E"
-SLATE    = "#5C6E76"
-BLUE     = "#3E6E82"
-INK      = "#1B2B2E"
-PAPER    = "#FFFFFF"
-HAIRLINE = "#C7D3D6"
 
 # Curated club colors for the Elo chart — real club identity reads far
 # better across 18 lines than an arbitrary qualitative palette. Keys are
@@ -166,7 +254,7 @@ TEAM_COLORS = {
 }
 
 PLOTLY_BASE = dict(
-    font=dict(family="Inter, sans-serif", color=INK),
+    font=dict(family=f'{THEME["font_body"]}, sans-serif', color=INK),
     plot_bgcolor=PAPER,
     paper_bgcolor=PAPER,
     margin=dict(l=40, r=20, t=30, b=40),
@@ -251,7 +339,7 @@ with st.sidebar:
     st.markdown("---")
     page = st.radio(
         "Navigate",
-        ["Home", "Team Performance", "Player Performance","Model Performance", "Methodology", "Blog / Q&A"],
+        ["Home", "Team Performance", "Player Performance","Model Performance", "Methodology", "Q&A"],
         label_visibility="collapsed",
     )
     st.markdown("---")
@@ -600,23 +688,23 @@ elif page == "Team Performance":
     else:
         all_season_teams = sorted(elo_season_hist["Team"].unique().tolist())
 
-        # Default to the teams actually worth looking at right now — the
-        # top 3 and bottom 3 by their most recent Elo this season — rather
-        # than an arbitrary/alphabetical subset.
-        latest_by_team = (
-            elo_season_hist.sort_values("RoundNumber")
-            .groupby("Team")["Elo"].last()
-            .sort_values(ascending=False)
-        )
-        default_highlight = latest_by_team.head(3).index.tolist() + latest_by_team.tail(3).index.tolist()
+        # # Default to the teams actually worth looking at right now — the
+        # # top 3 and bottom 3 by their most recent Elo this season — rather
+        # # than an arbitrary/alphabetical subset.
+        # latest_by_team = (
+        #     elo_season_hist.sort_values("RoundNumber")
+        #     .groupby("Team")["Elo"].last()
+        #     .sort_values(ascending=False)
+        # )
+        # default_highlight = latest_by_team.head(3).index.tolist() + latest_by_team.tail(3).index.tolist()
 
-        highlight_sel = st.multiselect(
-            "Highlight clubs",
-            all_season_teams,
-            default=[t for t in default_highlight if t in all_season_teams],
-            help="The rest fade into the background so the chart stays readable with 18 lines on it.",
-        )
-        highlight = set(highlight_sel) if highlight_sel else set(all_season_teams)
+        # highlight_sel = st.multiselect(
+        #     "Highlight clubs",
+        #     all_season_teams,
+        #     default=[t for t in default_highlight if t in all_season_teams],
+        #     help="The rest fade into the background so the chart stays readable with 18 lines on it.",
+        # )
+        highlight = set(all_season_teams)
 
         fig_elo = go.Figure()
         for team in all_season_teams:
@@ -640,7 +728,7 @@ elif page == "Team Performance":
                 fig_elo.add_annotation(
                     x=last["RoundNumber"], y=last["Elo"],
                     text=f"  {team}", showarrow=False, xanchor="left", align="left",
-                    font=dict(size=11, color=color, family="JetBrains Mono, monospace"),
+                    font=dict(size=11, color=color, family=f'{THEME["font_mono"]}, monospace'),
                 )
 
         # League-average reference line so a club's trajectory reads against
@@ -698,7 +786,9 @@ elif page == "Team Performance":
             x=tg["RoundNumber"], y=tg["Margin"], marker_color=colors,
             hovertemplate="Round %{x}<br>Margin: %{y:+}<extra></extra>",
         ))
-        fig.update_layout(**PLOTLY_BASE, title=f"Margin by round — {team_sel}, {season_sel}", height=300,
+        fig.update_layout(**PLOTLY_BASE, 
+                          title=f"Margin by round — {team_sel}, {season_sel}", 
+                          height=300,
                           xaxis_title="Round", yaxis_title="Margin")
         st.plotly_chart(fig, use_container_width=True)
 
@@ -798,11 +888,17 @@ elif page == "Player Performance":
                     ))
                 layout_no_yaxis = {k:v for k,v in PLOTLY_BASE.items() if k != "yaxis"}
                 fig.update_layout(**layout_no_yaxis,
-                                #   title=f"Rank trend, {trend_season} — {player_sel}", 
-                                  height=500,
-                                  xaxis_title="Round", yaxis_title="Rank",
-                                  yaxis=dict(**PLOTLY_BASE["yaxis"], autorange="reversed"),
-                                  legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0))
+                                title=dict(
+                                    text=f"Rank trend, {trend_season} — {player_sel}",
+                                    y=0.98,          # move title higher (0-1)
+                                    x=0.5,           # center title
+                                    xanchor="center",
+                                    yanchor="top",
+                                ),
+                                height=500,
+                                xaxis_title="Round", yaxis_title="Rank",
+                                yaxis=dict(**PLOTLY_BASE["yaxis"], autorange="reversed"),
+                                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0))
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.info(f"No ranking data for {player_sel} in {trend_season}.")
@@ -828,7 +924,7 @@ elif page == "Player Performance":
                         ">
                             <span style="justify-self:start;">{srow['Season']}</span>
                             <span style="justify-self:center;font-weight:600;">
-                                {srow['Avg_Rank_Overall']:.1f}
+                                {srow['Avg_Rank_Overall']:.0f}
                             </span>
                             <span style="justify-self:end;">
                                 {change_html}
@@ -1141,15 +1237,15 @@ A cross season evaluation framework is used to identify the most predictive and 
 
 Both the linear and logistic models are trained and deployed using a rolling season‑round window, where all matches prior to the target round form the training set. Predictions are then generated for the upcoming round, with all outputs stored and surfaced through this dashboard.
 
-> Questions about a specific modelling decision? Ask on the **Blog / Q&A** page.
+> Want further insights? See the **Q&A** page.
 """)
 
 
 # ========================================================================
-# BLOG / Q&A
+# Q&A
 # ========================================================================
 
-elif page == "Blog / Q&A":
+elif page == "Q&A":
     st.markdown('<div class="bl-eyebrow">05 / Blog &amp; Q&amp;A</div>', unsafe_allow_html=True)
     st.title("Notes on building this")
     st.markdown(
@@ -1200,12 +1296,12 @@ elif page == "Blog / Q&A":
             )
 
             st.markdown(f"""
-            <div style="padding:1.1rem 0;border-bottom:1px solid #E3E1D9;">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:#707B85;text-transform:uppercase;letter-spacing:0.04em;">
+            <div style="padding:1.1rem 0;border-bottom:1px solid {HAIRLINE};">
+                <div style="font-family:'{THEME["font_mono"]}',monospace;font-size:0.74rem;color:{THEME["muted"]};text-transform:uppercase;letter-spacing:0.04em;">
                     {p['tag']} &middot; {p['date']}
                 </div>
                 <h3 style="margin:0.3rem 0;">{p['title']}</h3>
-                <p style="color:#3A3F45;margin:0;line-height:1.7;">
+                <p style="color:{THEME["body_text"]};margin:0;line-height:1.7;">
                     {formatted_excerpt}
                 </p>
             </div>
