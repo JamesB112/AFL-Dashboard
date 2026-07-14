@@ -2283,15 +2283,15 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,HomeTeam,AwayTeam,Venue,RoundS
 11338.0,CD_M20250141801,2025,Round 18,18,2025-07-13,Port Adelaide,West Coast,Adelaide Oval,Past Round
 11333.0,CD_M20250141804,2025,Round 18,18,2025-07-13,St Kilda,Sydney,Marvel Stadium,Past Round
 11335.0,CD_M20250141806,2025,Round 18,18,2025-07-13,Melbourne,North Melbourne,MCG,Past Round
-11557.0,CD_M20260141805,2026,Round 18,18,2026-07-09,Fremantle,Sydney,Optus Stadium,Next Round
-11558.0,CD_M20260141804,2026,Round 18,18,2026-07-10,Collingwood,North Melbourne,Marvel Stadium,Next Round
-11559.0,CD_M20260141801,2026,Round 18,18,2026-07-11,Adelaide,Gold Coast,Adelaide Oval,Next Round
-11560.0,CD_M20260141803,2026,Round 18,18,2026-07-11,Carlton,Hawthorn,MCG,Next Round
-11561.0,CD_M20260141806,2026,Round 18,18,2026-07-11,GWS,Geelong,ENGIE Stadium,Next Round
-11562.0,CD_M20260141808,2026,Round 18,18,2026-07-11,St Kilda,Port Adelaide,Marvel Stadium,Next Round
-11563.0,CD_M20260141802,2026,Round 18,18,2026-07-12,Brisbane,Essendon,Gabba,Next Round
-11564.0,CD_M20260141807,2026,Round 18,18,2026-07-12,Melbourne,Richmond,MCG,Next Round
-11565.0,CD_M20260141809,2026,Round 18,18,2026-07-12,Western Bulldogs,West Coast,Marvel Stadium,Next Round
+11557.0,CD_M20260141805,2026,Round 18,18,2026-07-09,Fremantle,Sydney,Optus Stadium,Past Round
+11551.0,CD_M20260141804,2026,Round 18,18,2026-07-10,Collingwood,North Melbourne,Marvel Stadium,Past Round
+11556.0,CD_M20260141801,2026,Round 18,18,2026-07-11,Adelaide,Gold Coast,Adelaide Oval,Past Round
+11550.0,CD_M20260141803,2026,Round 18,18,2026-07-11,Carlton,Hawthorn,MCG,Past Round
+11552.0,CD_M20260141806,2026,Round 18,18,2026-07-11,GWS,Geelong,ENGIE Stadium,Past Round
+11554.0,CD_M20260141808,2026,Round 18,18,2026-07-11,St Kilda,Port Adelaide,Marvel Stadium,Past Round
+11549.0,CD_M20260141802,2026,Round 18,18,2026-07-12,Brisbane,Essendon,Gabba,Past Round
+11553.0,CD_M20260141807,2026,Round 18,18,2026-07-12,Melbourne,Richmond,MCG,Past Round
+11555.0,CD_M20260141809,2026,Round 18,18,2026-07-12,Western Bulldogs,West Coast,Marvel Stadium,Past Round
 5496.0,CD_M20120141901,2012,Round 19,19,2012-08-03,Hawthorn,Geelong,MCG,Past Round
 5497.0,CD_M20120141902,2012,Round 19,19,2012-08-04,Western Bulldogs,North Melbourne,Marvel Stadium,Past Round
 5498.0,CD_M20120141903,2012,Round 19,19,2012-08-04,GWS,Port Adelaide,ENGIE Stadium,Past Round
@@ -2413,15 +2413,15 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,HomeTeam,AwayTeam,Venue,RoundS
 11347.0,CD_M20250141901,2025,Round 19,19,2025-07-20,Adelaide,Gold Coast,Adelaide Oval,Past Round
 11340.0,CD_M20250141902,2025,Round 19,19,2025-07-20,Geelong,St Kilda,GMHBA Stadium,Past Round
 11343.0,CD_M20250141905,2025,Round 19,19,2025-07-20,Collingwood,Fremantle,MCG,Past Round
-11566.0,CD_M20260141903,2026,Round 19,19,2026-07-16,Geelong,St Kilda,GMHBA Stadium,Future Round
-11567.0,CD_M20260141908,2026,Round 19,19,2026-07-17,Sydney,Adelaide,SCG,Future Round
-11568.0,CD_M20260141901,2026,Round 19,19,2026-07-18,Collingwood,Carlton,MCG,Future Round
-11569.0,CD_M20260141905,2026,Round 19,19,2026-07-18,North Melbourne,Melbourne,Marvel Stadium,Future Round
-11570.0,CD_M20260141906,2026,Round 19,19,2026-07-18,Port Adelaide,Fremantle,Adelaide Oval,Future Round
-11571.0,CD_M20260141909,2026,Round 19,19,2026-07-18,West Coast,Brisbane,Optus Stadium,Future Round
-11572.0,CD_M20260141902,2026,Round 19,19,2026-07-19,Essendon,GWS,Marvel Stadium,Future Round
-11573.0,CD_M20260141904,2026,Round 19,19,2026-07-19,Gold Coast,Western Bulldogs,People First Stadium,Future Round
-11574.0,CD_M20260141907,2026,Round 19,19,2026-07-19,Richmond,Hawthorn,MCG,Future Round
+11558.0,CD_M20260141903,2026,Round 19,19,2026-07-16,Geelong,St Kilda,GMHBA Stadium,Next Round
+11559.0,CD_M20260141908,2026,Round 19,19,2026-07-17,Sydney,Adelaide,SCG,Next Round
+11560.0,CD_M20260141901,2026,Round 19,19,2026-07-18,Collingwood,Carlton,MCG,Next Round
+11561.0,CD_M20260141905,2026,Round 19,19,2026-07-18,North Melbourne,Melbourne,Marvel Stadium,Next Round
+11562.0,CD_M20260141906,2026,Round 19,19,2026-07-18,Port Adelaide,Fremantle,Adelaide Oval,Next Round
+11563.0,CD_M20260141909,2026,Round 19,19,2026-07-18,West Coast,Brisbane,Optus Stadium,Next Round
+11564.0,CD_M20260141902,2026,Round 19,19,2026-07-19,Essendon,GWS,Marvel Stadium,Next Round
+11565.0,CD_M20260141904,2026,Round 19,19,2026-07-19,Gold Coast,Western Bulldogs,People First Stadium,Next Round
+11566.0,CD_M20260141907,2026,Round 19,19,2026-07-19,Richmond,Hawthorn,MCG,Next Round
 5505.0,CD_M20120142001,2012,Round 20,20,2012-08-10,West Coast,Geelong,Domain Stadium,Past Round
 5506.0,CD_M20120142002,2012,Round 20,20,2012-08-11,St Kilda,Melbourne,MCG,Past Round
 5507.0,CD_M20120142003,2012,Round 20,20,2012-08-11,Adelaide,Fremantle,AAMI Stadium,Past Round
@@ -2541,15 +2541,15 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,HomeTeam,AwayTeam,Venue,RoundS
 11357.0,CD_M20250142009,2025,Round 20,20,2025-07-26,Fremantle,West Coast,Optus Stadium,Past Round
 11351.0,CD_M20250142004,2025,Round 20,20,2025-07-27,St Kilda,Melbourne,Marvel Stadium,Past Round
 11353.0,CD_M20250142006,2025,Round 20,20,2025-07-27,Richmond,Collingwood,MCG,Past Round
-11575.0,CD_M20260142001,2026,Round 20,20,2026-07-23,Adelaide,Collingwood,Adelaide Oval,Future Round
-11576.0,CD_M20260142004,2026,Round 20,20,2026-07-24,Fremantle,West Coast,Optus Stadium,Future Round
-11577.0,CD_M20260142008,2026,Round 20,20,2026-07-24,Melbourne,Geelong,MCG,Future Round
-11578.0,CD_M20260142003,2026,Round 20,20,2026-07-25,Carlton,Gold Coast,Marvel Stadium,Future Round
-11579.0,CD_M20260142005,2026,Round 20,20,2026-07-25,GWS,Sydney,ENGIE Stadium,Future Round
-11580.0,CD_M20260142006,2026,Round 20,20,2026-07-25,Hawthorn,Essendon,MCG,Future Round
-11581.0,CD_M20260142009,2026,Round 20,20,2026-07-25,Western Bulldogs,Richmond,Marvel Stadium,Future Round
-11582.0,CD_M20260142002,2026,Round 20,20,2026-07-26,Brisbane,Port Adelaide,Gabba,Future Round
-11583.0,CD_M20260142007,2026,Round 20,20,2026-07-26,North Melbourne,St Kilda,Marvel Stadium,Future Round
+11567.0,CD_M20260142001,2026,Round 20,20,2026-07-23,Adelaide,Collingwood,Adelaide Oval,Future Round
+11568.0,CD_M20260142004,2026,Round 20,20,2026-07-24,Fremantle,West Coast,Optus Stadium,Future Round
+11569.0,CD_M20260142008,2026,Round 20,20,2026-07-24,Melbourne,Geelong,MCG,Future Round
+11570.0,CD_M20260142003,2026,Round 20,20,2026-07-25,Carlton,Gold Coast,Marvel Stadium,Future Round
+11571.0,CD_M20260142005,2026,Round 20,20,2026-07-25,GWS,Sydney,ENGIE Stadium,Future Round
+11572.0,CD_M20260142006,2026,Round 20,20,2026-07-25,Hawthorn,Essendon,MCG,Future Round
+11573.0,CD_M20260142009,2026,Round 20,20,2026-07-25,Western Bulldogs,Richmond,Marvel Stadium,Future Round
+11574.0,CD_M20260142002,2026,Round 20,20,2026-07-26,Brisbane,Port Adelaide,Gabba,Future Round
+11575.0,CD_M20260142007,2026,Round 20,20,2026-07-26,North Melbourne,St Kilda,Marvel Stadium,Future Round
 5514.0,CD_M20120142101,2012,Round 21,21,2012-08-17,Geelong,St Kilda,Marvel Stadium,Past Round
 5515.0,CD_M20120142102,2012,Round 21,21,2012-08-18,Essendon,Carlton,MCG,Past Round
 5516.0,CD_M20120142103,2012,Round 21,21,2012-08-18,GWS,Melbourne,Manuka Oval,Past Round
@@ -2669,15 +2669,15 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,HomeTeam,AwayTeam,Venue,RoundS
 11358.0,CD_M20250142102,2025,Round 21,21,2025-08-03,Geelong,Port Adelaide,GMHBA Stadium,Past Round
 11359.0,CD_M20250142103,2025,Round 21,21,2025-08-03,St Kilda,North Melbourne,Marvel Stadium,Past Round
 11366.0,CD_M20250142108,2025,Round 21,21,2025-08-03,Fremantle,Carlton,Optus Stadium,Past Round
-11584.0,CD_M20260142102,2026,Round 21,21,2026-07-30,Collingwood,Geelong,MCG,Future Round
-11585.0,CD_M20260142104,2026,Round 21,21,2026-07-31,Fremantle,Western Bulldogs,Optus Stadium,Future Round
-11586.0,CD_M20260142101,2026,Round 21,21,2026-08-01,Carlton,Brisbane,Marvel Stadium,Future Round
-11587.0,CD_M20260142106,2026,Round 21,21,2026-08-01,Hawthorn,North Melbourne,UTAS Stadium,Future Round
-11588.0,CD_M20260142107,2026,Round 21,21,2026-08-01,Port Adelaide,GWS,Adelaide Oval,Future Round
-11589.0,CD_M20260142109,2026,Round 21,21,2026-08-01,St Kilda,Sydney,Marvel Stadium,Future Round
-11590.0,CD_M20260142103,2026,Round 21,21,2026-08-02,Essendon,Adelaide,Marvel Stadium,Future Round
-11591.0,CD_M20260142105,2026,Round 21,21,2026-08-02,Gold Coast,Melbourne,People First Stadium,Future Round
-11592.0,CD_M20260142108,2026,Round 21,21,2026-08-02,Richmond,West Coast,MCG,Future Round
+11576.0,CD_M20260142102,2026,Round 21,21,2026-07-30,Collingwood,Geelong,MCG,Future Round
+11577.0,CD_M20260142104,2026,Round 21,21,2026-07-31,Fremantle,Western Bulldogs,Optus Stadium,Future Round
+11578.0,CD_M20260142101,2026,Round 21,21,2026-08-01,Carlton,Brisbane,Marvel Stadium,Future Round
+11579.0,CD_M20260142106,2026,Round 21,21,2026-08-01,Hawthorn,North Melbourne,UTAS Stadium,Future Round
+11580.0,CD_M20260142107,2026,Round 21,21,2026-08-01,Port Adelaide,GWS,Adelaide Oval,Future Round
+11581.0,CD_M20260142109,2026,Round 21,21,2026-08-01,St Kilda,Sydney,Marvel Stadium,Future Round
+11582.0,CD_M20260142103,2026,Round 21,21,2026-08-02,Essendon,Adelaide,Marvel Stadium,Future Round
+11583.0,CD_M20260142105,2026,Round 21,21,2026-08-02,Gold Coast,Melbourne,People First Stadium,Future Round
+11584.0,CD_M20260142108,2026,Round 21,21,2026-08-02,Richmond,West Coast,MCG,Future Round
 5523.0,CD_M20120142201,2012,Round 22,22,2012-08-24,Richmond,Essendon,MCG,Past Round
 5524.0,CD_M20120142202,2012,Round 22,22,2012-08-25,St Kilda,GWS,Marvel Stadium,Past Round
 5525.0,CD_M20120142203,2012,Round 22,22,2012-08-25,Port Adelaide,Brisbane,AAMI Stadium,Past Round
@@ -2796,15 +2796,15 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,HomeTeam,AwayTeam,Venue,RoundS
 11368.0,CD_M20250142203,2025,Round 22,22,2025-08-10,GWS,North Melbourne,Manuka Oval,Past Round
 11371.0,CD_M20250142206,2025,Round 22,22,2025-08-10,Melbourne,Western Bulldogs,MCG,Past Round
 11375.0,CD_M20250142208,2025,Round 22,22,2025-08-10,West Coast,Adelaide,Optus Stadium,Past Round
-11593.0,CD_M20260142209,2026,Round 22,22,2026-08-06,Western Bulldogs,North Melbourne,Marvel Stadium,Future Round
-11594.0,CD_M20260142202,2026,Round 22,22,2026-08-07,Brisbane,Hawthorn,Gabba,Future Round
-11595.0,CD_M20260142201,2026,Round 22,22,2026-08-08,Adelaide,Richmond,Adelaide Oval,Future Round
-11596.0,CD_M20260142203,2026,Round 22,22,2026-08-08,Geelong,Essendon,GMHBA Stadium,Future Round
-11597.0,CD_M20260142205,2026,Round 22,22,2026-08-08,Melbourne,Fremantle,MCG,Future Round
-11598.0,CD_M20260142207,2026,Round 22,22,2026-08-08,Sydney,Port Adelaide,SCG,Future Round
-11599.0,CD_M20260142204,2026,Round 22,22,2026-08-09,GWS,Gold Coast,Manuka Oval,Future Round
-11600.0,CD_M20260142206,2026,Round 22,22,2026-08-09,St Kilda,Carlton,Marvel Stadium,Future Round
-11601.0,CD_M20260142208,2026,Round 22,22,2026-08-09,West Coast,Collingwood,Optus Stadium,Future Round
+11585.0,CD_M20260142209,2026,Round 22,22,2026-08-06,Western Bulldogs,North Melbourne,Marvel Stadium,Future Round
+11586.0,CD_M20260142202,2026,Round 22,22,2026-08-07,Brisbane,Hawthorn,Gabba,Future Round
+11587.0,CD_M20260142201,2026,Round 22,22,2026-08-08,Adelaide,Richmond,Adelaide Oval,Future Round
+11588.0,CD_M20260142203,2026,Round 22,22,2026-08-08,Geelong,Essendon,GMHBA Stadium,Future Round
+11589.0,CD_M20260142205,2026,Round 22,22,2026-08-08,Melbourne,Fremantle,MCG,Future Round
+11590.0,CD_M20260142207,2026,Round 22,22,2026-08-08,Sydney,Port Adelaide,SCG,Future Round
+11591.0,CD_M20260142204,2026,Round 22,22,2026-08-09,GWS,Gold Coast,Manuka Oval,Future Round
+11592.0,CD_M20260142206,2026,Round 22,22,2026-08-09,St Kilda,Carlton,Marvel Stadium,Future Round
+11593.0,CD_M20260142208,2026,Round 22,22,2026-08-09,West Coast,Collingwood,Optus Stadium,Future Round
 5536.0,CD_M20120142304,2012,Round 23,23,2012-08-31,Hawthorn,West Coast,MCG,Past Round
 5532.0,CD_M20120142302,2012,Round 23,23,2012-09-01,Essendon,Collingwood,MCG,Past Round
 5537.0,CD_M20120142305,2012,Round 23,23,2012-09-01,Geelong,Sydney,GMHBA Stadium,Past Round
@@ -2922,15 +2922,15 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,HomeTeam,AwayTeam,Venue,RoundS
 11376.0,CD_M20250142302,2025,Round 23,23,2025-08-17,North Melbourne,Richmond,Blundstone Arena,Past Round
 11378.0,CD_M20250142304,2025,Round 23,23,2025-08-17,Western Bulldogs,West Coast,Marvel Stadium,Past Round
 11382.0,CD_M20250142309,2025,Round 23,23,2025-08-17,Sydney,Geelong,SCG,Past Round
-11602.0,CD_M20260142301,2026,Round 23,23,2026-08-10,Brisbane,Gold Coast,Gabba,Future Round
-11603.0,CD_M20260142302,2026,Round 23,23,2026-08-10,Essendon,Sydney,MCG,Future Round
-11604.0,CD_M20260142303,2026,Round 23,23,2026-08-10,Fremantle,Adelaide,Optus Stadium,Future Round
-11605.0,CD_M20260142304,2026,Round 23,23,2026-08-10,GWS,West Coast,ENGIE Stadium,Future Round
-11606.0,CD_M20260142305,2026,Round 23,23,2026-08-10,Hawthorn,Collingwood,MCG,Future Round
-11607.0,CD_M20260142306,2026,Round 23,23,2026-08-10,North Melbourne,Geelong,Marvel Stadium,Future Round
-11608.0,CD_M20260142307,2026,Round 23,23,2026-08-10,Port Adelaide,Melbourne,Adelaide Oval,Future Round
-11609.0,CD_M20260142308,2026,Round 23,23,2026-08-10,Richmond,St Kilda,MCG,Future Round
-11610.0,CD_M20260142309,2026,Round 23,23,2026-08-10,Western Bulldogs,Carlton,Marvel Stadium,Future Round
+11594.0,CD_M20260142301,2026,Round 23,23,2026-08-10,Brisbane,Gold Coast,Gabba,Future Round
+11595.0,CD_M20260142302,2026,Round 23,23,2026-08-10,Essendon,Sydney,MCG,Future Round
+11596.0,CD_M20260142303,2026,Round 23,23,2026-08-10,Fremantle,Adelaide,Optus Stadium,Future Round
+11597.0,CD_M20260142304,2026,Round 23,23,2026-08-10,GWS,West Coast,ENGIE Stadium,Future Round
+11598.0,CD_M20260142305,2026,Round 23,23,2026-08-10,Hawthorn,Collingwood,MCG,Future Round
+11599.0,CD_M20260142306,2026,Round 23,23,2026-08-10,North Melbourne,Geelong,Marvel Stadium,Future Round
+11600.0,CD_M20260142307,2026,Round 23,23,2026-08-10,Port Adelaide,Melbourne,Adelaide Oval,Future Round
+11601.0,CD_M20260142308,2026,Round 23,23,2026-08-10,Richmond,St Kilda,MCG,Future Round
+11602.0,CD_M20260142309,2026,Round 23,23,2026-08-10,Western Bulldogs,Carlton,Marvel Stadium,Future Round
 5541.0,CD_M20120142401,2012,Finals Week 1,24,2012-09-07,Hawthorn,Collingwood,MCG,Past Round
 5542.0,CD_M20120142402,2012,Finals Week 1,24,2012-09-08,Adelaide,Sydney,AAMI Stadium,Past Round
 5543.0,CD_M20120142403,2012,Finals Week 1,24,2012-09-08,Geelong,Fremantle,MCG,Past Round
@@ -2999,15 +2999,15 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,HomeTeam,AwayTeam,Venue,RoundS
 11387.0,CD_M20250142404,2025,Round 24,24,2025-08-24,Western Bulldogs,Fremantle,Marvel Stadium,Past Round
 11391.0,CD_M20250142409,2025,Round 24,24,2025-08-24,Brisbane,Hawthorn,Gabba,Past Round
 11395.0,CD_M20250142410,2025,Round 24,24,2025-08-27,Gold Coast,Essendon,People First Stadium,Past Round
-11611.0,CD_M20260142401,2026,Round 24,24,2026-08-17,Adelaide,GWS,Adelaide Oval,Future Round
-11612.0,CD_M20260142402,2026,Round 24,24,2026-08-17,Collingwood,Brisbane,MCG,Future Round
-11613.0,CD_M20260142403,2026,Round 24,24,2026-08-17,Carlton,Fremantle,Marvel Stadium,Future Round
-11614.0,CD_M20260142404,2026,Round 24,24,2026-08-17,Essendon,Port Adelaide,Marvel Stadium,Future Round
-11615.0,CD_M20260142405,2026,Round 24,24,2026-08-17,Geelong,Richmond,GMHBA Stadium,Future Round
-11616.0,CD_M20260142406,2026,Round 24,24,2026-08-17,Melbourne,Western Bulldogs,MCG,Future Round
-11617.0,CD_M20260142407,2026,Round 24,24,2026-08-17,St Kilda,Gold Coast,Marvel Stadium,Future Round
-11618.0,CD_M20260142408,2026,Round 24,24,2026-08-17,Sydney,North Melbourne,SCG,Future Round
-11619.0,CD_M20260142409,2026,Round 24,24,2026-08-17,West Coast,Hawthorn,Optus Stadium,Future Round
+11603.0,CD_M20260142401,2026,Round 24,24,2026-08-17,Adelaide,GWS,Adelaide Oval,Future Round
+11604.0,CD_M20260142402,2026,Round 24,24,2026-08-17,Collingwood,Brisbane,MCG,Future Round
+11605.0,CD_M20260142403,2026,Round 24,24,2026-08-17,Carlton,Fremantle,Marvel Stadium,Future Round
+11606.0,CD_M20260142404,2026,Round 24,24,2026-08-17,Essendon,Port Adelaide,Marvel Stadium,Future Round
+11607.0,CD_M20260142405,2026,Round 24,24,2026-08-17,Geelong,Richmond,GMHBA Stadium,Future Round
+11608.0,CD_M20260142406,2026,Round 24,24,2026-08-17,Melbourne,Western Bulldogs,MCG,Future Round
+11609.0,CD_M20260142407,2026,Round 24,24,2026-08-17,St Kilda,Gold Coast,Marvel Stadium,Future Round
+11610.0,CD_M20260142408,2026,Round 24,24,2026-08-17,Sydney,North Melbourne,SCG,Future Round
+11611.0,CD_M20260142409,2026,Round 24,24,2026-08-17,West Coast,Hawthorn,Optus Stadium,Future Round
 5545.0,CD_M20120142501,2012,Semi Finals,25,2012-09-14,Adelaide,Fremantle,AAMI Stadium,Past Round
 5546.0,CD_M20120142502,2012,Semi Finals,25,2012-09-15,Collingwood,West Coast,MCG,Past Round
 5752.0,CD_M20130142501,2013,Semi Finals,25,2013-09-13,Geelong,Port Adelaide,MCG,Past Round
