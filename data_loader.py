@@ -505,6 +505,10 @@ def get_prediction_summary():
 
         n = len(scored)
         n_current = len(current_scored)
+
+        ols_correct = int(current_scored["Correct_OLS"].sum())
+        logit_correct = int(current_scored["Correct_LOGIT"].sum())
+
         overall = {
             "games": n,
             "accuracy_logit": round(scored["Correct_LOGIT"].sum() / n * 100, 1) if n else None,
@@ -513,7 +517,10 @@ def get_prediction_summary():
             "fmt": "new",
             "current_season": current_season,
             "current_season_games": n_current,
-            "current_season_correct": int(current_scored["Correct_LOGIT"].sum()) if n_current else 0,
+            "current_season_correct": max(ols_correct, logit_correct) if n_current else 0,
+            "current_season_correct_label": (
+                "OLS" if ols_correct >= logit_correct else "LOGIT"
+            ) if n_current else "",
         }
     else:
         by_season = scored.groupby("Season", as_index=False).agg(
@@ -702,5 +709,7 @@ def get_meta():
         "players_tracked":            len(latest_rankings),
         "predictions_fmt":            fmt,
         "current_season_correct":     pred_overall.get("current_season_correct", 0),
+        "current_season_correct_label":       pred_overall.get("current_season_correct_label", 0),
         "current_season_games":       pred_overall.get("current_season_games", 0),
+
     }

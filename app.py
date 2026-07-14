@@ -211,8 +211,9 @@ if page == "Home":
             acc_label = f"{acc}%" if acc else "—"
 
             c_correct = meta["current_season_correct"]
+            c_model_type = meta["current_season_correct_label"]
             c_games = meta["current_season_games"]
-            fraction_label = f"{c_correct}/{c_games}" if c_games else "—"
+            fraction_label = f"{c_correct}/{c_games} {c_model_type}" if c_games else "—"
 
             st.metric(
                 "Model Accuracy",
@@ -850,7 +851,7 @@ elif page == "Model Performance":
         )
 
     with fc3:
-        all_rounds = ["All rounds"] + sorted(scored_games["Match_id"].dropna().unique().tolist())
+        all_rounds = ["All rounds"] + sorted(scored_games["RoundNumber"].dropna().unique().tolist())
         r_filter = st.selectbox("Round", all_rounds, key="pred_round")
 
     with fc4:
