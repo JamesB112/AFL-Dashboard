@@ -507,7 +507,7 @@ if page == "Home":
         if date_col:
             current_disp["_date_parsed"] = pd.to_datetime(
                 current_disp[date_col],
-                format="mixed",
+                format="%Y-%m-%d",
                 dayfirst=True,
                 errors="coerce",
             )
