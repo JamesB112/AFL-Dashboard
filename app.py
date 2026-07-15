@@ -671,7 +671,7 @@ if page == "Home":
             )
     with col_bub:
         if not bubble.empty:
-            st.markdown("**On the bubble** *(best case makes finals)*")
+            st.markdown("**Outside chance** *(best case makes finals)*")
             for _, row in bubble.iterrows():
                 st.markdown(
                     f"**{row['Team']}** — proj. {int(row['Projected_Rank'])}, "
@@ -679,7 +679,7 @@ if page == "Home":
                     unsafe_allow_html=True,
                 )
         else:
-            st.markdown("**On the bubble**")
+            st.markdown("**Outside chance**")
             st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
 
 # ========================================================================
