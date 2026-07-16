@@ -16,6 +16,9 @@ import os
 import pandas as pd
 import numpy as np
 import streamlit as st
+from pathlib import Path
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 
@@ -77,6 +80,24 @@ IMPORTANCE_LABELS = {
 }
 
 
+# Load the latest load time
+DATA_VERSION_FILE = Path("data/data_version.txt")
+
+with open(DATA_VERSION_FILE) as f:
+    DATA_VERSION = f.read().strip()
+
+    DATA_VERSION = datetime.fromisoformat(DATA_VERSION)
+
+    # Convert UTC to Melbourne time
+    DATA_VERSION = DATA_VERSION.astimezone(
+        ZoneInfo("Australia/Melbourne")
+    )
+
+    # Format for display
+    DATA_VERSION = DATA_VERSION.strftime(
+        '%I:%M %p %d/%m/%Y'
+    ).lstrip("0")
+
 def _path(key):
     return os.path.join(DATA_DIR, FILES[key])
 
@@ -94,7 +115,7 @@ def _optional_file_present(key):
 
 
 @st.cache_data(show_spinner=False)
-def load_raw(key):
+def load_raw(key, version=DATA_VERSION):
     return pd.read_csv(_path(key), low_memory=False)
 
 @st.cache_data(show_spinner=False)
@@ -239,7 +260,6 @@ def get_all_teams():
 def get_all_seasons():
     seasons = get_team_results()["Season"].dropna().unique().tolist()
     return sorted(seasons, reverse=True)
-
 
 # ----------------------------------------------------------------------
 # PLAYER PERFORMANCE
@@ -739,5 +759,6 @@ def get_meta():
         "current_season_correct":     pred_overall.get("current_season_correct", 0),
         "current_season_correct_label":       pred_overall.get("current_season_correct_label", 0),
         "current_season_games":       pred_overall.get("current_season_games", 0),
+        "latest_refresh":             DATA_VERSION
 
     }

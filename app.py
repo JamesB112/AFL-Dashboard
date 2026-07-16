@@ -366,7 +366,9 @@ with st.sidebar:
     )
     st.markdown("---")
     meta = dl.get_meta()
-    st.caption(f"Data through **{meta['latest_season']}, Round {meta['latest_round']}**")
+    st.caption(
+        f"Last refreshed:   \n**{meta['latest_refresh']}**"
+    )
 
 
 # ========================================================================
