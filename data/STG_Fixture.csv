@@ -2413,7 +2413,7 @@ CD_M20250141909,CONCLUDED,28,Round 19,19,Hawthorn,13.0,9.0,87.0,Port Adelaide,7.
 CD_M20250141901,CONCLUDED,28,Round 19,19,Adelaide,16.0,11.0,107.0,Gold Coast,6.0,10.0,46.0,Adelaide Oval,Adelaide,SA,2025,2025-07-20,Gold Coast,11347.0,Past Round
 CD_M20250141902,CONCLUDED,28,Round 19,19,Geelong,17.0,11.0,113.0,St Kilda,12.0,10.0,82.0,GMHBA Stadium,Geelong,VIC,2025,2025-07-20,St Kilda,11340.0,Past Round
 CD_M20250141905,CONCLUDED,28,Round 19,19,Collingwood,11.0,12.0,78.0,Fremantle,12.0,7.0,79.0,MCG,Melbourne,VIC,2025,2025-07-20,Fremantle,11343.0,Past Round
-CD_M20260141903,SCHEDULED,19,Round 19,19,Geelong,,,,St Kilda,,,,GMHBA Stadium,Geelong,VIC,2026,2026-07-16,,11558.0,Next Round
+CD_M20260141903,UNCONFIRMED_TEAMS,19,Round 19,19,Geelong,,,,St Kilda,,,,GMHBA Stadium,Geelong,VIC,2026,2026-07-16,,11558.0,Next Round
 CD_M20260141908,SCHEDULED,19,Round 19,19,Sydney,,,,Adelaide,,,,SCG,Sydney,NSW,2026,2026-07-17,,11559.0,Next Round
 CD_M20260141901,SCHEDULED,19,Round 19,19,Collingwood,,,,Carlton,,,,MCG,Melbourne,VIC,2026,2026-07-18,,11560.0,Next Round
 CD_M20260141905,SCHEDULED,19,Round 19,19,North Melbourne,,,,Melbourne,,,,Marvel Stadium,Melbourne,VIC,2026,2026-07-18,,11561.0,Next Round
