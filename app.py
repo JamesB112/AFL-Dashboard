@@ -582,6 +582,7 @@ if page == "Home":
                     format="%.1f pts",
                 ),
             },
+        use_container_width=True
         )
 
     st.divider()
