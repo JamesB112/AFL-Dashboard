@@ -366,7 +366,6 @@ with st.sidebar:
     )
     st.markdown("---")
     meta = dl.get_meta()
-    st.write(meta)
     st.caption(
         f"Last refreshed:   \n**{meta['latest_refresh']}**"
     )
