@@ -137,7 +137,7 @@ body, p, div, span, label {{
 .bl-card {{
     background: {THEME["surface"]};
     border: 1px solid {THEME["border"]};
-    border-top: 3px solid {THEME["accent_blue"]};
+    border-top: 3px solid {THEME["sidebar_bg"]};
     border-radius: 6px;
     padding: 1.1rem 1.3rem;
     height: 100%;
@@ -1301,7 +1301,7 @@ Both the linear and logistic models are trained and deployed using a rolling sea
 # ========================================================================
 
 elif page == "Q&A":
-    st.markdown('<div class="bl-eyebrow">05 / Blog &amp; Q&amp;A</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">05 / Q&amp;A</div>', unsafe_allow_html=True)
     st.title("Notes on building this")
     st.markdown(
         '<p class="bl-lede">Write-ups on modelling decisions, data quirks, and insights. </p>',
