@@ -665,6 +665,9 @@ def get_elo_ratings():
     df["Season"] = df["Season"].astype(int)
     df["RoundNumber"] = df["RoundNumber"].astype(int)
 
+    # Set elo to null for future rounds 
+    df = df[df["RoundStatus"] != "Future Round"]
+
     return df.sort_values(["Team", "Date"]).reset_index(drop=True)
 
 @st.cache_data(show_spinner=False)
