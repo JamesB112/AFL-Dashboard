@@ -59,26 +59,45 @@ STAT_LABELS = {
 }
 
 # Feature importance columns in the new predictions format
+# IMPORTANCE_COLS = [
+#     "Importance_External Factors_OLS",
+#     "Importance_In-Game Tempo_OLS",
+#     "Importance_Midfield Control_OLS",
+#     "Importance_Offensive Output_OLS",
+#     "Importance_Player Ranking_OLS",
+#     "Importance_Ruck & Ball Movement_OLS",
+#     "Importance_Team Defense_OLS",
+# ]
+
+# IMPORTANCE_LABELS = {
+#     "Importance_External Factors_OLS":    "External Factors",
+#     "Importance_In-Game Tempo_OLS":       "In-Game Tempo",
+#     "Importance_Midfield Control_OLS":    "Midfield Control",
+#     "Importance_Offensive Output_OLS":    "Offensive Output",
+#     "Importance_Player Ranking_OLS":      "Player Ranking",
+#     "Importance_Ruck & Ball Movement_OLS":"Ruck & Ball Movement",
+#     "Importance_Team Defense_OLS":        "Team Defense",
+# }
+
 IMPORTANCE_COLS = [
-    "Importance_External Factors_OLS",
-    "Importance_In-Game Tempo_OLS",
+    "Importance_Player Ranking & Experience_OLS",
+    "Importance_Team Defense_OLS",
     "Importance_Midfield Control_OLS",
     "Importance_Offensive Output_OLS",
-    "Importance_Player Ranking_OLS",
-    "Importance_Ruck & Ball Movement_OLS",
-    "Importance_Team Defense_OLS",
+    "Importance_Quarterly Consistency_OLS",
+    "Importance_Travelling Factor_OLS",
+    "Importance_Public Perceptions_OLS",
 ]
 
 IMPORTANCE_LABELS = {
-    "Importance_External Factors_OLS":    "External Factors",
-    "Importance_In-Game Tempo_OLS":       "In-Game Tempo",
-    "Importance_Midfield Control_OLS":    "Midfield Control",
-    "Importance_Offensive Output_OLS":    "Offensive Output",
-    "Importance_Player Ranking_OLS":      "Player Ranking",
-    "Importance_Ruck & Ball Movement_OLS":"Ruck & Ball Movement",
-    "Importance_Team Defense_OLS":        "Team Defense",
+    "Importance_Player Ranking & Experience_OLS": "Player Ranking & Experience",
+    "Importance_Team Defense_OLS": "Team Defense",
+    "Importance_Midfield Control_OLS": "Midfield Control",
+    "Importance_Offensive Output_OLS": "Offensive Output",
+    "Importance_Quarterly Consistency_OLS": "Quarterly Consistency",
+    "Importance_Travelling Factor_OLS": "Travelling Factor",
+    "Importance_Public Perceptions_OLS": "Public Perceptions"
 }
-
 
 # Load the latest load time
 DATA_VERSION_FILE = Path("data/data_version.txt")
@@ -159,7 +178,8 @@ def add_round_status(df):
     cols = [
         c for c in [
             "Match_id",
-            "RoundStatus"
+            "RoundStatus",
+            'Time'
         ]
         if c in lookup.columns
     ]
@@ -185,17 +205,9 @@ def add_round_status(df):
     # if "Date" in df.columns:
     #     df["Date_str"] = df["Date"].dt.strftime("%Y-%m-%d")
 
+    df = df.sort_values(["Date","Time"], ascending=[True,True])
+
     return df
-
-def _detect_predictions_format(df):
-    """
-    Returns 'new' if the df has the LOGIT/OLS multi-model columns,
-    'old' if it has the original xgboost_margin single-model format.
-    """
-    if "Predicted_Prob_LOGIT" in df.columns:
-        return "new"
-    return "old"
-
 
 # ----------------------------------------------------------------------
 # TEAM PERFORMANCE
@@ -260,6 +272,23 @@ def get_all_teams():
 def get_all_seasons():
     seasons = get_team_results()["Season"].dropna().unique().tolist()
     return sorted(seasons, reverse=True)
+
+
+@st.cache_data(show_spinner=False)
+def get_team_recent_form(team, season, round_number, n=5):
+    """A team's last `n` completed games strictly before the given
+    season/round, oldest first (most recent last) so it reads left-to-right
+    like a form guide."""
+    df = get_team_results()
+    season = str(season)
+
+    h = df[df["Team"] == team].copy()
+    h = h[
+        (h["Season"] < season)
+        | ((h["Season"] == season) & (h["RoundNumber"] < round_number))
+    ]
+    h = h.sort_values(["Season", "RoundNumber"])
+    return h.tail(n)
 
 # ----------------------------------------------------------------------
 # PLAYER PERFORMANCE
@@ -449,7 +478,9 @@ def get_future_predictions():
 def get_predictions():
     df = load_raw("predictions")
 
-    # df = add_round_status(df)
+    # Bring though Time
+    df = add_round_status(df)
+
     df["Season"] = df["Season"].astype(str)
     df["RoundNumber"] = pd.to_numeric(df["RoundNumber"], errors="coerce")
 
@@ -459,65 +490,39 @@ def get_predictions():
     # Filter for regular season games
     # df = df[df['Round.Type'] == 'Regular']
 
-    fmt = _detect_predictions_format(df)
-
     df["Margin"] = pd.to_numeric(df["Margin"], errors="coerce")
 
     # Update draws
     # Draws count as correct regardless of which team the model favoured
     df.loc[df["Margin"] == 0, "Prediction_Outcome_LOGIT"] = 1
     df.loc[df["Margin"] == 0, "Prediction_Outcome_OLS"] = 1
-    
-    if fmt == "new":
-        # ---- NEW FORMAT: LOGIT + OLS models ----
-        df["Predicted_Prob_LOGIT"] = pd.to_numeric(df.get("Predicted_Prob_LOGIT"), errors="coerce")
-        df["Predicted_Result_LOGIT"] = pd.to_numeric(df.get("Predicted_Result_LOGIT"), errors="coerce")
-        df["Prediction_Outcome_LOGIT"] = pd.to_numeric(df.get("Prediction_Outcome_LOGIT"), errors="coerce")
-        df["Correct_LOGIT"] = df["Prediction_Outcome_LOGIT"] == 1
 
-        df["Predicted_Margin_OLS"] = pd.to_numeric(df.get("Predicted_Margin_OLS"), errors="coerce")
-        df["Predicted_Result_OLS"] = pd.to_numeric(df.get("Predicted_Result_OLS"), errors="coerce")
-        df["Prediction_Outcome_OLS"] = pd.to_numeric(df.get("Prediction_Outcome_OLS"), errors="coerce")
-        df["Correct_OLS"] = df["Prediction_Outcome_OLS"] == 1
+    df["Predicted_Prob_LOGIT"] = pd.to_numeric(df.get("Predicted_Prob_LOGIT"), errors="coerce")
+    df["Predicted_Result_LOGIT"] = pd.to_numeric(df.get("Predicted_Result_LOGIT"), errors="coerce")
+    df["Prediction_Outcome_LOGIT"] = pd.to_numeric(df.get("Prediction_Outcome_LOGIT"), errors="coerce")
+    df["Correct_LOGIT"] = df["Prediction_Outcome_LOGIT"] == 1
 
-        df["Abs_Error_OLS"] = (df["Margin"] - df["Predicted_Margin_OLS"]).abs()
+    df["Predicted_Margin_OLS"] = pd.to_numeric(df.get("Predicted_Margin_OLS"), errors="coerce")
+    df["Predicted_Result_OLS"] = pd.to_numeric(df.get("Predicted_Result_OLS"), errors="coerce")
+    df["Prediction_Outcome_OLS"] = pd.to_numeric(df.get("Prediction_Outcome_OLS"), errors="coerce")
+    df["Correct_OLS"] = df["Prediction_Outcome_OLS"] == 1
 
-        for col in IMPORTANCE_COLS:
-            if col in df.columns:
-                df[col] = pd.to_numeric(df[col], errors="coerce")
+    df["Abs_Error_OLS"] = (df["Margin"] - df["Predicted_Margin_OLS"]).abs()
 
-        # Canonical columns for backward-compat with summary/chart code
-        df["Correct"] = df["Correct_OLS"]
-        df["Abs_Error"] = df["Abs_Error_OLS"]
-        df["Predicted_Margin_Adjusted"] = df["Predicted_Margin_OLS"]
+    for col in IMPORTANCE_COLS:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    else:
-        # ---- OLD FORMAT: single xgboost_margin model ----
-        df["Predicted_Margin"] = pd.to_numeric(df["Predicted_Margin"], errors="coerce")
-        df["Predicted_Margin_Adjusted"] = pd.to_numeric(
-            df.get("Predicted_Margin_Adjusted", df["Predicted_Margin"]), errors="coerce"
-        ).fillna(df["Predicted_Margin"])
-        df["Abs_Error"] = (df["Margin"] - df["Predicted_Margin_Adjusted"]).abs()
-        df["Correct"] = df["Prediction_Outcome"] == 1
-        df["Correct_LOGIT"] = None
-        df["Correct_OLS"] = None
-        df["Predicted_Prob_LOGIT"] = None
-        df["Predicted_Margin_OLS"] = None
-        df["Abs_Error_OLS"] = df["Abs_Error"]
+    # Canonical columns for backward-compat with summary/chart code
+    df["Correct"] = df["Correct_OLS"]
+    df["Abs_Error"] = df["Abs_Error_OLS"]
+    df["Predicted_Margin_Adjusted"] = df["Predicted_Margin_OLS"]
 
-    df["_fmt"] = fmt
     return df
-
-
-@st.cache_data(show_spinner=False)
-def get_prediction_format():
-    df = load_raw("predictions")
-    return _detect_predictions_format(df)
 
 @st.cache_data(show_spinner=False)
 def get_prediction_summary():
     df = get_predictions()
-    fmt = df["_fmt"].iloc[0] if len(df) else "old"
 
     # Scored games only (where Margin is known)
     scored = df[
@@ -528,82 +533,57 @@ def get_prediction_summary():
     current_season = scored["Season"].max() if len(scored) else None
     current_scored = scored[scored["Season"] == current_season] if current_season is not None else scored.iloc[0:0]
 
-    if fmt == "new":
-        by_season_logit = scored.groupby("Season", as_index=False).agg(
-            Games=("Match_id","count"),
-            Correct_LOGIT=("Correct_LOGIT","sum"),
-        )
-        by_season_logit["Accuracy_LOGIT"] = (
-            by_season_logit["Correct_LOGIT"] / by_season_logit["Games"] * 100
-        ).round(1)
+    by_season_logit = scored.groupby("Season", as_index=False).agg(
+        Games=("Match_id","count"),
+        Correct_LOGIT=("Correct_LOGIT","sum"),
+    )
+    by_season_logit["Accuracy_LOGIT"] = (
+        by_season_logit["Correct_LOGIT"] / by_season_logit["Games"] * 100
+    ).round(1)
 
-        by_season_ols = scored.groupby("Season", as_index=False).agg(
-            Games=("Match_id","count"),
-            Correct_OLS=("Correct_OLS","sum"),
-            MAE_OLS=("Abs_Error_OLS","mean"),
-        )
-        by_season_ols["Accuracy_OLS"] = (
-            by_season_ols["Correct_OLS"] / by_season_ols["Games"] * 100
-        ).round(1)
-        by_season_ols["MAE_OLS"] = by_season_ols["MAE_OLS"].round(2)
+    by_season_ols = scored.groupby("Season", as_index=False).agg(
+        Games=("Match_id","count"),
+        Correct_OLS=("Correct_OLS","sum"),
+        MAE_OLS=("Abs_Error_OLS","mean"),
+    )
+    by_season_ols["Accuracy_OLS"] = (
+        by_season_ols["Correct_OLS"] / by_season_ols["Games"] * 100
+    ).round(1)
+    by_season_ols["MAE_OLS"] = by_season_ols["MAE_OLS"].round(2)
 
-        # Merge
-        by_season = by_season_logit.merge(by_season_ols[["Season","Accuracy_OLS","MAE_OLS"]], on="Season")
-        by_season = by_season.sort_values("Season")
+    # Merge
+    by_season = by_season_logit.merge(by_season_ols[["Season","Accuracy_OLS","MAE_OLS"]], on="Season")
+    by_season = by_season.sort_values("Season")
 
-        n = len(scored)
-        n_current = len(current_scored)
+    n = len(scored)
+    n_current = len(current_scored)
 
-        ols_correct = int(current_scored["Correct_OLS"].sum())
-        logit_correct = int(current_scored["Correct_LOGIT"].sum())
+    ols_correct = int(current_scored["Correct_OLS"].sum())
+    logit_correct = int(current_scored["Correct_LOGIT"].sum())
 
-        overall = {
-            "games": n,
-            "accuracy_logit": round(scored["Correct_LOGIT"].sum() / n * 100, 1) if n else None,
-            "accuracy_ols":   round(scored["Correct_OLS"].sum()   / n * 100, 1) if n else None,
-            "mae_ols":        round(scored["Abs_Error_OLS"].mean(), 2) if n else None,
-            "fmt": "new",
-            "current_season": current_season,
-            "current_season_games": n_current,
-            "current_season_correct": max(ols_correct, logit_correct) if n_current else 0,
-            "current_season_correct_label": (
-                "OLS" if ols_correct >= logit_correct else "LOGIT"
-            ) if n_current else "",
-        }
-    else:
-        by_season = scored.groupby("Season", as_index=False).agg(
-            Games=("Match_id","count"),
-            Correct=("Correct","sum"),
-            MAE=("Abs_Error","mean"),
-        )
-        by_season["Accuracy_Pct"] = (by_season["Correct"] / by_season["Games"] * 100).round(1)
-        by_season["MAE"] = by_season["MAE"].round(2)
-        by_season = by_season.sort_values("Season")
-
-        n = len(scored)
-        n_current = len(current_scored)
-        overall = {
-            "games": n,
-            "correct": int(scored["Correct"].sum()),
-            "accuracy_pct": round(scored["Correct"].sum() / n * 100, 1) if n else None,
-            "mae": round(scored["Abs_Error"].mean(), 2) if n else None,
-            "fmt": "old",
-            "current_season": current_season,
-            "current_season_games": n_current,
-            "current_season_correct": int(current_scored["Correct"].sum()) if n_current else 0,
-        }
+    overall = {
+        "games": n,
+        "accuracy_logit": round(scored["Correct_LOGIT"].sum() / n * 100, 1) if n else None,
+        "accuracy_ols":   round(scored["Correct_OLS"].sum()   / n * 100, 1) if n else None,
+        "mae_ols":        round(scored["Abs_Error_OLS"].mean(), 2) if n else None,
+        "current_season": current_season,
+        "current_season_games": n_current,
+        "current_season_correct": max(ols_correct, logit_correct) if n_current else 0,
+        "current_season_correct_label": (
+            "OLS" if ols_correct >= logit_correct else "LOGIT"
+        ) if n_current else "",
+    }
 
     return by_season, overall
 
 @st.cache_data(show_spinner=False)
 def get_team_season_accuracy(season):
     df = get_predictions()
-    fmt = df["_fmt"].iloc[0] if len(df) else "old"
 
     scored = df[df["RoundStatus"] == "Past Round"].copy()
     scored = scored[scored["Season"] == season]
 
-    correct_col = "Correct_LOGIT" if fmt == "new" else "Correct"
+    correct_col = "Correct_LOGIT"
     scored["Binary"] = scored[correct_col].astype(int)
 
     out = (
@@ -628,7 +608,7 @@ def get_upcoming_fixture():
             ]
         )
     ].copy()
-    return upcoming.sort_values("Date")
+    return upcoming
 
 
 # ----------------------------------------------------------------------
@@ -730,6 +710,29 @@ def get_latest_elo():
     return df.loc[idx].sort_values("Elo", ascending=False).reset_index(drop=True)
 
 
+@st.cache_data(show_spinner=False)
+def get_elo_snapshot(season, round_number):
+    """Every team's Elo rating (and league rank) as of the most recent
+    completed round strictly before the given season/round — i.e. the
+    ratings each side actually walked into that game with."""
+    hist = get_elo_ratings().copy()
+    hist["Season"] = hist["Season"].astype(str)
+    season = str(season)
+
+    hist = hist[
+        (hist["Season"] < season)
+        | ((hist["Season"] == season) & (hist["RoundNumber"] < round_number))
+    ]
+
+    if hist.empty:
+        return pd.DataFrame(columns=["Team", "Elo", "Rank"])
+
+    hist = hist.sort_values(["Season", "RoundNumber"])
+    latest = hist.groupby("Team").tail(1)[["Team", "Elo"]].sort_values("Elo", ascending=False)
+    latest["Rank"] = latest["Elo"].rank(ascending=False, method="min").astype(int)
+    return latest.reset_index(drop=True)
+
+
 # ----------------------------------------------------------------------
 # GLOBAL META
 # ----------------------------------------------------------------------
@@ -739,16 +742,10 @@ def get_meta():
     teams = get_all_teams()
     latest_rankings, latest_season, latest_round = get_latest_rankings()
     _, pred_overall = get_prediction_summary()
-    fmt = pred_overall.get("fmt","old")
 
-    if fmt == "new":
-        acc = pred_overall.get("accuracy_logit")  # headline: LOGIT accuracy
-        mae = pred_overall.get("mae_ols")
-        games = pred_overall.get("games", 0)
-    else:
-        acc = pred_overall.get("accuracy_pct")
-        mae = pred_overall.get("mae")
-        games = pred_overall.get("games", 0)
+    acc = pred_overall.get("accuracy_logit")  # headline: LOGIT accuracy
+    mae = pred_overall.get("mae_ols")
+    games = pred_overall.get("games", 0)
 
     return {
         "teams_tracked":              len(teams),
@@ -758,7 +755,6 @@ def get_meta():
         "model_mae":                  mae,
         "model_games_scored":         games,
         "players_tracked":            len(latest_rankings),
-        "predictions_fmt":            fmt,
         "current_season_correct":     pred_overall.get("current_season_correct", 0),
         "current_season_correct_label":       pred_overall.get("current_season_correct_label", 0),
         "current_season_games":       pred_overall.get("current_season_games", 0),

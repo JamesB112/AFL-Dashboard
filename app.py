@@ -362,7 +362,9 @@ with st.sidebar:
     st.markdown("---")
     page = st.radio(
         "Navigate",
-        ["Home", "Team Performance", "Player Performance","Model Performance", "Methodology", "Q&A"],
+        ["Home", "Team Performance", "Player Performance","Model Performance", 
+        #  "Tip Breakdown", 
+         "Methodology", "Q&A"],
         label_visibility="collapsed",
     )
     st.markdown("---")
@@ -444,7 +446,6 @@ if page == "Home":
         opp_col = first_col(current_df, OPP_COL_CANDIDATES)
         date_col = first_col(current_df, DATE_COL_CANDIDATES)
         venue_col = first_col(current_df, VENUE_COL_CANDIDATES)
-        fmt = current_df["_fmt"].iloc[0]
 
         # -----------------
         # Filters
@@ -514,7 +515,7 @@ if page == "Home":
                 dayfirst=True,
                 errors="coerce",
             )
-            current_disp = current_disp.sort_values("_date_parsed")
+            # current_disp = current_disp.sort_values("_date_parsed")
 
         display_df = pd.DataFrame()
 
@@ -1200,7 +1201,7 @@ elif page == "Model Performance":
     elif o_filter == "OLS incorrect":
         pg = pg[~pg["Correct_OLS"]]
 
-    pg = pg.sort_values("Date", ascending=False)
+    # pg = pg.sort_values("Date", ascending=False)
 
     disp_cols = {
         "Date_str":"Date","Season":"Season","RoundNumber":"Rd","Team":"Home Team",
@@ -1237,11 +1238,238 @@ elif page == "Model Performance":
                  column_config=col_cfg)
 
 # ========================================================================
+# TIP BREAKDOWN
+# ========================================================================
+# elif page == "Tip Breakdown":
+#     st.markdown('<div class="bl-eyebrow">04 / Tip Breakdown</div>', unsafe_allow_html=True)
+#     st.title("Tip Breakdown")
+#     st.markdown(
+#         '<p class="bl-lede">Drill into any single tip — the model\'s reasoning, '
+#         "and what each side's form and Elo rating looked like walking in.</p>",
+#         unsafe_allow_html=True,
+#     )
+#     st.divider()
+
+#     tb_predictions = dl.get_predictions()
+
+#     sel1, sel2, sel3 = st.columns([1, 1, 2])
+
+#     with sel1:
+#         tb_seasons = sorted(tb_predictions["Season"].unique().tolist(), reverse=True)
+#         tb_season = st.selectbox("Season", tb_seasons, index=0, key="tb_season")
+
+#     tb_season_games = tb_predictions[tb_predictions["Season"] == tb_season]
+
+#     with sel2:
+#         tb_rounds = sorted(tb_season_games["RoundNumber"].dropna().unique().tolist())
+#         tb_round = st.selectbox(
+#             "Round", tb_rounds,
+#             index=(len(tb_rounds) - 1) if tb_rounds else 0,
+#             key="tb_round",
+#         )
+
+#     tb_round_games = tb_season_games[tb_season_games["RoundNumber"] == tb_round].copy()
+
+#     if tb_round_games.empty:
+#         st.info("No games found for this round.")
+#     else:
+#         tb_round_games["_label"] = tb_round_games["Team"] + " vs " + tb_round_games["Opposition_Team"]
+
+#         with sel3:
+#             tb_label = st.selectbox("Match", tb_round_games["_label"].tolist(), key="tb_match")
+
+#         game = tb_round_games[tb_round_games["_label"] == tb_label].iloc[0]
+#         home_team = game["Team"]
+#         away_team = game["Opposition_Team"]
+
+#         st.divider()
+
+#         # ---------------------------------------------------
+#         # HEADER
+#         # ---------------------------------------------------
+#         date_str = "—"
+#         if pd.notna(game.get("Date")):
+#             d = pd.to_datetime(game["Date"], dayfirst=True, errors="coerce")
+#             if pd.notna(d):
+#                 date_str = d.strftime("%A %d %B %Y")
+
+#         round_type = game.get("Round.Type", "Regular")
+
+#         hc1, hc2 = st.columns([2, 1])
+#         with hc1:
+#             st.subheader(f"{home_team} vs {away_team}")
+#             st.caption(
+#                 f"{date_str} · {game.get('Venue', '—')} · {tb_season} Round {int(tb_round)}"
+#                 + (f" · {round_type}" if round_type and round_type != "Regular" else "")
+#             )
+#         with hc2:
+#             odds_home = game.get("Team_Odds")
+#             odds_away = game.get("Opposition_Team_Odds")
+#             if pd.notna(odds_home) and pd.notna(odds_away):
+#                 st.caption(
+#                     f"Market odds — **{home_team}** ${odds_home:.2f} · "
+#                     f"**{away_team}** ${odds_away:.2f}"
+#                 )
+
+#         # ---------------------------------------------------
+#         # THE TIP
+#         # ---------------------------------------------------
+#         st.markdown("#### The tip")
+
+#         prob_home = game.get("Predicted_Prob_LOGIT")
+#         margin_ols = game.get("Predicted_Margin_OLS")
+
+#         if pd.notna(prob_home):
+#             logit_pick = home_team if prob_home >= 0.5 else away_team
+#             logit_conf = (prob_home if prob_home >= 0.5 else 1 - prob_home) * 100
+#         else:
+#             logit_pick, logit_conf = "—", None
+
+#         if pd.notna(margin_ols):
+#             ols_pick = home_team if margin_ols >= 0 else away_team
+#             ols_margin_abs = abs(margin_ols)
+#         else:
+#             ols_pick, ols_margin_abs = "—", None
+
+#         pc1, pc2 = st.columns(2)
+#         with pc1:
+#             st.metric(
+#                 "LOGIT pick", logit_pick,
+#                 delta=f"{logit_conf:.1f}% win probability" if logit_conf is not None else None,
+#                 delta_color="off",
+#             )
+#         with pc2:
+#             st.metric(
+#                 "OLS pick", ols_pick,
+#                 delta=f"by {ols_margin_abs:.1f} pts" if ols_margin_abs is not None else None,
+#                 delta_color="off",
+#             )
+
+#         is_past = game.get("RoundStatus") == "Past Round" and pd.notna(game.get("Margin"))
+#         if is_past:
+#             actual_margin = game["Margin"]
+#             if actual_margin > 0:
+#                 actual_winner = f"{home_team} by {abs(actual_margin):.0f}"
+#             elif actual_margin < 0:
+#                 actual_winner = f"{away_team} by {abs(actual_margin):.0f}"
+#             else:
+#                 actual_winner = "Draw"
+
+#             rc1, rc2, rc3 = st.columns(3)
+#             rc1.metric("Actual result", actual_winner)
+#             rc2.metric("LOGIT", "✅ Correct" if game.get("Correct_LOGIT") else "❌ Incorrect")
+#             rc3.metric("OLS", "✅ Correct" if game.get("Correct_OLS") else "❌ Incorrect")
+
+#         st.divider()
+
+#         # ---------------------------------------------------
+#         # FEATURE IMPORTANCE
+#         # ---------------------------------------------------
+#         st.markdown("#### What's driving the OLS prediction")
+
+#         imp_rows = []
+#         for col in dl.IMPORTANCE_COLS:
+#             if col in game.index and pd.notna(game[col]):
+#                 imp_rows.append({"Factor": dl.IMPORTANCE_LABELS[col], "Value": float(game[col])})
+
+#         if not imp_rows:
+#             st.info("No feature-importance breakdown available for this game.")
+#         else:
+#             imp_df = pd.DataFrame(imp_rows)
+#             imp_df["_abs"] = imp_df["Value"].abs()
+#             imp_df = imp_df.sort_values("_abs")
+
+#             fig_imp = go.Figure(go.Bar(
+#                 x=imp_df["Value"],
+#                 y=imp_df["Factor"],
+#                 orientation="h",
+#                 marker_color=[GREEN if v >= 0 else CLAY for v in imp_df["Value"]],
+#                 text=imp_df["Value"].map(lambda v: f"{v:+.1f}"),
+#                 textposition="outside",
+#                 hovertemplate="%{y}: %{x:+.1f}<extra></extra>",
+#             ))
+#             fig_imp.add_vline(x=0, line_color=HAIRLINE)
+
+#             layout_no_axes_imp = {k: v for k, v in PLOTLY_BASE.items() if k not in ("xaxis", "yaxis")}
+#             fig_imp.update_layout(
+#                 **layout_no_axes_imp,
+#                 height=max(280, 34 * len(imp_df)),
+#                 xaxis={**PLOTLY_BASE.get("xaxis", {}), "title": "Contribution to predicted margin (pts)"},
+#                 yaxis={**PLOTLY_BASE.get("yaxis", {})},
+#                 showlegend=False,
+#             )
+#             st.plotly_chart(fig_imp, use_container_width=True)
+#             st.caption(
+#                 f"Bars pointing right (green) pull the prediction toward **{home_team}**; "
+#                 f"bars pointing left (red) pull it toward **{away_team}**."
+#             )
+
+#         st.divider()
+
+#         # ---------------------------------------------------
+#         # FORM & ELO
+#         # ---------------------------------------------------
+#         st.markdown("#### Form & ranking heading in")
+
+#         elo_snap = dl.get_elo_snapshot(tb_season, tb_round)
+#         n_teams = len(elo_snap)
+
+#         def _elo_lookup(team):
+#             row = elo_snap[elo_snap["Team"] == team]
+#             if row.empty:
+#                 return None, None
+#             return float(row.iloc[0]["Elo"]), int(row.iloc[0]["Rank"])
+
+#         home_elo, home_rank = _elo_lookup(home_team)
+#         away_elo, away_rank = _elo_lookup(away_team)
+
+#         form_col1, form_col2 = st.columns(2)
+
+#         for f_col, f_team, f_elo, f_rank in [
+#             (form_col1, home_team, home_elo, home_rank),
+#             (form_col2, away_team, away_elo, away_rank),
+#         ]:
+#             with f_col:
+#                 st.markdown(f"**{f_team}**")
+#                 if f_elo is not None:
+#                     st.caption(f"Elo {f_elo:.0f} · Rank {f_rank} of {n_teams}")
+#                 else:
+#                     st.caption("Elo rating not available.")
+
+#                 form = dl.get_team_recent_form(f_team, tb_season, tb_round, n=5)
+#                 if form.empty:
+#                     st.caption("No prior games found.")
+#                 else:
+#                     wins = int((form["Result"] == "W").sum())
+#                     losses = int((form["Result"] == "L").sum())
+#                     draws = int((form["Result"] == "D").sum())
+#                     record = f"Last {len(form)}: {wins}W–{losses}L"
+#                     if draws:
+#                         record += f"–{draws}D"
+#                     st.caption(record)
+
+#                     chips = []
+#                     for _, r in form.iterrows():
+#                         res = r.get("Result", "—")
+#                         chip_color = GREEN if res == "W" else (CLAY if res == "L" else SLATE)
+#                         opp = r.get("Opposition_Team", "—")
+#                         margin_val = r.get("Margin")
+#                         margin_txt = f"{margin_val:+.0f}" if pd.notna(margin_val) else "—"
+#                         chips.append(
+#                             f'<span title="vs {opp} ({margin_txt})" '
+#                             f'style="display:inline-block;margin:0 6px 6px 0;padding:2px 9px;'
+#                             f'border-radius:4px;background:{chip_color};color:white;'
+#                             f'font-size:0.78rem;font-weight:600;'
+#                             f'font-family:\'{THEME["font_mono"]}\',monospace;">{res}</span>'
+#                         )
+#                     st.markdown("".join(chips), unsafe_allow_html=True)
+
+# ========================================================================
 # METHODOLOGY
 # ========================================================================
 
 elif page == "Methodology":
-    st.markdown('<div class="bl-eyebrow">04 / Methodology</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">05 / Methodology</div>', unsafe_allow_html=True)
     st.title("How this is actually built")
     st.markdown(
         '<p class="bl-lede">The end to end modelling pipeline operates across five core stages, moving from raw data acquisition through to feature construction, '
@@ -1302,7 +1530,7 @@ Both the linear and logistic models are trained and deployed using a rolling sea
 # ========================================================================
 
 elif page == "Q&A":
-    st.markdown('<div class="bl-eyebrow">05 / Q&amp;A</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">06 / Q&amp;A</div>', unsafe_allow_html=True)
     st.title("Notes on building this")
     st.markdown(
         '<p class="bl-lede">Write-ups on modelling decisions, data quirks, and insights. </p>',
