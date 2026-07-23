@@ -80,24 +80,36 @@ STAT_LABELS = {
 # }
 
 IMPORTANCE_COLS = [
-    "Importance_Player Ranking & Experience_OLS",
-    "Importance_Team Defense_OLS",
+    "Importance_Defensive Ability_OLS",
+    "Importance_Player Rankings_OLS",
+    "Importance_Player Experience_OLS",
     "Importance_Midfield Control_OLS",
-    "Importance_Offensive Output_OLS",
-    "Importance_Quarterly Consistency_OLS",
-    "Importance_Travelling Factor_OLS",
-    "Importance_Public Perceptions_OLS",
+    "Importance_Game Flow Dynamics_OLS",
+    "Importance_Offensive Execution_OLS",
+    "Importance_External Context_OLS",
 ]
+ 	 	 	 	 	 	 
+ 	 	 	 	 	 	 
 
-IMPORTANCE_LABELS = {
-    "Importance_Player Ranking & Experience_OLS": "Player Ranking & Experience",
-    "Importance_Team Defense_OLS": "Team Defense",
-    "Importance_Midfield Control_OLS": "Midfield Control",
-    "Importance_Offensive Output_OLS": "Offensive Output",
-    "Importance_Quarterly Consistency_OLS": "Quarterly Consistency",
-    "Importance_Travelling Factor_OLS": "Travelling Factor",
-    "Importance_Public Perceptions_OLS": "Public Perceptions"
-}
+# IMPORTANCE_COLS = [
+#     "Importance_Player Ranking & Experience_OLS",
+#     "Importance_Team Defense_OLS",
+#     "Importance_Midfield Control_OLS",
+#     "Importance_Offensive Output_OLS",
+#     "Importance_Quarterly Consistency_OLS",
+#     "Importance_Travelling Factor_OLS",
+#     "Importance_Public Perceptions_OLS",
+# ]
+
+# IMPORTANCE_LABELS = {
+#     "Importance_Player Ranking & Experience_OLS": "Player Ranking & Experience",
+#     "Importance_Team Defense_OLS": "Team Defense",
+#     "Importance_Midfield Control_OLS": "Midfield Control",
+#     "Importance_Offensive Output_OLS": "Offensive Output",
+#     "Importance_Quarterly Consistency_OLS": "Quarterly Consistency",
+#     "Importance_Travelling Factor_OLS": "Travelling Factor",
+#     "Importance_Public Perceptions_OLS": "Public Perceptions"
+# }
 
 # Load the latest load time
 DATA_VERSION_FILE = Path("data/data_version.txt")
