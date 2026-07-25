@@ -425,23 +425,34 @@ def get_player_game_log():
             df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
 
-
 @st.cache_data(show_spinner=False)
 def get_player_season_leaderboard(season):
     df = get_player_game_log()
-    season_df = df[df["Season"]==season].copy()
+    season_df = df[df["Season"] == season].copy()
     grp = season_df.groupby("Player", as_index=False).agg(
-        Games=("Match_id","count"),
-        Team=("Team","last"),
-        Position=("Position_Final","last"),
-        **{f"{c}_total": (c,"sum") for c in NUMERIC_STAT_COLS if c in season_df.columns},
+        Games=("Match_id", "count"),
+        Team=("Team", "last"),
+        Position=("Position_Final", "last"),
+        **{f"{c}_total": (c, "sum") for c in NUMERIC_STAT_COLS if c in season_df.columns},
     )
-    for c in NUMERIC_STAT_COLS:
-        if f"{c}_total" in grp.columns:
-            grp[f"{c}_avg"] = (grp[f"{c}_total"] / grp["Games"]).round(1)
-            grp[f"{c}_total"] = grp[f"{c}_total"].round(1)
-    return grp
 
+    for c in NUMERIC_STAT_COLS:
+        total_col = f"{c}_total"
+        if total_col not in grp.columns:
+            continue
+
+        avg_col = f"{c}_avg"
+        grp[avg_col] = (grp[total_col] / grp["Games"]).round(1)
+        grp[total_col] = grp[total_col].round(1)
+
+        for stat_col in (total_col, avg_col):
+            grp[f"{stat_col}_rank"] = (
+                grp[stat_col]
+                .rank(ascending=False, method="min", na_option="bottom")
+                .astype("Int64")
+            )
+
+    return grp
 
 @st.cache_data(show_spinner=False)
 def get_player_career_log(player_name):

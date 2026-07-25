@@ -884,17 +884,22 @@ elif page == "Player Performance":
         team_sel = st.selectbox("Club", team_opts)
     with fc3:
         search = st.text_input("Search player", placeholder="e.g. Bontempelli")
-
+    
     filt = latest.copy()
     if pos_sel  != "All positions": filt = filt[filt["Position"] == pos_sel]
     if team_sel != "All clubs":     filt = filt[filt["Team"] == team_sel]
     if search:                      filt = filt[filt["Player"].str.contains(search, case=False, na=False)]
 
+    row_height = 35
+    header_height = 38
+    max_height = 420
+    dyn_height = min(max_height, header_height + row_height * max(len(filt), 1))
+
     st.dataframe(
         filt[["Rank_Overall","Player","Team","Position","Rank_By_Position","Rank_By_Team","composite_score"]
         ].rename(columns={"Rank_Overall":"Rank","Rank_By_Position":"Rank (Pos)",
                            "Rank_By_Team":"Rank (Club)","composite_score":"Composite"}),
-        use_container_width=True, hide_index=True, height=420,
+        use_container_width=True, hide_index=True, height=dyn_height,
         column_config={"Composite": st.column_config.NumberColumn(format="%.3f")},
     )
 
@@ -995,40 +1000,62 @@ elif page == "Player Performance":
         if not career_log.empty:
             log_cols = ["Season","RoundNumber","Opposition","D","K","HB","M","G","T","SC"]
             log_cols = [c for c in log_cols if c in career_log.columns]
-            st.dataframe(
-                career_log[log_cols].rename(columns={"RoundNumber":"Rd","Opposition":"Opponent","SC":"SuperCoach"})
-                          .sort_values(["Season","Rd"], ascending=[False,False]),
-                use_container_width=True, hide_index=True, height=350,
-            )
+            # st.dataframe(
+            #     career_log[log_cols].rename(columns={"RoundNumber":"Rd","Opposition":"Opponent","SC":"SuperCoach"})
+            #               .sort_values(["Season","Rd"], ascending=[False,False]),
+            #     use_container_width=True, hide_index=True, height=350,
+            # )
 
     st.divider()
     st.subheader("Raw stat leaderboards")
     st.caption(f"Season {latest_season}")
 
     lb = dl.get_player_season_leaderboard(latest_season)
-    lc1, lc2, lc3 = st.columns(3)
+
+    lc1, lc2, lc3, lc4 = st.columns([2, 2, 2, 3])
     with lc1:
         stat_sel = st.selectbox("Sort by", list(dl.STAT_LABELS.keys()),
-                                format_func=lambda k: dl.STAT_LABELS[k],
-                                index=list(dl.STAT_LABELS.keys()).index("D"))
+                                 format_func=lambda k: dl.STAT_LABELS[k],
+                                 index=list(dl.STAT_LABELS.keys()).index("D"))
     with lc2:
-        mode_sel = st.radio("Mode", ["Per game average","Season total"], horizontal=True)
+        mode_sel = st.radio("Mode", ["Per game average", "Season total"], horizontal=True)
     with lc3:
-        lb_search = st.text_input("Search player ", placeholder="e.g. Daicos")
+        min_games = st.number_input("Min games", min_value=0, max_value=int(lb["Games"].max()),
+                                     value=min(5, int(lb["Games"].max())), step=1)
+    with lc4:
+        lb_search = st.text_input("Search player", placeholder="e.g. Daicos")
 
     suffix = "avg" if mode_sel == "Per game average" else "total"
     stat_col = f"{stat_sel}_{suffix}"
-    lb_filt = lb.copy()
+    rank_col = f"{stat_col}_rank"
+
+    lb_filt = lb[lb["Games"] >= min_games].copy()
     if lb_search:
         lb_filt = lb_filt[lb_filt["Player"].str.contains(lb_search, case=False, na=False)]
     lb_filt = lb_filt.sort_values(stat_col, ascending=False)
 
-    st.dataframe(
-        lb_filt[["Player","Team","Position","Games",stat_col]
-        ].rename(columns={stat_col: dl.STAT_LABELS[stat_sel]}),
-        use_container_width=True, hide_index=True, height=460,
+    st.caption(f"Showing {len(lb_filt)} of {len(lb)} players")
+
+    display_df = lb_filt[["Player", "Team", "Position", "Games", stat_col, rank_col]].rename(
+        columns={stat_col: dl.STAT_LABELS[stat_sel], rank_col: "Rank"}
     )
 
+    row_height = 35
+    header_height = 38
+    max_height = 460
+    dyn_height = min(max_height, header_height + row_height * max(len(lb_filt), 1))
+
+    st.dataframe(
+        display_df,
+        use_container_width=True,
+        hide_index=True,
+        height=dyn_height,
+        column_order=["Rank", "Player", "Team", "Position", "Games", dl.STAT_LABELS[stat_sel]],
+        column_config={
+            "Rank": st.column_config.NumberColumn(format="%d"),
+            dl.STAT_LABELS[stat_sel]: st.column_config.NumberColumn(format="%.1f"),
+        },
+    )
 # ========================================================================
 # MODEL Performance
 # ========================================================================
@@ -1152,16 +1179,18 @@ elif page == "Model Performance":
 
     with fc1:
         all_seasons = ["All seasons"] + sorted(scored_games["Season"].unique().tolist(), reverse=True)
-        s_filter = st.selectbox("Season", all_seasons, key="pred_season")
+        s_filter = st.selectbox("Season", all_seasons, key="pred_season",
+                                 on_change=lambda: st.session_state.pop("pred_round", None))
+
+    # Rounds depend on the selected season, so filter first
+    rounds_source = scored_games if s_filter == "All seasons" else scored_games[scored_games["Season"] == s_filter]
 
     with fc2:
         teams = sorted(
             set(scored_games["Team"].dropna())
             | set(scored_games["Opposition_Team"].dropna())
         )
-
         all_teams = ["All teams"] + teams
-
         t_filter = st.selectbox(
             "Team",
             all_teams,
@@ -1170,7 +1199,7 @@ elif page == "Model Performance":
         )
 
     with fc3:
-        all_rounds = ["All rounds"] + sorted(scored_games["RoundNumber"].dropna().unique().tolist())
+        all_rounds = ["All rounds"] + sorted(rounds_source["RoundNumber"].dropna().unique().tolist())
         r_filter = st.selectbox("Round", all_rounds, key="pred_round")
 
     with fc4:
@@ -1234,7 +1263,13 @@ elif page == "Model Performance":
             format="%.3f", help="Model's estimated probability that the home team wins."
         )
 
-    st.dataframe(pg_disp, use_container_width=True, hide_index=True, height=460,
+
+    row_height = 35
+    header_height = 38
+    max_height = 420
+    dyn_height = min(max_height, header_height + row_height * max(len(pg_disp), 1))
+
+    st.dataframe(pg_disp, use_container_width=True, hide_index=True, height=dyn_height,
                  column_config=col_cfg)
 
 # ========================================================================
