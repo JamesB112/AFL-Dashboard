@@ -3,6 +3,9 @@
 A personal web app to present my persobnal AFL analytics, covering AFL team performance, player rankings, and a
 margin-prediction model. Includes data from 2012 onwards.
 
+Link to current website: https://tippo-afl-analytics.streamlit.app/
+
+
 ## Structure
 
 ```
