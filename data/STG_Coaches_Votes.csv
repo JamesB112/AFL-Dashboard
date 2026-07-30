@@ -19442,3 +19442,58 @@ Season,RoundNumber,HomeTeam,AwayTeam,CoachesVotes,Player,Team,Player_Cleaned_Nam
 2026,19,Essendon,GWS,2.0,Connor Idun,GWS,C_Idun,2026-07-19,11559
 2026,19,Essendon,GWS,1.0,Dyson Sharp,Essendon,D_Sharp,2026-07-19,11559
 2026,19,Essendon,GWS,1.0,Archie Roberts,Essendon,A_Roberts,2026-07-19,11559
+2026,20,Adelaide,Collingwood,10.0,Nick Daicos,Collingwood,N_Daicos,2026-07-23,11574
+2026,20,Adelaide,Collingwood,7.0,Daniel McStay,Collingwood,D_Mcstay,2026-07-23,11574
+2026,20,Adelaide,Collingwood,7.0,Darcy Cameron,Collingwood,D_Cameron,2026-07-23,11574
+2026,20,Adelaide,Collingwood,2.0,Sam Berry,Adelaide,S_Berry,2026-07-23,11574
+2026,20,Adelaide,Collingwood,2.0,Steele Sidebottom,Collingwood,S_Sidebottom,2026-07-23,11574
+2026,20,Adelaide,Collingwood,2.0,Isaac Quaynor,Collingwood,I_Quaynor,2026-07-23,11574
+2026,20,Melbourne,Geelong,9.0,Connor O'Sullivan,Geelong,C_O'sullivan,2026-07-24,11572
+2026,20,Melbourne,Geelong,6.0,Harrison Petty,Melbourne,H_Petty,2026-07-24,11572
+2026,20,Melbourne,Geelong,6.0,Shannon Neale,Geelong,S_Neale,2026-07-24,11572
+2026,20,Melbourne,Geelong,3.0,Shaun Mannagh,Geelong,S_Mannagh,2026-07-24,11572
+2026,20,Melbourne,Geelong,3.0,Oisin Mullin,Geelong,O_Mullin,2026-07-24,11572
+2026,20,Melbourne,Geelong,2.0,Tom Stewart,Geelong,T_Stewart,2026-07-24,11572
+2026,20,Melbourne,Geelong,1.0,Jack Steele,Melbourne,J_Steele,2026-07-24,11572
+2026,20,Fremantle,West Coast,9.0,Jye Amiss,Fremantle,J_Amiss,2026-07-24,11575
+2026,20,Fremantle,West Coast,7.0,Murphy Reid,Fremantle,M_Reid,2026-07-24,11575
+2026,20,Fremantle,West Coast,6.0,Matthew Johnson,Fremantle,M_Johnson,2026-07-24,11575
+2026,20,Fremantle,West Coast,6.0,Caleb Serong,Fremantle,C_Serong,2026-07-24,11575
+2026,20,Fremantle,West Coast,2.0,Shai Bolton,Fremantle,S_Bolton,2026-07-24,11575
+2026,20,Carlton,Gold Coast,9.0,Patrick Cripps,Carlton,P_Cripps,2026-07-25,11568
+2026,20,Carlton,Gold Coast,8.0,Taylor Byrne,Carlton,T_Byrne,2026-07-25,11568
+2026,20,Carlton,Gold Coast,5.0,Jagga Smith,Carlton,J_Smith,2026-07-25,11568
+2026,20,Carlton,Gold Coast,4.0,Noah Anderson,Gold Coast,N_Anderson,2026-07-25,11568
+2026,20,Carlton,Gold Coast,2.0,Mac Andrew,Gold Coast,M_Andrew,2026-07-25,11568
+2026,20,Carlton,Gold Coast,2.0,George Hewett,Carlton,G_Hewett,2026-07-25,11568
+2026,20,Hawthorn,Essendon,10.0,Jarman Impey,Hawthorn,J_Impey,2026-07-25,11570
+2026,20,Hawthorn,Essendon,8.0,Jack Gunston,Hawthorn,J_Gunston,2026-07-25,11570
+2026,20,Hawthorn,Essendon,5.0,Josh Ward,Hawthorn,J_Ward,2026-07-25,11570
+2026,20,Hawthorn,Essendon,5.0,Harry Morrison,Hawthorn,H_Morrison,2026-07-25,11570
+2026,20,Hawthorn,Essendon,1.0,Dylan Moore,Hawthorn,D_Moore,2026-07-25,11570
+2026,20,Hawthorn,Essendon,1.0,James Sicily,Hawthorn,J_Sicily,2026-07-25,11570
+2026,20,GWS,Sydney,10.0,Errol Gulden,Sydney,E_Gulden,2026-07-25,11569
+2026,20,GWS,Sydney,7.0,Brodie Grundy,Sydney,B_Grundy,2026-07-25,11569
+2026,20,GWS,Sydney,6.0,Chad Warner,Sydney,C_Warner,2026-07-25,11569
+2026,20,GWS,Sydney,5.0,James Rowbottom,Sydney,J_Rowbottom,2026-07-25,11569
+2026,20,GWS,Sydney,2.0,Charlie Curnow,Sydney,C_Curnow,2026-07-25,11569
+2026,20,Western Bulldogs,Richmond,10.0,Ed Richards,Western Bulldogs,E_Richards,2026-07-25,11573
+2026,20,Western Bulldogs,Richmond,8.0,Marcus Bontempelli,Western Bulldogs,M_Bontempelli,2026-07-25,11573
+2026,20,Western Bulldogs,Richmond,4.0,Lachie Bramble,Western Bulldogs,L_Bramble,2026-07-25,11573
+2026,20,Western Bulldogs,Richmond,3.0,Bailey Williams,Western Bulldogs,B_Williams,2026-07-25,11573
+2026,20,Western Bulldogs,Richmond,3.0,Michael Sellwood,Western Bulldogs,M_Sellwood,2026-07-25,11573
+2026,20,Western Bulldogs,Richmond,1.0,Nick Vlastuin,Richmond,N_Vlastuin,2026-07-25,11573
+2026,20,Western Bulldogs,Richmond,1.0,Tim English,Western Bulldogs,T_English,2026-07-25,11573
+2026,20,Brisbane,Port Adelaide,10.0,Will Ashcroft,Brisbane,W_Ashcroft,2026-07-26,11567
+2026,20,Brisbane,Port Adelaide,8.0,Zac Bailey,Brisbane,Z_Bailey,2026-07-26,11567
+2026,20,Brisbane,Port Adelaide,5.0,Jason Horne-Francis,Port Adelaide,J_H-Francis,2026-07-26,11567
+2026,20,Brisbane,Port Adelaide,4.0,Hugh McCluggage,Brisbane,H_Mccluggage,2026-07-26,11567
+2026,20,Brisbane,Port Adelaide,2.0,Jaspa Fletcher,Brisbane,J_Fletcher,2026-07-26,11567
+2026,20,Brisbane,Port Adelaide,1.0,Dayne Zorko,Brisbane,D_Zorko,2026-07-26,11567
+2026,20,North Melbourne,St Kilda,10.0,Nasiah Wanganeen-Milera,St Kilda,N_W-Milera,2026-07-26,11571
+2026,20,North Melbourne,St Kilda,5.0,Jy Simpkin,North Melbourne,J_Simpkin,2026-07-26,11571
+2026,20,North Melbourne,St Kilda,4.0,Bradley Hill,St Kilda,B_Hill,2026-07-26,11571
+2026,20,North Melbourne,St Kilda,4.0,Tom De Koning,St Kilda,T_D_Koning,2026-07-26,11571
+2026,20,North Melbourne,St Kilda,3.0,Darcy Wilson,St Kilda,D_Wilson,2026-07-26,11571
+2026,20,North Melbourne,St Kilda,2.0,Max Hall,St Kilda,M_Hall,2026-07-26,11571
+2026,20,North Melbourne,St Kilda,2.0,Harry Sheezel,North Melbourne,H_Sheezel,2026-07-26,11571
