@@ -952,7 +952,7 @@ elif page == "Player Performance":
                 fig.update_layout(**layout_no_yaxis,
                                 title=dict(
                                     text=f"Rank trend, {trend_season} — {player_sel}",
-                                    y=0.98,          # move title higher (0-1)
+                                    y=0.99,          # move title higher (0-1)
                                     x=0.5,           # center title
                                     xanchor="center",
                                     yanchor="top",
