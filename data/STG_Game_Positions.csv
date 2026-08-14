@@ -141531,14 +141531,14 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Nicholas Madden,Ruck,CD_I1023743,N_Madden,2026,23
 2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Toby Greene,Midfielder,CD_I295344,T_Greene,2026,23
 2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Harry Rowston,Midfielder,CD_I1021122,H_Rowston,2026,23
-2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Josaia Delana,Interchange,CD_I1029030,J_Delana,2026,23
-2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Jake Riccardi,Interchange,CD_I1008123,J_Riccardi,2026,23
-2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Cody Angove,Interchange,CD_I1032619,C_Angove,2026,23
 2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Riley Hamilton,Interchange,CD_I1029046,R_Hamilton,2026,23
-2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Toby McMullin,Interchange,CD_I1027971,T_Mcmullin,2026,23
-2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Jack Ough,Interchange,CD_I1028539,J_Ough,2026,23
-2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Conor Stone,Interchange,CD_I1015862,C_Stone,2026,23
 2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Kieren Briggs,Interchange,CD_I1008436,K_Briggs,2026,23
+2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Cody Angove,Interchange,CD_I1032619,C_Angove,2026,23
+2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Josaia Delana,Interchange,CD_I1029030,J_Delana,2026,23
+2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Toby McMullin,Interchange,CD_I1027971,T_Mcmullin,2026,23
+2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Jack Ough,NA,CD_I1028539,J_Ough,2026,23
+2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Conor Stone,NA,CD_I1015862,C_Stone,2026,23
+2026-08-16,ENGIE Stadium,GWS,CD_T1010,Home,Jake Riccardi,NA,CD_I1008123,J_Riccardi,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Brandon Starcevich,Defender,CD_I1002401,B_Starcevich,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Rhett Bazzo,Defender,CD_I1017718,R_Bazzo,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Brady Hough,Defender,CD_I1023167,B_Hough,2026,23
@@ -141559,12 +141559,12 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Tim Kelly,Midfielder,CD_I295898,T_Kelly,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Josh Lindsay,Interchange,CD_I1033078,J_Lindsay,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Tom McCarthy,Interchange,CD_I1036124,T_Mccarthy,2026,23
-2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Matt Flynn,Interchange,CD_I993902,M_Flynn,2026,23
-2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Bo Allan,Interchange,CD_I1028449,B_Allan,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Tom Cole,Interchange,CD_I993820,T_Cole,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Jack Williams,Interchange,CD_I1020371,J_Williams,2026,23
 2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Hamish Davis,Interchange,CD_I1032624,H_Davis,2026,23
-2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Harry Schoenberg,Interchange,CD_I1008543,H_Schoenberg,2026,23
+2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Matt Flynn,NA,CD_I993902,M_Flynn,2026,23
+2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Bo Allan,NA,CD_I1028449,B_Allan,2026,23
+2026-08-16,ENGIE Stadium,West Coast,CD_T150,Away,Harry Schoenberg,NA,CD_I1008543,H_Schoenberg,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Michael Sellwood,Defender,CD_I1020621,M_Sellwood,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Buku Khamis,Defender,CD_I998782,B_Khamis,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Lachlan Carmichael,Defender,CD_I1033626,L_Carmichael,2026,23
@@ -141583,14 +141583,14 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Rory Lobb,Ruck,CD_I990740,R_Lobb,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Ryley Sanders,Midfielder,CD_I1017939,R_Sanders,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Ed Richards,Midfielder,CD_I1008280,E_Richards,2026,23
-2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Oskar Baker,Interchange,CD_I1008855,O_Baker,2026,23
-2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Jedd Busslinger,Interchange,CD_I1023017,J_Busslinger,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Lachie Jaques,Interchange,CD_I1028493,L_Jaques,2026,23
-2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Luke Kennedy,Interchange,CD_I1032112,L_Kennedy,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Matthew Kennedy,Interchange,CD_I1001398,M_Kennedy,2026,23
-2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Tom Liberatore,Interchange,CD_I290799,T_Liberatore,2026,23
-2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Lachlan McNeil,Interchange,CD_I1009015,L_Mcneil,2026,23
 2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Rhylee West,Interchange,CD_I1006127,R_West,2026,23
+2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Luke Kennedy,Interchange,CD_I1032112,L_Kennedy,2026,23
+2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Tom Liberatore,Interchange,CD_I290799,T_Liberatore,2026,23
+2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Jedd Busslinger,NA,CD_I1023017,J_Busslinger,2026,23
+2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Oskar Baker,NA,CD_I1008855,O_Baker,2026,23
+2026-08-16,Marvel Stadium,Western Bulldogs,CD_T140,Home,Lachlan McNeil,NA,CD_I1009015,L_Mcneil,2026,23
 2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Lachlan Cowan,Defender,CD_I1021353,L_Cowan,2026,23
 2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Jacob Weitering,Defender,CD_I993832,J_Weitering,2026,23
 2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Billy Wilson,Defender,CD_I1027678,B_Wilson,2026,23
@@ -141611,12 +141611,12 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Sam Walsh,Midfielder,CD_I1006094,S_Walsh,2026,23
 2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Nick Haynes,Interchange,CD_I295265,N_Haynes,2026,23
 2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Jagga Smith,Interchange,CD_I1028515,J_Smith,2026,23
-2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Lewis Young,Interchange,CD_I997316,L_Young,2026,23
-2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Jack Ison,Interchange,CD_I1033066,J_Ison,2026,23
-2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Will Hayward,Interchange,CD_I997100,W_Hayward,2026,23
-2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Jordan Boyd,Interchange,CD_I1002795,J_Boyd,2026,23
-2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Wade Derksen,Interchange,CD_I1016140,W_Derksen,2026,23
 2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Blake Acres,Interchange,CD_I296294,B_Acres,2026,23
+2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Wade Derksen,Interchange,CD_I1016140,W_Derksen,2026,23
+2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Will Hayward,Interchange,CD_I997100,W_Hayward,2026,23
+2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Jordan Boyd,NA,CD_I1002795,J_Boyd,2026,23
+2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Lewis Young,NA,CD_I997316,L_Young,2026,23
+2026-08-16,Marvel Stadium,Carlton,CD_T30,Away,Jack Ison,NA,CD_I1033066,J_Ison,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Andrew McGrath,Defender,CD_I998102,A_Mcgrath,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Zach Reid,Defender,CD_I1012817,Z_Reid,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Mason Redman,Defender,CD_I997078,M_Redman,2026,23
@@ -141636,13 +141636,13 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-16,MCG,Essendon,CD_T50,Home,Zach Merrett,Midfielder,CD_I992016,Z_Merrett,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Dyson Sharp,Midfielder,CD_I1027168,D_Sharp,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Jacob Farrow,Interchange,CD_I1034305,J_Farrow,2026,23
-2026-08-16,MCG,Essendon,CD_T50,Home,Elijah Tsatas,Interchange,CD_I1023785,E_Tsatas,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Archie Perkins,Interchange,CD_I1015873,A_Perkins,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Harrison Jones,Interchange,CD_I1011755,H_Jones,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Nick Bryan,Interchange,CD_I1011954,N_Bryan,2026,23
-2026-08-16,MCG,Essendon,CD_T50,Home,Hussien El Achkar,Interchange,CD_I1030308,H_E_Achkar,2026,23
 2026-08-16,MCG,Essendon,CD_T50,Home,Rhys Unwin,Interchange,CD_I1032023,R_Unwin,2026,23
-2026-08-16,MCG,Essendon,CD_T50,Home,Lachlan Blakiston,Interchange,CD_I1028196,L_Blakiston,2026,23
+2026-08-16,MCG,Essendon,CD_T50,Home,Elijah Tsatas,NA,CD_I1023785,E_Tsatas,2026,23
+2026-08-16,MCG,Essendon,CD_T50,Home,Hussien El Achkar,NA,CD_I1030308,H_E_Achkar,2026,23
+2026-08-16,MCG,Essendon,CD_T50,Home,Lachlan Blakiston,NA,CD_I1028196,L_Blakiston,2026,23
 2026-08-16,MCG,Sydney,CD_T160,Away,Callum Mills,Defender,CD_I993905,C_Mills,2026,23
 2026-08-16,MCG,Sydney,CD_T160,Away,Tom McCartin,Defender,CD_I1008198,T_Mccartin,2026,23
 2026-08-16,MCG,Sydney,CD_T160,Away,Dane Rampe,Defender,CD_I290307,D_Rampe,2026,23
@@ -141664,11 +141664,11 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-16,MCG,Sydney,CD_T160,Away,Harry Kyle,Interchange,CD_I1037405,H_Kyle,2026,23
 2026-08-16,MCG,Sydney,CD_T160,Away,Sam Wicks,Interchange,CD_I1006232,S_Wicks,2026,23
 2026-08-16,MCG,Sydney,CD_T160,Away,Billy Cootee,Interchange,CD_I1007053,B_Cootee,2026,23
-2026-08-16,MCG,Sydney,CD_T160,Away,Hayden McLean,Interchange,CD_I1003203,H_Mclean,2026,23
-2026-08-16,MCG,Sydney,CD_T160,Away,Jesse Dattoli,Interchange,CD_I1029589,J_Dattoli,2026,23
 2026-08-16,MCG,Sydney,CD_T160,Away,William Green,Interchange,CD_I1027901,W_Green,2026,23
-2026-08-16,MCG,Sydney,CD_T160,Away,Caiden Cleary,Interchange,CD_I1024057,C_Cleary,2026,23
-2026-08-16,MCG,Sydney,CD_T160,Away,Angus Sheldrick,Interchange,CD_I1020339,A_Sheldrick,2026,23
+2026-08-16,MCG,Sydney,CD_T160,Away,Jesse Dattoli,Interchange,CD_I1029589,J_Dattoli,2026,23
+2026-08-16,MCG,Sydney,CD_T160,Away,Hayden McLean,NA,CD_I1003203,H_Mclean,2026,23
+2026-08-16,MCG,Sydney,CD_T160,Away,Caiden Cleary,NA,CD_I1024057,C_Cleary,2026,23
+2026-08-16,MCG,Sydney,CD_T160,Away,Angus Sheldrick,NA,CD_I1020339,A_Sheldrick,2026,23
 2026-08-20,Marvel Stadium,St Kilda,CD_T130,Home,Jack Silvagni,Defender,CD_I1001028,J_Silvagni,2026,24
 2026-08-20,Marvel Stadium,St Kilda,CD_T130,Home,Callum Wilkie,Defender,CD_I296422,C_Wilkie,2026,24
 2026-08-20,Marvel Stadium,St Kilda,CD_T130,Home,Liam O'Connell,Defender,CD_I1035198,L_O'connell,2026,24
@@ -141741,12 +141741,12 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Sam Walsh,Midfielder,CD_I1006094,S_Walsh,2026,24
 2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Nick Haynes,Interchange,CD_I295265,N_Haynes,2026,24
 2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Jagga Smith,Interchange,CD_I1028515,J_Smith,2026,24
-2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Lewis Young,Interchange,CD_I997316,L_Young,2026,24
-2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Jack Ison,Interchange,CD_I1033066,J_Ison,2026,24
-2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Will Hayward,Interchange,CD_I997100,W_Hayward,2026,24
-2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Jordan Boyd,Interchange,CD_I1002795,J_Boyd,2026,24
-2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Wade Derksen,Interchange,CD_I1016140,W_Derksen,2026,24
 2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Blake Acres,Interchange,CD_I296294,B_Acres,2026,24
+2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Wade Derksen,Interchange,CD_I1016140,W_Derksen,2026,24
+2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Will Hayward,Interchange,CD_I997100,W_Hayward,2026,24
+2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Jordan Boyd,NA,CD_I1002795,J_Boyd,2026,24
+2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Lewis Young,NA,CD_I997316,L_Young,2026,24
+2026-08-22,Marvel Stadium,Carlton,CD_T30,Home,Jack Ison,NA,CD_I1033066,J_Ison,2026,24
 2026-08-22,MCG,Melbourne,CD_T90,Home,Jake Bowey,Defender,CD_I1012825,J_Bowey,2026,24
 2026-08-22,MCG,Melbourne,CD_T90,Home,Jake Lever,Defender,CD_I298281,J_Lever,2026,24
 2026-08-22,MCG,Melbourne,CD_T90,Home,Daniel Turner,Defender,CD_I1020959,D_Turner,2026,24
@@ -141844,13 +141844,13 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Zach Merrett,Midfielder,CD_I992016,Z_Merrett,2026,24
 2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Dyson Sharp,Midfielder,CD_I1027168,D_Sharp,2026,24
 2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Jacob Farrow,Interchange,CD_I1034305,J_Farrow,2026,24
-2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Elijah Tsatas,Interchange,CD_I1023785,E_Tsatas,2026,24
 2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Archie Perkins,Interchange,CD_I1015873,A_Perkins,2026,24
 2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Harrison Jones,Interchange,CD_I1011755,H_Jones,2026,24
 2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Nick Bryan,Interchange,CD_I1011954,N_Bryan,2026,24
-2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Hussien El Achkar,Interchange,CD_I1030308,H_E_Achkar,2026,24
 2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Rhys Unwin,Interchange,CD_I1032023,R_Unwin,2026,24
-2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Lachlan Blakiston,Interchange,CD_I1028196,L_Blakiston,2026,24
+2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Elijah Tsatas,NA,CD_I1023785,E_Tsatas,2026,24
+2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Hussien El Achkar,NA,CD_I1030308,H_E_Achkar,2026,24
+2026-08-23,Marvel Stadium,Essendon,CD_T50,Home,Lachlan Blakiston,NA,CD_I1028196,L_Blakiston,2026,24
 2026-08-23,SCG,Sydney,CD_T160,Home,Callum Mills,Defender,CD_I993905,C_Mills,2026,24
 2026-08-23,SCG,Sydney,CD_T160,Home,Tom McCartin,Defender,CD_I1008198,T_Mccartin,2026,24
 2026-08-23,SCG,Sydney,CD_T160,Home,Dane Rampe,Defender,CD_I290307,D_Rampe,2026,24
@@ -141872,11 +141872,11 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-23,SCG,Sydney,CD_T160,Home,Harry Kyle,Interchange,CD_I1037405,H_Kyle,2026,24
 2026-08-23,SCG,Sydney,CD_T160,Home,Sam Wicks,Interchange,CD_I1006232,S_Wicks,2026,24
 2026-08-23,SCG,Sydney,CD_T160,Home,Billy Cootee,Interchange,CD_I1007053,B_Cootee,2026,24
-2026-08-23,SCG,Sydney,CD_T160,Home,Hayden McLean,Interchange,CD_I1003203,H_Mclean,2026,24
-2026-08-23,SCG,Sydney,CD_T160,Home,Jesse Dattoli,Interchange,CD_I1029589,J_Dattoli,2026,24
 2026-08-23,SCG,Sydney,CD_T160,Home,William Green,Interchange,CD_I1027901,W_Green,2026,24
-2026-08-23,SCG,Sydney,CD_T160,Home,Caiden Cleary,Interchange,CD_I1024057,C_Cleary,2026,24
-2026-08-23,SCG,Sydney,CD_T160,Home,Angus Sheldrick,Interchange,CD_I1020339,A_Sheldrick,2026,24
+2026-08-23,SCG,Sydney,CD_T160,Home,Jesse Dattoli,Interchange,CD_I1029589,J_Dattoli,2026,24
+2026-08-23,SCG,Sydney,CD_T160,Home,Hayden McLean,NA,CD_I1003203,H_Mclean,2026,24
+2026-08-23,SCG,Sydney,CD_T160,Home,Caiden Cleary,NA,CD_I1024057,C_Cleary,2026,24
+2026-08-23,SCG,Sydney,CD_T160,Home,Angus Sheldrick,NA,CD_I1020339,A_Sheldrick,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Brandon Starcevich,Defender,CD_I1002401,B_Starcevich,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Rhett Bazzo,Defender,CD_I1017718,R_Bazzo,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Brady Hough,Defender,CD_I1023167,B_Hough,2026,24
@@ -141897,12 +141897,12 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Tim Kelly,Midfielder,CD_I295898,T_Kelly,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Josh Lindsay,Interchange,CD_I1033078,J_Lindsay,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Tom McCarthy,Interchange,CD_I1036124,T_Mccarthy,2026,24
-2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Matt Flynn,Interchange,CD_I993902,M_Flynn,2026,24
-2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Bo Allan,Interchange,CD_I1028449,B_Allan,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Tom Cole,Interchange,CD_I993820,T_Cole,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Jack Williams,Interchange,CD_I1020371,J_Williams,2026,24
 2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Hamish Davis,Interchange,CD_I1032624,H_Davis,2026,24
-2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Harry Schoenberg,Interchange,CD_I1008543,H_Schoenberg,2026,24
+2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Matt Flynn,NA,CD_I993902,M_Flynn,2026,24
+2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Bo Allan,NA,CD_I1028449,B_Allan,2026,24
+2026-08-23,Optus Stadium,West Coast,CD_T150,Home,Harry Schoenberg,NA,CD_I1008543,H_Schoenberg,2026,24
 2026-08-20,Marvel Stadium,Gold Coast,CD_T1000,Away,Mac Andrew,Defender,CD_I1017396,M_Andrew,2026,24
 2026-08-20,Marvel Stadium,Gold Coast,CD_T1000,Away,Sam Collins,Defender,CD_I295446,S_Collins,2026,24
 2026-08-20,Marvel Stadium,Gold Coast,CD_T1000,Away,Bodhi Uwland,Defender,CD_I1017665,B_Uwland,2026,24
@@ -141999,14 +141999,14 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Rory Lobb,Ruck,CD_I990740,R_Lobb,2026,24
 2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Ryley Sanders,Midfielder,CD_I1017939,R_Sanders,2026,24
 2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Ed Richards,Midfielder,CD_I1008280,E_Richards,2026,24
-2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Oskar Baker,Interchange,CD_I1008855,O_Baker,2026,24
-2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Jedd Busslinger,Interchange,CD_I1023017,J_Busslinger,2026,24
 2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Lachie Jaques,Interchange,CD_I1028493,L_Jaques,2026,24
-2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Luke Kennedy,Interchange,CD_I1032112,L_Kennedy,2026,24
 2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Matthew Kennedy,Interchange,CD_I1001398,M_Kennedy,2026,24
-2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Tom Liberatore,Interchange,CD_I290799,T_Liberatore,2026,24
-2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Lachlan McNeil,Interchange,CD_I1009015,L_Mcneil,2026,24
 2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Rhylee West,Interchange,CD_I1006127,R_West,2026,24
+2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Luke Kennedy,Interchange,CD_I1032112,L_Kennedy,2026,24
+2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Tom Liberatore,Interchange,CD_I290799,T_Liberatore,2026,24
+2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Jedd Busslinger,NA,CD_I1023017,J_Busslinger,2026,24
+2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Oskar Baker,NA,CD_I1008855,O_Baker,2026,24
+2026-08-22,MCG,Western Bulldogs,CD_T140,Away,Lachlan McNeil,NA,CD_I1009015,L_Mcneil,2026,24
 2026-08-22,GMHBA Stadium,Richmond,CD_T120,Away,Nathan Broad,Defender,CD_I295203,N_Broad,2026,24
 2026-08-22,GMHBA Stadium,Richmond,CD_T120,Away,Ben Miller,Defender,CD_I1002403,B_Miller,2026,24
 2026-08-22,GMHBA Stadium,Richmond,CD_T120,Away,Kye Annand,Defender,CD_I1033488,K_Annand,2026,24
@@ -142051,14 +142051,14 @@ Date,Venue,Team,teamId,Status,Player,Position,Lineup_Player_ID,Player_Cleaned_Na
 2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Nicholas Madden,Ruck,CD_I1023743,N_Madden,2026,24
 2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Toby Greene,Midfielder,CD_I295344,T_Greene,2026,24
 2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Harry Rowston,Midfielder,CD_I1021122,H_Rowston,2026,24
-2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Josaia Delana,Interchange,CD_I1029030,J_Delana,2026,24
-2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Jake Riccardi,Interchange,CD_I1008123,J_Riccardi,2026,24
-2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Cody Angove,Interchange,CD_I1032619,C_Angove,2026,24
 2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Riley Hamilton,Interchange,CD_I1029046,R_Hamilton,2026,24
-2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Toby McMullin,Interchange,CD_I1027971,T_Mcmullin,2026,24
-2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Jack Ough,Interchange,CD_I1028539,J_Ough,2026,24
-2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Conor Stone,Interchange,CD_I1015862,C_Stone,2026,24
 2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Kieren Briggs,Interchange,CD_I1008436,K_Briggs,2026,24
+2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Cody Angove,Interchange,CD_I1032619,C_Angove,2026,24
+2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Josaia Delana,Interchange,CD_I1029030,J_Delana,2026,24
+2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Toby McMullin,Interchange,CD_I1027971,T_Mcmullin,2026,24
+2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Jack Ough,NA,CD_I1028539,J_Ough,2026,24
+2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Conor Stone,NA,CD_I1015862,C_Stone,2026,24
+2026-08-22,Adelaide Oval,GWS,CD_T1010,Away,Jake Riccardi,NA,CD_I1008123,J_Riccardi,2026,24
 2026-08-23,Marvel Stadium,Port Adelaide,CD_T110,Away,Josh Lai,Defender,CD_I1040300,J_Lai,2026,24
 2026-08-23,Marvel Stadium,Port Adelaide,CD_T110,Away,Harrison Ramm,Defender,CD_I1027311,H_Ramm,2026,24
 2026-08-23,Marvel Stadium,Port Adelaide,CD_T110,Away,Miles Bergman,Defender,CD_I1009191,M_Bergman,2026,24
