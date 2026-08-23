@@ -603,20 +603,37 @@ def get_prediction_summary():
 def get_team_season_accuracy(season):
     df = get_predictions()
 
-    scored = df[df["RoundStatus"] == "Past Round"].copy()
-    scored = scored[scored["Season"] == season]
+    scored = df[
+        (df["RoundStatus"] == "Past Round") &
+        (df["Season"] == season)
+    ].copy()
 
     correct_col = "Correct_LOGIT"
-    scored["Binary"] = scored[correct_col].astype(int)
+
+    # Create one observation for each team in each game
+    team_results = pd.concat([
+        scored[["Team", correct_col]].rename(columns={"Team": "Team"}),
+        scored[["Opposition_Team", correct_col]].rename(columns={"Opposition_Team": "Team"})
+    ])
+
+    team_results["Binary"] = team_results[correct_col].astype(int)
 
     out = (
-        scored
+        team_results
         .groupby("Team")
-        .agg(Games=("Binary", "size"), Accuracy=("Binary", "mean"))
+        .agg(
+            Games=("Binary", "size"),
+            Accuracy=("Binary", "mean")
+        )
         .reset_index()
     )
+
     out["Accuracy"] = (out["Accuracy"] * 100).round(1)
-    out = out.sort_values("Accuracy", ascending=False)
+
+    out = out.sort_values(
+        ["Accuracy", "Games"],
+        ascending=[False, False]
+    )
 
     return out
 
