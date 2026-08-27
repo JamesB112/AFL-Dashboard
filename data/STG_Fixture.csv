@@ -2878,210 +2878,214 @@ CD_M20250142602,CONCLUDED,28,Semi Finals,26,Brisbane,14.0,16.0,100.0,Gold Coast,
 CD_M20250142701,CONCLUDED,28,Preliminary Finals,27,Geelong,17.0,13.0,115.0,Hawthorn,13.0,7.0,85.0,MCG,Melbourne,VIC,2025,,2025-09-19,19:40:00,Hawthorn,11402.0,Past Round
 CD_M20250142702,CONCLUDED,28,Preliminary Finals,27,Collingwood,11.0,5.0,71.0,Brisbane,15.0,10.0,100.0,MCG,Melbourne,VIC,2025,,2025-09-20,17:15:00,Brisbane,11403.0,Past Round
 CD_M20250142801,CONCLUDED,28,Grand Final,28,Geelong,11.0,9.0,75.0,Brisbane,18.0,14.0,122.0,MCG,Melbourne,VIC,2025,,2025-09-27,14:30:00,Brisbane,11404.0,Past Round
-CD_M20260140001,CONCLUDED,24,Round 0,0,Sydney,20.0,12.0,132.0,Carlton,10.0,9.0,69.0,SCG,Sydney,NSW,2026,,2026-03-05,19:30:00,Carlton,11405.0,Past Round
-CD_M20260140002,CONCLUDED,24,Round 0,0,Gold Coast,19.0,11.0,125.0,Geelong,10.0,9.0,69.0,People First Stadium,Gold Coast,QLD,2026,,2026-03-06,20:05:00,Geelong,11406.0,Past Round
-CD_M20260140003,CONCLUDED,24,Round 0,0,GWS,19.0,8.0,122.0,Hawthorn,14.0,11.0,95.0,ENGIE Stadium,Sydney,NSW,2026,,2026-03-07,16:15:00,Hawthorn,11407.0,Past Round
-CD_M20260140004,CONCLUDED,24,Round 0,0,Brisbane,15.0,16.0,106.0,Western Bulldogs,16.0,15.0,111.0,Gabba,Brisbane,QLD,2026,,2026-03-07,19:35:00,Western Bulldogs,11408.0,Past Round
-CD_M20260140005,CONCLUDED,24,Round 0,0,St Kilda,9.0,12.0,66.0,Collingwood,11.0,12.0,78.0,MCG,Melbourne,VIC,2026,,2026-03-08,19:20:00,Collingwood,11409.0,Past Round
-CD_M20260140101,CONCLUDED,24,Round 1,1,Carlton,10.0,15.0,75.0,Richmond,9.0,17.0,71.0,MCG,Melbourne,VIC,2026,,2026-03-12,19:30:00,Richmond,11410.0,Past Round
-CD_M20260140102,CONCLUDED,24,Round 1,1,Essendon,13.0,5.0,83.0,Hawthorn,21.0,19.0,145.0,MCG,Melbourne,VIC,2026,,2026-03-13,19:40:00,Hawthorn,11411.0,Past Round
-CD_M20260140103,CONCLUDED,24,Round 1,1,Western Bulldogs,21.0,8.0,134.0,GWS,7.0,11.0,53.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-14,13:15:00,GWS,11412.0,Past Round
-CD_M20260140104,CONCLUDED,24,Round 1,1,Geelong,16.0,14.0,110.0,Fremantle,14.0,16.0,100.0,GMHBA Stadium,Geelong,VIC,2026,,2026-03-14,16:15:00,Fremantle,11413.0,Past Round
-CD_M20260140105,CONCLUDED,24,Round 1,1,Sydney,15.0,14.0,104.0,Brisbane,8.0,12.0,60.0,SCG,Sydney,NSW,2026,,2026-03-14,19:10:00,Brisbane,11414.0,Past Round
-CD_M20260140106,CONCLUDED,24,Round 1,1,Collingwood,11.0,13.0,79.0,Adelaide,13.0,15.0,93.0,MCG,Melbourne,VIC,2026,,2026-03-14,19:35:00,Adelaide,11415.0,Past Round
-CD_M20260140107,CONCLUDED,24,Round 1,1,North Melbourne,17.0,11.0,113.0,Port Adelaide,9.0,13.0,67.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-15,13:10:00,Port Adelaide,11416.0,Past Round
-CD_M20260140108,CONCLUDED,24,Round 1,1,Melbourne,18.0,12.0,120.0,St Kilda,15.0,17.0,107.0,MCG,Melbourne,VIC,2026,,2026-03-15,15:15:00,St Kilda,11417.0,Past Round
-CD_M20260140109,CONCLUDED,24,Round 1,1,Gold Coast,20.0,11.0,131.0,West Coast,10.0,12.0,72.0,People First Stadium,Gold Coast,QLD,2026,,2026-03-15,18:10:00,West Coast,11418.0,Past Round
-CD_M20260140201,CONCLUDED,24,Round 2,2,Hawthorn,14.0,15.0,99.0,Sydney,13.0,4.0,82.0,MCG,Melbourne,VIC,2026,,2026-03-19,19:30:00,Sydney,11419.0,Past Round
-CD_M20260140202,CONCLUDED,24,Round 2,2,Adelaide,13.0,10.0,88.0,Western Bulldogs,14.0,10.0,94.0,Adelaide Oval,Adelaide,SA,2026,,2026-03-20,19:40:00,Western Bulldogs,11420.0,Past Round
-CD_M20260140203,CONCLUDED,24,Round 2,2,Richmond,9.0,6.0,60.0,Gold Coast,19.0,14.0,128.0,MCG,Melbourne,VIC,2026,,2026-03-21,13:15:00,Gold Coast,11421.0,Past Round
-CD_M20260140204,CONCLUDED,24,Round 2,2,GWS,10.0,14.0,74.0,St Kilda,11.0,12.0,78.0,ENGIE Stadium,Sydney,NSW,2026,,2026-03-21,16:15:00,St Kilda,11422.0,Past Round
-CD_M20260140205,CONCLUDED,24,Round 2,2,Fremantle,17.0,16.0,118.0,Melbourne,10.0,10.0,70.0,Optus Stadium,Perth,WA,2026,,2026-03-21,19:35:00,Melbourne,11423.0,Past Round
-CD_M20260140206,CONCLUDED,24,Round 2,2,Port Adelaide,20.0,13.0,133.0,Essendon,10.0,10.0,70.0,Adelaide Oval,Adelaide,SA,2026,,2026-03-22,15:15:00,Essendon,11424.0,Past Round
-CD_M20260140207,CONCLUDED,24,Round 2,2,West Coast,17.0,9.0,111.0,North Melbourne,15.0,4.0,94.0,Optus Stadium,Perth,WA,2026,,2026-03-22,18:10:00,North Melbourne,11425.0,Past Round
-CD_M20260140301,CONCLUDED,24,Round 3,3,Geelong,9.0,14.0,68.0,Adelaide,9.0,6.0,60.0,GMHBA Stadium,Geelong,VIC,2026,,2026-03-26,19:30:00,Adelaide,11426.0,Past Round
-CD_M20260140302,CONCLUDED,24,Round 3,3,Collingwood,13.0,9.0,87.0,GWS,7.0,12.0,54.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-27,19:40:00,GWS,11427.0,Past Round
-CD_M20260140303,CONCLUDED,24,Round 3,3,St Kilda,11.0,14.0,80.0,Brisbane,17.0,11.0,113.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-28,12:35:00,Brisbane,11428.0,Past Round
-CD_M20260140304,CONCLUDED,24,Round 3,3,Fremantle,13.0,25.0,103.0,Richmond,6.0,7.0,43.0,Optus Stadium,Perth,WA,2026,,2026-03-28,16:15:00,Richmond,11429.0,Past Round
-CD_M20260140305,CONCLUDED,24,Round 3,3,Essendon,9.0,15.0,69.0,North Melbourne,12.0,9.0,81.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-28,19:35:00,North Melbourne,11430.0,Past Round
-CD_M20260140306,CONCLUDED,24,Round 3,3,Port Adelaide,13.0,12.0,90.0,West Coast,13.0,14.0,92.0,Adelaide Oval,Adelaide,SA,2026,,2026-03-29,12:30:00,West Coast,11431.0,Past Round
-CD_M20260140307,CONCLUDED,24,Round 3,3,Carlton,11.0,11.0,77.0,Melbourne,15.0,10.0,100.0,MCG,Melbourne,VIC,2026,,2026-03-29,15:15:00,Melbourne,11432.0,Past Round
-CD_M20260140401,CONCLUDED,24,Round 4,4,Brisbane,17.0,17.0,119.0,Collingwood,10.0,5.0,65.0,Gabba,Brisbane,QLD,2026,,2026-04-02,19:30:00,Collingwood,11433.0,Past Round
-CD_M20260140402,CONCLUDED,24,Round 4,4,North Melbourne,14.0,12.0,96.0,Carlton,13.0,8.0,86.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-03,15:15:00,Carlton,11434.0,Past Round
-CD_M20260140403,CONCLUDED,24,Round 4,4,Adelaide,11.0,10.0,76.0,Fremantle,11.0,12.0,78.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-03,19:15:00,Fremantle,11435.0,Past Round
-CD_M20260140404,CONCLUDED,24,Round 4,4,Richmond,6.0,12.0,48.0,Port Adelaide,13.0,12.0,90.0,MCG,Melbourne,VIC,2026,,2026-04-04,16:15:00,Port Adelaide,11436.0,Past Round
-CD_M20260140405,CONCLUDED,24,Round 4,4,West Coast,4.0,11.0,35.0,Sydney,24.0,19.0,163.0,Optus Stadium,Perth,WA,2026,,2026-04-04,19:35:00,Sydney,11437.0,Past Round
-CD_M20260140406,CONCLUDED,24,Round 4,4,Melbourne,16.0,13.0,109.0,Gold Coast,14.0,5.0,89.0,MCG,Melbourne,VIC,2026,,2026-04-05,15:15:00,Gold Coast,11438.0,Past Round
-CD_M20260140407,CONCLUDED,24,Round 4,4,Western Bulldogs,14.0,15.0,99.0,Essendon,9.0,11.0,65.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-05,19:20:00,Essendon,11439.0,Past Round
-CD_M20260140408,CONCLUDED,24,Round 4,4,Hawthorn,13.0,14.0,92.0,Geelong,14.0,7.0,91.0,MCG,Melbourne,VIC,2026,,2026-04-06,15:15:00,Geelong,11440.0,Past Round
-CD_M20260140501,CONCLUDED,24,Round 5,5,Adelaide,17.0,12.0,114.0,Carlton,12.0,14.0,86.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-09,19:40:00,Carlton,11441.0,Past Round
-CD_M20260140502,CONCLUDED,24,Round 5,5,Collingwood,5.0,9.0,39.0,Fremantle,7.0,3.0,45.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-10,19:40:00,Fremantle,11442.0,Past Round
-CD_M20260140503,CONCLUDED,24,Round 5,5,North Melbourne,9.0,12.0,66.0,Brisbane,13.0,14.0,92.0,Barossa Park,Lyndoch,SA,2026,,2026-04-11,12:35:00,Brisbane,11443.0,Past Round
-CD_M20260140504,CONCLUDED,24,Round 5,5,Essendon,17.0,11.0,113.0,Melbourne,10.0,8.0,68.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-11,13:15:00,Melbourne,11444.0,Past Round
-CD_M20260140505,CONCLUDED,24,Round 5,5,Sydney,14.0,16.0,100.0,Gold Coast,9.0,14.0,68.0,Norwood Oval,Adelaide,SA,2026,,2026-04-11,16:15:00,Gold Coast,11445.0,Past Round
-CD_M20260140506,CONCLUDED,24,Round 5,5,Hawthorn,15.0,14.0,104.0,Western Bulldogs,8.0,16.0,64.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-11,19:35:00,Western Bulldogs,11446.0,Past Round
-CD_M20260140507,CONCLUDED,24,Round 5,5,Geelong,17.0,20.0,122.0,West Coast,11.0,10.0,76.0,Norwood Oval,Adelaide,SA,2026,,2026-04-12,12:30:00,West Coast,11447.0,Past Round
-CD_M20260140508,CONCLUDED,24,Round 5,5,GWS,20.0,11.0,131.0,Richmond,11.0,9.0,75.0,Barossa Park,Lyndoch,SA,2026,,2026-04-12,15:15:00,Richmond,11448.0,Past Round
-CD_M20260140509,CONCLUDED,24,Round 5,5,Port Adelaide,9.0,13.0,67.0,St Kilda,12.0,9.0,81.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-12,19:15:00,St Kilda,11449.0,Past Round
-CD_M20260140601,CONCLUDED,24,Round 6,6,Carlton,12.0,11.0,83.0,Collingwood,13.0,10.0,88.0,MCG,Melbourne,VIC,2026,,2026-04-16,19:30:00,Collingwood,11450.0,Past Round
-CD_M20260140602,CONCLUDED,24,Round 6,6,Geelong,19.0,17.0,131.0,Western Bulldogs,8.0,8.0,56.0,GMHBA Stadium,Geelong,VIC,2026,,2026-04-17,19:20:00,Western Bulldogs,11451.0,Past Round
-CD_M20260140603,CONCLUDED,24,Round 6,6,Sydney,17.0,5.0,107.0,GWS,8.0,18.0,66.0,SCG,Sydney,NSW,2026,,2026-04-17,19:50:00,GWS,11452.0,Past Round
-CD_M20260140604,CONCLUDED,24,Round 6,6,Gold Coast,17.0,17.0,119.0,Essendon,17.0,8.0,110.0,People First Stadium,Gold Coast,QLD,2026,,2026-04-18,13:15:00,Essendon,11453.0,Past Round
-CD_M20260140605,CONCLUDED,24,Round 6,6,Hawthorn,13.0,11.0,89.0,Port Adelaide,13.0,8.0,86.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-18,16:15:00,Port Adelaide,11454.0,Past Round
-CD_M20260140606,CONCLUDED,24,Round 6,6,Adelaide,15.0,13.0,103.0,St Kilda,15.0,12.0,102.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-18,19:35:00,St Kilda,11455.0,Past Round
-CD_M20260140607,CONCLUDED,24,Round 6,6,North Melbourne,20.0,10.0,130.0,Richmond,7.0,13.0,55.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-19,13:10:00,Richmond,11456.0,Past Round
-CD_M20260140608,CONCLUDED,24,Round 6,6,Melbourne,16.0,8.0,104.0,Brisbane,15.0,12.0,102.0,MCG,Melbourne,VIC,2026,,2026-04-19,15:15:00,Brisbane,11457.0,Past Round
-CD_M20260140609,CONCLUDED,24,Round 6,6,West Coast,5.0,11.0,41.0,Fremantle,14.0,13.0,97.0,Optus Stadium,Perth,WA,2026,,2026-04-19,17:10:00,Fremantle,11458.0,Past Round
-CD_M20260140701,CONCLUDED,24,Round 7,7,Western Bulldogs,9.0,6.0,60.0,Sydney,18.0,18.0,126.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-23,19:30:00,Sydney,11459.0,Past Round
-CD_M20260140702,CONCLUDED,24,Round 7,7,Richmond,11.0,6.0,72.0,Melbourne,19.0,12.0,126.0,MCG,Melbourne,VIC,2026,,2026-04-24,19:40:00,Melbourne,11460.0,Past Round
-CD_M20260140703,CONCLUDED,24,Round 7,7,Hawthorn,16.0,16.0,112.0,Gold Coast,9.0,9.0,63.0,UTAS Stadium,Launceston,TAS,2026,,2026-04-25,12:30:00,Gold Coast,11461.0,Past Round
-CD_M20260140704,CONCLUDED,24,Round 7,7,Essendon,9.0,6.0,60.0,Collingwood,20.0,17.0,137.0,MCG,Melbourne,VIC,2026,,2026-04-25,15:20:00,Collingwood,11462.0,Past Round
-CD_M20260140705,CONCLUDED,24,Round 7,7,Port Adelaide,13.0,17.0,95.0,Geelong,10.0,5.0,65.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-25,18:35:00,Geelong,11463.0,Past Round
-CD_M20260140706,CONCLUDED,24,Round 7,7,Fremantle,16.0,7.0,103.0,Carlton,13.0,11.0,89.0,Optus Stadium,Perth,WA,2026,,2026-04-25,20:15:00,Carlton,11464.0,Past Round
-CD_M20260140707,CONCLUDED,24,Round 7,7,St Kilda,22.0,11.0,143.0,West Coast,5.0,12.0,42.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-26,13:10:00,West Coast,11465.0,Past Round
-CD_M20260140708,CONCLUDED,24,Round 7,7,Brisbane,19.0,13.0,127.0,Adelaide,11.0,9.0,75.0,Gabba,Brisbane,QLD,2026,,2026-04-26,15:15:00,Adelaide,11466.0,Past Round
-CD_M20260140709,CONCLUDED,24,Round 7,7,GWS,15.0,15.0,105.0,North Melbourne,14.0,14.0,98.0,Manuka Oval,Canberra,ACT,2026,,2026-04-26,16:40:00,North Melbourne,11467.0,Past Round
-CD_M20260140801,CONCLUDED,24,Round 8,8,Collingwood,15.0,3.0,93.0,Hawthorn,13.0,15.0,93.0,MCG,Melbourne,VIC,2026,,2026-04-30,19:30:00,Hawthorn,11468.0,Past Round
-CD_M20260140802,CONCLUDED,24,Round 8,8,Western Bulldogs,15.0,12.0,102.0,Fremantle,17.0,12.0,114.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-01,19:30:00,Fremantle,11469.0,Past Round
-CD_M20260140803,CONCLUDED,24,Round 8,8,Adelaide,11.0,10.0,76.0,Port Adelaide,11.0,9.0,75.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-01,20:10:00,Port Adelaide,11470.0,Past Round
-CD_M20260140804,CONCLUDED,24,Round 8,8,Essendon,11.0,13.0,79.0,Brisbane,22.0,11.0,143.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-02,12:35:00,Brisbane,11471.0,Past Round
-CD_M20260140805,CONCLUDED,24,Round 8,8,West Coast,13.0,10.0,88.0,Richmond,15.0,9.0,99.0,Optus Stadium,Perth,WA,2026,,2026-05-02,16:15:00,Richmond,11472.0,Past Round
-CD_M20260140806,CONCLUDED,24,Round 8,8,Geelong,21.0,9.0,135.0,North Melbourne,13.0,8.0,86.0,GMHBA Stadium,Geelong,VIC,2026,,2026-05-02,16:35:00,North Melbourne,11473.0,Past Round
-CD_M20260140807,CONCLUDED,24,Round 8,8,Carlton,9.0,15.0,69.0,St Kilda,16.0,12.0,108.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-02,19:35:00,St Kilda,11474.0,Past Round
-CD_M20260140808,CONCLUDED,24,Round 8,8,Sydney,19.0,17.0,131.0,Melbourne,17.0,12.0,114.0,SCG,Sydney,NSW,2026,,2026-05-03,15:15:00,Melbourne,11475.0,Past Round
-CD_M20260140809,CONCLUDED,24,Round 8,8,Gold Coast,11.0,17.0,83.0,GWS,8.0,15.0,63.0,People First Stadium,Gold Coast,QLD,2026,,2026-05-03,19:20:00,GWS,11476.0,Past Round
-CD_M20260140901,CONCLUDED,24,Round 9,9,Fremantle,12.0,16.0,88.0,Hawthorn,11.0,7.0,73.0,Optus Stadium,Perth,WA,2026,,2026-05-07,20:10:00,Hawthorn,11477.0,Past Round
-CD_M20260140902,CONCLUDED,24,Round 9,9,Brisbane,14.0,16.0,100.0,Carlton,13.0,11.0,89.0,Gabba,Brisbane,QLD,2026,,2026-05-08,19:30:00,Carlton,11478.0,Past Round
-CD_M20260140903,CONCLUDED,24,Round 9,9,Port Adelaide,10.0,12.0,72.0,Western Bulldogs,10.0,14.0,74.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-08,20:10:00,Western Bulldogs,11479.0,Past Round
-CD_M20260140904,CONCLUDED,24,Round 9,9,North Melbourne,14.0,13.0,97.0,Sydney,16.0,9.0,105.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-09,13:15:00,Sydney,11480.0,Past Round
-CD_M20260140905,CONCLUDED,24,Round 9,9,GWS,16.0,7.0,103.0,Essendon,13.0,11.0,89.0,ENGIE Stadium,Sydney,NSW,2026,,2026-05-09,16:15:00,Essendon,11481.0,Past Round
-CD_M20260140906,CONCLUDED,24,Round 9,9,Gold Coast,13.0,11.0,89.0,St Kilda,8.0,12.0,60.0,TIO Stadium,Darwin,NT,2026,,2026-05-09,19:10:00,St Kilda,11482.0,Past Round
-CD_M20260140907,CONCLUDED,24,Round 9,9,Geelong,18.0,14.0,122.0,Collingwood,9.0,14.0,68.0,MCG,Melbourne,VIC,2026,,2026-05-09,19:35:00,Collingwood,11483.0,Past Round
-CD_M20260140908,CONCLUDED,24,Round 9,9,Melbourne,15.0,9.0,99.0,West Coast,9.0,13.0,67.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-10,13:10:00,West Coast,11484.0,Past Round
-CD_M20260140909,CONCLUDED,24,Round 9,9,Richmond,9.0,7.0,61.0,Adelaide,14.0,14.0,98.0,MCG,Melbourne,VIC,2026,,2026-05-10,15:15:00,Adelaide,11485.0,Past Round
-CD_M20260141001,CONCLUDED,24,Round 10,10,Brisbane,11.0,10.0,76.0,Geelong,17.0,15.0,117.0,Gabba,Brisbane,QLD,2026,,2026-05-14,19:30:00,Geelong,11486.0,Past Round
-CD_M20260141002,CONCLUDED,24,Round 10,10,Sydney,11.0,15.0,81.0,Collingwood,10.0,15.0,75.0,SCG,Sydney,NSW,2026,,2026-05-15,19:30:00,Collingwood,11487.0,Past Round
-CD_M20260141003,CONCLUDED,24,Round 10,10,Gold Coast,15.0,8.0,98.0,Port Adelaide,10.0,13.0,73.0,TIO Stadium,Darwin,NT,2026,,2026-05-15,20:10:00,Port Adelaide,11488.0,Past Round
-CD_M20260141004,CONCLUDED,24,Round 10,10,Adelaide,20.0,13.0,133.0,North Melbourne,9.0,11.0,65.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-16,13:15:00,North Melbourne,11489.0,Past Round
-CD_M20260141005,CONCLUDED,24,Round 10,10,Melbourne,18.0,12.0,120.0,Hawthorn,12.0,9.0,81.0,MCG,Melbourne,VIC,2026,,2026-05-16,16:15:00,Hawthorn,11490.0,Past Round
-CD_M20260141006,CONCLUDED,24,Round 10,10,Carlton,10.0,14.0,74.0,Western Bulldogs,9.0,8.0,62.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-16,19:35:00,Western Bulldogs,11491.0,Past Round
-CD_M20260141007,CONCLUDED,24,Round 10,10,Essendon,8.0,13.0,61.0,Fremantle,16.0,8.0,104.0,MCG,Melbourne,VIC,2026,,2026-05-17,13:10:00,Fremantle,11492.0,Past Round
-CD_M20260141008,CONCLUDED,24,Round 10,10,St Kilda,16.0,13.0,109.0,Richmond,11.0,7.0,73.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-17,15:15:00,Richmond,11493.0,Past Round
-CD_M20260141009,CONCLUDED,24,Round 10,10,West Coast,13.0,10.0,88.0,GWS,10.0,11.0,71.0,Optus Stadium,Perth,WA,2026,,2026-05-17,18:15:00,GWS,11494.0,Past Round
-CD_M20260141101,CONCLUDED,24,Round 11,11,Hawthorn,10.0,15.0,75.0,Adelaide,9.0,12.0,66.0,UTAS Stadium,Launceston,TAS,2026,,2026-05-21,19:30:00,Adelaide,11495.0,Past Round
-CD_M20260141102,CONCLUDED,24,Round 11,11,Richmond,10.0,14.0,74.0,Essendon,7.0,14.0,56.0,MCG,Melbourne,VIC,2026,,2026-05-22,19:45:00,Essendon,11496.0,Past Round
-CD_M20260141103,CONCLUDED,24,Round 11,11,Fremantle,16.0,8.0,104.0,St Kilda,11.0,8.0,74.0,Optus Stadium,Perth,WA,2026,,2026-05-22,20:30:00,St Kilda,11497.0,Past Round
-CD_M20260141104,CONCLUDED,24,Round 11,11,North Melbourne,17.0,9.0,111.0,Gold Coast,16.0,9.0,105.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-23,13:15:00,Gold Coast,11498.0,Past Round
-CD_M20260141105,CONCLUDED,24,Round 11,11,Geelong,15.0,17.0,107.0,Sydney,12.0,8.0,80.0,GMHBA Stadium,Geelong,VIC,2026,,2026-05-23,16:15:00,Sydney,11499.0,Past Round
-CD_M20260141106,CONCLUDED,24,Round 11,11,Collingwood,13.0,14.0,92.0,West Coast,12.0,10.0,82.0,MCG,Melbourne,VIC,2026,,2026-05-23,16:35:00,West Coast,11500.0,Past Round
-CD_M20260141107,CONCLUDED,24,Round 11,11,Port Adelaide,8.0,10.0,58.0,Carlton,13.0,14.0,92.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-23,19:35:00,Carlton,11501.0,Past Round
-CD_M20260141108,CONCLUDED,24,Round 11,11,GWS,26.0,10.0,166.0,Brisbane,13.0,10.0,88.0,ENGIE Stadium,Sydney,NSW,2026,,2026-05-24,12:30:00,Brisbane,11502.0,Past Round
-CD_M20260141109,CONCLUDED,24,Round 11,11,Western Bulldogs,14.0,9.0,93.0,Melbourne,13.0,12.0,90.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-24,15:15:00,Melbourne,11503.0,Past Round
-CD_M20260141201,CONCLUDED,24,Round 12,12,St Kilda,9.0,13.0,67.0,Hawthorn,18.0,11.0,119.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-28,19:30:00,Hawthorn,11504.0,Past Round
-CD_M20260141202,CONCLUDED,24,Round 12,12,Carlton,12.0,16.0,88.0,Geelong,12.0,12.0,84.0,MCG,Melbourne,VIC,2026,,2026-05-29,19:40:00,Geelong,11505.0,Past Round
-CD_M20260141203,CONCLUDED,24,Round 12,12,Sydney,25.0,20.0,170.0,Richmond,8.0,8.0,56.0,SCG,Sydney,NSW,2026,,2026-05-30,13:15:00,Richmond,11506.0,Past Round
-CD_M20260141204,CONCLUDED,24,Round 12,12,Brisbane,10.0,18.0,78.0,Fremantle,15.0,13.0,103.0,Gabba,Brisbane,QLD,2026,,2026-05-30,16:15:00,Fremantle,11507.0,Past Round
-CD_M20260141205,CONCLUDED,24,Round 12,12,Western Bulldogs,14.0,13.0,97.0,Collingwood,13.0,15.0,93.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-30,19:35:00,Collingwood,11508.0,Past Round
-CD_M20260141206,CONCLUDED,24,Round 12,12,Melbourne,9.0,16.0,70.0,GWS,19.0,5.0,119.0,TIO Traeger Park,Alice Springs,NT,2026,,2026-05-31,15:15:00,GWS,11509.0,Past Round
-CD_M20260141207,CONCLUDED,24,Round 12,12,West Coast,12.0,13.0,85.0,Essendon,8.0,7.0,55.0,Optus Stadium,Perth,WA,2026,,2026-05-31,19:20:00,Essendon,11510.0,Past Round
-CD_M20260141301,CONCLUDED,24,Round 13,13,Adelaide,11.0,9.0,75.0,Geelong,10.0,14.0,74.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-04,19:30:00,Geelong,11511.0,Past Round
-CD_M20260141302,CONCLUDED,24,Round 13,13,Hawthorn,9.0,17.0,71.0,Western Bulldogs,12.0,5.0,77.0,MCG,Melbourne,VIC,2026,,2026-06-05,19:40:00,Western Bulldogs,11512.0,Past Round
-CD_M20260141303,CONCLUDED,24,Round 13,13,North Melbourne,4.0,7.0,31.0,Fremantle,24.0,11.0,155.0,Hands Oval,Bunbury,WA,2026,,2026-06-06,14:15:00,Fremantle,11513.0,Past Round
-CD_M20260141304,CONCLUDED,24,Round 13,13,Gold Coast,11.0,9.0,75.0,Brisbane,15.0,16.0,106.0,People First Stadium,Gold Coast,QLD,2026,,2026-06-06,17:15:00,Brisbane,11514.0,Past Round
-CD_M20260141305,CONCLUDED,24,Round 13,13,West Coast,10.0,11.0,71.0,Port Adelaide,11.0,11.0,77.0,Optus Stadium,Perth,WA,2026,,2026-06-06,20:15:00,Port Adelaide,11515.0,Past Round
-CD_M20260141306,CONCLUDED,24,Round 13,13,Sydney,15.0,14.0,104.0,St Kilda,15.0,12.0,102.0,SCG,Sydney,NSW,2026,,2026-06-07,15:15:00,St Kilda,11516.0,Past Round
-CD_M20260141307,CONCLUDED,24,Round 13,13,Essendon,10.0,7.0,67.0,Carlton,10.0,12.0,72.0,MCG,Melbourne,VIC,2026,,2026-06-07,19:20:00,Carlton,11517.0,Past Round
-CD_M20260141308,CONCLUDED,24,Round 13,13,Collingwood,11.0,9.0,75.0,Melbourne,12.0,11.0,83.0,MCG,Melbourne,VIC,2026,,2026-06-08,15:15:00,Melbourne,11518.0,Past Round
-CD_M20260141401,CONCLUDED,24,Round 14,14,Western Bulldogs,9.0,10.0,64.0,Adelaide,19.0,7.0,121.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-11,19:30:00,Adelaide,11519.0,Past Round
-CD_M20260141402,CONCLUDED,24,Round 14,14,Geelong,15.0,15.0,105.0,Gold Coast,8.0,12.0,60.0,GMHBA Stadium,Geelong,VIC,2026,,2026-06-12,19:40:00,Gold Coast,11520.0,Past Round
-CD_M20260141403,CONCLUDED,24,Round 14,14,Melbourne,13.0,17.0,95.0,Essendon,6.0,14.0,50.0,MCG,Melbourne,VIC,2026,,2026-06-13,13:15:00,Essendon,11521.0,Past Round
-CD_M20260141404,CONCLUDED,24,Round 14,14,North Melbourne,10.0,14.0,74.0,West Coast,10.0,13.0,73.0,Optus Stadium,Perth,WA,2026,,2026-06-13,16:15:00,West Coast,11522.0,Past Round
-CD_M20260141405,CONCLUDED,24,Round 14,14,Port Adelaide,13.0,12.0,90.0,Sydney,14.0,9.0,93.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-13,19:35:00,Sydney,11523.0,Past Round
-CD_M20260141406,CONCLUDED,24,Round 14,14,Richmond,12.0,8.0,80.0,Brisbane,17.0,13.0,115.0,Blundstone Arena,Hobart,TAS,2026,,2026-06-14,13:10:00,Brisbane,11524.0,Past Round
-CD_M20260141407,CONCLUDED,24,Round 14,14,St Kilda,14.0,12.0,96.0,GWS,13.0,10.0,88.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-14,15:15:00,GWS,11525.0,Past Round
-CD_M20260141501,CONCLUDED,24,Round 15,15,Fremantle,14.0,15.0,99.0,Geelong,14.0,6.0,90.0,Optus Stadium,Perth,WA,2026,,2026-06-18,20:10:00,Geelong,11526.0,Past Round
-CD_M20260141502,CONCLUDED,24,Round 15,15,Gold Coast,14.0,13.0,97.0,Hawthorn,17.0,11.0,113.0,People First Stadium,Gold Coast,QLD,2026,,2026-06-19,19:40:00,Hawthorn,11527.0,Past Round
-CD_M20260141503,CONCLUDED,24,Round 15,15,Adelaide,11.0,13.0,79.0,Melbourne,9.0,8.0,62.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-20,13:15:00,Melbourne,11528.0,Past Round
-CD_M20260141504,CONCLUDED,24,Round 15,15,GWS,9.0,11.0,65.0,Carlton,12.0,16.0,88.0,ENGIE Stadium,Sydney,NSW,2026,,2026-06-20,16:15:00,Carlton,11529.0,Past Round
-CD_M20260141505,CONCLUDED,24,Round 15,15,Collingwood,11.0,12.0,78.0,Port Adelaide,6.0,16.0,52.0,MCG,Melbourne,VIC,2026,,2026-06-20,19:35:00,Port Adelaide,11530.0,Past Round
-CD_M20260141506,CONCLUDED,24,Round 15,15,Richmond,6.0,12.0,48.0,North Melbourne,10.0,13.0,73.0,MCG,Melbourne,VIC,2026,,2026-06-21,13:10:00,North Melbourne,11531.0,Past Round
-CD_M20260141507,CONCLUDED,24,Round 15,15,St Kilda,8.0,13.0,61.0,Western Bulldogs,12.0,11.0,83.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-21,15:15:00,Western Bulldogs,11532.0,Past Round
-CD_M20260141601,CONCLUDED,24,Round 16,16,Brisbane,19.0,12.0,126.0,Sydney,12.0,11.0,83.0,Gabba,Brisbane,QLD,2026,,2026-06-25,19:30:00,Sydney,11533.0,Past Round
-CD_M20260141605,CONCLUDED,24,Round 16,16,Hawthorn,14.0,12.0,96.0,GWS,12.0,10.0,82.0,MCG,Melbourne,VIC,2026,,2026-06-26,19:40:00,GWS,11536.0,Past Round
-CD_M20260141602,CONCLUDED,24,Round 16,16,Carlton,17.0,15.0,117.0,West Coast,9.0,10.0,64.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-27,13:15:00,West Coast,11534.0,Past Round
-CD_M20260141603,CONCLUDED,24,Round 16,16,Collingwood,15.0,16.0,106.0,Richmond,11.0,6.0,72.0,MCG,Melbourne,VIC,2026,,2026-06-27,16:15:00,Richmond,11535.0,Past Round
-CD_M20260141607,CONCLUDED,24,Round 16,16,Port Adelaide,13.0,19.0,97.0,Adelaide,11.0,5.0,71.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-27,19:35:00,Adelaide,11538.0,Past Round
-CD_M20260141606,CONCLUDED,24,Round 16,16,North Melbourne,10.0,19.0,79.0,Essendon,9.0,11.0,65.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-28,15:15:00,Essendon,11537.0,Past Round
-CD_M20260141604,CONCLUDED,24,Round 16,16,Fremantle,11.0,14.0,80.0,Gold Coast,3.0,11.0,29.0,Optus Stadium,Perth,WA,2026,,2026-06-28,17:10:00,Gold Coast,11539.0,Past Round
-CD_M20260141702,CONCLUDED,24,Round 17,17,Geelong,14.0,17.0,101.0,Brisbane,19.0,9.0,123.0,GMHBA Stadium,Geelong,VIC,2026,,2026-07-02,19:30:00,Brisbane,11541.0,Past Round
-CD_M20260141708,CONCLUDED,24,Round 17,17,Sydney,13.0,12.0,90.0,Western Bulldogs,7.0,13.0,55.0,SCG,Sydney,NSW,2026,,2026-07-03,19:40:00,Western Bulldogs,11546.0,Past Round
-CD_M20260141709,CONCLUDED,24,Round 17,17,West Coast,11.0,8.0,74.0,Adelaide,15.0,9.0,99.0,Optus Stadium,Perth,WA,2026,,2026-07-03,20:10:00,Adelaide,11548.0,Past Round
-CD_M20260141705,CONCLUDED,24,Round 17,17,Hawthorn,14.0,6.0,90.0,Melbourne,19.0,11.0,125.0,UTAS Stadium,Launceston,TAS,2026,,2026-07-04,13:15:00,Melbourne,11544.0,Past Round
-CD_M20260141704,CONCLUDED,24,Round 17,17,GWS,16.0,13.0,109.0,Fremantle,13.0,10.0,88.0,Manuka Oval,Canberra,ACT,2026,,2026-07-04,13:35:00,Fremantle,11543.0,Past Round
-CD_M20260141703,CONCLUDED,24,Round 17,17,Gold Coast,15.0,8.0,98.0,Collingwood,15.0,14.0,104.0,People First Stadium,Gold Coast,QLD,2026,,2026-07-04,16:15:00,Collingwood,11542.0,Past Round
-CD_M20260141707,CONCLUDED,24,Round 17,17,Richmond,10.0,12.0,72.0,Carlton,10.0,14.0,74.0,MCG,Melbourne,VIC,2026,,2026-07-04,19:35:00,Carlton,11545.0,Past Round
-CD_M20260141701,CONCLUDED,24,Round 17,17,Essendon,7.0,8.0,50.0,St Kilda,17.0,15.0,117.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-05,15:15:00,St Kilda,11540.0,Past Round
-CD_M20260141706,CONCLUDED,24,Round 17,17,Port Adelaide,10.0,13.0,73.0,North Melbourne,7.0,10.0,52.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-05,16:40:00,North Melbourne,11547.0,Past Round
-CD_M20260141805,CONCLUDED,24,Round 18,18,Fremantle,15.0,21.0,111.0,Sydney,10.0,13.0,73.0,Optus Stadium,Perth,WA,2026,,2026-07-09,20:10:00,Sydney,11557.0,Past Round
-CD_M20260141804,CONCLUDED,24,Round 18,18,Collingwood,13.0,11.0,89.0,North Melbourne,12.0,13.0,85.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-10,19:40:00,North Melbourne,11551.0,Past Round
-CD_M20260141808,CONCLUDED,24,Round 18,18,St Kilda,13.0,9.0,87.0,Port Adelaide,10.0,13.0,73.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-11,13:15:00,Port Adelaide,11554.0,Past Round
-CD_M20260141806,CONCLUDED,24,Round 18,18,GWS,12.0,14.0,86.0,Geelong,11.0,7.0,73.0,ENGIE Stadium,Sydney,NSW,2026,,2026-07-11,16:15:00,Geelong,11552.0,Past Round
-CD_M20260141803,CONCLUDED,24,Round 18,18,Carlton,6.0,3.0,39.0,Hawthorn,15.0,13.0,103.0,MCG,Melbourne,VIC,2026,,2026-07-11,19:35:00,Hawthorn,11550.0,Past Round
-CD_M20260141801,CONCLUDED,24,Round 18,18,Adelaide,19.0,14.0,128.0,Gold Coast,7.0,7.0,49.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-11,20:10:00,Gold Coast,11556.0,Past Round
-CD_M20260141809,CONCLUDED,24,Round 18,18,Western Bulldogs,13.0,8.0,86.0,West Coast,9.0,16.0,70.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-12,13:10:00,West Coast,11555.0,Past Round
-CD_M20260141807,CONCLUDED,24,Round 18,18,Melbourne,16.0,15.0,111.0,Richmond,9.0,11.0,65.0,MCG,Melbourne,VIC,2026,,2026-07-12,15:15:00,Richmond,11553.0,Past Round
-CD_M20260141802,CONCLUDED,24,Round 18,18,Brisbane,22.0,17.0,149.0,Essendon,8.0,11.0,59.0,Gabba,Brisbane,QLD,2026,,2026-07-12,16:40:00,Essendon,11549.0,Past Round
-CD_M20260141903,CONCLUDED,24,Round 19,19,Geelong,15.0,12.0,102.0,St Kilda,11.0,9.0,75.0,GMHBA Stadium,Geelong,VIC,2026,,2026-07-16,19:30:00,St Kilda,11560.0,Past Round
-CD_M20260141908,CONCLUDED,24,Round 19,19,Sydney,10.0,11.0,71.0,Adelaide,13.0,9.0,87.0,SCG,Sydney,NSW,2026,,2026-07-17,19:40:00,Adelaide,11564.0,Past Round
-CD_M20260141906,CONCLUDED,24,Round 19,19,Port Adelaide,11.0,9.0,75.0,Fremantle,15.0,13.0,103.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-18,13:15:00,Fremantle,11565.0,Past Round
-CD_M20260141905,CONCLUDED,24,Round 19,19,North Melbourne,11.0,10.0,76.0,Melbourne,13.0,14.0,92.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-18,16:15:00,Melbourne,11562.0,Past Round
-CD_M20260141901,CONCLUDED,24,Round 19,19,Collingwood,14.0,6.0,90.0,Carlton,10.0,9.0,69.0,MCG,Melbourne,VIC,2026,,2026-07-18,19:35:00,Carlton,11558.0,Past Round
-CD_M20260141909,CONCLUDED,24,Round 19,19,West Coast,10.0,9.0,69.0,Brisbane,13.0,15.0,93.0,Optus Stadium,Perth,WA,2026,,2026-07-18,20:10:00,Brisbane,11566.0,Past Round
-CD_M20260141907,CONCLUDED,24,Round 19,19,Richmond,6.0,16.0,52.0,Hawthorn,18.0,14.0,122.0,MCG,Melbourne,VIC,2026,,2026-07-19,13:10:00,Hawthorn,11563.0,Past Round
-CD_M20260141904,CONCLUDED,24,Round 19,19,Gold Coast,9.0,14.0,68.0,Western Bulldogs,11.0,11.0,77.0,People First Stadium,Gold Coast,QLD,2026,,2026-07-19,15:15:00,Western Bulldogs,11561.0,Past Round
-CD_M20260141902,CONCLUDED,24,Round 19,19,Essendon,10.0,7.0,67.0,GWS,8.0,16.0,64.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-19,16:40:00,GWS,11559.0,Past Round
-CD_M20260142001,CONCLUDED,24,Round 20,20,Adelaide,11.0,8.0,74.0,Collingwood,16.0,12.0,108.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-23,19:30:00,Collingwood,11574.0,Past Round
-CD_M20260142008,CONCLUDED,24,Round 20,20,Melbourne,14.0,13.0,97.0,Geelong,18.0,9.0,117.0,MCG,Melbourne,VIC,2026,,2026-07-24,19:40:00,Geelong,11572.0,Past Round
-CD_M20260142004,CONCLUDED,24,Round 20,20,Fremantle,16.0,16.0,112.0,West Coast,6.0,6.0,42.0,Optus Stadium,Perth,WA,2026,,2026-07-24,20:10:00,West Coast,11575.0,Past Round
-CD_M20260142003,CONCLUDED,24,Round 20,20,Carlton,16.0,14.0,110.0,Gold Coast,15.0,7.0,97.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-25,13:05:00,Gold Coast,11568.0,Past Round
-CD_M20260142006,CONCLUDED,24,Round 20,20,Hawthorn,19.0,18.0,132.0,Essendon,5.0,9.0,39.0,MCG,Melbourne,VIC,2026,,2026-07-25,16:15:00,Essendon,11570.0,Past Round
-CD_M20260142005,CONCLUDED,24,Round 20,20,GWS,13.0,10.0,88.0,Sydney,21.0,13.0,139.0,ENGIE Stadium,Sydney,NSW,2026,,2026-07-25,16:35:00,Sydney,11569.0,Past Round
-CD_M20260142009,CONCLUDED,24,Round 20,20,Western Bulldogs,15.0,15.0,105.0,Richmond,7.0,6.0,48.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-25,19:40:00,Richmond,11573.0,Past Round
-CD_M20260142002,CONCLUDED,24,Round 20,20,Brisbane,19.0,12.0,126.0,Port Adelaide,9.0,13.0,67.0,Gabba,Brisbane,QLD,2026,,2026-07-26,13:10:00,Port Adelaide,11567.0,Past Round
-CD_M20260142007,CONCLUDED,24,Round 20,20,North Melbourne,8.0,14.0,62.0,St Kilda,13.0,15.0,93.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-26,15:15:00,St Kilda,11571.0,Past Round
-CD_M20260142102,CONCLUDED,24,Round 21,21,Collingwood,10.0,12.0,72.0,Geelong,15.0,7.0,97.0,MCG,Melbourne,VIC,2026,,2026-07-30,19:30:00,Geelong,11577.0,Past Round
-CD_M20260142104,CONCLUDED,24,Round 21,21,Fremantle,11.0,12.0,78.0,Western Bulldogs,5.0,11.0,41.0,Optus Stadium,Perth,WA,2026,,2026-07-31,20:10:00,Western Bulldogs,11584.0,Past Round
-CD_M20260142109,CONCLUDED,24,Round 21,21,St Kilda,13.0,10.0,88.0,Sydney,16.0,11.0,107.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-01,13:05:00,Sydney,11582.0,Past Round
-CD_M20260142106,CONCLUDED,24,Round 21,21,Hawthorn,14.0,15.0,99.0,North Melbourne,12.0,11.0,83.0,UTAS Stadium,Launceston,TAS,2026,,2026-08-01,13:35:00,North Melbourne,11580.0,Past Round
-CD_M20260142107,CONCLUDED,24,Round 21,21,Port Adelaide,9.0,9.0,63.0,GWS,10.0,15.0,75.0,Adelaide Oval,Adelaide,SA,2026,,2026-08-01,18:35:00,GWS,11583.0,Past Round
-CD_M20260142101,CONCLUDED,24,Round 21,21,Carlton,24.0,10.0,154.0,Brisbane,11.0,12.0,78.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-01,19:40:00,Brisbane,11576.0,Past Round
-CD_M20260142108,CONCLUDED,24,Round 21,21,Richmond,12.0,12.0,84.0,West Coast,9.0,19.0,73.0,MCG,Melbourne,VIC,2026,,2026-08-02,13:10:00,West Coast,11581.0,Past Round
-CD_M20260142105,CONCLUDED,24,Round 21,21,Gold Coast,16.0,9.0,105.0,Melbourne,18.0,6.0,114.0,People First Stadium,Gold Coast,QLD,2026,,2026-08-02,15:15:00,Melbourne,11579.0,Past Round
-CD_M20260142103,CONCLUDED,24,Round 21,21,Essendon,11.0,7.0,73.0,Adelaide,23.0,7.0,145.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-02,16:40:00,Adelaide,11578.0,Past Round
-CD_M20260142209,CONCLUDED,24,Round 22,22,Western Bulldogs,11.0,11.0,77.0,North Melbourne,15.0,10.0,100.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-06,19:30:00,North Melbourne,11591.0,Past Round
-CD_M20260142202,CONCLUDED,24,Round 22,22,Brisbane,18.0,17.0,125.0,Hawthorn,8.0,10.0,58.0,Gabba,Brisbane,QLD,2026,,2026-08-07,19:40:00,Hawthorn,11585.0,Past Round
-CD_M20260142205,CONCLUDED,24,Round 22,22,Melbourne,17.0,11.0,113.0,Fremantle,17.0,7.0,109.0,MCG,Melbourne,VIC,2026,,2026-08-08,13:15:00,Fremantle,11588.0,Past Round
-CD_M20260142207,CONCLUDED,24,Round 22,22,Sydney,26.0,11.0,167.0,Port Adelaide,10.0,10.0,70.0,SCG,Sydney,NSW,2026,,2026-08-08,16:15:00,Port Adelaide,11590.0,Past Round
-CD_M20260142203,CONCLUDED,24,Round 22,22,Geelong,17.0,15.0,117.0,Essendon,7.0,8.0,50.0,GMHBA Stadium,Geelong,VIC,2026,,2026-08-08,16:35:00,Essendon,11586.0,Past Round
-CD_M20260142201,CONCLUDED,24,Round 22,22,Adelaide,9.0,9.0,63.0,Richmond,7.0,12.0,54.0,Adelaide Oval,Adelaide,SA,2026,,2026-08-08,19:35:00,Richmond,11592.0,Past Round
-CD_M20260142204,CONCLUDED,24,Round 22,22,GWS,11.0,11.0,77.0,Gold Coast,11.0,13.0,79.0,Manuka Oval,Canberra,ACT,2026,,2026-08-09,13:10:00,Gold Coast,11587.0,Past Round
-CD_M20260142208,CONCLUDED,24,Round 22,22,West Coast,15.0,8.0,98.0,Collingwood,17.0,15.0,117.0,Optus Stadium,Perth,WA,2026,,2026-08-09,16:10:00,Collingwood,11593.0,Past Round
-CD_M20260142206,CONCLUDED,24,Round 22,22,St Kilda,8.0,14.0,62.0,Carlton,16.0,10.0,106.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-09,19:20:00,Carlton,11589.0,Past Round
-CD_M20260142303,CONCLUDED,24,Round 23,23,Fremantle,16.0,16.0,112.0,Adelaide,13.0,10.0,88.0,Optus Stadium,Perth,WA,2026,,2026-08-14,20:10:00,Adelaide,11602.0,Past Round
-CD_M20260142308,CONCLUDED,24,Round 23,23,Richmond,6.0,9.0,45.0,St Kilda,14.0,10.0,94.0,MCG,Melbourne,VIC,2026,,2026-08-15,12:35:00,St Kilda,11599.0,Past Round
-CD_M20260142306,CONCLUDED,24,Round 23,23,North Melbourne,17.0,8.0,110.0,Geelong,19.0,11.0,125.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-15,15:45:00,Geelong,11598.0,Past Round
-CD_M20260142301,CONCLUDED,24,Round 23,23,Brisbane,14.0,11.0,95.0,Gold Coast,6.0,17.0,53.0,Gabba,Brisbane,QLD,2026,,2026-08-15,16:15:00,Gold Coast,11594.0,Past Round
-CD_M20260142305,CONCLUDED,24,Round 23,23,Hawthorn,13.0,14.0,92.0,Collingwood,13.0,14.0,92.0,MCG,Melbourne,VIC,2026,,2026-08-15,19:40:00,Collingwood,11597.0,Past Round
-CD_M20260142307,CONCLUDED,24,Round 23,23,Port Adelaide,8.0,8.0,56.0,Melbourne,20.0,12.0,132.0,Adelaide Oval,Adelaide,SA,2026,,2026-08-15,20:10:00,Melbourne,11601.0,Past Round
-CD_M20260142304,CONCLUDED,24,Round 23,23,GWS,16.0,15.0,111.0,West Coast,7.0,15.0,57.0,ENGIE Stadium,Sydney,NSW,2026,,2026-08-16,13:40:00,West Coast,11596.0,Past Round
-CD_M20260142309,CONCLUDED,24,Round 23,23,Western Bulldogs,12.0,10.0,82.0,Carlton,12.0,10.0,82.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-16,15:15:00,Carlton,11600.0,Past Round
-CD_M20260142302,CONCLUDED,24,Round 23,23,Essendon,11.0,10.0,76.0,Sydney,17.0,10.0,112.0,MCG,Melbourne,VIC,2026,,2026-08-16,16:40:00,Sydney,11595.0,Past Round
-CD_M20260142407,CONCLUDED,24,Round 24,24,St Kilda,12.0,8.0,80.0,Gold Coast,14.0,19.0,103.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-20,19:30:00,Gold Coast,11608.0,Next Round
-CD_M20260142402,UNCONFIRMED_TEAMS,24,Round 24,24,Collingwood,,,,Brisbane,,,,MCG,Melbourne,VIC,2026,,2026-08-21,19:40:00,,11609.0,Next Round
-CD_M20260142403,UNCONFIRMED_TEAMS,24,Round 24,24,Carlton,,,,Fremantle,,,,Marvel Stadium,Melbourne,VIC,2026,,2026-08-22,13:15:00,,11611.0,Next Round
-CD_M20260142406,UNCONFIRMED_TEAMS,24,Round 24,24,Melbourne,,,,Western Bulldogs,,,,MCG,Melbourne,VIC,2026,,2026-08-22,16:15:00,,11613.0,Next Round
-CD_M20260142405,UNCONFIRMED_TEAMS,24,Round 24,24,Geelong,,,,Richmond,,,,GMHBA Stadium,Geelong,VIC,2026,,2026-08-22,19:45:00,,11612.0,Next Round
-CD_M20260142401,UNCONFIRMED_TEAMS,24,Round 24,24,Adelaide,,,,GWS,,,,Adelaide Oval,Adelaide,SA,2026,,2026-08-22,20:10:00,,11610.0,Next Round
-CD_M20260142404,UNCONFIRMED_TEAMS,24,Round 24,24,Essendon,,,,Port Adelaide,,,,Marvel Stadium,Melbourne,VIC,2026,,2026-08-23,12:20:00,,11614.0,Next Round
-CD_M20260142408,UNCONFIRMED_TEAMS,24,Round 24,24,Sydney,,,,North Melbourne,,,,SCG,Sydney,NSW,2026,,2026-08-23,15:20:00,,11615.0,Next Round
-CD_M20260142409,UNCONFIRMED_TEAMS,24,Round 24,24,West Coast,,,,Hawthorn,,,,Optus Stadium,Perth,WA,2026,,2026-08-23,19:20:00,,11616.0,Next Round
+CD_M20260140001,CONCLUDED,25,Round 0,0,Sydney,20.0,12.0,132.0,Carlton,10.0,9.0,69.0,SCG,Sydney,NSW,2026,,2026-03-05,19:30:00,Carlton,11405.0,Past Round
+CD_M20260140002,CONCLUDED,25,Round 0,0,Gold Coast,19.0,11.0,125.0,Geelong,10.0,9.0,69.0,People First Stadium,Gold Coast,QLD,2026,,2026-03-06,20:05:00,Geelong,11406.0,Past Round
+CD_M20260140003,CONCLUDED,25,Round 0,0,GWS,19.0,8.0,122.0,Hawthorn,14.0,11.0,95.0,ENGIE Stadium,Sydney,NSW,2026,,2026-03-07,16:15:00,Hawthorn,11407.0,Past Round
+CD_M20260140004,CONCLUDED,25,Round 0,0,Brisbane,15.0,16.0,106.0,Western Bulldogs,16.0,15.0,111.0,Gabba,Brisbane,QLD,2026,,2026-03-07,19:35:00,Western Bulldogs,11408.0,Past Round
+CD_M20260140005,CONCLUDED,25,Round 0,0,St Kilda,9.0,12.0,66.0,Collingwood,11.0,12.0,78.0,MCG,Melbourne,VIC,2026,,2026-03-08,19:20:00,Collingwood,11409.0,Past Round
+CD_M20260140101,CONCLUDED,25,Round 1,1,Carlton,10.0,15.0,75.0,Richmond,9.0,17.0,71.0,MCG,Melbourne,VIC,2026,,2026-03-12,19:30:00,Richmond,11410.0,Past Round
+CD_M20260140102,CONCLUDED,25,Round 1,1,Essendon,13.0,5.0,83.0,Hawthorn,21.0,19.0,145.0,MCG,Melbourne,VIC,2026,,2026-03-13,19:40:00,Hawthorn,11411.0,Past Round
+CD_M20260140103,CONCLUDED,25,Round 1,1,Western Bulldogs,21.0,8.0,134.0,GWS,7.0,11.0,53.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-14,13:15:00,GWS,11412.0,Past Round
+CD_M20260140104,CONCLUDED,25,Round 1,1,Geelong,16.0,14.0,110.0,Fremantle,14.0,16.0,100.0,GMHBA Stadium,Geelong,VIC,2026,,2026-03-14,16:15:00,Fremantle,11413.0,Past Round
+CD_M20260140105,CONCLUDED,25,Round 1,1,Sydney,15.0,14.0,104.0,Brisbane,8.0,12.0,60.0,SCG,Sydney,NSW,2026,,2026-03-14,19:10:00,Brisbane,11414.0,Past Round
+CD_M20260140106,CONCLUDED,25,Round 1,1,Collingwood,11.0,13.0,79.0,Adelaide,13.0,15.0,93.0,MCG,Melbourne,VIC,2026,,2026-03-14,19:35:00,Adelaide,11415.0,Past Round
+CD_M20260140107,CONCLUDED,25,Round 1,1,North Melbourne,17.0,11.0,113.0,Port Adelaide,9.0,13.0,67.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-15,13:10:00,Port Adelaide,11416.0,Past Round
+CD_M20260140108,CONCLUDED,25,Round 1,1,Melbourne,18.0,12.0,120.0,St Kilda,15.0,17.0,107.0,MCG,Melbourne,VIC,2026,,2026-03-15,15:15:00,St Kilda,11417.0,Past Round
+CD_M20260140109,CONCLUDED,25,Round 1,1,Gold Coast,20.0,11.0,131.0,West Coast,10.0,12.0,72.0,People First Stadium,Gold Coast,QLD,2026,,2026-03-15,18:10:00,West Coast,11418.0,Past Round
+CD_M20260140201,CONCLUDED,25,Round 2,2,Hawthorn,14.0,15.0,99.0,Sydney,13.0,4.0,82.0,MCG,Melbourne,VIC,2026,,2026-03-19,19:30:00,Sydney,11419.0,Past Round
+CD_M20260140202,CONCLUDED,25,Round 2,2,Adelaide,13.0,10.0,88.0,Western Bulldogs,14.0,10.0,94.0,Adelaide Oval,Adelaide,SA,2026,,2026-03-20,19:40:00,Western Bulldogs,11420.0,Past Round
+CD_M20260140203,CONCLUDED,25,Round 2,2,Richmond,9.0,6.0,60.0,Gold Coast,19.0,14.0,128.0,MCG,Melbourne,VIC,2026,,2026-03-21,13:15:00,Gold Coast,11421.0,Past Round
+CD_M20260140204,CONCLUDED,25,Round 2,2,GWS,10.0,14.0,74.0,St Kilda,11.0,12.0,78.0,ENGIE Stadium,Sydney,NSW,2026,,2026-03-21,16:15:00,St Kilda,11422.0,Past Round
+CD_M20260140205,CONCLUDED,25,Round 2,2,Fremantle,17.0,16.0,118.0,Melbourne,10.0,10.0,70.0,Optus Stadium,Perth,WA,2026,,2026-03-21,19:35:00,Melbourne,11423.0,Past Round
+CD_M20260140206,CONCLUDED,25,Round 2,2,Port Adelaide,20.0,13.0,133.0,Essendon,10.0,10.0,70.0,Adelaide Oval,Adelaide,SA,2026,,2026-03-22,15:15:00,Essendon,11424.0,Past Round
+CD_M20260140207,CONCLUDED,25,Round 2,2,West Coast,17.0,9.0,111.0,North Melbourne,15.0,4.0,94.0,Optus Stadium,Perth,WA,2026,,2026-03-22,18:10:00,North Melbourne,11425.0,Past Round
+CD_M20260140301,CONCLUDED,25,Round 3,3,Geelong,9.0,14.0,68.0,Adelaide,9.0,6.0,60.0,GMHBA Stadium,Geelong,VIC,2026,,2026-03-26,19:30:00,Adelaide,11426.0,Past Round
+CD_M20260140302,CONCLUDED,25,Round 3,3,Collingwood,13.0,9.0,87.0,GWS,7.0,12.0,54.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-27,19:40:00,GWS,11427.0,Past Round
+CD_M20260140303,CONCLUDED,25,Round 3,3,St Kilda,11.0,14.0,80.0,Brisbane,17.0,11.0,113.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-28,12:35:00,Brisbane,11428.0,Past Round
+CD_M20260140304,CONCLUDED,25,Round 3,3,Fremantle,13.0,25.0,103.0,Richmond,6.0,7.0,43.0,Optus Stadium,Perth,WA,2026,,2026-03-28,16:15:00,Richmond,11429.0,Past Round
+CD_M20260140305,CONCLUDED,25,Round 3,3,Essendon,9.0,15.0,69.0,North Melbourne,12.0,9.0,81.0,Marvel Stadium,Melbourne,VIC,2026,,2026-03-28,19:35:00,North Melbourne,11430.0,Past Round
+CD_M20260140306,CONCLUDED,25,Round 3,3,Port Adelaide,13.0,12.0,90.0,West Coast,13.0,14.0,92.0,Adelaide Oval,Adelaide,SA,2026,,2026-03-29,12:30:00,West Coast,11431.0,Past Round
+CD_M20260140307,CONCLUDED,25,Round 3,3,Carlton,11.0,11.0,77.0,Melbourne,15.0,10.0,100.0,MCG,Melbourne,VIC,2026,,2026-03-29,15:15:00,Melbourne,11432.0,Past Round
+CD_M20260140401,CONCLUDED,25,Round 4,4,Brisbane,17.0,17.0,119.0,Collingwood,10.0,5.0,65.0,Gabba,Brisbane,QLD,2026,,2026-04-02,19:30:00,Collingwood,11433.0,Past Round
+CD_M20260140402,CONCLUDED,25,Round 4,4,North Melbourne,14.0,12.0,96.0,Carlton,13.0,8.0,86.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-03,15:15:00,Carlton,11434.0,Past Round
+CD_M20260140403,CONCLUDED,25,Round 4,4,Adelaide,11.0,10.0,76.0,Fremantle,11.0,12.0,78.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-03,19:15:00,Fremantle,11435.0,Past Round
+CD_M20260140404,CONCLUDED,25,Round 4,4,Richmond,6.0,12.0,48.0,Port Adelaide,13.0,12.0,90.0,MCG,Melbourne,VIC,2026,,2026-04-04,16:15:00,Port Adelaide,11436.0,Past Round
+CD_M20260140405,CONCLUDED,25,Round 4,4,West Coast,4.0,11.0,35.0,Sydney,24.0,19.0,163.0,Optus Stadium,Perth,WA,2026,,2026-04-04,19:35:00,Sydney,11437.0,Past Round
+CD_M20260140406,CONCLUDED,25,Round 4,4,Melbourne,16.0,13.0,109.0,Gold Coast,14.0,5.0,89.0,MCG,Melbourne,VIC,2026,,2026-04-05,15:15:00,Gold Coast,11438.0,Past Round
+CD_M20260140407,CONCLUDED,25,Round 4,4,Western Bulldogs,14.0,15.0,99.0,Essendon,9.0,11.0,65.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-05,19:20:00,Essendon,11439.0,Past Round
+CD_M20260140408,CONCLUDED,25,Round 4,4,Hawthorn,13.0,14.0,92.0,Geelong,14.0,7.0,91.0,MCG,Melbourne,VIC,2026,,2026-04-06,15:15:00,Geelong,11440.0,Past Round
+CD_M20260140501,CONCLUDED,25,Round 5,5,Adelaide,17.0,12.0,114.0,Carlton,12.0,14.0,86.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-09,19:40:00,Carlton,11441.0,Past Round
+CD_M20260140502,CONCLUDED,25,Round 5,5,Collingwood,5.0,9.0,39.0,Fremantle,7.0,3.0,45.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-10,19:40:00,Fremantle,11442.0,Past Round
+CD_M20260140503,CONCLUDED,25,Round 5,5,North Melbourne,9.0,12.0,66.0,Brisbane,13.0,14.0,92.0,Barossa Park,Lyndoch,SA,2026,,2026-04-11,12:35:00,Brisbane,11443.0,Past Round
+CD_M20260140504,CONCLUDED,25,Round 5,5,Essendon,17.0,11.0,113.0,Melbourne,10.0,8.0,68.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-11,13:15:00,Melbourne,11444.0,Past Round
+CD_M20260140505,CONCLUDED,25,Round 5,5,Sydney,14.0,16.0,100.0,Gold Coast,9.0,14.0,68.0,Norwood Oval,Adelaide,SA,2026,,2026-04-11,16:15:00,Gold Coast,11445.0,Past Round
+CD_M20260140506,CONCLUDED,25,Round 5,5,Hawthorn,15.0,14.0,104.0,Western Bulldogs,8.0,16.0,64.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-11,19:35:00,Western Bulldogs,11446.0,Past Round
+CD_M20260140507,CONCLUDED,25,Round 5,5,Geelong,17.0,20.0,122.0,West Coast,11.0,10.0,76.0,Norwood Oval,Adelaide,SA,2026,,2026-04-12,12:30:00,West Coast,11447.0,Past Round
+CD_M20260140508,CONCLUDED,25,Round 5,5,GWS,20.0,11.0,131.0,Richmond,11.0,9.0,75.0,Barossa Park,Lyndoch,SA,2026,,2026-04-12,15:15:00,Richmond,11448.0,Past Round
+CD_M20260140509,CONCLUDED,25,Round 5,5,Port Adelaide,9.0,13.0,67.0,St Kilda,12.0,9.0,81.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-12,19:15:00,St Kilda,11449.0,Past Round
+CD_M20260140601,CONCLUDED,25,Round 6,6,Carlton,12.0,11.0,83.0,Collingwood,13.0,10.0,88.0,MCG,Melbourne,VIC,2026,,2026-04-16,19:30:00,Collingwood,11450.0,Past Round
+CD_M20260140602,CONCLUDED,25,Round 6,6,Geelong,19.0,17.0,131.0,Western Bulldogs,8.0,8.0,56.0,GMHBA Stadium,Geelong,VIC,2026,,2026-04-17,19:20:00,Western Bulldogs,11451.0,Past Round
+CD_M20260140603,CONCLUDED,25,Round 6,6,Sydney,17.0,5.0,107.0,GWS,8.0,18.0,66.0,SCG,Sydney,NSW,2026,,2026-04-17,19:50:00,GWS,11452.0,Past Round
+CD_M20260140604,CONCLUDED,25,Round 6,6,Gold Coast,17.0,17.0,119.0,Essendon,17.0,8.0,110.0,People First Stadium,Gold Coast,QLD,2026,,2026-04-18,13:15:00,Essendon,11453.0,Past Round
+CD_M20260140605,CONCLUDED,25,Round 6,6,Hawthorn,13.0,11.0,89.0,Port Adelaide,13.0,8.0,86.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-18,16:15:00,Port Adelaide,11454.0,Past Round
+CD_M20260140606,CONCLUDED,25,Round 6,6,Adelaide,15.0,13.0,103.0,St Kilda,15.0,12.0,102.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-18,19:35:00,St Kilda,11455.0,Past Round
+CD_M20260140607,CONCLUDED,25,Round 6,6,North Melbourne,20.0,10.0,130.0,Richmond,7.0,13.0,55.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-19,13:10:00,Richmond,11456.0,Past Round
+CD_M20260140608,CONCLUDED,25,Round 6,6,Melbourne,16.0,8.0,104.0,Brisbane,15.0,12.0,102.0,MCG,Melbourne,VIC,2026,,2026-04-19,15:15:00,Brisbane,11457.0,Past Round
+CD_M20260140609,CONCLUDED,25,Round 6,6,West Coast,5.0,11.0,41.0,Fremantle,14.0,13.0,97.0,Optus Stadium,Perth,WA,2026,,2026-04-19,17:10:00,Fremantle,11458.0,Past Round
+CD_M20260140701,CONCLUDED,25,Round 7,7,Western Bulldogs,9.0,6.0,60.0,Sydney,18.0,18.0,126.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-23,19:30:00,Sydney,11459.0,Past Round
+CD_M20260140702,CONCLUDED,25,Round 7,7,Richmond,11.0,6.0,72.0,Melbourne,19.0,12.0,126.0,MCG,Melbourne,VIC,2026,,2026-04-24,19:40:00,Melbourne,11460.0,Past Round
+CD_M20260140703,CONCLUDED,25,Round 7,7,Hawthorn,16.0,16.0,112.0,Gold Coast,9.0,9.0,63.0,UTAS Stadium,Launceston,TAS,2026,,2026-04-25,12:30:00,Gold Coast,11461.0,Past Round
+CD_M20260140704,CONCLUDED,25,Round 7,7,Essendon,9.0,6.0,60.0,Collingwood,20.0,17.0,137.0,MCG,Melbourne,VIC,2026,,2026-04-25,15:20:00,Collingwood,11462.0,Past Round
+CD_M20260140705,CONCLUDED,25,Round 7,7,Port Adelaide,13.0,17.0,95.0,Geelong,10.0,5.0,65.0,Adelaide Oval,Adelaide,SA,2026,,2026-04-25,18:35:00,Geelong,11463.0,Past Round
+CD_M20260140706,CONCLUDED,25,Round 7,7,Fremantle,16.0,7.0,103.0,Carlton,13.0,11.0,89.0,Optus Stadium,Perth,WA,2026,,2026-04-25,20:15:00,Carlton,11464.0,Past Round
+CD_M20260140707,CONCLUDED,25,Round 7,7,St Kilda,22.0,11.0,143.0,West Coast,5.0,12.0,42.0,Marvel Stadium,Melbourne,VIC,2026,,2026-04-26,13:10:00,West Coast,11465.0,Past Round
+CD_M20260140708,CONCLUDED,25,Round 7,7,Brisbane,19.0,13.0,127.0,Adelaide,11.0,9.0,75.0,Gabba,Brisbane,QLD,2026,,2026-04-26,15:15:00,Adelaide,11466.0,Past Round
+CD_M20260140709,CONCLUDED,25,Round 7,7,GWS,15.0,15.0,105.0,North Melbourne,14.0,14.0,98.0,Manuka Oval,Canberra,ACT,2026,,2026-04-26,16:40:00,North Melbourne,11467.0,Past Round
+CD_M20260140801,CONCLUDED,25,Round 8,8,Collingwood,15.0,3.0,93.0,Hawthorn,13.0,15.0,93.0,MCG,Melbourne,VIC,2026,,2026-04-30,19:30:00,Hawthorn,11468.0,Past Round
+CD_M20260140802,CONCLUDED,25,Round 8,8,Western Bulldogs,15.0,12.0,102.0,Fremantle,17.0,12.0,114.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-01,19:30:00,Fremantle,11469.0,Past Round
+CD_M20260140803,CONCLUDED,25,Round 8,8,Adelaide,11.0,10.0,76.0,Port Adelaide,11.0,9.0,75.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-01,20:10:00,Port Adelaide,11470.0,Past Round
+CD_M20260140804,CONCLUDED,25,Round 8,8,Essendon,11.0,13.0,79.0,Brisbane,22.0,11.0,143.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-02,12:35:00,Brisbane,11471.0,Past Round
+CD_M20260140805,CONCLUDED,25,Round 8,8,West Coast,13.0,10.0,88.0,Richmond,15.0,9.0,99.0,Optus Stadium,Perth,WA,2026,,2026-05-02,16:15:00,Richmond,11472.0,Past Round
+CD_M20260140806,CONCLUDED,25,Round 8,8,Geelong,21.0,9.0,135.0,North Melbourne,13.0,8.0,86.0,GMHBA Stadium,Geelong,VIC,2026,,2026-05-02,16:35:00,North Melbourne,11473.0,Past Round
+CD_M20260140807,CONCLUDED,25,Round 8,8,Carlton,9.0,15.0,69.0,St Kilda,16.0,12.0,108.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-02,19:35:00,St Kilda,11474.0,Past Round
+CD_M20260140808,CONCLUDED,25,Round 8,8,Sydney,19.0,17.0,131.0,Melbourne,17.0,12.0,114.0,SCG,Sydney,NSW,2026,,2026-05-03,15:15:00,Melbourne,11475.0,Past Round
+CD_M20260140809,CONCLUDED,25,Round 8,8,Gold Coast,11.0,17.0,83.0,GWS,8.0,15.0,63.0,People First Stadium,Gold Coast,QLD,2026,,2026-05-03,19:20:00,GWS,11476.0,Past Round
+CD_M20260140901,CONCLUDED,25,Round 9,9,Fremantle,12.0,16.0,88.0,Hawthorn,11.0,7.0,73.0,Optus Stadium,Perth,WA,2026,,2026-05-07,20:10:00,Hawthorn,11477.0,Past Round
+CD_M20260140902,CONCLUDED,25,Round 9,9,Brisbane,14.0,16.0,100.0,Carlton,13.0,11.0,89.0,Gabba,Brisbane,QLD,2026,,2026-05-08,19:30:00,Carlton,11478.0,Past Round
+CD_M20260140903,CONCLUDED,25,Round 9,9,Port Adelaide,10.0,12.0,72.0,Western Bulldogs,10.0,14.0,74.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-08,20:10:00,Western Bulldogs,11479.0,Past Round
+CD_M20260140904,CONCLUDED,25,Round 9,9,North Melbourne,14.0,13.0,97.0,Sydney,16.0,9.0,105.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-09,13:15:00,Sydney,11480.0,Past Round
+CD_M20260140905,CONCLUDED,25,Round 9,9,GWS,16.0,7.0,103.0,Essendon,13.0,11.0,89.0,ENGIE Stadium,Sydney,NSW,2026,,2026-05-09,16:15:00,Essendon,11481.0,Past Round
+CD_M20260140906,CONCLUDED,25,Round 9,9,Gold Coast,13.0,11.0,89.0,St Kilda,8.0,12.0,60.0,TIO Stadium,Darwin,NT,2026,,2026-05-09,19:10:00,St Kilda,11482.0,Past Round
+CD_M20260140907,CONCLUDED,25,Round 9,9,Geelong,18.0,14.0,122.0,Collingwood,9.0,14.0,68.0,MCG,Melbourne,VIC,2026,,2026-05-09,19:35:00,Collingwood,11483.0,Past Round
+CD_M20260140908,CONCLUDED,25,Round 9,9,Melbourne,15.0,9.0,99.0,West Coast,9.0,13.0,67.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-10,13:10:00,West Coast,11484.0,Past Round
+CD_M20260140909,CONCLUDED,25,Round 9,9,Richmond,9.0,7.0,61.0,Adelaide,14.0,14.0,98.0,MCG,Melbourne,VIC,2026,,2026-05-10,15:15:00,Adelaide,11485.0,Past Round
+CD_M20260141001,CONCLUDED,25,Round 10,10,Brisbane,11.0,10.0,76.0,Geelong,17.0,15.0,117.0,Gabba,Brisbane,QLD,2026,,2026-05-14,19:30:00,Geelong,11486.0,Past Round
+CD_M20260141002,CONCLUDED,25,Round 10,10,Sydney,11.0,15.0,81.0,Collingwood,10.0,15.0,75.0,SCG,Sydney,NSW,2026,,2026-05-15,19:30:00,Collingwood,11487.0,Past Round
+CD_M20260141003,CONCLUDED,25,Round 10,10,Gold Coast,15.0,8.0,98.0,Port Adelaide,10.0,13.0,73.0,TIO Stadium,Darwin,NT,2026,,2026-05-15,20:10:00,Port Adelaide,11488.0,Past Round
+CD_M20260141004,CONCLUDED,25,Round 10,10,Adelaide,20.0,13.0,133.0,North Melbourne,9.0,11.0,65.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-16,13:15:00,North Melbourne,11489.0,Past Round
+CD_M20260141005,CONCLUDED,25,Round 10,10,Melbourne,18.0,12.0,120.0,Hawthorn,12.0,9.0,81.0,MCG,Melbourne,VIC,2026,,2026-05-16,16:15:00,Hawthorn,11490.0,Past Round
+CD_M20260141006,CONCLUDED,25,Round 10,10,Carlton,10.0,14.0,74.0,Western Bulldogs,9.0,8.0,62.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-16,19:35:00,Western Bulldogs,11491.0,Past Round
+CD_M20260141007,CONCLUDED,25,Round 10,10,Essendon,8.0,13.0,61.0,Fremantle,16.0,8.0,104.0,MCG,Melbourne,VIC,2026,,2026-05-17,13:10:00,Fremantle,11492.0,Past Round
+CD_M20260141008,CONCLUDED,25,Round 10,10,St Kilda,16.0,13.0,109.0,Richmond,11.0,7.0,73.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-17,15:15:00,Richmond,11493.0,Past Round
+CD_M20260141009,CONCLUDED,25,Round 10,10,West Coast,13.0,10.0,88.0,GWS,10.0,11.0,71.0,Optus Stadium,Perth,WA,2026,,2026-05-17,18:15:00,GWS,11494.0,Past Round
+CD_M20260141101,CONCLUDED,25,Round 11,11,Hawthorn,10.0,15.0,75.0,Adelaide,9.0,12.0,66.0,UTAS Stadium,Launceston,TAS,2026,,2026-05-21,19:30:00,Adelaide,11495.0,Past Round
+CD_M20260141102,CONCLUDED,25,Round 11,11,Richmond,10.0,14.0,74.0,Essendon,7.0,14.0,56.0,MCG,Melbourne,VIC,2026,,2026-05-22,19:45:00,Essendon,11496.0,Past Round
+CD_M20260141103,CONCLUDED,25,Round 11,11,Fremantle,16.0,8.0,104.0,St Kilda,11.0,8.0,74.0,Optus Stadium,Perth,WA,2026,,2026-05-22,20:30:00,St Kilda,11497.0,Past Round
+CD_M20260141104,CONCLUDED,25,Round 11,11,North Melbourne,17.0,9.0,111.0,Gold Coast,16.0,9.0,105.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-23,13:15:00,Gold Coast,11498.0,Past Round
+CD_M20260141105,CONCLUDED,25,Round 11,11,Geelong,15.0,17.0,107.0,Sydney,12.0,8.0,80.0,GMHBA Stadium,Geelong,VIC,2026,,2026-05-23,16:15:00,Sydney,11499.0,Past Round
+CD_M20260141106,CONCLUDED,25,Round 11,11,Collingwood,13.0,14.0,92.0,West Coast,12.0,10.0,82.0,MCG,Melbourne,VIC,2026,,2026-05-23,16:35:00,West Coast,11500.0,Past Round
+CD_M20260141107,CONCLUDED,25,Round 11,11,Port Adelaide,8.0,10.0,58.0,Carlton,13.0,14.0,92.0,Adelaide Oval,Adelaide,SA,2026,,2026-05-23,19:35:00,Carlton,11501.0,Past Round
+CD_M20260141108,CONCLUDED,25,Round 11,11,GWS,26.0,10.0,166.0,Brisbane,13.0,10.0,88.0,ENGIE Stadium,Sydney,NSW,2026,,2026-05-24,12:30:00,Brisbane,11502.0,Past Round
+CD_M20260141109,CONCLUDED,25,Round 11,11,Western Bulldogs,14.0,9.0,93.0,Melbourne,13.0,12.0,90.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-24,15:15:00,Melbourne,11503.0,Past Round
+CD_M20260141201,CONCLUDED,25,Round 12,12,St Kilda,9.0,13.0,67.0,Hawthorn,18.0,11.0,119.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-28,19:30:00,Hawthorn,11504.0,Past Round
+CD_M20260141202,CONCLUDED,25,Round 12,12,Carlton,12.0,16.0,88.0,Geelong,12.0,12.0,84.0,MCG,Melbourne,VIC,2026,,2026-05-29,19:40:00,Geelong,11505.0,Past Round
+CD_M20260141203,CONCLUDED,25,Round 12,12,Sydney,25.0,20.0,170.0,Richmond,8.0,8.0,56.0,SCG,Sydney,NSW,2026,,2026-05-30,13:15:00,Richmond,11506.0,Past Round
+CD_M20260141204,CONCLUDED,25,Round 12,12,Brisbane,10.0,18.0,78.0,Fremantle,15.0,13.0,103.0,Gabba,Brisbane,QLD,2026,,2026-05-30,16:15:00,Fremantle,11507.0,Past Round
+CD_M20260141205,CONCLUDED,25,Round 12,12,Western Bulldogs,14.0,13.0,97.0,Collingwood,13.0,15.0,93.0,Marvel Stadium,Melbourne,VIC,2026,,2026-05-30,19:35:00,Collingwood,11508.0,Past Round
+CD_M20260141206,CONCLUDED,25,Round 12,12,Melbourne,9.0,16.0,70.0,GWS,19.0,5.0,119.0,TIO Traeger Park,Alice Springs,NT,2026,,2026-05-31,15:15:00,GWS,11509.0,Past Round
+CD_M20260141207,CONCLUDED,25,Round 12,12,West Coast,12.0,13.0,85.0,Essendon,8.0,7.0,55.0,Optus Stadium,Perth,WA,2026,,2026-05-31,19:20:00,Essendon,11510.0,Past Round
+CD_M20260141301,CONCLUDED,25,Round 13,13,Adelaide,11.0,9.0,75.0,Geelong,10.0,14.0,74.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-04,19:30:00,Geelong,11511.0,Past Round
+CD_M20260141302,CONCLUDED,25,Round 13,13,Hawthorn,9.0,17.0,71.0,Western Bulldogs,12.0,5.0,77.0,MCG,Melbourne,VIC,2026,,2026-06-05,19:40:00,Western Bulldogs,11512.0,Past Round
+CD_M20260141303,CONCLUDED,25,Round 13,13,North Melbourne,4.0,7.0,31.0,Fremantle,24.0,11.0,155.0,Hands Oval,Bunbury,WA,2026,,2026-06-06,14:15:00,Fremantle,11513.0,Past Round
+CD_M20260141304,CONCLUDED,25,Round 13,13,Gold Coast,11.0,9.0,75.0,Brisbane,15.0,16.0,106.0,People First Stadium,Gold Coast,QLD,2026,,2026-06-06,17:15:00,Brisbane,11514.0,Past Round
+CD_M20260141305,CONCLUDED,25,Round 13,13,West Coast,10.0,11.0,71.0,Port Adelaide,11.0,11.0,77.0,Optus Stadium,Perth,WA,2026,,2026-06-06,20:15:00,Port Adelaide,11515.0,Past Round
+CD_M20260141306,CONCLUDED,25,Round 13,13,Sydney,15.0,14.0,104.0,St Kilda,15.0,12.0,102.0,SCG,Sydney,NSW,2026,,2026-06-07,15:15:00,St Kilda,11516.0,Past Round
+CD_M20260141307,CONCLUDED,25,Round 13,13,Essendon,10.0,7.0,67.0,Carlton,10.0,12.0,72.0,MCG,Melbourne,VIC,2026,,2026-06-07,19:20:00,Carlton,11517.0,Past Round
+CD_M20260141308,CONCLUDED,25,Round 13,13,Collingwood,11.0,9.0,75.0,Melbourne,12.0,11.0,83.0,MCG,Melbourne,VIC,2026,,2026-06-08,15:15:00,Melbourne,11518.0,Past Round
+CD_M20260141401,CONCLUDED,25,Round 14,14,Western Bulldogs,9.0,10.0,64.0,Adelaide,19.0,7.0,121.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-11,19:30:00,Adelaide,11519.0,Past Round
+CD_M20260141402,CONCLUDED,25,Round 14,14,Geelong,15.0,15.0,105.0,Gold Coast,8.0,12.0,60.0,GMHBA Stadium,Geelong,VIC,2026,,2026-06-12,19:40:00,Gold Coast,11520.0,Past Round
+CD_M20260141403,CONCLUDED,25,Round 14,14,Melbourne,13.0,17.0,95.0,Essendon,6.0,14.0,50.0,MCG,Melbourne,VIC,2026,,2026-06-13,13:15:00,Essendon,11521.0,Past Round
+CD_M20260141404,CONCLUDED,25,Round 14,14,North Melbourne,10.0,14.0,74.0,West Coast,10.0,13.0,73.0,Optus Stadium,Perth,WA,2026,,2026-06-13,16:15:00,West Coast,11522.0,Past Round
+CD_M20260141405,CONCLUDED,25,Round 14,14,Port Adelaide,13.0,12.0,90.0,Sydney,14.0,9.0,93.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-13,19:35:00,Sydney,11523.0,Past Round
+CD_M20260141406,CONCLUDED,25,Round 14,14,Richmond,12.0,8.0,80.0,Brisbane,17.0,13.0,115.0,Blundstone Arena,Hobart,TAS,2026,,2026-06-14,13:10:00,Brisbane,11524.0,Past Round
+CD_M20260141407,CONCLUDED,25,Round 14,14,St Kilda,14.0,12.0,96.0,GWS,13.0,10.0,88.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-14,15:15:00,GWS,11525.0,Past Round
+CD_M20260141501,CONCLUDED,25,Round 15,15,Fremantle,14.0,15.0,99.0,Geelong,14.0,6.0,90.0,Optus Stadium,Perth,WA,2026,,2026-06-18,20:10:00,Geelong,11526.0,Past Round
+CD_M20260141502,CONCLUDED,25,Round 15,15,Gold Coast,14.0,13.0,97.0,Hawthorn,17.0,11.0,113.0,People First Stadium,Gold Coast,QLD,2026,,2026-06-19,19:40:00,Hawthorn,11527.0,Past Round
+CD_M20260141503,CONCLUDED,25,Round 15,15,Adelaide,11.0,13.0,79.0,Melbourne,9.0,8.0,62.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-20,13:15:00,Melbourne,11528.0,Past Round
+CD_M20260141504,CONCLUDED,25,Round 15,15,GWS,9.0,11.0,65.0,Carlton,12.0,16.0,88.0,ENGIE Stadium,Sydney,NSW,2026,,2026-06-20,16:15:00,Carlton,11529.0,Past Round
+CD_M20260141505,CONCLUDED,25,Round 15,15,Collingwood,11.0,12.0,78.0,Port Adelaide,6.0,16.0,52.0,MCG,Melbourne,VIC,2026,,2026-06-20,19:35:00,Port Adelaide,11530.0,Past Round
+CD_M20260141506,CONCLUDED,25,Round 15,15,Richmond,6.0,12.0,48.0,North Melbourne,10.0,13.0,73.0,MCG,Melbourne,VIC,2026,,2026-06-21,13:10:00,North Melbourne,11531.0,Past Round
+CD_M20260141507,CONCLUDED,25,Round 15,15,St Kilda,8.0,13.0,61.0,Western Bulldogs,12.0,11.0,83.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-21,15:15:00,Western Bulldogs,11532.0,Past Round
+CD_M20260141601,CONCLUDED,25,Round 16,16,Brisbane,19.0,12.0,126.0,Sydney,12.0,11.0,83.0,Gabba,Brisbane,QLD,2026,,2026-06-25,19:30:00,Sydney,11533.0,Past Round
+CD_M20260141605,CONCLUDED,25,Round 16,16,Hawthorn,14.0,12.0,96.0,GWS,12.0,10.0,82.0,MCG,Melbourne,VIC,2026,,2026-06-26,19:40:00,GWS,11536.0,Past Round
+CD_M20260141602,CONCLUDED,25,Round 16,16,Carlton,17.0,15.0,117.0,West Coast,9.0,10.0,64.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-27,13:15:00,West Coast,11534.0,Past Round
+CD_M20260141603,CONCLUDED,25,Round 16,16,Collingwood,15.0,16.0,106.0,Richmond,11.0,6.0,72.0,MCG,Melbourne,VIC,2026,,2026-06-27,16:15:00,Richmond,11535.0,Past Round
+CD_M20260141607,CONCLUDED,25,Round 16,16,Port Adelaide,13.0,19.0,97.0,Adelaide,11.0,5.0,71.0,Adelaide Oval,Adelaide,SA,2026,,2026-06-27,19:35:00,Adelaide,11538.0,Past Round
+CD_M20260141606,CONCLUDED,25,Round 16,16,North Melbourne,10.0,19.0,79.0,Essendon,9.0,11.0,65.0,Marvel Stadium,Melbourne,VIC,2026,,2026-06-28,15:15:00,Essendon,11537.0,Past Round
+CD_M20260141604,CONCLUDED,25,Round 16,16,Fremantle,11.0,14.0,80.0,Gold Coast,3.0,11.0,29.0,Optus Stadium,Perth,WA,2026,,2026-06-28,17:10:00,Gold Coast,11539.0,Past Round
+CD_M20260141702,CONCLUDED,25,Round 17,17,Geelong,14.0,17.0,101.0,Brisbane,19.0,9.0,123.0,GMHBA Stadium,Geelong,VIC,2026,,2026-07-02,19:30:00,Brisbane,11541.0,Past Round
+CD_M20260141708,CONCLUDED,25,Round 17,17,Sydney,13.0,12.0,90.0,Western Bulldogs,7.0,13.0,55.0,SCG,Sydney,NSW,2026,,2026-07-03,19:40:00,Western Bulldogs,11546.0,Past Round
+CD_M20260141709,CONCLUDED,25,Round 17,17,West Coast,11.0,8.0,74.0,Adelaide,15.0,9.0,99.0,Optus Stadium,Perth,WA,2026,,2026-07-03,20:10:00,Adelaide,11548.0,Past Round
+CD_M20260141705,CONCLUDED,25,Round 17,17,Hawthorn,14.0,6.0,90.0,Melbourne,19.0,11.0,125.0,UTAS Stadium,Launceston,TAS,2026,,2026-07-04,13:15:00,Melbourne,11544.0,Past Round
+CD_M20260141704,CONCLUDED,25,Round 17,17,GWS,16.0,13.0,109.0,Fremantle,13.0,10.0,88.0,Manuka Oval,Canberra,ACT,2026,,2026-07-04,13:35:00,Fremantle,11543.0,Past Round
+CD_M20260141703,CONCLUDED,25,Round 17,17,Gold Coast,15.0,8.0,98.0,Collingwood,15.0,14.0,104.0,People First Stadium,Gold Coast,QLD,2026,,2026-07-04,16:15:00,Collingwood,11542.0,Past Round
+CD_M20260141707,CONCLUDED,25,Round 17,17,Richmond,10.0,12.0,72.0,Carlton,10.0,14.0,74.0,MCG,Melbourne,VIC,2026,,2026-07-04,19:35:00,Carlton,11545.0,Past Round
+CD_M20260141701,CONCLUDED,25,Round 17,17,Essendon,7.0,8.0,50.0,St Kilda,17.0,15.0,117.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-05,15:15:00,St Kilda,11540.0,Past Round
+CD_M20260141706,CONCLUDED,25,Round 17,17,Port Adelaide,10.0,13.0,73.0,North Melbourne,7.0,10.0,52.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-05,16:40:00,North Melbourne,11547.0,Past Round
+CD_M20260141805,CONCLUDED,25,Round 18,18,Fremantle,15.0,21.0,111.0,Sydney,10.0,13.0,73.0,Optus Stadium,Perth,WA,2026,,2026-07-09,20:10:00,Sydney,11557.0,Past Round
+CD_M20260141804,CONCLUDED,25,Round 18,18,Collingwood,13.0,11.0,89.0,North Melbourne,12.0,13.0,85.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-10,19:40:00,North Melbourne,11551.0,Past Round
+CD_M20260141808,CONCLUDED,25,Round 18,18,St Kilda,13.0,9.0,87.0,Port Adelaide,10.0,13.0,73.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-11,13:15:00,Port Adelaide,11554.0,Past Round
+CD_M20260141806,CONCLUDED,25,Round 18,18,GWS,12.0,14.0,86.0,Geelong,11.0,7.0,73.0,ENGIE Stadium,Sydney,NSW,2026,,2026-07-11,16:15:00,Geelong,11552.0,Past Round
+CD_M20260141803,CONCLUDED,25,Round 18,18,Carlton,6.0,3.0,39.0,Hawthorn,15.0,13.0,103.0,MCG,Melbourne,VIC,2026,,2026-07-11,19:35:00,Hawthorn,11550.0,Past Round
+CD_M20260141801,CONCLUDED,25,Round 18,18,Adelaide,19.0,14.0,128.0,Gold Coast,7.0,7.0,49.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-11,20:10:00,Gold Coast,11556.0,Past Round
+CD_M20260141809,CONCLUDED,25,Round 18,18,Western Bulldogs,13.0,8.0,86.0,West Coast,9.0,16.0,70.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-12,13:10:00,West Coast,11555.0,Past Round
+CD_M20260141807,CONCLUDED,25,Round 18,18,Melbourne,16.0,15.0,111.0,Richmond,9.0,11.0,65.0,MCG,Melbourne,VIC,2026,,2026-07-12,15:15:00,Richmond,11553.0,Past Round
+CD_M20260141802,CONCLUDED,25,Round 18,18,Brisbane,22.0,17.0,149.0,Essendon,8.0,11.0,59.0,Gabba,Brisbane,QLD,2026,,2026-07-12,16:40:00,Essendon,11549.0,Past Round
+CD_M20260141903,CONCLUDED,25,Round 19,19,Geelong,15.0,12.0,102.0,St Kilda,11.0,9.0,75.0,GMHBA Stadium,Geelong,VIC,2026,,2026-07-16,19:30:00,St Kilda,11560.0,Past Round
+CD_M20260141908,CONCLUDED,25,Round 19,19,Sydney,10.0,11.0,71.0,Adelaide,13.0,9.0,87.0,SCG,Sydney,NSW,2026,,2026-07-17,19:40:00,Adelaide,11564.0,Past Round
+CD_M20260141906,CONCLUDED,25,Round 19,19,Port Adelaide,11.0,9.0,75.0,Fremantle,15.0,13.0,103.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-18,13:15:00,Fremantle,11565.0,Past Round
+CD_M20260141905,CONCLUDED,25,Round 19,19,North Melbourne,11.0,10.0,76.0,Melbourne,13.0,14.0,92.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-18,16:15:00,Melbourne,11562.0,Past Round
+CD_M20260141901,CONCLUDED,25,Round 19,19,Collingwood,14.0,6.0,90.0,Carlton,10.0,9.0,69.0,MCG,Melbourne,VIC,2026,,2026-07-18,19:35:00,Carlton,11558.0,Past Round
+CD_M20260141909,CONCLUDED,25,Round 19,19,West Coast,10.0,9.0,69.0,Brisbane,13.0,15.0,93.0,Optus Stadium,Perth,WA,2026,,2026-07-18,20:10:00,Brisbane,11566.0,Past Round
+CD_M20260141907,CONCLUDED,25,Round 19,19,Richmond,6.0,16.0,52.0,Hawthorn,18.0,14.0,122.0,MCG,Melbourne,VIC,2026,,2026-07-19,13:10:00,Hawthorn,11563.0,Past Round
+CD_M20260141904,CONCLUDED,25,Round 19,19,Gold Coast,9.0,14.0,68.0,Western Bulldogs,11.0,11.0,77.0,People First Stadium,Gold Coast,QLD,2026,,2026-07-19,15:15:00,Western Bulldogs,11561.0,Past Round
+CD_M20260141902,CONCLUDED,25,Round 19,19,Essendon,10.0,7.0,67.0,GWS,8.0,16.0,64.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-19,16:40:00,GWS,11559.0,Past Round
+CD_M20260142001,CONCLUDED,25,Round 20,20,Adelaide,11.0,8.0,74.0,Collingwood,16.0,12.0,108.0,Adelaide Oval,Adelaide,SA,2026,,2026-07-23,19:30:00,Collingwood,11574.0,Past Round
+CD_M20260142008,CONCLUDED,25,Round 20,20,Melbourne,14.0,13.0,97.0,Geelong,18.0,9.0,117.0,MCG,Melbourne,VIC,2026,,2026-07-24,19:40:00,Geelong,11572.0,Past Round
+CD_M20260142004,CONCLUDED,25,Round 20,20,Fremantle,16.0,16.0,112.0,West Coast,6.0,6.0,42.0,Optus Stadium,Perth,WA,2026,,2026-07-24,20:10:00,West Coast,11575.0,Past Round
+CD_M20260142003,CONCLUDED,25,Round 20,20,Carlton,16.0,14.0,110.0,Gold Coast,15.0,7.0,97.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-25,13:05:00,Gold Coast,11568.0,Past Round
+CD_M20260142006,CONCLUDED,25,Round 20,20,Hawthorn,19.0,18.0,132.0,Essendon,5.0,9.0,39.0,MCG,Melbourne,VIC,2026,,2026-07-25,16:15:00,Essendon,11570.0,Past Round
+CD_M20260142005,CONCLUDED,25,Round 20,20,GWS,13.0,10.0,88.0,Sydney,21.0,13.0,139.0,ENGIE Stadium,Sydney,NSW,2026,,2026-07-25,16:35:00,Sydney,11569.0,Past Round
+CD_M20260142009,CONCLUDED,25,Round 20,20,Western Bulldogs,15.0,15.0,105.0,Richmond,7.0,6.0,48.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-25,19:40:00,Richmond,11573.0,Past Round
+CD_M20260142002,CONCLUDED,25,Round 20,20,Brisbane,19.0,12.0,126.0,Port Adelaide,9.0,13.0,67.0,Gabba,Brisbane,QLD,2026,,2026-07-26,13:10:00,Port Adelaide,11567.0,Past Round
+CD_M20260142007,CONCLUDED,25,Round 20,20,North Melbourne,8.0,14.0,62.0,St Kilda,13.0,15.0,93.0,Marvel Stadium,Melbourne,VIC,2026,,2026-07-26,15:15:00,St Kilda,11571.0,Past Round
+CD_M20260142102,CONCLUDED,25,Round 21,21,Collingwood,10.0,12.0,72.0,Geelong,15.0,7.0,97.0,MCG,Melbourne,VIC,2026,,2026-07-30,19:30:00,Geelong,11577.0,Past Round
+CD_M20260142104,CONCLUDED,25,Round 21,21,Fremantle,11.0,12.0,78.0,Western Bulldogs,5.0,11.0,41.0,Optus Stadium,Perth,WA,2026,,2026-07-31,20:10:00,Western Bulldogs,11584.0,Past Round
+CD_M20260142109,CONCLUDED,25,Round 21,21,St Kilda,13.0,10.0,88.0,Sydney,16.0,11.0,107.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-01,13:05:00,Sydney,11582.0,Past Round
+CD_M20260142106,CONCLUDED,25,Round 21,21,Hawthorn,14.0,15.0,99.0,North Melbourne,12.0,11.0,83.0,UTAS Stadium,Launceston,TAS,2026,,2026-08-01,13:35:00,North Melbourne,11580.0,Past Round
+CD_M20260142107,CONCLUDED,25,Round 21,21,Port Adelaide,9.0,9.0,63.0,GWS,10.0,15.0,75.0,Adelaide Oval,Adelaide,SA,2026,,2026-08-01,18:35:00,GWS,11583.0,Past Round
+CD_M20260142101,CONCLUDED,25,Round 21,21,Carlton,24.0,10.0,154.0,Brisbane,11.0,12.0,78.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-01,19:40:00,Brisbane,11576.0,Past Round
+CD_M20260142108,CONCLUDED,25,Round 21,21,Richmond,12.0,12.0,84.0,West Coast,9.0,19.0,73.0,MCG,Melbourne,VIC,2026,,2026-08-02,13:10:00,West Coast,11581.0,Past Round
+CD_M20260142105,CONCLUDED,25,Round 21,21,Gold Coast,16.0,9.0,105.0,Melbourne,18.0,6.0,114.0,People First Stadium,Gold Coast,QLD,2026,,2026-08-02,15:15:00,Melbourne,11579.0,Past Round
+CD_M20260142103,CONCLUDED,25,Round 21,21,Essendon,11.0,7.0,73.0,Adelaide,23.0,7.0,145.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-02,16:40:00,Adelaide,11578.0,Past Round
+CD_M20260142209,CONCLUDED,25,Round 22,22,Western Bulldogs,11.0,11.0,77.0,North Melbourne,15.0,10.0,100.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-06,19:30:00,North Melbourne,11591.0,Past Round
+CD_M20260142202,CONCLUDED,25,Round 22,22,Brisbane,18.0,17.0,125.0,Hawthorn,8.0,10.0,58.0,Gabba,Brisbane,QLD,2026,,2026-08-07,19:40:00,Hawthorn,11585.0,Past Round
+CD_M20260142205,CONCLUDED,25,Round 22,22,Melbourne,17.0,11.0,113.0,Fremantle,17.0,7.0,109.0,MCG,Melbourne,VIC,2026,,2026-08-08,13:15:00,Fremantle,11588.0,Past Round
+CD_M20260142207,CONCLUDED,25,Round 22,22,Sydney,26.0,11.0,167.0,Port Adelaide,10.0,10.0,70.0,SCG,Sydney,NSW,2026,,2026-08-08,16:15:00,Port Adelaide,11590.0,Past Round
+CD_M20260142203,CONCLUDED,25,Round 22,22,Geelong,17.0,15.0,117.0,Essendon,7.0,8.0,50.0,GMHBA Stadium,Geelong,VIC,2026,,2026-08-08,16:35:00,Essendon,11586.0,Past Round
+CD_M20260142201,CONCLUDED,25,Round 22,22,Adelaide,9.0,9.0,63.0,Richmond,7.0,12.0,54.0,Adelaide Oval,Adelaide,SA,2026,,2026-08-08,19:35:00,Richmond,11592.0,Past Round
+CD_M20260142204,CONCLUDED,25,Round 22,22,GWS,11.0,11.0,77.0,Gold Coast,11.0,13.0,79.0,Manuka Oval,Canberra,ACT,2026,,2026-08-09,13:10:00,Gold Coast,11587.0,Past Round
+CD_M20260142208,CONCLUDED,25,Round 22,22,West Coast,15.0,8.0,98.0,Collingwood,17.0,15.0,117.0,Optus Stadium,Perth,WA,2026,,2026-08-09,16:10:00,Collingwood,11593.0,Past Round
+CD_M20260142206,CONCLUDED,25,Round 22,22,St Kilda,8.0,14.0,62.0,Carlton,16.0,10.0,106.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-09,19:20:00,Carlton,11589.0,Past Round
+CD_M20260142303,CONCLUDED,25,Round 23,23,Fremantle,16.0,16.0,112.0,Adelaide,13.0,10.0,88.0,Optus Stadium,Perth,WA,2026,,2026-08-14,20:10:00,Adelaide,11602.0,Past Round
+CD_M20260142308,CONCLUDED,25,Round 23,23,Richmond,6.0,9.0,45.0,St Kilda,14.0,10.0,94.0,MCG,Melbourne,VIC,2026,,2026-08-15,12:35:00,St Kilda,11599.0,Past Round
+CD_M20260142306,CONCLUDED,25,Round 23,23,North Melbourne,17.0,8.0,110.0,Geelong,19.0,11.0,125.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-15,15:45:00,Geelong,11598.0,Past Round
+CD_M20260142301,CONCLUDED,25,Round 23,23,Brisbane,14.0,11.0,95.0,Gold Coast,6.0,17.0,53.0,Gabba,Brisbane,QLD,2026,,2026-08-15,16:15:00,Gold Coast,11594.0,Past Round
+CD_M20260142305,CONCLUDED,25,Round 23,23,Hawthorn,13.0,14.0,92.0,Collingwood,13.0,14.0,92.0,MCG,Melbourne,VIC,2026,,2026-08-15,19:40:00,Collingwood,11597.0,Past Round
+CD_M20260142307,CONCLUDED,25,Round 23,23,Port Adelaide,8.0,8.0,56.0,Melbourne,20.0,12.0,132.0,Adelaide Oval,Adelaide,SA,2026,,2026-08-15,20:10:00,Melbourne,11601.0,Past Round
+CD_M20260142304,CONCLUDED,25,Round 23,23,GWS,16.0,15.0,111.0,West Coast,7.0,15.0,57.0,ENGIE Stadium,Sydney,NSW,2026,,2026-08-16,13:40:00,West Coast,11596.0,Past Round
+CD_M20260142309,CONCLUDED,25,Round 23,23,Western Bulldogs,12.0,10.0,82.0,Carlton,12.0,10.0,82.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-16,15:15:00,Carlton,11600.0,Past Round
+CD_M20260142302,CONCLUDED,25,Round 23,23,Essendon,11.0,10.0,76.0,Sydney,17.0,10.0,112.0,MCG,Melbourne,VIC,2026,,2026-08-16,16:40:00,Sydney,11595.0,Past Round
+CD_M20260142407,CONCLUDED,25,Round 24,24,St Kilda,12.0,8.0,80.0,Gold Coast,14.0,19.0,103.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-20,19:30:00,Gold Coast,11608.0,Past Round
+CD_M20260142402,CONCLUDED,25,Round 24,24,Collingwood,15.0,6.0,96.0,Brisbane,25.0,9.0,159.0,MCG,Melbourne,VIC,2026,,2026-08-21,19:40:00,Brisbane,11603.0,Past Round
+CD_M20260142403,CONCLUDED,25,Round 24,24,Carlton,18.0,11.0,119.0,Fremantle,12.0,10.0,82.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-22,13:15:00,Fremantle,11604.0,Past Round
+CD_M20260142406,CONCLUDED,25,Round 24,24,Melbourne,12.0,15.0,87.0,Western Bulldogs,16.0,12.0,108.0,MCG,Melbourne,VIC,2026,,2026-08-22,16:15:00,Western Bulldogs,11607.0,Past Round
+CD_M20260142405,CONCLUDED,25,Round 24,24,Geelong,20.0,13.0,133.0,Richmond,11.0,10.0,76.0,GMHBA Stadium,Geelong,VIC,2026,,2026-08-22,19:45:00,Richmond,11606.0,Past Round
+CD_M20260142401,CONCLUDED,25,Round 24,24,Adelaide,24.0,13.0,157.0,GWS,15.0,11.0,101.0,Adelaide Oval,Adelaide,SA,2026,,2026-08-22,20:10:00,GWS,11610.0,Past Round
+CD_M20260142404,CONCLUDED,25,Round 24,24,Essendon,14.0,11.0,95.0,Port Adelaide,16.0,9.0,105.0,Marvel Stadium,Melbourne,VIC,2026,,2026-08-23,12:20:00,Port Adelaide,11605.0,Past Round
+CD_M20260142408,CONCLUDED,25,Round 24,24,Sydney,17.0,21.0,123.0,North Melbourne,10.0,10.0,70.0,SCG,Sydney,NSW,2026,,2026-08-23,15:20:00,North Melbourne,11609.0,Past Round
+CD_M20260142409,CONCLUDED,25,Round 24,24,West Coast,6.0,9.0,45.0,Hawthorn,16.0,11.0,107.0,Optus Stadium,Perth,WA,2026,,2026-08-23,19:20:00,Hawthorn,11611.0,Past Round
+CD_M20260142502,UNCONFIRMED_TEAMS,25,Wildcard Finals,25,Western Bulldogs,,,,Collingwood,,,,MCG,Melbourne,VIC,2026,Wildcard Final 2,2026-08-28,19:40:00,,11612.0,Next Round
+CD_M20260142501,UNCONFIRMED_TEAMS,25,Wildcard Finals,25,Melbourne,,,,Carlton,,,,MCG,Melbourne,VIC,2026,Wildcard Final 1,2026-08-29,19:35:00,,11613.0,Next Round
+CD_M20260142601,SCHEDULED,25,Qualifying & Elimination Finals,26,Fremantle,,,,Hawthorn,,,,Optus Stadium,Perth,WA,2026,Qualifying Final 1,2026-09-03,20:10:00,,11614.0,Future Round
+CD_M20260142602,SCHEDULED,25,Qualifying & Elimination Finals,26,Sydney,,,,Brisbane,,,,SCG,Sydney,NSW,2026,Qualifying Final 2,2026-09-05,15:15:00,,11615.0,Future Round

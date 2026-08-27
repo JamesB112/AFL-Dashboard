@@ -3076,12 +3076,16 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,Time,HomeTeam,AwayTeam,Venue,R
 11596.0,CD_M20260142304,2026,Round 23,23,2026-08-16,13:40:00,GWS,West Coast,ENGIE Stadium,Past Round
 11600.0,CD_M20260142309,2026,Round 23,23,2026-08-16,15:15:00,Western Bulldogs,Carlton,Marvel Stadium,Past Round
 11595.0,CD_M20260142302,2026,Round 23,23,2026-08-16,16:40:00,Essendon,Sydney,MCG,Past Round
-11608.0,CD_M20260142407,2026,Round 24,24,2026-08-20,19:30:00,St Kilda,Gold Coast,Marvel Stadium,Next Round
-11609.0,CD_M20260142402,2026,Round 24,24,2026-08-21,19:40:00,Collingwood,Brisbane,MCG,Next Round
-11611.0,CD_M20260142403,2026,Round 24,24,2026-08-22,13:15:00,Carlton,Fremantle,Marvel Stadium,Next Round
-11613.0,CD_M20260142406,2026,Round 24,24,2026-08-22,16:15:00,Melbourne,Western Bulldogs,MCG,Next Round
-11612.0,CD_M20260142405,2026,Round 24,24,2026-08-22,19:45:00,Geelong,Richmond,GMHBA Stadium,Next Round
-11610.0,CD_M20260142401,2026,Round 24,24,2026-08-22,20:10:00,Adelaide,GWS,Adelaide Oval,Next Round
-11614.0,CD_M20260142404,2026,Round 24,24,2026-08-23,12:20:00,Essendon,Port Adelaide,Marvel Stadium,Next Round
-11615.0,CD_M20260142408,2026,Round 24,24,2026-08-23,15:20:00,Sydney,North Melbourne,SCG,Next Round
-11616.0,CD_M20260142409,2026,Round 24,24,2026-08-23,19:20:00,West Coast,Hawthorn,Optus Stadium,Next Round
+11608.0,CD_M20260142407,2026,Round 24,24,2026-08-20,19:30:00,St Kilda,Gold Coast,Marvel Stadium,Past Round
+11603.0,CD_M20260142402,2026,Round 24,24,2026-08-21,19:40:00,Collingwood,Brisbane,MCG,Past Round
+11604.0,CD_M20260142403,2026,Round 24,24,2026-08-22,13:15:00,Carlton,Fremantle,Marvel Stadium,Past Round
+11607.0,CD_M20260142406,2026,Round 24,24,2026-08-22,16:15:00,Melbourne,Western Bulldogs,MCG,Past Round
+11606.0,CD_M20260142405,2026,Round 24,24,2026-08-22,19:45:00,Geelong,Richmond,GMHBA Stadium,Past Round
+11610.0,CD_M20260142401,2026,Round 24,24,2026-08-22,20:10:00,Adelaide,GWS,Adelaide Oval,Past Round
+11605.0,CD_M20260142404,2026,Round 24,24,2026-08-23,12:20:00,Essendon,Port Adelaide,Marvel Stadium,Past Round
+11609.0,CD_M20260142408,2026,Round 24,24,2026-08-23,15:20:00,Sydney,North Melbourne,SCG,Past Round
+11611.0,CD_M20260142409,2026,Round 24,24,2026-08-23,19:20:00,West Coast,Hawthorn,Optus Stadium,Past Round
+11612.0,CD_M20260142502,2026,Wildcard Finals,25,2026-08-28,19:40:00,Western Bulldogs,Collingwood,MCG,Next Round
+11613.0,CD_M20260142501,2026,Wildcard Finals,25,2026-08-29,19:35:00,Melbourne,Carlton,MCG,Next Round
+11614.0,CD_M20260142601,2026,Qualifying & Elimination Finals,26,2026-09-03,20:10:00,Fremantle,Hawthorn,Optus Stadium,Future Round
+11615.0,CD_M20260142602,2026,Qualifying & Elimination Finals,26,2026-09-05,15:15:00,Sydney,Brisbane,SCG,Future Round
