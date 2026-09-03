@@ -339,6 +339,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11592.0,2026-08-08,2026,22,Adelaide,1710.618,Past Round
 11602.0,2026-08-14,2026,23,Adelaide,1713.789,Past Round
 11610.0,2026-08-22,2026,24,Adelaide,1694.022,Past Round
+11617.0,2026-09-05,2026,26,Adelaide,1711.225,Next Round
 5346.0,2012-03-31,2012,1,Brisbane,1500.0,Past Round
 5352.0,2012-04-05,2012,2,Brisbane,1538.792,Past Round
 5364.0,2012-04-14,2012,3,Brisbane,1500.0,Past Round
@@ -688,7 +689,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11585.0,2026-08-07,2026,22,Brisbane,1773.905,Past Round
 11594.0,2026-08-15,2026,23,Brisbane,1802.172,Past Round
 11603.0,2026-08-21,2026,24,Brisbane,1812.022,Past Round
-11615.0,2026-09-05,2026,26,Brisbane,1812.022,Future Round
+11616.0,2026-09-05,2026,26,Brisbane,1841.638,Next Round
 5344.0,2012-03-29,2012,1,Carlton,1500.0,Past Round
 5352.0,2012-04-05,2012,2,Carlton,1538.792,Past Round
 5361.0,2012-04-13,2012,3,Carlton,1577.584,Past Round
@@ -1024,7 +1025,8 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11589.0,2026-08-09,2026,22,Carlton,1525.361,Past Round
 11600.0,2026-08-16,2026,23,Carlton,1559.632,Past Round
 11604.0,2026-08-22,2026,24,Carlton,1568.74,Past Round
-11613.0,2026-08-29,2026,25,Carlton,1616.841,Next Round
+11613.0,2026-08-29,2026,24,Carlton,1616.841,Past Round
+11615.0,2026-09-04,2026,26,Carlton,1653.609,Next Round
 5345.0,2012-03-30,2012,1,Collingwood,1500.0,Past Round
 5357.0,2012-04-07,2012,2,Collingwood,1471.328,Past Round
 5361.0,2012-04-13,2012,3,Collingwood,1499.325,Past Round
@@ -1374,7 +1376,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11593.0,2026-08-09,2026,22,Collingwood,1654.222,Past Round
 11597.0,2026-08-15,2026,23,Collingwood,1659.754,Past Round
 11603.0,2026-08-21,2026,24,Collingwood,1669.739,Past Round
-11612.0,2026-08-28,2026,25,Collingwood,1640.123,Next Round
+11612.0,2026-08-28,2026,24,Collingwood,1640.123,Past Round
 5349.0,2012-03-31,2012,1,Essendon,1500.0,Past Round
 5353.0,2012-04-07,2012,2,Essendon,1538.792,Past Round
 5366.0,2012-04-14,2012,3,Essendon,1566.789,Past Round
@@ -2049,7 +2051,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11588.0,2026-08-08,2026,22,Fremantle,1913.219,Past Round
 11602.0,2026-08-14,2026,23,Fremantle,1862.756,Past Round
 11604.0,2026-08-22,2026,24,Fremantle,1882.523,Past Round
-11614.0,2026-09-03,2026,26,Fremantle,1882.523,Future Round
+11614.0,2026-09-03,2026,26,Fremantle,1834.422,Next Round
 5343.0,2012-03-24,2012,1,GWS,1500.0,Past Round
 5358.0,2012-04-08,2012,2,GWS,1461.208,Past Round
 5367.0,2012-04-15,2012,3,GWS,1432.536,Past Round
@@ -2756,6 +2758,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11586.0,2026-08-08,2026,22,Geelong,1754.944,Past Round
 11598.0,2026-08-15,2026,23,Geelong,1758.115,Past Round
 11606.0,2026-08-22,2026,24,Geelong,1769.044,Past Round
+11615.0,2026-09-04,2026,26,Geelong,1771.473,Next Round
 5347.0,2012-03-31,2012,1,Gold Coast,1500.0,Past Round
 5359.0,2012-04-08,2012,2,Gold Coast,1461.208,Past Round
 5366.0,2012-04-14,2012,3,Gold Coast,1433.211,Past Round
@@ -3438,7 +3441,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11585.0,2026-08-07,2026,22,Hawthorn,1767.347,Past Round
 11597.0,2026-08-15,2026,23,Hawthorn,1739.08,Past Round
 11611.0,2026-08-23,2026,24,Hawthorn,1729.095,Past Round
-11614.0,2026-09-03,2026,26,Hawthorn,1729.095,Future Round
+11614.0,2026-09-03,2026,26,Hawthorn,1733.143,Next Round
 5346.0,2012-03-31,2012,1,Melbourne,1500.0,Past Round
 5355.0,2012-04-07,2012,2,Melbourne,1461.208,Past Round
 5362.0,2012-04-14,2012,3,Melbourne,1437.326,Past Round
@@ -3778,7 +3781,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11588.0,2026-08-08,2026,22,Melbourne,1553.766,Past Round
 11601.0,2026-08-15,2026,23,Melbourne,1604.229,Past Round
 11607.0,2026-08-22,2026,24,Melbourne,1624.401,Past Round
-11613.0,2026-08-29,2026,25,Melbourne,1585.002,Next Round
+11613.0,2026-08-29,2026,24,Melbourne,1585.002,Past Round
 5349.0,2012-03-31,2012,1,North Melbourne,1500.0,Past Round
 5358.0,2012-04-08,2012,2,North Melbourne,1461.208,Past Round
 5369.0,2012-04-15,2012,3,North Melbourne,1489.88,Past Round
@@ -5492,7 +5495,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11590.0,2026-08-08,2026,22,Sydney,1770.131,Past Round
 11595.0,2026-08-16,2026,23,Sydney,1777.687,Past Round
 11609.0,2026-08-23,2026,24,Sydney,1782.747,Past Round
-11615.0,2026-09-05,2026,26,Sydney,1782.747,Future Round
+11616.0,2026-09-05,2026,26,Sydney,1788.414,Next Round
 5350.0,2012-04-01,2012,1,West Coast,1500.0,Past Round
 5355.0,2012-04-07,2012,2,West Coast,1538.792,Past Round
 5367.0,2012-04-15,2012,3,West Coast,1562.674,Past Round
@@ -6177,5 +6180,6 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11584.0,2026-07-31,2026,21,Western Bulldogs,1702.523,Past Round
 11591.0,2026-08-06,2026,22,Western Bulldogs,1685.05,Past Round
 11600.0,2026-08-16,2026,23,Western Bulldogs,1624.265,Past Round
+11612.0,2026-08-28,2026,24,Western Bulldogs,1654.556,Past Round
 11607.0,2026-08-22,2026,24,Western Bulldogs,1615.157,Past Round
-11612.0,2026-08-28,2026,25,Western Bulldogs,1654.556,Next Round
+11617.0,2026-09-05,2026,26,Western Bulldogs,1682.283,Next Round

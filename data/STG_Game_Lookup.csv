@@ -3085,7 +3085,9 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,Time,HomeTeam,AwayTeam,Venue,R
 11605.0,CD_M20260142404,2026,Round 24,24,2026-08-23,12:20:00,Essendon,Port Adelaide,Marvel Stadium,Past Round
 11609.0,CD_M20260142408,2026,Round 24,24,2026-08-23,15:20:00,Sydney,North Melbourne,SCG,Past Round
 11611.0,CD_M20260142409,2026,Round 24,24,2026-08-23,19:20:00,West Coast,Hawthorn,Optus Stadium,Past Round
-11612.0,CD_M20260142502,2026,Wildcard Finals,25,2026-08-28,19:40:00,Western Bulldogs,Collingwood,MCG,Next Round
-11613.0,CD_M20260142501,2026,Wildcard Finals,25,2026-08-29,19:35:00,Melbourne,Carlton,MCG,Next Round
-11614.0,CD_M20260142601,2026,Qualifying & Elimination Finals,26,2026-09-03,20:10:00,Fremantle,Hawthorn,Optus Stadium,Future Round
-11615.0,CD_M20260142602,2026,Qualifying & Elimination Finals,26,2026-09-05,15:15:00,Sydney,Brisbane,SCG,Future Round
+11612.0,CD_M20260142502,2026,Wildcard Finals,25,2026-08-28,19:40:00,Western Bulldogs,Collingwood,MCG,Past Round
+11613.0,CD_M20260142501,2026,Wildcard Finals,25,2026-08-29,19:35:00,Melbourne,Carlton,MCG,Past Round
+11614.0,CD_M20260142601,2026,Qualifying & Elimination Finals,26,2026-09-03,20:10:00,Fremantle,Hawthorn,Optus Stadium,Next Round
+11615.0,CD_M20260142603,2026,Qualifying & Elimination Finals,26,2026-09-04,19:40:00,Geelong,Carlton,MCG,Next Round
+11616.0,CD_M20260142602,2026,Qualifying & Elimination Finals,26,2026-09-05,15:15:00,Sydney,Brisbane,SCG,Next Round
+11617.0,CD_M20260142604,2026,Qualifying & Elimination Finals,26,2026-09-05,19:35:00,Adelaide,Western Bulldogs,Adelaide Oval,Next Round
