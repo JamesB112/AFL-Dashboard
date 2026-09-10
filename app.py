@@ -594,97 +594,99 @@ if page == "Home":
     # PROJECTED LADDER
     # ===================================================
 
-    left, right = st.columns([1.8, 1])
+    # Hid projected ladder section (season is over)
 
-    with left:
+    # left, right = st.columns([1.8, 1])
 
-        st.subheader("Projected Final Ladder")
-        st.caption("Modelled finishing position for every club.")
+    # with left:
+
+    #     st.subheader("Projected Final Ladder")
+    #     st.caption("Modelled finishing position for every club.")
 
 
-    ladder = dl.get_ladder_projection()
-    if ladder is None:
-        st.info("Ladder projection data not found — add `Ladder_Projection.csv` to the `data/` folder.")
-        st.stop()
+    # ladder = dl.get_ladder_projection()
+    # if ladder is None:
+    #     st.info("Ladder projection data not found — add `Ladder_Projection.csv` to the `data/` folder.")
+    #     st.stop()
 
-    def fmt_movement(row):
-        m = row["Rank_Movement"]
-        if pd.isna(m) or m == 0:
-            return "—"
-        return f"▲{abs(int(m))}" if m > 0 else f"▼{abs(int(m))}"
+    # def fmt_movement(row):
+    #     m = row["Rank_Movement"]
+    #     if pd.isna(m) or m == 0:
+    #         return "—"
+    #     return f"▲{abs(int(m))}" if m > 0 else f"▼{abs(int(m))}"
 
-    def fmt_range(row):
-        return f"{int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])}"
+    # def fmt_range(row):
+    #     return f"{int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])}"
 
-    display = ladder.copy()
-    display["Movement"] = display.apply(fmt_movement, axis=1)
-    display["Proj. Range"] = display.apply(fmt_range, axis=1)
-    display["In Finals?"] = display["Projected_Rank"].apply(
-        lambda r: "✅ Yes" if r <= 10 else "⬜ No"
-    )
+    # display = ladder.copy()
+    # display["Movement"] = display.apply(fmt_movement, axis=1)
+    # display["Proj. Range"] = display.apply(fmt_range, axis=1)
+    # display["In Finals?"] = display["Projected_Rank"].apply(
+    #     lambda r: "✅ Yes" if r <= 10 else "⬜ No"
+    # )
 
-    show_cols = {
-        "Team": "Club",
-        "Current_Rank": "Rank",
-        "Wins": "W",
-        "Draws": "D",
-        "Losses": "L",
-        "Current_Points": "Pts",
-        "Current_Percentage": "%",
-        "Games_Remaining": "Left",
-        "Projected_Rank": "Proj.",
-        "Proj. Range": "Range",
-        "In Finals?": "Finals?",
-    }
+    # show_cols = {
+    #     "Team": "Club",
+    #     "Current_Rank": "Rank",
+    #     "Wins": "W",
+    #     "Draws": "D",
+    #     "Losses": "L",
+    #     "Current_Points": "Pts",
+    #     "Current_Percentage": "%",
+    #     "Games_Remaining": "Left",
+    #     "Projected_Rank": "Proj.",
+    #     "Proj. Range": "Range",
+    #     "In Finals?": "Finals?",
+    # }
 
-    st.dataframe(
-        display[list(show_cols.keys())].rename(columns=show_cols),
-        use_container_width=True,
-        hide_index=True,
-        column_config={
-            "Rank":   st.column_config.NumberColumn(format="%d", width="small"),
-            "W":      st.column_config.NumberColumn(width="small"),
-            "D":      st.column_config.NumberColumn(width="small"),
-            "L":      st.column_config.NumberColumn(width="small"),
-            "Pts":    st.column_config.NumberColumn(width="small"),
-            "%":      st.column_config.NumberColumn(format="%.1f", width="small"),
-            "Left":   st.column_config.NumberColumn(width="small"),
-            "Proj.":  st.column_config.NumberColumn(format="%d", width="small"),
-            "Range":  st.column_config.TextColumn(width="medium"),
-            "Finals?": st.column_config.TextColumn(width="small"),
-            "Club":   st.column_config.TextColumn(width="medium"),
-        },
-        height=560,
-    )
+    # st.dataframe(
+    #     display[list(show_cols.keys())].rename(columns=show_cols),
+    #     use_container_width=True,
+    #     hide_index=True,
+    #     column_config={
+    #         "Rank":   st.column_config.NumberColumn(format="%d", width="small"),
+    #         "W":      st.column_config.NumberColumn(width="small"),
+    #         "D":      st.column_config.NumberColumn(width="small"),
+    #         "L":      st.column_config.NumberColumn(width="small"),
+    #         "Pts":    st.column_config.NumberColumn(width="small"),
+    #         "%":      st.column_config.NumberColumn(format="%.1f", width="small"),
+    #         "Left":   st.column_config.NumberColumn(width="small"),
+    #         "Proj.":  st.column_config.NumberColumn(format="%d", width="small"),
+    #         "Range":  st.column_config.TextColumn(width="medium"),
+    #         "Finals?": st.column_config.TextColumn(width="small"),
+    #         "Club":   st.column_config.TextColumn(width="medium"),
+    #     },
+    #     height=560,
+    # )
 
-    st.divider()
+    # st.divider()
 
-    # --- top 10 probability callout ---
-    st.subheader("Finals picture")
-    top10 = ladder[ladder["Projected_Rank"] <= 10].sort_values("Projected_Rank")
-    bubble = ladder[(ladder["Rank_Range_Best"] <= 10) & (ladder["Projected_Rank"] > 10)].sort_values("Projected_Rank")
+    # # --- top 10 probability callout ---
+    # st.subheader("Finals picture")
+    # top10 = ladder[ladder["Projected_Rank"] <= 10].sort_values("Projected_Rank")
+    # bubble = ladder[(ladder["Rank_Range_Best"] <= 10) & (ladder["Projected_Rank"] > 10)].sort_values("Projected_Rank")
 
-    col_top, col_bub = st.columns(2)
-    with col_top:
-        st.markdown("**Projected top 10**")
-        for _, row in top10.iterrows():
-            st.markdown(
-                f"**{int(row['Projected_Rank'])}.** {row['Team']} "
-                f"<span style='color:{SLATE};font-size:0.85rem;'>({int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])})</span>",
-                unsafe_allow_html=True,
-            )
-    with col_bub:
-        if not bubble.empty:
-            st.markdown("**Outside chance** *(best case makes finals)*")
-            for _, row in bubble.iterrows():
-                st.markdown(
-                    f"**{row['Team']}** — proj. {int(row['Projected_Rank'])}, "
-                    f"<span style='color:{SLATE};font-size:0.85rem;'>best case {int(row['Rank_Range_Best'])}</span>",
-                    unsafe_allow_html=True,
-                )
-        else:
-            st.markdown("**Outside chance**")
-            st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
+    # col_top, col_bub = st.columns(2)
+    # with col_top:
+    #     st.markdown("**Projected top 10**")
+    #     for _, row in top10.iterrows():
+    #         st.markdown(
+    #             f"**{int(row['Projected_Rank'])}.** {row['Team']} "
+    #             f"<span style='color:{SLATE};font-size:0.85rem;'>({int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])})</span>",
+    #             unsafe_allow_html=True,
+    #         )
+    # with col_bub:
+    #     if not bubble.empty:
+    #         st.markdown("**Outside chance** *(best case makes finals)*")
+    #         for _, row in bubble.iterrows():
+    #             st.markdown(
+    #                 f"**{row['Team']}** — proj. {int(row['Projected_Rank'])}, "
+    #                 f"<span style='color:{SLATE};font-size:0.85rem;'>best case {int(row['Rank_Range_Best'])}</span>",
+    #                 unsafe_allow_html=True,
+    #             )
+    #     else:
+    #         st.markdown("**Outside chance**")
+    #         st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
 
 # ========================================================================
 # TEAM PERFORMANCE
