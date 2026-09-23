@@ -962,7 +962,7 @@ elif page == "Player Performance":
                                 height=500,
                                 xaxis_title="Round", yaxis_title="Rank",
                                 yaxis=dict(**PLOTLY_BASE["yaxis"], autorange="reversed"),
-                                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0))
+                                legend=dict(orientation="h", yanchor="bottom", y=1.01, xanchor="left", x=0))
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.info(f"No ranking data for {player_sel} in {trend_season}.")
