@@ -1,7 +1,7 @@
 Team,Current_Rank,Rank_Movement,Played,Wins,Draws,Losses,Current_Points,Current_Percentage,Games_Remaining,Projected_Rank,Projected_Rank_Median,Rank_Range_Best,Rank_Range_Worst
 Fremantle,1,0.0,23,19,0,4,76,137.21,1.0,1,1.0,1,1
-Sydney,2,0.0,23,18,0,5,72,136.06,1.0,2,2.0,2,2
-Hawthorn,4,1.0,23,15,2,6,64,120.15,1.0,3,3.0,3,4
+Sydney,2,0.0,23,18,0,5,72,136.06,0.0,2,2.0,2,2
+Hawthorn,4,1.0,23,15,2,6,64,120.15,0.0,3,3.0,3,4
 Brisbane,3,-1.0,23,16,0,7,64,121.67,1.0,4,4.0,3,4
 Geelong,5,0.0,23,15,0,8,60,122.34,0.0,5,5.0,5,5
 Adelaide,6,0.0,23,15,0,8,60,117.31,0.0,6,6.0,6,6

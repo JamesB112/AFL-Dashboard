@@ -692,7 +692,8 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11603.0,2026-08-21,2026,24,Brisbane,1812.022,Past Round
 11616.0,2026-09-05,2026,25,Brisbane,1841.638,Past Round
 11619.0,2026-09-12,2026,26,Brisbane,1809.525,Past Round
-11621.0,2026-09-19,2026,28,Brisbane,1833.744,Next Round
+11621.0,2026-09-19,2026,27,Brisbane,1833.744,Past Round
+11622.0,2026-09-26,2026,29,Brisbane,1868.96,Next Round
 5344.0,2012-03-29,2012,1,Carlton,1500.0,Past Round
 5352.0,2012-04-05,2012,2,Carlton,1538.792,Past Round
 5361.0,2012-04-13,2012,3,Carlton,1577.584,Past Round
@@ -2056,7 +2057,8 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11604.0,2026-08-22,2026,24,Fremantle,1882.523,Past Round
 11614.0,2026-09-03,2026,25,Fremantle,1834.422,Past Round
 11618.0,2026-09-11,2026,26,Fremantle,1789.424,Past Round
-11620.0,2026-09-18,2026,28,Fremantle,1818.298,Next Round
+11620.0,2026-09-18,2026,27,Fremantle,1818.298,Past Round
+11622.0,2026-09-26,2026,29,Fremantle,1857.224,Next Round
 5343.0,2012-03-24,2012,1,GWS,1500.0,Past Round
 5358.0,2012-04-08,2012,2,GWS,1461.208,Past Round
 5367.0,2012-04-15,2012,3,GWS,1432.536,Past Round
@@ -3448,7 +3450,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11597.0,2026-08-15,2026,23,Hawthorn,1739.08,Past Round
 11611.0,2026-08-23,2026,24,Hawthorn,1729.095,Past Round
 11614.0,2026-09-03,2026,25,Hawthorn,1733.143,Past Round
-11621.0,2026-09-19,2026,28,Hawthorn,1778.141,Next Round
+11621.0,2026-09-19,2026,27,Hawthorn,1778.141,Past Round
 5346.0,2012-03-31,2012,1,Melbourne,1500.0,Past Round
 5355.0,2012-04-07,2012,2,Melbourne,1461.208,Past Round
 5362.0,2012-04-14,2012,3,Melbourne,1437.326,Past Round
@@ -5503,7 +5505,7 @@ Match_id,Date,Season,RoundNumber,Team,Elo,RoundStatus
 11595.0,2026-08-16,2026,23,Sydney,1777.687,Past Round
 11609.0,2026-08-23,2026,24,Sydney,1782.747,Past Round
 11616.0,2026-09-05,2026,25,Sydney,1788.414,Past Round
-11620.0,2026-09-18,2026,28,Sydney,1820.527,Next Round
+11620.0,2026-09-18,2026,27,Sydney,1820.527,Past Round
 5350.0,2012-04-01,2012,1,West Coast,1500.0,Past Round
 5355.0,2012-04-07,2012,2,West Coast,1538.792,Past Round
 5367.0,2012-04-15,2012,3,West Coast,1562.674,Past Round

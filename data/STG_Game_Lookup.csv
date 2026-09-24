@@ -3093,5 +3093,6 @@ Match_id,ProviderId,Season,Round,RoundNumber,Date,Time,HomeTeam,AwayTeam,Venue,R
 11617.0,CD_M20260142604,2026,Qualifying & Elimination Finals,26,2026-09-05,19:35:00,Adelaide,Western Bulldogs,Adelaide Oval,Past Round
 11618.0,CD_M20260142701,2026,Semi Finals,27,2026-09-11,20:10:00,Fremantle,Geelong,Optus Stadium,Past Round
 11619.0,CD_M20260142702,2026,Semi Finals,27,2026-09-12,19:35:00,Brisbane,Adelaide,Gabba,Past Round
-11620.0,CD_M20260142802,2026,Preliminary Finals,28,2026-09-18,19:40:00,Sydney,Fremantle,SCG,Next Round
-11621.0,CD_M20260142801,2026,Preliminary Finals,28,2026-09-19,17:15:00,Hawthorn,Brisbane,MCG,Next Round
+11620.0,CD_M20260142802,2026,Preliminary Finals,28,2026-09-18,19:40:00,Sydney,Fremantle,SCG,Past Round
+11621.0,CD_M20260142801,2026,Preliminary Finals,28,2026-09-19,17:15:00,Hawthorn,Brisbane,MCG,Past Round
+11622.0,CD_M20260142901,2026,Grand Final,29,2026-09-26,14:30:00,Fremantle,Brisbane,MCG,Next Round
