@@ -761,7 +761,7 @@ def get_elo_snapshot(season, round_number):
 
     hist = hist[
         (hist["Season"] < season)
-        | ((hist["Season"] == season) & (hist["RoundNumber"] < round_number))
+        | ((hist["Season"] == season) & (hist["RoundNumber"] == round_number))
     ]
 
     if hist.empty:

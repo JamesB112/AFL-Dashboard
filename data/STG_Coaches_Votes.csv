@@ -19616,51 +19616,15 @@ Season,RoundNumber,HomeTeam,AwayTeam,CoachesVotes,Player,Team,Player_Cleaned_Nam
 2026,22,St Kilda,Carlton,4.0,Oliver Florent,Carlton,O_Florent,2026-08-09,11589
 2026,22,St Kilda,Carlton,2.0,Patrick Cripps,Carlton,P_Cripps,2026-08-09,11589
 2026,22,St Kilda,Carlton,1.0,George Hewett,Carlton,G_Hewett,2026-08-09,11589
-2026,25,Fremantle,Hawthorn,9.0,James Sicily,Hawthorn,J_Sicily,2026-09-03,11614
-2026,25,Fremantle,Hawthorn,9.0,Josh Battle,Hawthorn,J_Battle,2026-09-03,11614
-2026,25,Fremantle,Hawthorn,3.0,Nick Watson,Hawthorn,N_Watson,2026-09-03,11614
-2026,25,Fremantle,Hawthorn,3.0,Will Day,Hawthorn,W_Day,2026-09-03,11614
-2026,25,Fremantle,Hawthorn,2.0,Dylan Moore,Hawthorn,D_Moore,2026-09-03,11614
-2026,25,Fremantle,Hawthorn,2.0,Alex Pearce,Fremantle,A_Pearce,2026-09-03,11614
-2026,25,Fremantle,Hawthorn,1.0,Jordan Clark,Fremantle,J_Clark,2026-09-03,11614
-2026,25,Fremantle,Hawthorn,1.0,Luke Jackson,Fremantle,L_Jackson,2026-09-03,11614
-2026,25,Geelong,Carlton,9.0,Shaun Mannagh,Geelong,S_Mannagh,2026-09-04,11615
-2026,25,Geelong,Carlton,9.0,Patrick Dangerfield,Geelong,P_Dangerfield,2026-09-04,11615
-2026,25,Geelong,Carlton,5.0,Gryan Miers,Geelong,G_Miers,2026-09-04,11615
-2026,25,Geelong,Carlton,4.0,Tom Stewart,Geelong,T_Stewart,2026-09-04,11615
-2026,25,Geelong,Carlton,3.0,Bailey Smith,Geelong,B_Smith,2026-09-04,11615
-2026,25,Sydney,Brisbane,8.0,Logan McDonald,Sydney,L_Mcdonald,2026-09-05,11616
-2026,25,Sydney,Brisbane,8.0,Tom Papley,Sydney,T_Papley,2026-09-05,11616
-2026,25,Sydney,Brisbane,8.0,Errol Gulden,Sydney,E_Gulden,2026-09-05,11616
-2026,25,Sydney,Brisbane,4.0,Charlie Curnow,Sydney,C_Curnow,2026-09-05,11616
-2026,25,Sydney,Brisbane,2.0,James Rowbottom,Sydney,J_Rowbottom,2026-09-05,11616
-2026,25,Adelaide,Western Bulldogs,10.0,Josh Worrell,Adelaide,J_Worrell,2026-09-05,11617
-2026,25,Adelaide,Western Bulldogs,6.0,Izak Rankine,Adelaide,I_Rankine,2026-09-05,11617
-2026,25,Adelaide,Western Bulldogs,6.0,Ed Richards,Western Bulldogs,E_Richards,2026-09-05,11617
-2026,25,Adelaide,Western Bulldogs,5.0,Wayne Milera,Adelaide,W_Milera,2026-09-05,11617
-2026,25,Adelaide,Western Bulldogs,3.0,Marcus Bontempelli,Western Bulldogs,M_Bontempelli,2026-09-05,11617
-2026,26,Fremantle,Geelong,10.0,Luke Jackson,Fremantle,L_Jackson,2026-09-11,11618
-2026,26,Fremantle,Geelong,6.0,Shai Bolton,Fremantle,S_Bolton,2026-09-11,11618
-2026,26,Fremantle,Geelong,6.0,Oliver Henry,Geelong,O_Henry,2026-09-11,11618
-2026,26,Fremantle,Geelong,4.0,Hayden Young,Fremantle,H_Young,2026-09-11,11618
-2026,26,Fremantle,Geelong,2.0,Patrick Voss,Fremantle,P_Voss,2026-09-11,11618
-2026,26,Fremantle,Geelong,1.0,Caleb Serong,Fremantle,C_Serong,2026-09-11,11618
-2026,26,Fremantle,Geelong,1.0,Zach Guthrie,Geelong,Z_Guthrie,2026-09-11,11618
-2026,26,Brisbane,Adelaide,10.0,Zac Bailey,Brisbane,Z_Bailey,2026-09-12,11619
-2026,26,Brisbane,Adelaide,8.0,Will Ashcroft,Brisbane,W_Ashcroft,2026-09-12,11619
-2026,26,Brisbane,Adelaide,5.0,Charlie Cameron,Brisbane,C_Cameron,2026-09-12,11619
-2026,26,Brisbane,Adelaide,3.0,Josh Dunkley,Brisbane,J_Dunkley,2026-09-12,11619
-2026,26,Brisbane,Adelaide,2.0,Ryan Lester,Brisbane,R_Lester,2026-09-12,11619
-2026,26,Brisbane,Adelaide,2.0,Cameron Rayner,Brisbane,C_Rayner,2026-09-12,11619
-2026,27,Sydney,Fremantle,10.0,Caleb Serong,Fremantle,C_Serong,2026-09-18,11620
-2026,27,Sydney,Fremantle,8.0,Hayden Young,Fremantle,H_Young,2026-09-18,11620
-2026,27,Sydney,Fremantle,5.0,Tom McCartin,Sydney,T_Mccartin,2026-09-18,11620
-2026,27,Sydney,Fremantle,3.0,Shai Bolton,Fremantle,S_Bolton,2026-09-18,11620
-2026,27,Sydney,Fremantle,2.0,Luke Jackson,Fremantle,L_Jackson,2026-09-18,11620
-2026,27,Sydney,Fremantle,1.0,Andrew Brayshaw,Fremantle,A_Brayshaw,2026-09-18,11620
-2026,27,Sydney,Fremantle,1.0,Errol Gulden,Sydney,E_Gulden,2026-09-18,11620
-2026,27,Hawthorn,Brisbane,10.0,Nick Watson,Hawthorn,N_Watson,2026-09-19,11621
-2026,27,Hawthorn,Brisbane,7.0,Hugh McCluggage,Brisbane,H_Mccluggage,2026-09-19,11621
-2026,27,Hawthorn,Brisbane,6.0,Will Ashcroft,Brisbane,W_Ashcroft,2026-09-19,11621
-2026,27,Hawthorn,Brisbane,5.0,Josh Ward,Hawthorn,J_Ward,2026-09-19,11621
-2026,27,Hawthorn,Brisbane,2.0,Kai Lohmann,Brisbane,K_Lohmann,2026-09-19,11621
+2026,28,Sydney,Fremantle,10.0,Caleb Serong,Fremantle,C_Serong,2026-09-18,11620
+2026,28,Sydney,Fremantle,8.0,Hayden Young,Fremantle,H_Young,2026-09-18,11620
+2026,28,Sydney,Fremantle,5.0,Tom McCartin,Sydney,T_Mccartin,2026-09-18,11620
+2026,28,Sydney,Fremantle,3.0,Shai Bolton,Fremantle,S_Bolton,2026-09-18,11620
+2026,28,Sydney,Fremantle,2.0,Luke Jackson,Fremantle,L_Jackson,2026-09-18,11620
+2026,28,Sydney,Fremantle,1.0,Andrew Brayshaw,Fremantle,A_Brayshaw,2026-09-18,11620
+2026,28,Sydney,Fremantle,1.0,Errol Gulden,Sydney,E_Gulden,2026-09-18,11620
+2026,28,Hawthorn,Brisbane,10.0,Nick Watson,Hawthorn,N_Watson,2026-09-19,11621
+2026,28,Hawthorn,Brisbane,7.0,Hugh McCluggage,Brisbane,H_Mccluggage,2026-09-19,11621
+2026,28,Hawthorn,Brisbane,6.0,Will Ashcroft,Brisbane,W_Ashcroft,2026-09-19,11621
+2026,28,Hawthorn,Brisbane,5.0,Josh Ward,Hawthorn,J_Ward,2026-09-19,11621
+2026,28,Hawthorn,Brisbane,2.0,Kai Lohmann,Brisbane,K_Lohmann,2026-09-19,11621

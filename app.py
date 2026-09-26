@@ -400,7 +400,7 @@ if page == "Home":
             Predicting every game, projecting the final ladder,
             and providing easy acess team and player performace.
 
-            Data is refreshed every Thursday and Friday, once lineups are released.
+            Data is refreshed every round once team lineups are released.
             </p>
             """,
             unsafe_allow_html=True,
@@ -716,109 +716,176 @@ elif page == "Team Performance":
     else:
         all_season_teams = sorted(elo_season_hist["Team"].unique().tolist())
 
-        # # Default to the teams actually worth looking at right now — the
-        # # top 3 and bottom 3 by their most recent Elo this season — rather
-        # # than an arbitrary/alphabetical subset.
-        # latest_by_team = (
-        #     elo_season_hist.sort_values("RoundNumber")
-        #     .groupby("Team")["Elo"].last()
-        #     .sort_values(ascending=False)
-        # )
-        # default_highlight = latest_by_team.head(3).index.tolist() + latest_by_team.tail(3).index.tolist()
+        # Select teams to highlight
+        highlight_sel = st.multiselect(
+            "Highlight clubs",
+            all_season_teams,
+            default=all_season_teams,
+            help="Select clubs to highlight and label on the chart.",
+        )
 
-        # highlight_sel = st.multiselect(
-        #     "Highlight clubs",
-        #     all_season_teams,
-        #     default=[t for t in default_highlight if t in all_season_teams],
-        #     help="The rest fade into the background so the chart stays readable with 18 lines on it.",
-        # )
-        highlight = set(all_season_teams)
+        highlight = set(highlight_sel)
 
         fig_elo = go.Figure()
-        label_teams = []  # collect end-of-line label candidates, position them after the loop
+        label_teams = []
 
         for team in all_season_teams:
-            t_data = elo_season_hist[elo_season_hist["Team"] == team].sort_values("RoundNumber")
+            t_data = (
+                elo_season_hist[elo_season_hist["Team"] == team]
+                .sort_values("RoundNumber")
+            )
+
             if t_data.empty:
                 continue
+
             is_hl = team in highlight
             color = TEAM_COLORS.get(team, SLATE)
+
             fig_elo.add_trace(go.Scatter(
-                x=t_data["RoundNumber"], y=t_data["Elo"],
-                name=team, mode="lines",
-                line=dict(color=color if is_hl else HAIRLINE, width=2.6 if is_hl else 1.3),
+                x=t_data["RoundNumber"],
+                y=t_data["Elo"],
+                name=team,
+                mode="lines",
+                line=dict(
+                    color=color if is_hl else HAIRLINE,
+                    width=2.6 if is_hl else 1.3,
+                ),
                 opacity=1.0 if is_hl else 0.7,
-                hovertemplate=f"<b>{team}</b><br>" + "Round %{x}<br>Elo: %{y:.0f}<extra></extra>",
+                hovertemplate=(
+                    f"<b>{team}</b><br>"
+                    "Round %{x}<br>"
+                    "Elo: %{y:.0f}"
+                    "<extra></extra>"
+                ),
                 showlegend=is_hl,
             ))
+
+            # Only create an end-of-line label for selected clubs
             if is_hl:
                 last = t_data.iloc[-1]
+
                 label_teams.append({
-                    "team": team, "color": color,
-                    "x": last["RoundNumber"], "y": last["Elo"],
+                    "team": team,
+                    "color": color,
+                    "x": last["RoundNumber"],
+                    "y": last["Elo"],
                 })
 
-        # League-average reference line so a club's trajectory reads against
-        # the competition, not just in isolation.
-        league_avg = elo_season_hist.groupby("RoundNumber", as_index=True)["Elo"].mean()
+        # League-average reference line
+        league_avg = (
+            elo_season_hist
+            .groupby("RoundNumber", as_index=True)["Elo"]
+            .mean()
+        )
+
         fig_elo.add_trace(go.Scatter(
-            x=league_avg.index, y=league_avg.values,
-            name="League average", mode="lines",
+            x=league_avg.index,
+            y=league_avg.values,
+            name="League average",
+            mode="lines",
             line=dict(color=INK, width=1, dash="dot"),
-            hovertemplate="League average<br>Round %{x}<br>Elo: %{y:.0f}<extra></extra>",
+            hovertemplate=(
+                "League average<br>"
+                "Round %{x}<br>"
+                "Elo: %{y:.0f}"
+                "<extra></extra>"
+            ),
         ))
 
         # ---- De-overlap end-of-line labels ----
-        # Without this, clubs that finish the season with similar Elo ratings
-        # get labels stacked on top of each other. We convert the chart's
-        # Elo range into an approximate pixel scale, then greedily push
-        # labels apart (highest to lowest) so each keeps a minimum gap from
-        # the one above it. A thin leader line marks any label nudged far
-        # enough from its true value that the connection isn't obvious.
         CHART_HEIGHT_PX = 480
-        PLOT_HEIGHT_PX = CHART_HEIGHT_PX - 30 - 40  # minus top/bottom margins
-        LABEL_PX_HEIGHT = 16                        # ~11px font + padding
+        PLOT_HEIGHT_PX = CHART_HEIGHT_PX - 30 - 40
+        LABEL_PX_HEIGHT = 16
 
         if label_teams:
-            y_min, y_max = elo_season_hist["Elo"].min(), elo_season_hist["Elo"].max()
-            data_per_px = (y_max - y_min) / PLOT_HEIGHT_PX if PLOT_HEIGHT_PX else 1
+            y_min = elo_season_hist["Elo"].min()
+            y_max = elo_season_hist["Elo"].max()
+
+            data_per_px = (
+                (y_max - y_min) / PLOT_HEIGHT_PX
+                if PLOT_HEIGHT_PX
+                else 1
+            )
+
             min_gap = LABEL_PX_HEIGHT * data_per_px
 
-            label_teams.sort(key=lambda d: d["y"], reverse=True)
+            label_teams.sort(
+                key=lambda d: d["y"],
+                reverse=True
+            )
+
             for i, item in enumerate(label_teams):
                 if i == 0:
                     item["y_label"] = item["y"]
                 else:
-                    item["y_label"] = min(item["y"], label_teams[i - 1]["y_label"] - min_gap)
+                    item["y_label"] = min(
+                        item["y"],
+                        label_teams[i - 1]["y_label"] - min_gap
+                    )
 
             for item in label_teams:
                 fig_elo.add_annotation(
-                    x=item["x"], y=item["y_label"],
-                    text=f"  {item['team']}", showarrow=False, xanchor="left", align="left",
-                    font=dict(size=11, color=item["color"], family=f'{THEME["font_mono"]}, monospace'),
+                    x=item["x"],
+                    y=item["y_label"],
+                    text=f"  {item['team']}",
+                    showarrow=False,
+                    xanchor="left",
+                    align="left",
+                    font=dict(
+                        size=11,
+                        color=item["color"],
+                        family=f'{THEME["font_mono"]}, monospace',
+                    ),
                 )
+
                 if abs(item["y_label"] - item["y"]) > min_gap * 0.5:
                     fig_elo.add_shape(
                         type="line",
-                        x0=item["x"], x1=item["x"] + 0.4,
-                        y0=item["y"], y1=item["y_label"],
-                        line=dict(color=item["color"], width=0.75),
+                        x0=item["x"],
+                        x1=item["x"] + 0.4,
+                        y0=item["y"],
+                        y1=item["y_label"],
+                        line=dict(
+                            color=item["color"],
+                            width=0.75,
+                        ),
                         opacity=0.5,
                     )
 
-        layout_no_yaxis_margin = {k: v for k, v in PLOTLY_BASE.items() if k not in ("yaxis", "margin")}
+        layout_no_yaxis_margin = {
+            k: v
+            for k, v in PLOTLY_BASE.items()
+            if k not in ("yaxis", "margin")
+        }
+
         fig_elo.update_layout(
             **layout_no_yaxis_margin,
             height=CHART_HEIGHT_PX,
-            margin=dict(l=40, r=105, t=30, b=40),  # slightly wider — room for longer club names
+            margin=dict(l=40, r=105, t=30, b=40),
             xaxis_title="Round",
-            yaxis=dict(**PLOTLY_BASE["yaxis"], title="Elo rating"),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+            yaxis=dict(
+                **PLOTLY_BASE["yaxis"],
+                title="Elo rating",
+            ),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="left",
+                x=0,
+            ),
             hovermode="closest",
         )
-        st.plotly_chart(fig_elo, use_container_width=True)
-        st.caption(f"Highlighting {len(highlight)} of {len(all_season_teams)} clubs. Pick clubs above to compare specific rivalries or premiership form.")
 
+        st.plotly_chart(
+            fig_elo,
+            use_container_width=True
+        )
+
+        st.caption(
+            f"Highlighting {len(highlight)} of {len(all_season_teams)} clubs. "
+            "Pick clubs above to compare specific rivalries or premiership form."
+        )
     st.divider()
     st.subheader("Club detail")
     team_sel = st.selectbox("Select a club", dl.get_all_teams())
@@ -1419,12 +1486,16 @@ elif page == "Tip Breakdown":
         # ---------------------------------------------------
         # FEATURE IMPORTANCE
         # ---------------------------------------------------
-        st.markdown("#### What's driving the OLS prediction")
+        st.markdown("#### What's driving the tip")
 
         imp_rows = []
+
         for col in dl.IMPORTANCE_COLS:
             if col in game.index and pd.notna(game[col]):
-                imp_rows.append({"Factor": col.split('_')[1], "Value": float(game[col])})
+                imp_rows.append({
+                    "Factor": col.split('_')[1],
+                    "Value": round(game[col], 2)
+                })
 
         if not imp_rows:
             st.info("No feature-importance breakdown available for this game.")
@@ -1437,30 +1508,114 @@ elif page == "Tip Breakdown":
                 x=imp_df["Value"],
                 y=imp_df["Factor"],
                 orientation="h",
-                marker_color=[GREEN if v >= 0 else CLAY for v in imp_df["Value"]],
+                marker_color=[
+                    GREEN if v >= 0 else CLAY
+                    for v in imp_df["Value"]
+                ],
                 text=imp_df["Value"].map(lambda v: f"{v:+.1f}"),
                 textposition="outside",
                 hovertemplate="%{y}: %{x:+.1f}<extra></extra>",
             ))
-            fig_imp.add_vline(x=0, line_color=HAIRLINE)
 
-            layout_no_axes_imp = {k: v for k, v in PLOTLY_BASE.items() if k not in ("xaxis", "yaxis")}
+            # Central dividing line
+            fig_imp.add_vline(
+                x=0,
+                line_color=HAIRLINE,
+                line_width=1
+            )
+
+            # ---------------------------------------------------
+            # HOME / AWAY LABELS
+            # These use the exact same variables as the game header
+            # and the rest of the Tip Breakdown page.
+            # ---------------------------------------------------
+            fig_imp.add_annotation(
+                x=0,
+                y=1.2,
+                xref="x",
+                yref="paper",
+                text=f"<b>{home_team}     </b>",
+                showarrow=False,
+                xanchor="right",
+                font=dict(size=25),
+            )
+
+
+            # VS — centred on zero line
+            fig_imp.add_annotation(
+                x=0,
+                y=1.2,
+                xref="x",
+                yref="paper",
+                text="<b>vs</b>",
+                showarrow=False,
+                xanchor="center",
+                font=dict(size=25),
+            )
+
+            fig_imp.add_annotation(
+                x=0,
+                y=1.2,
+                xref="x",
+                yref="paper",
+                text=f"<b>     {away_team}</b>",
+                showarrow=False,
+                xanchor="left",
+                font=dict(size=25),
+            )
+
+            layout_no_axes_imp = {
+                k: v
+                for k, v in PLOTLY_BASE.items()
+                if k not in ("xaxis", "yaxis", "title", "margin")
+            }
+
             fig_imp.update_layout(
                 **layout_no_axes_imp,
-                height=max(280, 34 * len(imp_df)),
-                xaxis={**PLOTLY_BASE.get("xaxis", {}), "title": "Contribution to predicted margin (pts)"},
-                yaxis={**PLOTLY_BASE.get("yaxis", {})},
+                height=max(400, 50 * len(imp_df)),
+
+                # title=dict(
+                #     text="Feature Contributions",
+                #     x=0.5,
+                #     xanchor="center",
+                # ),
+
+                xaxis={
+                    **PLOTLY_BASE.get("xaxis", {}),
+                    "title": "Contribution to predicted margin (pts)",
+                },
+
+                yaxis={
+                    **PLOTLY_BASE.get("yaxis", {})
+                },
+
                 showlegend=False,
+
+                # Extra room for the team labels above the chart
+                margin=dict(
+                    l=40,
+                    r=40,
+                    t=70,
+                    b=40,
+                ),
             )
 
             max_abs = imp_df["Value"].abs().max() + 1
-            fig_imp.update_xaxes(range=[-max_abs, max_abs])
 
-            st.plotly_chart(fig_imp, use_container_width=True)
-            st.caption(
-                f"Bars pointing right (green) pull the prediction toward **{home_team}**; "
-                f"bars pointing left (red) pull it toward **{away_team}**."
+            fig_imp.update_xaxes(
+                range=[max_abs, -max_abs]
             )
+
+            st.plotly_chart(
+                fig_imp,
+                use_container_width=True
+            )
+
+            # st.caption(
+            #     f"← **{away_team}** · **{home_team}** →  "
+            #     "Bars pointing left (red) pull the prediction toward the away team; "
+            #     "bars pointing right (green) pull it toward the home team."
+            # )
 
         st.divider()
 
@@ -1656,4 +1811,4 @@ elif page == "Q&A":
         </div>""", unsafe_allow_html=True)
 
 st.divider()
-st.caption("Tippo — a personal AFL analytics project. Data updated after each round.")
+st.caption("Tippo — A personal AFL analytics project")
