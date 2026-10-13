@@ -518,7 +518,7 @@ if page == "Home":
                 # Bye or no game
                 return (
                     f'<td style="background:{C_EMPTY};border:1px solid {C_EMPTY};'
-                    f'width:32px;height:32px;text-align:center;font-size:0.7rem;'
+                    f'width:32px;height:28px;text-align:center;font-size:0.7rem;'
                     f'color:{C_MUTED};">–</td>'
                 )
 
@@ -617,10 +617,23 @@ if page == "Home":
             f'Round Accuracy (%)</td>'
             f'{footer_cells}</tr>'
         )
+
+        # Distribute width: team name column gets ~18%, rounds share the rest equally
+        n_rounds      = len(rounds)
+        team_col_pct  = 18
+        rd_col_pct    = round((100 - team_col_pct) / n_rounds, 2) if n_rounds else 4
+ 
+        col_group = (
+            f'<colgroup>'
+            f'<col style="width:{team_col_pct}%;">'
+            + "".join(f'<col style="width:{rd_col_pct}%;">' for _ in rounds)
+            + f'</colgroup>'
+        )
         
         table_html = (
-            f'<div style="overflow-x:auto;">'
-            f'<table style="border-collapse:collapse;width:100%;">'
+            f'<div style="">'
+            f'<table style="border-collapse:collapse;width:100%;table-layout:fixed;">'
+            f'{col_group}'
             f'{"".join(rows_html)}'
             f'</table></div>'
         )
