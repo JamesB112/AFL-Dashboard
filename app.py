@@ -373,9 +373,13 @@ with st.sidebar:
         f"Last refreshed:   \n**{meta['latest_refresh']}**"
     )
 
-
 # ========================================================================
-# HOME
+# HOME — OFF-SEASON
+# Drop this block in place of the existing `if page == "Home":` block.
+# It assumes all the constants and helpers from app.py are already defined:
+#   THEME, GREEN, CLAY, GOLD, SLATE, BLUE, INK, PAPER, HAIRLINE, NEON,
+#   PLOTLY_BASE, TEAM_COLORS, signed(), movement_icon(), first_col(), meta
+# It also assumes `dl` (data_loader) and standard imports are in scope.
 # ========================================================================
 
 if page == "Home":
@@ -383,316 +387,590 @@ if page == "Home":
     # ---------------------------------------------------
     # HERO
     # ---------------------------------------------------
+ 
+    st.markdown(
+        '<div class="bl-eyebrow">A personal AFL analytics project</div>',
+        unsafe_allow_html=True,
+    )
+    st.title("2026 Season in review")
+    st.markdown(
+        '<p class="bl-lede">After one of the best Grand Finals in recent history, here\'s a summary of the tipping model\'s performance across the season.</p>',
+        unsafe_allow_html=True,
+    )
+ 
+    # --- Metric chips ---
+    c_correct = meta["current_season_correct"]
+    c_games   = meta["current_season_games"]
+    acc       = round((c_correct / c_games) * 100.0, 2) if c_games else None
+    acc_label = f"{acc}%" if acc else "—"
+    fraction_label = f"{c_correct}/{c_games} correct" if c_games else "—"
+ 
+    # m1, m2, m3 = st.columns(3)
+    # m1.metric(
+    #     "Season Accuracy",
+    #     acc_label,
+    #     delta=fraction_label,
+    #     delta_color="off",
+    #     help=f"{meta['model_games_scored']:,} games graded all-time",
+    # )
+    # m2.metric("Games Graded", f"{c_games:,}" if c_games else "—")
+    # m3.metric("Season",       str(meta["latest_season"]))
+ 
+    st.divider()
 
-    col1, col2 = st.columns([1.6, 1])
-
-    with col1:
-        st.markdown(
-            '<div class="bl-eyebrow">A personal AFL analytics project</div>',
-            unsafe_allow_html=True,
-        )
-
-        st.title("Tipping made easy")
-
-        st.markdown(
-            """
-            <p class="bl-lede">
-            Predicting every game, projecting the final ladder,
-            and providing easy acess team and player performace.
-
-            Data is refreshed every round once team lineups are released.
-            </p>
-            """,
-            unsafe_allow_html=True,
-        )
-
-    with col2:
-            acc = round((meta['current_season_correct'] / meta['current_season_games']) * 100.0,2) 
-            acc_label = f"{acc}%" if acc else "—"
-
-            c_correct = meta["current_season_correct"]
-            c_model_type = meta["current_season_correct_label"]
-            c_games = meta["current_season_games"]
-            fraction_label = f"{c_correct}/{c_games} {c_model_type}" if c_games else "—"
-
-            st.metric(
-                "Model Accuracy",
-                acc_label,
-                delta=fraction_label,
-                delta_color="off",
-                help=f"{meta['model_games_scored']:,} games graded all-time · {fraction_label} correct this season",
-            )
-
-            st.metric(
-                "Current Round",
-                f"{meta['latest_season']} · Round {meta['latest_round']}",
-            )
-
-    # st.divider()
-    
     # ===================================================
-    # CURRENT ROUND
+    # MODEL ACCURACY SUMMARY
     # ===================================================
 
-    st.subheader("Upcoming Predictions")
+    st.subheader("Model accuracy")
+    st.caption("How well the tip model called it across the season.")
 
-    current_df = dl.get_current_round_predictions()
+    # We derive a few summary stats from meta. If your meta dict doesn't
+    # carry some of these keys, just remove those metric cells.
+    all_time_games   = meta.get("model_games_scored", 0)
+    all_time_correct = meta.get("model_all_time_correct", None)   # add to meta if available
+    latest_season    = meta.get("latest_season", "2026")
 
-    if current_df.empty:
-        st.info("No games marked as 'Next Round' in the data right now.")
+    m1, m2, m3 = st.columns(3)
 
-    else:
-        team_col = first_col(current_df, TEAM_COL_CANDIDATES)
-        opp_col = first_col(current_df, OPP_COL_CANDIDATES)
-        date_col = first_col(current_df, DATE_COL_CANDIDATES)
-        venue_col = first_col(current_df, VENUE_COL_CANDIDATES)
-
-        # -----------------
-        # Filters
-        # -----------------
-
-        fc1, fc2 = st.columns(2)
-
-        with fc1:
-            teams = sorted(
-                set(current_df[team_col].dropna())
-                | set(current_df[opp_col].dropna())
-            )
-
-            t_filter = st.selectbox(
-                "Team",
-                ["All teams"] + teams,
-                key="current_round_team",
-            )
-
-        with fc2:
-
-
-            all_rounds = ["All rounds"] + sorted(
-                current_df["RoundNumber"].dropna().unique().tolist()
-            )
-
-            default_round = meta['latest_round']
-
-            default_index = (
-                all_rounds.index(default_round)
-                if default_round in all_rounds
-                else 0
-            )
-
-            if "RoundNumber" in current_df.columns:
-                r_filter = st.selectbox(
-                    "Round",
-                    all_rounds,
-                    index=default_index,
-                    key="current_round_round",
-                )
-            else:
-                r_filter = "All rounds"
-
-        # -----------------
-        # Apply filters
-        # -----------------
-
-        current_disp = current_df.copy()
-
-        if t_filter != "All teams":
-            current_disp = current_disp[
-                (current_disp[team_col] == t_filter)
-                | (current_disp[opp_col] == t_filter)
-            ]
-
-        if r_filter != "All rounds":
-            current_disp = current_disp[
-                current_disp["RoundNumber"] == r_filter
-            ]
-
-        # Parse and sort by date
-        if date_col:
-            current_disp["_date_parsed"] = pd.to_datetime(
-                current_disp[date_col],
-                format="%Y-%m-%d",
-                dayfirst=True,
-                errors="coerce",
-            )
-            # current_disp = current_disp.sort_values("_date_parsed")
-
-        display_df = pd.DataFrame()
-
-        # Match
-        display_df["Match"] = (
-            current_disp[team_col].astype(str)
-            + " vs "
-            + current_disp[opp_col].astype(str)
-        )
-
-        # Date
-        if date_col:
-            display_df["Date"] = current_disp["_date_parsed"].dt.strftime("%a %d %b")
-
-        # Venue
-        if venue_col:
-            display_df["Venue"] = current_disp[venue_col]
-
-        display_df["Prediction"] = np.where(
-            current_disp["Predicted_Margin_OLS"] >= 0.5,
-            current_disp[team_col],
-            current_disp[opp_col],
-        )
-
-        display_df["Win Probability"] = np.where(
-            current_disp["Predicted_Prob_LOGIT"] >= 0.5,
-            current_disp["Predicted_Prob_LOGIT"],
-            1 - current_disp["Predicted_Prob_LOGIT"],
-        ) * 100
-
-        display_df["Predicted Margin"] = np.where(
-            current_disp["Predicted_Margin_OLS"] >= 0,
-            current_disp["Predicted_Margin_OLS"],
-            -current_disp["Predicted_Margin_OLS"],
-        )
-
-        st.dataframe(
-            display_df,
-            hide_index=True,
-            use_container_width=True,
-            column_config={
-                "Date": st.column_config.TextColumn(
-                    "Date",
-                    width="small",
-                ),
-                "Match": st.column_config.TextColumn(
-                    "Match",
-                    width="medium",
-                ),
-                "Venue": st.column_config.TextColumn(
-                    "Venue",
-                    width="medium",
-                ),
-                "Prediction": st.column_config.TextColumn(
-                    "Prediction",
-                    width="medium",
-                ),
-                "Win Probability": (
-                    st.column_config.ProgressColumn(
-                        "Win Probability",
-                        format="%.1f%%",
-                        min_value=0,
-                        max_value=100,
-                    )
-                ),
-                "Predicted Margin": st.column_config.NumberColumn(
-                    "Predicted Margin",
-                    format="%.1f pts",
-                ),
-            },
-        )
+    m1.metric(
+        f"{latest_season} Accuracy",
+        acc_label,
+        help="Percentage of games where the model correctly predicted the winner.",
+    )
+    m2.metric(
+        "Games Graded",
+        f"{c_games:,}" if c_games else "—",
+    )
+    m3.metric(
+        "Correct Tips",
+        f"{c_correct:,}" if c_correct else "—",
+    )
 
     st.divider()
 
     # ===================================================
-    # PROJECTED LADDER
+    # TEAM × ROUND PREDICTION MATRIX
     # ===================================================
 
-    # Hid projected ladder section (season is over)
+    st.subheader("Prediction results by team & round")
 
-    # left, right = st.columns([1.8, 1])
+    c_model_type = meta.get("current_season_correct_label", "OLS")
+    use_logit    = "LOGIT" in str(c_model_type).upper()
+    correct_col  = "Correct_LOGIT" if use_logit else "Correct_OLS"
 
-    # with left:
+    st.caption(
+        f"Each cell shows whether the model correctly predicted the game outcome ({c_model_type}). "
+    )
 
-    #     st.subheader("Projected Final Ladder")
-    #     st.caption("Modelled finishing position for every club.")
+    all_preds = dl.get_predictions(filter_home=False)
+
+    season_preds = all_preds[
+        all_preds["Season"] == str(latest_season)
+    ].copy()
+
+    season_preds = season_preds[season_preds["Margin"].notna()]
+
+    if season_preds.empty:
+        st.info(f"No graded predictions found for {latest_season}.")
+    else:
+        team_col = first_col(season_preds, TEAM_COL_CANDIDATES)
+        opp_col  = first_col(season_preds, OPP_COL_CANDIDATES)
+        date_col = first_col(season_preds, DATE_COL_CANDIDATES)
+
+        # Numeric round, sorted
+        season_preds["RoundNumber"] = pd.to_numeric(
+            season_preds["RoundNumber"], errors="coerce"
+        )
+        rounds = sorted(season_preds["RoundNumber"].dropna().unique().astype(int).tolist())
+        teams  = sorted(season_preds[team_col].dropna().unique().tolist())
+
+        # Build lookup: (team, round) -> row dict
+        lookup = {}
+        for _, row in season_preds.iterrows():
+            key = (row[team_col], int(row["RoundNumber"]))
+            lookup[key] = row
+
+        # --- Per-round accuracy for the summary footer ---
+        round_acc = (
+            season_preds.groupby("RoundNumber")[correct_col]
+            .agg(["sum", "count"])
+            .rename(columns={"sum": "correct", "count": "total"})
+        )
+        round_acc["pct"] = (round_acc["correct"] / round_acc["total"] * 100).round(0).astype(int)
+
+        # ---- Build HTML table ----
+        # Colors pulled from THEME so they adapt if you retheme
+        C_HIT    = GREEN   # correct prediction
+        C_MISS   = CLAY    # wrong prediction
+        C_EMPTY  = HAIRLINE
+        C_HDR_BG = THEME["sidebar_bg"]
+        C_HDR_FG = THEME["header_text"]
+        C_FTR_BG = THEME["surface"]
+        C_INK    = INK
+        C_MUTED  = SLATE
+        FONT_M   = THEME["font_mono"]
+        FONT_D   = THEME["font_display"]
+
+        def _cell(team, rd):
+            row = lookup.get((team, rd))
+            if row is None:
+                # Bye or no game
+                return (
+                    f'<td style="background:{C_EMPTY};border:1px solid {C_EMPTY};'
+                    f'width:32px;height:32px;text-align:center;font-size:0.7rem;'
+                    f'color:{C_MUTED};">–</td>'
+                )
+
+            correct = bool(row[correct_col])
+            bg      = C_HIT if correct else C_MISS
+            symbol  = "✓" if correct else "✗"
+
+            # Tooltip content
+            opp        = row.get(opp_col, "—") if opp_col else "—"
+            pts_for    = row.get("Points", row.get("For", ""))
+            pts_ag     = row.get("Opposition_Points", row.get("Against", ""))
+            score_str  = f"{int(pts_for)}–{int(pts_ag)}" if pd.notna(pts_for) and pd.notna(pts_ag) else "—"
+            date_str   = (
+                pd.to_datetime(row[date_col], errors="coerce").strftime("%a %d %b")
+                if date_col and pd.notna(row.get(date_col))
+                else "—"
+            )
+            tooltip    = f"Date: {date_str} | vs {opp} | Score: {score_str}"
+
+            return (
+                f'<td title="{tooltip}" style="'
+                f'background:{bg};border:1px solid {THEME["bg"]};'
+                f'width:32px;height:32px;text-align:center;'
+                f'font-size:0.75rem;font-weight:700;color:white;'
+                f'cursor:default;">{symbol}</td>'
+            )
+
+        rows_html = []
+
+        # Header row
+        rd_headers = "".join(
+            f'<th style="background:{C_HDR_BG};color:{C_HDR_FG};'
+            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
+            f'text-align:center;padding:4px 2px;min-width:32px;">'
+            f'{rd}</th>'
+            for rd in rounds
+        )
+        rows_html.append(
+            f'<tr><th style="background:{C_HDR_BG};color:{C_HDR_FG};'
+            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
+            f'text-align:left;padding:4px 8px;position:sticky;left:0;z-index:2;">'
+            f'Club</th>{rd_headers}</tr>'
+        )
+
+        # One row per team
+        for team in teams:
+            cells = "".join(_cell(team, rd) for rd in rounds)
+            rows_html.append(
+                f'<tr>'
+                f'<td style="font-family:\'{FONT_D}\',sans-serif;font-size:0.82rem;'
+                f'font-weight:600;color:{C_INK};white-space:nowrap;padding:3px 8px;'
+                f'position:sticky;left:0;background:{THEME["bg"]};z-index:1;'
+                f'border-right:2px solid {C_EMPTY};">{team}</td>'
+                f'{cells}</tr>'
+            )
 
 
-    # ladder = dl.get_ladder_projection()
-    # if ladder is None:
-    #     st.info("Ladder projection data not found — add `Ladder_Projection.csv` to the `data/` folder.")
-    #     st.stop()
+        # Footer: round accuracy % with red→green gradient
+        all_pcts = [round_acc.loc[rd, "pct"] for rd in rounds if rd in round_acc.index]
+        pct_min  = min(all_pcts) if all_pcts else 0
+        pct_max  = max(all_pcts) if all_pcts else 100
+ 
+        def _pct_bg(pct):
+            """Interpolate between CLAY (red) and GREEN on the pct range."""
+            t = (pct - pct_min) / (pct_max - pct_min) if pct_max > pct_min else 0.5
+ 
+            def hex_to_rgb(h):
+                h = h.lstrip("#")
+                return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+ 
+            r1, g1, b1 = hex_to_rgb(C_MISS)   # CLAY  — low end
+            r2, g2, b2 = hex_to_rgb(C_HIT)    # GREEN — high end
+            r = int(r1 + (r2 - r1) * t)
+            g = int(g1 + (g2 - g1) * t)
+            b = int(b1 + (b2 - b1) * t)
+            return f"#{r:02x}{g:02x}{b:02x}"
+        
+        footer_cells = "".join(
+            (
+                f'<td style="background:{_pct_bg(round_acc.loc[rd, "pct"])};'
+                f'font-family:\'{FONT_M}\',monospace;'
+                f'font-size:0.68rem;font-weight:700;color:white;'
+                f'text-align:center;padding:4px 2px;border-top:2px solid {C_EMPTY};">'
+                f'{round_acc.loc[rd, "pct"]}%</td>'
+                if rd in round_acc.index else
+                f'<td style="background:{C_FTR_BG};border-top:2px solid {C_EMPTY};"></td>'
+            )
+            for rd in rounds
+        )
+        rows_html.append(
+            f'<tr>'
+            f'<td style="font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
+            f'font-weight:600;color:{C_MUTED};padding:4px 8px;'
+            f'position:sticky;left:0;background:{C_FTR_BG};z-index:1;'
+            f'border-right:2px solid {C_EMPTY};border-top:2px solid {C_EMPTY};">'
+            f'Round Accuracy (%)</td>'
+            f'{footer_cells}</tr>'
+        )
+        
+        table_html = (
+            f'<div style="overflow-x:auto;">'
+            f'<table style="border-collapse:collapse;width:100%;">'
+            f'{"".join(rows_html)}'
+            f'</table></div>'
+        )
 
-    # def fmt_movement(row):
-    #     m = row["Rank_Movement"]
-    #     if pd.isna(m) or m == 0:
-    #         return "—"
-    #     return f"▲{abs(int(m))}" if m > 0 else f"▼{abs(int(m))}"
+        st.markdown(table_html, unsafe_allow_html=True)
 
-    # def fmt_range(row):
-    #     return f"{int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])}"
+        st.divider()
 
-    # display = ladder.copy()
-    # display["Movement"] = display.apply(fmt_movement, axis=1)
-    # display["Proj. Range"] = display.apply(fmt_range, axis=1)
-    # display["In Finals?"] = display["Projected_Rank"].apply(
-    #     lambda r: "✅ Yes" if r <= 10 else "⬜ No"
-    # )
+        # --- Nav cards ---
+        st.markdown("#### Where to next?")
+    
+        NAV_CARDS = [
+            ("Tip Breakdown",      "Further details of each tip, including prediction drivers."),
+            ("Team Performance",   "Each club's Elo ratings, season record, and game-by-game results."),
+            ("Player Performance", "Player rankings via a custom algorithm, with performance trends over time."),
+            ("Model Performance",  "Full prediction history and accuracy breakdowns across all seasons."),
+            ("Methodology",        "End-to-end pipeline overview from data scraping through to modelling."),
+            ("Q&A",                "Notes on modelling decisions, data quirks, and project background."),
+        ]
+    
+        row1, row2 = NAV_CARDS[:3], NAV_CARDS[3:]
+        for row in (row1, row2):
+            cols = st.columns(3)
+            for col, (title, desc) in zip(cols, row):
+                with col:
+                    st.markdown(
+                        f'<div class="bl-card"><h4>{title}</h4><p>{desc}</p></div>',
+                        unsafe_allow_html=True,
+                    )
+            st.markdown("<div style='margin-top:0.6rem;'></div>", unsafe_allow_html=True)
+    
+# # ========================================================================
+# # HOME
+# # ========================================================================
 
-    # show_cols = {
-    #     "Team": "Club",
-    #     "Current_Rank": "Rank",
-    #     "Wins": "W",
-    #     "Draws": "D",
-    #     "Losses": "L",
-    #     "Current_Points": "Pts",
-    #     "Current_Percentage": "%",
-    #     "Games_Remaining": "Left",
-    #     "Projected_Rank": "Proj.",
-    #     "Proj. Range": "Range",
-    #     "In Finals?": "Finals?",
-    # }
+# if page == "Home":
 
-    # st.dataframe(
-    #     display[list(show_cols.keys())].rename(columns=show_cols),
-    #     use_container_width=True,
-    #     hide_index=True,
-    #     column_config={
-    #         "Rank":   st.column_config.NumberColumn(format="%d", width="small"),
-    #         "W":      st.column_config.NumberColumn(width="small"),
-    #         "D":      st.column_config.NumberColumn(width="small"),
-    #         "L":      st.column_config.NumberColumn(width="small"),
-    #         "Pts":    st.column_config.NumberColumn(width="small"),
-    #         "%":      st.column_config.NumberColumn(format="%.1f", width="small"),
-    #         "Left":   st.column_config.NumberColumn(width="small"),
-    #         "Proj.":  st.column_config.NumberColumn(format="%d", width="small"),
-    #         "Range":  st.column_config.TextColumn(width="medium"),
-    #         "Finals?": st.column_config.TextColumn(width="small"),
-    #         "Club":   st.column_config.TextColumn(width="medium"),
-    #     },
-    #     height=560,
-    # )
+#     # ---------------------------------------------------
+#     # HERO
+#     # ---------------------------------------------------
 
-    # st.divider()
+#     col1, col2 = st.columns([1.6, 1])
 
-    # # --- top 10 probability callout ---
-    # st.subheader("Finals picture")
-    # top10 = ladder[ladder["Projected_Rank"] <= 10].sort_values("Projected_Rank")
-    # bubble = ladder[(ladder["Rank_Range_Best"] <= 10) & (ladder["Projected_Rank"] > 10)].sort_values("Projected_Rank")
+#     with col1:
+#         st.markdown(
+#             '<div class="bl-eyebrow">A personal AFL analytics project</div>',
+#             unsafe_allow_html=True,
+#         )
 
-    # col_top, col_bub = st.columns(2)
-    # with col_top:
-    #     st.markdown("**Projected top 10**")
-    #     for _, row in top10.iterrows():
-    #         st.markdown(
-    #             f"**{int(row['Projected_Rank'])}.** {row['Team']} "
-    #             f"<span style='color:{SLATE};font-size:0.85rem;'>({int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])})</span>",
-    #             unsafe_allow_html=True,
-    #         )
-    # with col_bub:
-    #     if not bubble.empty:
-    #         st.markdown("**Outside chance** *(best case makes finals)*")
-    #         for _, row in bubble.iterrows():
-    #             st.markdown(
-    #                 f"**{row['Team']}** — proj. {int(row['Projected_Rank'])}, "
-    #                 f"<span style='color:{SLATE};font-size:0.85rem;'>best case {int(row['Rank_Range_Best'])}</span>",
-    #                 unsafe_allow_html=True,
-    #             )
-    #     else:
-    #         st.markdown("**Outside chance**")
-    #         st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
+#         st.title("Tipping made easy")
+
+#         st.markdown(
+#             """
+#             <p class="bl-lede">
+#             Predicting every game, projecting the final ladder,
+#             and providing easy acess team and player performace.
+
+#             Data is refreshed every round once team lineups are released.
+#             </p>
+#             """,
+#             unsafe_allow_html=True,
+#         )
+
+#     with col2:
+#             acc = round((meta['current_season_correct'] / meta['current_season_games']) * 100.0,2) 
+#             acc_label = f"{acc}%" if acc else "—"
+
+#             c_correct = meta["current_season_correct"]
+#             c_model_type = meta["current_season_correct_label"]
+#             c_games = meta["current_season_games"]
+#             fraction_label = f"{c_correct}/{c_games} {c_model_type}" if c_games else "—"
+
+#             st.metric(
+#                 "Model Accuracy",
+#                 acc_label,
+#                 delta=fraction_label,
+#                 delta_color="off",
+#                 help=f"{meta['model_games_scored']:,} games graded all-time · {fraction_label} correct this season",
+#             )
+
+#             st.metric(
+#                 "Current Round",
+#                 f"{meta['latest_season']} · Round {meta['latest_round']}",
+#             )
+
+#     # st.divider()
+    
+#     # ===================================================
+#     # CURRENT ROUND
+#     # ===================================================
+
+#     st.subheader("Upcoming Predictions")
+
+#     current_df = dl.get_current_round_predictions()
+
+#     if current_df.empty:
+#         st.info("No games marked as 'Next Round' in the data right now.")
+
+#     else:
+#         team_col = first_col(current_df, TEAM_COL_CANDIDATES)
+#         opp_col = first_col(current_df, OPP_COL_CANDIDATES)
+#         date_col = first_col(current_df, DATE_COL_CANDIDATES)
+#         venue_col = first_col(current_df, VENUE_COL_CANDIDATES)
+
+#         # -----------------
+#         # Filters
+#         # -----------------
+
+#         fc1, fc2 = st.columns(2)
+
+#         with fc1:
+#             teams = sorted(
+#                 set(current_df[team_col].dropna())
+#                 | set(current_df[opp_col].dropna())
+#             )
+
+#             t_filter = st.selectbox(
+#                 "Team",
+#                 ["All teams"] + teams,
+#                 key="current_round_team",
+#             )
+
+#         with fc2:
+
+
+#             all_rounds = ["All rounds"] + sorted(
+#                 current_df["RoundNumber"].dropna().unique().tolist()
+#             )
+
+#             default_round = meta['latest_round']
+
+#             default_index = (
+#                 all_rounds.index(default_round)
+#                 if default_round in all_rounds
+#                 else 0
+#             )
+
+#             if "RoundNumber" in current_df.columns:
+#                 r_filter = st.selectbox(
+#                     "Round",
+#                     all_rounds,
+#                     index=default_index,
+#                     key="current_round_round",
+#                 )
+#             else:
+#                 r_filter = "All rounds"
+
+#         # -----------------
+#         # Apply filters
+#         # -----------------
+
+#         current_disp = current_df.copy()
+
+#         if t_filter != "All teams":
+#             current_disp = current_disp[
+#                 (current_disp[team_col] == t_filter)
+#                 | (current_disp[opp_col] == t_filter)
+#             ]
+
+#         if r_filter != "All rounds":
+#             current_disp = current_disp[
+#                 current_disp["RoundNumber"] == r_filter
+#             ]
+
+#         # Parse and sort by date
+#         if date_col:
+#             current_disp["_date_parsed"] = pd.to_datetime(
+#                 current_disp[date_col],
+#                 format="%Y-%m-%d",
+#                 dayfirst=True,
+#                 errors="coerce",
+#             )
+#             # current_disp = current_disp.sort_values("_date_parsed")
+
+#         display_df = pd.DataFrame()
+
+#         # Match
+#         display_df["Match"] = (
+#             current_disp[team_col].astype(str)
+#             + " vs "
+#             + current_disp[opp_col].astype(str)
+#         )
+
+#         # Date
+#         if date_col:
+#             display_df["Date"] = current_disp["_date_parsed"].dt.strftime("%a %d %b")
+
+#         # Venue
+#         if venue_col:
+#             display_df["Venue"] = current_disp[venue_col]
+
+#         display_df["Prediction"] = np.where(
+#             current_disp["Predicted_Margin_OLS"] >= 0.5,
+#             current_disp[team_col],
+#             current_disp[opp_col],
+#         )
+
+#         display_df["Win Probability"] = np.where(
+#             current_disp["Predicted_Prob_LOGIT"] >= 0.5,
+#             current_disp["Predicted_Prob_LOGIT"],
+#             1 - current_disp["Predicted_Prob_LOGIT"],
+#         ) * 100
+
+#         display_df["Predicted Margin"] = np.where(
+#             current_disp["Predicted_Margin_OLS"] >= 0,
+#             current_disp["Predicted_Margin_OLS"],
+#             -current_disp["Predicted_Margin_OLS"],
+#         )
+
+#         st.dataframe(
+#             display_df,
+#             hide_index=True,
+#             use_container_width=True,
+#             column_config={
+#                 "Date": st.column_config.TextColumn(
+#                     "Date",
+#                     width="small",
+#                 ),
+#                 "Match": st.column_config.TextColumn(
+#                     "Match",
+#                     width="medium",
+#                 ),
+#                 "Venue": st.column_config.TextColumn(
+#                     "Venue",
+#                     width="medium",
+#                 ),
+#                 "Prediction": st.column_config.TextColumn(
+#                     "Prediction",
+#                     width="medium",
+#                 ),
+#                 "Win Probability": (
+#                     st.column_config.ProgressColumn(
+#                         "Win Probability",
+#                         format="%.1f%%",
+#                         min_value=0,
+#                         max_value=100,
+#                     )
+#                 ),
+#                 "Predicted Margin": st.column_config.NumberColumn(
+#                     "Predicted Margin",
+#                     format="%.1f pts",
+#                 ),
+#             },
+#         )
+
+#     st.divider()
+
+#     # ===================================================
+#     # PROJECTED LADDER
+#     # ===================================================
+
+#     # Hid projected ladder section (season is over)
+
+#     # left, right = st.columns([1.8, 1])
+
+#     # with left:
+
+#     #     st.subheader("Projected Final Ladder")
+#     #     st.caption("Modelled finishing position for every club.")
+
+
+#     # ladder = dl.get_ladder_projection()
+#     # if ladder is None:
+#     #     st.info("Ladder projection data not found — add `Ladder_Projection.csv` to the `data/` folder.")
+#     #     st.stop()
+
+#     # def fmt_movement(row):
+#     #     m = row["Rank_Movement"]
+#     #     if pd.isna(m) or m == 0:
+#     #         return "—"
+#     #     return f"▲{abs(int(m))}" if m > 0 else f"▼{abs(int(m))}"
+
+#     # def fmt_range(row):
+#     #     return f"{int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])}"
+
+#     # display = ladder.copy()
+#     # display["Movement"] = display.apply(fmt_movement, axis=1)
+#     # display["Proj. Range"] = display.apply(fmt_range, axis=1)
+#     # display["In Finals?"] = display["Projected_Rank"].apply(
+#     #     lambda r: "✅ Yes" if r <= 10 else "⬜ No"
+#     # )
+
+#     # show_cols = {
+#     #     "Team": "Club",
+#     #     "Current_Rank": "Rank",
+#     #     "Wins": "W",
+#     #     "Draws": "D",
+#     #     "Losses": "L",
+#     #     "Current_Points": "Pts",
+#     #     "Current_Percentage": "%",
+#     #     "Games_Remaining": "Left",
+#     #     "Projected_Rank": "Proj.",
+#     #     "Proj. Range": "Range",
+#     #     "In Finals?": "Finals?",
+#     # }
+
+#     # st.dataframe(
+#     #     display[list(show_cols.keys())].rename(columns=show_cols),
+#     #     use_container_width=True,
+#     #     hide_index=True,
+#     #     column_config={
+#     #         "Rank":   st.column_config.NumberColumn(format="%d", width="small"),
+#     #         "W":      st.column_config.NumberColumn(width="small"),
+#     #         "D":      st.column_config.NumberColumn(width="small"),
+#     #         "L":      st.column_config.NumberColumn(width="small"),
+#     #         "Pts":    st.column_config.NumberColumn(width="small"),
+#     #         "%":      st.column_config.NumberColumn(format="%.1f", width="small"),
+#     #         "Left":   st.column_config.NumberColumn(width="small"),
+#     #         "Proj.":  st.column_config.NumberColumn(format="%d", width="small"),
+#     #         "Range":  st.column_config.TextColumn(width="medium"),
+#     #         "Finals?": st.column_config.TextColumn(width="small"),
+#     #         "Club":   st.column_config.TextColumn(width="medium"),
+#     #     },
+#     #     height=560,
+#     # )
+
+#     # st.divider()
+
+#     # # --- top 10 probability callout ---
+#     # st.subheader("Finals picture")
+#     # top10 = ladder[ladder["Projected_Rank"] <= 10].sort_values("Projected_Rank")
+#     # bubble = ladder[(ladder["Rank_Range_Best"] <= 10) & (ladder["Projected_Rank"] > 10)].sort_values("Projected_Rank")
+
+#     # col_top, col_bub = st.columns(2)
+#     # with col_top:
+#     #     st.markdown("**Projected top 10**")
+#     #     for _, row in top10.iterrows():
+#     #         st.markdown(
+#     #             f"**{int(row['Projected_Rank'])}.** {row['Team']} "
+#     #             f"<span style='color:{SLATE};font-size:0.85rem;'>({int(row['Rank_Range_Best'])}–{int(row['Rank_Range_Worst'])})</span>",
+#     #             unsafe_allow_html=True,
+#     #         )
+#     # with col_bub:
+#     #     if not bubble.empty:
+#     #         st.markdown("**Outside chance** *(best case makes finals)*")
+#     #         for _, row in bubble.iterrows():
+#     #             st.markdown(
+#     #                 f"**{row['Team']}** — proj. {int(row['Projected_Rank'])}, "
+#     #                 f"<span style='color:{SLATE};font-size:0.85rem;'>best case {int(row['Rank_Range_Best'])}</span>",
+#     #                 unsafe_allow_html=True,
+#     #             )
+#     #     else:
+#     #         st.markdown("**Outside chance**")
+#     #         st.caption("No clubs outside the projected top 10 have a best-case finals finish.")
 
 # ========================================================================
 # TEAM PERFORMANCE
 # ========================================================================
 elif page == "Team Performance":
-    st.markdown('<div class="bl-eyebrow">01 / Team Performance</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">02 / Team Performance</div>', unsafe_allow_html=True)
     st.title("Team Performance and Rankings")
     st.markdown('<p class="bl-lede">Every club\'s standings since 2012.'
                 ' Pick a season to compare clubs, or select a club to see its full game log.</p>',
@@ -933,14 +1211,14 @@ elif page == "Team Performance":
 # ========================================================================
 
 elif page == "Player Performance":
-    st.markdown('<div class="bl-eyebrow">02 / Player Performance</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">03 / Player Performance</div>', unsafe_allow_html=True)
     st.title("Player Performance and Rankings")
     st.markdown('<p class="bl-lede">Custom player ranking model plus stats leaderboard </p>', unsafe_allow_html=True)
     st.divider()
 
     latest, latest_season, latest_round = dl.get_latest_rankings()
 
-    st.subheader("Composite ranking")
+    st.subheader("Player ranking")
     st.markdown("Ranks as at current, calculated on a Team, Position and Overall basis. "
                 "See **Methodology** for how it's built.")
 
@@ -967,7 +1245,7 @@ elif page == "Player Performance":
     st.dataframe(
         filt[["Rank_Overall","Player","Team","Position","Rank_By_Position","Rank_By_Team","composite_score"]
         ].rename(columns={"Rank_Overall":"Rank","Rank_By_Position":"Rank (Pos)",
-                           "Rank_By_Team":"Rank (Club)","composite_score":"Composite"}),
+                           "Rank_By_Team":"Rank (Club)","composite_score":"Score (0-1)"}),
         use_container_width=True, hide_index=True, height=dyn_height,
         column_config={"Composite": st.column_config.NumberColumn(format="%.3f")},
     )
@@ -984,7 +1262,7 @@ elif page == "Player Performance":
         pc1.metric("Overall rank",    int(prow["Rank_Overall"]) if pd.notna(prow["Rank_Overall"]) else "—")
         pc2.metric("Position rank",   int(prow["Rank_By_Position"]) if pd.notna(prow["Rank_By_Position"]) else "—")
         pc3.metric("Club",            prow["Team"])
-        pc4.metric("Composite score", f"{prow['composite_score']:.3f}" if pd.notna(prow["composite_score"]) else "—")
+        pc4.metric("Player score", f"{prow['composite_score']:.3f}" if pd.notna(prow["composite_score"]) else "—")
 
         season_summary = dl.get_player_season_rank_summary(draft_id)
 
@@ -997,9 +1275,7 @@ elif page == "Player Performance":
             )
             default_idx = available_seasons.index(latest_season) if latest_season in available_seasons else 0
             trend_season = st.selectbox(
-                "Season", available_seasons, index=default_idx, key="player_trend_season",
-                help="Independent of the composite ranking table above — pick any season this player has data for.",
-            )
+                "Season", available_seasons, index=default_idx, key="player_trend_season")
 
             hist = dl.get_player_rank_history(draft_id, trend_season)
             if not hist.empty:
@@ -1130,7 +1406,7 @@ elif page == "Player Performance":
 # ========================================================================
 
 elif page == "Model Performance":
-    st.markdown('<div class="bl-eyebrow">03 / Model Performance</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">04 / Model Performance</div>', unsafe_allow_html=True)
     st.title("Model Performance")
 
     predictions = dl.get_predictions()
@@ -1345,7 +1621,7 @@ elif page == "Model Performance":
 # TIP BREAKDOWN
 # ========================================================================
 elif page == "Tip Breakdown":
-    st.markdown('<div class="bl-eyebrow">04 / Tip Breakdown</div>', unsafe_allow_html=True)
+    st.markdown('<div class="bl-eyebrow">01 / Tip Breakdown</div>', unsafe_allow_html=True)
     st.title("Tip Breakdown")
     st.markdown(
         '<p class="bl-lede">Drill into any game, see each tip\'s key drivers and each team\'s recent performance.</p>',
@@ -1603,7 +1879,7 @@ elif page == "Tip Breakdown":
             max_abs = imp_df["Value"].abs().max() + 1
 
             fig_imp.update_xaxes(
-                range=[max_abs, -max_abs]
+                range=[max_abs * 1.1, -max_abs * 1.1]
             )
 
             st.plotly_chart(
@@ -1760,13 +2036,13 @@ elif page == "Q&A":
             "excerpt": """
     The ranking methodology is built upon a weighted, three-season lookback window.
 
-    Feature importance is position-dependent, with differential weighting used to prioritise the statistics most relevant to each role. For example, disposal volume is given greater importance for midfielders than forwards.
+    Feature importance is position-dependent, with tailored weightings used to prioritise the statistics most relevant to each role. For example, disposal volume is given greater importance for midfielders than forwards.
 
     Each player's performance is converted into a game score for every match, with games significantly impacted by injury adjusted accordingly. These game scores are then aggregated into a cumulative player score that is recalculated after every round.
 
-    To account for absences through injury or non-selection, a decay factor is applied based on the player's most recent performance. This prevents long periods without games from leaving a player's ranking artificially unchanged.
+    To mitigate the effect of absences due to injury or non-selection, a decay factor is applied to a player's rank based on their performance at their last game. This mechanism ensures that extended periods of inactivity do not result in an artificially static ranking.
 
-    Finally, player scores are standardised against others in the same position, producing a normalised rating between 0 and 1.
+    Finally, player scores are standardised against others in the same position, producing a player rank between 0 and 1.
 
     I don't claim this methodology is perfect, but it performs well as a practical way of distinguishing between stronger and weaker players.
     """
@@ -1780,7 +2056,7 @@ elif page == "Q&A":
 
     To minimise the season's unique effects, each feature was scaled relative to the surrounding seasons (2019 and 2021). This helps reduce distributional shifts and keeps the data closer to the rest of the training set.
 
-    The main reason for retaining 2020 is that the model only has data back to 2015. Removing an entire season would significantly reduce the amount of training data available.
+    One reason for retaining 2020 is that I have only been able to collect data back to 2015. Removing an entire season is effectively removing ~10% of the training data avaliable.
     """
         }
     ]

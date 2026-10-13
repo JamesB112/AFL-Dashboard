@@ -498,7 +498,7 @@ def get_future_predictions():
 # ----------------------------------------------------------------------
 
 @st.cache_data(show_spinner=False)
-def get_predictions():
+def get_predictions(filter_home = True):
     df = load_raw("predictions")
 
     # Bring though Time
@@ -508,7 +508,8 @@ def get_predictions():
     df["RoundNumber"] = pd.to_numeric(df["RoundNumber"], errors="coerce")
 
     # Filter to only include the home row
-    df = df[df['IsHome'] == 1]
+    if filter_home == True:
+        df = df[df['IsHome'] == 1]  
 
     # Filter for regular season games
     # df = df[df['Round.Type'] == 'Regular']
