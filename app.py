@@ -421,7 +421,7 @@ with st.sidebar:
 # ========================================================================
 
 if page == "Home":
- 
+
     # ---------------------------------------------------
     # HERO
     # ---------------------------------------------------
@@ -432,8 +432,7 @@ if page == "Home":
     )
     st.title("2026 Season in review")
     st.markdown(
-        '<p class="bl-lede">After one of the best Grand Finals in recent history, '
-        "here's a summary of the tipping model's performance across the season.</p>",
+        '<p class="bl-lede">After one of the best Grand Finals in recent history, here\'s a summary of the tipping model\'s performance across the season.</p>',
         unsafe_allow_html=True,
     )
  
@@ -444,88 +443,34 @@ if page == "Home":
     acc_label = f"{acc}%" if acc else "—"
     fraction_label = f"{c_correct}/{c_games} correct" if c_games else "—"
  
-    m1, m2, m3 = st.columns(3)
-    m1.metric(
-        "Season Accuracy",
-        acc_label,
-        delta=fraction_label,
-        delta_color="off",
-        help=f"{meta['model_games_scored']:,} games graded all-time",
-    )
-    m2.metric("Games Graded", f"{c_games:,}" if c_games else "—")
-    m3.metric("Season",       str(meta["latest_season"]))
+    # m1, m2, m3 = st.columns(3)
+    # m1.metric(
+    #     "Season Accuracy",
+    #     acc_label,
+    #     delta=fraction_label,
+    #     delta_color="off",
+    #     help=f"{meta['model_games_scored']:,} games graded all-time",
+    # )
+    # m2.metric("Games Graded", f"{c_games:,}" if c_games else "—")
+    # m3.metric("Season",       str(meta["latest_season"]))
  
     st.divider()
- 
-    st.divider()
- 
-    # ===================================================
-    # PREMIERSHIP CALLOUT
-    # ===================================================
- 
-    # Pull the final ladder so we can identify the premiers automatically.
-    # dl.get_ladder_projection() returns a DataFrame with at minimum:
-    #   Team, Current_Rank, Wins, Losses, Draws, Current_Points, Current_Percentage
-    # If your loader returns a different function / column names, adjust below.
- 
-    ladder = dl.get_ladder_projection()
- 
-    if ladder is not None and not ladder.empty:
- 
-        # The premiers finished rank 1 on the final ladder
-        premiers_row = ladder[ladder["Current_Rank"] == 1]
-        premiers = premiers_row.iloc[0]["Team"] if not premiers_row.empty else "—"
-        premiers_color = TEAM_COLORS.get(premiers, INK)
- 
-        st.markdown(
-            f"""
-            <div style="
-                background:{premiers_color};
-                border-radius:8px;
-                padding:1.4rem 1.8rem;
-                margin-bottom:1.5rem;
-                display:flex;
-                align-items:center;
-                gap:1.2rem;
-            ">
-                <div style="font-size:2.8rem;line-height:1;">🏆</div>
-                <div>
-                    <div style="
-                        font-family:'{THEME["font_mono"]}',monospace;
-                        font-size:0.72rem;
-                        text-transform:uppercase;
-                        letter-spacing:0.1em;
-                        color:rgba(255,255,255,0.65);
-                        margin-bottom:0.2rem;
-                    ">2025 AFL Premiers</div>
-                    <div style="
-                        font-family:'{THEME["font_display"]}',sans-serif;
-                        font-size:2rem;
-                        font-weight:700;
-                        color:#FFFFFF;
-                        line-height:1.1;
-                    ">{premiers}</div>
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
- 
+
     # ===================================================
     # MODEL ACCURACY SUMMARY
     # ===================================================
- 
+
     st.subheader("Model accuracy")
     st.caption("How well the tip model called it across the season.")
- 
+
     # We derive a few summary stats from meta. If your meta dict doesn't
     # carry some of these keys, just remove those metric cells.
     all_time_games   = meta.get("model_games_scored", 0)
     all_time_correct = meta.get("model_all_time_correct", None)   # add to meta if available
-    latest_season    = meta.get("latest_season", "2025")
- 
-    m1, m2, m3, m4 = st.columns(4)
- 
+    latest_season    = meta.get("latest_season", "2026")
+
+    m1, m2, m3 = st.columns(3)
+
     m1.metric(
         f"{latest_season} Accuracy",
         acc_label,
@@ -539,13 +484,10 @@ if page == "Home":
         "Correct Tips",
         f"{c_correct:,}" if c_correct else "—",
     )
-    m4.metric(
-        "All-Time Games",
-        f"{all_time_games:,}" if all_time_games else "—",
-    )
- 
+
     st.divider()
- 
+
+
     # ===================================================
     # TEAM × ROUND PREDICTION MATRIX
     # ===================================================
@@ -561,7 +503,7 @@ if page == "Home":
         "Hover a cell for game details."
     )
  
-    all_preds = dl.get_predictions()
+    all_preds = dl.get_predictions(filter_home= False)
  
     season_preds = all_preds[
         all_preds["Season"] == str(latest_season)
@@ -631,7 +573,7 @@ if page == "Home":
                 return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
  
             r_low,  g_low,  b_low  = hex_to_rgb(C_MISS)   # red   — 0
-            r_mid,  g_mid,  b_mid  = (255, 213, 0)          # yellow — 0.5
+            r_mid,  g_mid,  b_mid  = (255, 255, 255)       # white — 0.5
             r_high, g_high, b_high = hex_to_rgb(C_HIT)     # green — 1
  
             if t <= 0.5:
@@ -649,22 +591,12 @@ if page == "Home":
             text_color = "#1a1a1a" if brightness > 160 else "#ffffff"
             return f"#{r:02x}{g:02x}{b:02x}", text_color
  
-        _CELL_STYLE = (
-            "height:26px;"
-            "text-align:center;"
-            "vertical-align:middle;"
-            "line-height:26px;"
-            "padding:0;"
-            "font-size:0.7rem;"
-            "font-weight:700;"
-        )
- 
         def _cell(team, rd):
             row = lookup.get((team, rd))
             if row is None:
                 return (
-                    f'<td style="{_CELL_STYLE}'
-                    f'background:{C_EMPTY};border:1px solid {C_EMPTY};'
+                    f'<td style="background:{C_EMPTY};border:1px solid {C_EMPTY};'
+                    f'height:28px;text-align:center;font-size:0.7rem;'
                     f'color:{C_MUTED};">–</td>'
                 )
  
@@ -684,9 +616,11 @@ if page == "Home":
             tooltip   = f"Date: {date_str} | vs {opp} | Score: {score_str} | {tip_label}"
  
             return (
-                f'<td title="{tooltip}" style="{_CELL_STYLE}'
+                f'<td title="{tooltip}" style="'
                 f'background:{bg};border:1px solid {THEME["bg"]};'
-                f'color:white;cursor:default;">{symbol}</td>'
+                f'height:28px;text-align:center;'
+                f'font-size:0.75rem;font-weight:700;color:white;'
+                f'cursor:default;">{symbol}</td>'
             )
  
         def _team_acc_cell(team):
@@ -705,27 +639,25 @@ if page == "Home":
  
         rows_html = []
  
-        _TH_STYLE = (
-            f"background:{C_HDR_BG};color:{C_HDR_FG};"
-            f"font-family:'{FONT_M}',monospace;font-size:0.65rem;"
-            f"text-align:center;vertical-align:middle;"
-            f"height:26px;line-height:26px;padding:0 2px;overflow:hidden;"
-        )
- 
         # Header row — add "Acc." column at the end
         rd_headers = "".join(
-            f'<th style="{_TH_STYLE}">{rd}</th>'
+            f'<th style="background:{C_HDR_BG};color:{C_HDR_FG};'
+            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
+            f'text-align:center;padding:4px 2px;overflow:hidden;">'
+            f'{rd}</th>'
             for rd in rounds
         )
         acc_header = (
-            f'<th style="{_TH_STYLE}'
+            f'<th style="background:{C_HDR_BG};color:{C_HDR_FG};'
+            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
+            f'text-align:center;padding:4px 6px;'
             f'border-left:2px solid {C_EMPTY};">Acc.</th>'
         )
         rows_html.append(
-            f'<tr>'
-            f'<th style="{_TH_STYLE}text-align:left;padding:0 8px;'
-            f'position:sticky;left:0;z-index:2;">Club</th>'
-            f'{rd_headers}{acc_header}</tr>'
+            f'<tr><th style="background:{C_HDR_BG};color:{C_HDR_FG};'
+            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
+            f'text-align:left;padding:4px 8px;position:sticky;left:0;z-index:2;">'
+            f'Club</th>{rd_headers}{acc_header}</tr>'
         )
  
         # One row per team — append the team accuracy cell
@@ -796,68 +728,70 @@ if page == "Home":
  
         st.markdown(table_html, unsafe_allow_html=True)
  
-    st.divider()
+        st.divider()
  
-    # --- Nav cards ---
-    st.markdown("#### Explore the dashboard")
- 
-    NAV_CARDS = [
-        ("Tip Breakdown",      "Further details of each tip, including prediction drivers."),
-        ("Team Performance",   "Each club's Elo ratings, season record, and game-by-game results."),
-        ("Player Performance", "Player rankings via a custom algorithm, with performance trends over time."),
-        ("Model Performance",  "Full prediction history and accuracy breakdowns across all seasons."),
-        ("Methodology",        "End-to-end pipeline overview — from data scraping through to modelling."),
-        ("Q&A",                "Notes on modelling decisions, data quirks, and project background."),
-    ]
- 
-    # Style every nav button by its data-testid key attribute
-    nav_css = "".join(
-        f"""
-        div[data-testid="stButton"] button[kind="secondary"][data-testid="baseButton-secondary"]#nav_{title.replace(" ", "_")} {{
-            width: 100%;
-        }}
-        """
-        for title, _ in NAV_CARDS
-    )
- 
-    # Simpler and more reliable: target all buttons inside the nav section by key prefix
-    st.markdown(
-        f"""
-        <style>
-        /* Nav card buttons */
-        [data-testid="stButton"] button {{
-            width: 100%;
-            height: auto;
-            background: {THEME["surface"]};
-            border: 1px solid {THEME.get("border", HAIRLINE)};
-            border-top: 3px solid {SLATE};
-            border-radius: 6px;
-            padding: 0.75rem 1rem;
-            text-align: left;
-            white-space: pre-wrap;
-            line-height: 1.5;
-        }}
-        [data-testid="stButton"] button:hover {{
-            border-color: {GREEN};
-            border-top-color: {GREEN};
-            box-shadow: 0 0 0 1px {GREEN};
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
- 
-    row1, row2 = NAV_CARDS[:3], NAV_CARDS[3:]  # sidebar must read st.session_state for nav to work
-    for row in (row1, row2):
-        cols = st.columns(3)
-        for col, (title, desc) in zip(cols, row):
-            with col:
-                # Button label: bold title on first line, muted desc on second
-                label = f"**{title}**\n{desc}"
-                if st.button(label, key=f"nav_{title}", use_container_width=True):
-                    st.session_state["nav_page"] = title
-                    st.rerun()
-        st.markdown("<div style='margin-top:0.5rem;'></div>", unsafe_allow_html=True)
+        # --- Nav cards ---
+        st.markdown("#### Where to next?")
+    
+        NAV_CARDS = [
+            ("Tip Breakdown",      "Further details of each tip, including prediction drivers and game odds."),
+            ("Team Performance",   "Each club's Elo ratings, season record, and game-by-game results."),
+            ("Player Performance", "Player rankings via a custom algorithm, with performance trends over time."),
+            ("Model Performance",  "Full prediction history and accuracy breakdowns across all seasons."),
+            ("Methodology",        "End-to-end pipeline overview from data scraping through to modelling."),
+            ("Q&A",                "Notes on modelling decisions, data quirks, and project background."),
+        ]
+
+            
+        st.markdown(
+            f"""
+            <style>
+            /* Nav card buttons — cloud-safe with !important overrides */
+            [data-testid="stButton"] button {{
+                width: 100% !important;
+                height: auto !important;
+                min-height: 80px !important;
+                background: {THEME["surface"]} !important;
+                border: 1px solid {THEME.get("border", HAIRLINE)} !important;
+                border-top: 3px solid {SLATE} !important;
+                border-radius: 6px !important;
+                padding: 0.75rem 1rem !important;
+                text-align: left !important;
+                white-space: pre-wrap !important;
+                line-height: 1.5 !important;
+                display: flex !important;
+                align-items: flex-start !important;
+            }}
+            /* Target the inner p tag Streamlit wraps button text in */
+            [data-testid="stButton"] button p {{
+                white-space: pre-wrap !important;
+                overflow: visible !important;
+                text-overflow: unset !important;
+                display: block !important;
+                margin: 0 !important;
+                line-height: 1.5 !important;
+            }}
+            [data-testid="stButton"] button:hover {{
+                border-color: {GREEN} !important;
+                border-top-color: {GREEN} !important;
+                box-shadow: 0 0 0 1px {GREEN} !important;
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+    
+        row1, row2 = NAV_CARDS[:3], NAV_CARDS[3:]
+        for row in (row1, row2):
+            cols = st.columns(3)
+            for col, (title, desc) in zip(cols, row):
+                with col:
+                    # Button label: bold title on first line, muted desc on second
+                    label = f"**{title}**\n{desc}"
+                    if st.button(label, key=f"nav_{title}", use_container_width=True):
+                        st.session_state["nav_page"] = title
+                        st.rerun()
+            st.markdown("<div style='margin-top:0.5rem;'></div>", unsafe_allow_html=True)
 
 # # ========================================================================
 # # HOME
