@@ -90,6 +90,11 @@ st.markdown(f"""
 <style>
 @import url('{THEME["google_fonts_url"]}');
 
+/* Global zoom — reduce to fit more content on screen */
+html {{
+    zoom: 0.85;
+}}
+
 /* Page background */
 [data-testid="stAppViewContainer"] {{
     background: {THEME["bg"]};
