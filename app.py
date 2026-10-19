@@ -420,444 +420,444 @@ with st.sidebar:
 # It also assumes `dl` (data_loader) and standard imports are in scope.
 # ========================================================================
 
-    if page == "Home":
-    
-        # ---------------------------------------------------
-        # HERO
-        # ---------------------------------------------------
-    
+if page == "Home":
+ 
+    # ---------------------------------------------------
+    # HERO
+    # ---------------------------------------------------
+ 
+    st.markdown(
+        '<div class="bl-eyebrow">A personal AFL analytics project</div>',
+        unsafe_allow_html=True,
+    )
+    st.title("2026 Season in review")
+    st.markdown(
+        '<p class="bl-lede">After one of the best Grand Finals in recent history, '
+        "here's a summary of the tipping model's performance across the season.</p>",
+        unsafe_allow_html=True,
+    )
+ 
+    # --- Metric chips ---
+    c_correct = meta["current_season_correct"]
+    c_games   = meta["current_season_games"]
+    acc       = round((c_correct / c_games) * 100.0, 2) if c_games else None
+    acc_label = f"{acc}%" if acc else "—"
+    fraction_label = f"{c_correct}/{c_games} correct" if c_games else "—"
+ 
+    m1, m2, m3 = st.columns(3)
+    m1.metric(
+        "Season Accuracy",
+        acc_label,
+        delta=fraction_label,
+        delta_color="off",
+        help=f"{meta['model_games_scored']:,} games graded all-time",
+    )
+    m2.metric("Games Graded", f"{c_games:,}" if c_games else "—")
+    m3.metric("Season",       str(meta["latest_season"]))
+ 
+    st.divider()
+ 
+    st.divider()
+ 
+    # ===================================================
+    # PREMIERSHIP CALLOUT
+    # ===================================================
+ 
+    # Pull the final ladder so we can identify the premiers automatically.
+    # dl.get_ladder_projection() returns a DataFrame with at minimum:
+    #   Team, Current_Rank, Wins, Losses, Draws, Current_Points, Current_Percentage
+    # If your loader returns a different function / column names, adjust below.
+ 
+    ladder = dl.get_ladder_projection()
+ 
+    if ladder is not None and not ladder.empty:
+ 
+        # The premiers finished rank 1 on the final ladder
+        premiers_row = ladder[ladder["Current_Rank"] == 1]
+        premiers = premiers_row.iloc[0]["Team"] if not premiers_row.empty else "—"
+        premiers_color = TEAM_COLORS.get(premiers, INK)
+ 
         st.markdown(
-            '<div class="bl-eyebrow">A personal AFL analytics project</div>',
-            unsafe_allow_html=True,
-        )
-        st.title("2026 Season in review")
-        st.markdown(
-            '<p class="bl-lede">After one of the best Grand Finals in recent history, '
-            "here's a summary of the tipping model's performance across the season.</p>",
-            unsafe_allow_html=True,
-        )
-    
-        # --- Metric chips ---
-        c_correct = meta["current_season_correct"]
-        c_games   = meta["current_season_games"]
-        acc       = round((c_correct / c_games) * 100.0, 2) if c_games else None
-        acc_label = f"{acc}%" if acc else "—"
-        fraction_label = f"{c_correct}/{c_games} correct" if c_games else "—"
-    
-        m1, m2, m3 = st.columns(3)
-        m1.metric(
-            "Season Accuracy",
-            acc_label,
-            delta=fraction_label,
-            delta_color="off",
-            help=f"{meta['model_games_scored']:,} games graded all-time",
-        )
-        m2.metric("Games Graded", f"{c_games:,}" if c_games else "—")
-        m3.metric("Season",       str(meta["latest_season"]))
-    
-        st.divider()
-    
-        st.divider()
-    
-        # ===================================================
-        # PREMIERSHIP CALLOUT
-        # ===================================================
-    
-        # Pull the final ladder so we can identify the premiers automatically.
-        # dl.get_ladder_projection() returns a DataFrame with at minimum:
-        #   Team, Current_Rank, Wins, Losses, Draws, Current_Points, Current_Percentage
-        # If your loader returns a different function / column names, adjust below.
-    
-        ladder = dl.get_ladder_projection()
-    
-        if ladder is not None and not ladder.empty:
-    
-            # The premiers finished rank 1 on the final ladder
-            premiers_row = ladder[ladder["Current_Rank"] == 1]
-            premiers = premiers_row.iloc[0]["Team"] if not premiers_row.empty else "—"
-            premiers_color = TEAM_COLORS.get(premiers, INK)
-    
-            st.markdown(
-                f"""
-                <div style="
-                    background:{premiers_color};
-                    border-radius:8px;
-                    padding:1.4rem 1.8rem;
-                    margin-bottom:1.5rem;
-                    display:flex;
-                    align-items:center;
-                    gap:1.2rem;
-                ">
-                    <div style="font-size:2.8rem;line-height:1;">🏆</div>
-                    <div>
-                        <div style="
-                            font-family:'{THEME["font_mono"]}',monospace;
-                            font-size:0.72rem;
-                            text-transform:uppercase;
-                            letter-spacing:0.1em;
-                            color:rgba(255,255,255,0.65);
-                            margin-bottom:0.2rem;
-                        ">2025 AFL Premiers</div>
-                        <div style="
-                            font-family:'{THEME["font_display"]}',sans-serif;
-                            font-size:2rem;
-                            font-weight:700;
-                            color:#FFFFFF;
-                            line-height:1.1;
-                        ">{premiers}</div>
-                    </div>
+            f"""
+            <div style="
+                background:{premiers_color};
+                border-radius:8px;
+                padding:1.4rem 1.8rem;
+                margin-bottom:1.5rem;
+                display:flex;
+                align-items:center;
+                gap:1.2rem;
+            ">
+                <div style="font-size:2.8rem;line-height:1;">🏆</div>
+                <div>
+                    <div style="
+                        font-family:'{THEME["font_mono"]}',monospace;
+                        font-size:0.72rem;
+                        text-transform:uppercase;
+                        letter-spacing:0.1em;
+                        color:rgba(255,255,255,0.65);
+                        margin-bottom:0.2rem;
+                    ">2025 AFL Premiers</div>
+                    <div style="
+                        font-family:'{THEME["font_display"]}',sans-serif;
+                        font-size:2rem;
+                        font-weight:700;
+                        color:#FFFFFF;
+                        line-height:1.1;
+                    ">{premiers}</div>
                 </div>
-                """,
-                unsafe_allow_html=True,
-            )
-    
-        # ===================================================
-        # MODEL ACCURACY SUMMARY
-        # ===================================================
-    
-        st.subheader("Model accuracy")
-        st.caption("How well the tip model called it across the season.")
-    
-        # We derive a few summary stats from meta. If your meta dict doesn't
-        # carry some of these keys, just remove those metric cells.
-        all_time_games   = meta.get("model_games_scored", 0)
-        all_time_correct = meta.get("model_all_time_correct", None)   # add to meta if available
-        latest_season    = meta.get("latest_season", "2025")
-    
-        m1, m2, m3, m4 = st.columns(4)
-    
-        m1.metric(
-            f"{latest_season} Accuracy",
-            acc_label,
-            help="Percentage of games where the model correctly predicted the winner.",
-        )
-        m2.metric(
-            "Games Graded",
-            f"{c_games:,}" if c_games else "—",
-        )
-        m3.metric(
-            "Correct Tips",
-            f"{c_correct:,}" if c_correct else "—",
-        )
-        m4.metric(
-            "All-Time Games",
-            f"{all_time_games:,}" if all_time_games else "—",
-        )
-    
-        st.divider()
-    
-        # ===================================================
-        # TEAM × ROUND PREDICTION MATRIX
-        # ===================================================
-    
-        st.subheader("Prediction results by team & round")
-    
-        c_model_type = meta.get("current_season_correct_label", "OLS")
-        use_logit    = "LOGIT" in str(c_model_type).upper()
-        correct_col  = "Correct_LOGIT" if use_logit else "Correct_OLS"
-    
-        st.caption(
-            f"Each cell shows whether the model correctly predicted the game outcome ({c_model_type}). "
-            "Hover a cell for game details."
-        )
-    
-        all_preds = dl.get_predictions()
-    
-        season_preds = all_preds[
-            all_preds["Season"] == str(latest_season)
-        ].copy()
-    
-        season_preds = season_preds[season_preds["Margin"].notna()]
-    
-        if season_preds.empty:
-            st.info(f"No graded predictions found for {latest_season}.")
-        else:
-            team_col = first_col(season_preds, TEAM_COL_CANDIDATES)
-            opp_col  = first_col(season_preds, OPP_COL_CANDIDATES)
-            date_col = first_col(season_preds, DATE_COL_CANDIDATES)
-    
-            # Numeric round, sorted
-            season_preds["RoundNumber"] = pd.to_numeric(
-                season_preds["RoundNumber"], errors="coerce"
-            )
-            rounds = sorted(season_preds["RoundNumber"].dropna().unique().astype(int).tolist())
-            teams  = sorted(season_preds[team_col].dropna().unique().tolist())
-    
-            # Build lookup: (team, round) -> row dict
-            lookup = {}
-            for _, row in season_preds.iterrows():
-                key = (row[team_col], int(row["RoundNumber"]))
-                lookup[key] = row
-    
-            # --- Per-round accuracy for the summary footer ---
-            round_acc = (
-                season_preds.groupby("RoundNumber")[correct_col]
-                .agg(["sum", "count"])
-                .rename(columns={"sum": "correct", "count": "total"})
-            )
-            round_acc["pct"] = (round_acc["correct"] / round_acc["total"] * 100).round(0).astype(int)
-    
-            # --- Per-team accuracy for the summary column ---
-            team_acc = (
-                season_preds.groupby(team_col)[correct_col]
-                .agg(correct="sum", total="count")
-            )
-            team_acc["pct"] = (team_acc["correct"] / team_acc["total"] * 100).round(0).astype(int)
-    
-            # ---- Build HTML table ----
-            C_HIT    = GREEN
-            C_MISS   = CLAY
-            C_EMPTY  = HAIRLINE
-            C_HDR_BG = THEME["sidebar_bg"]
-            C_HDR_FG = THEME["header_text"]
-            C_FTR_BG = THEME["surface"]
-            C_INK    = INK
-            C_MUTED  = SLATE
-            FONT_M   = THEME["font_mono"]
-            FONT_D   = THEME["font_display"]
-    
-            # Shared gradient helper — used for both round footer and team column
-            all_pcts = [round_acc.loc[rd, "pct"] for rd in rounds if rd in round_acc.index]
-            all_pcts += list(team_acc["pct"])
-            pct_min  = min(all_pcts) if all_pcts else 0
-            pct_max  = max(all_pcts) if all_pcts else 100
-    
-            def _pct_bg(pct):
-                """Interpolate Red -> White -> Green with white at the midpoint."""
-                t = (pct - pct_min) / (pct_max - pct_min) if pct_max > pct_min else 0.5
-    
-                def hex_to_rgb(h):
-                    h = h.lstrip("#")
-                    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
-    
-                r_low,  g_low,  b_low  = hex_to_rgb(C_MISS)   # red   — 0
-                r_mid,  g_mid,  b_mid  = (255, 213, 0)          # yellow — 0.5
-                r_high, g_high, b_high = hex_to_rgb(C_HIT)     # green — 1
-    
-                if t <= 0.5:
-                    s = t / 0.5   # 0→1 over the first half
-                    r = int(r_low  + (r_mid  - r_low)  * s)
-                    g = int(g_low  + (g_mid  - g_low)  * s)
-                    b = int(b_low  + (b_mid  - b_low)  * s)
-                else:
-                    s = (t - 0.5) / 0.5   # 0→1 over the second half
-                    r = int(r_mid  + (r_high - r_mid)  * s)
-                    g = int(g_mid  + (g_high - g_mid)  * s)
-                    b = int(b_mid  + (b_high - b_mid)  * s)
-    
-                brightness = (r * 299 + g * 587 + b * 114) / 1000
-                text_color = "#1a1a1a" if brightness > 160 else "#ffffff"
-                return f"#{r:02x}{g:02x}{b:02x}", text_color
-    
-            _CELL_STYLE = (
-                "height:26px;"
-                "text-align:center;"
-                "vertical-align:middle;"
-                "line-height:26px;"
-                "padding:0;"
-                "font-size:0.7rem;"
-                "font-weight:700;"
-            )
-    
-            def _cell(team, rd):
-                row = lookup.get((team, rd))
-                if row is None:
-                    return (
-                        f'<td style="{_CELL_STYLE}'
-                        f'background:{C_EMPTY};border:1px solid {C_EMPTY};'
-                        f'color:{C_MUTED};">–</td>'
-                    )
-    
-                correct   = bool(row[correct_col])
-                bg        = C_HIT if correct else C_MISS
-                symbol    = "✓" if correct else "✗"
-                opp       = row.get(opp_col, "—") if opp_col else "—"
-                pts_for   = row.get("Points", row.get("For", ""))
-                pts_ag    = row.get("Opposition_Points", row.get("Against", ""))
-                score_str = f"{int(pts_for)}–{int(pts_ag)}" if pd.notna(pts_for) and pd.notna(pts_ag) else "—"
-                date_str  = (
-                    pd.to_datetime(row[date_col], errors="coerce").strftime("%a %d %b")
-                    if date_col and pd.notna(row.get(date_col))
-                    else "—"
-                )
-                tip_label = "✓ Correct" if correct else "✗ Incorrect"
-                tooltip   = f"Date: {date_str} | vs {opp} | Score: {score_str} | {tip_label}"
-    
-                return (
-                    f'<td title="{tooltip}" style="{_CELL_STYLE}'
-                    f'background:{bg};border:1px solid {THEME["bg"]};'
-                    f'color:white;cursor:default;">{symbol}</td>'
-                )
-    
-            def _team_acc_cell(team):
-                if team not in team_acc.index:
-                    return f'<td style="background:{C_FTR_BG};"></td>'
-                pct    = team_acc.loc[team, "pct"]
-                bg, fg = _pct_bg(pct)
-                return (
-                    f'<td style="background:{bg};'
-                    f'font-family:\'{FONT_M}\',monospace;'
-                    f'font-size:0.68rem;font-weight:700;color:{fg};'
-                    f'text-align:center;padding:4px 4px;'
-                    f'border-left:2px solid {C_EMPTY};">'
-                    f'{pct}%</td>'
-                )
-    
-            rows_html = []
-    
-            _TH_STYLE = (
-                f"background:{C_HDR_BG};color:{C_HDR_FG};"
-                f"font-family:'{FONT_M}',monospace;font-size:0.65rem;"
-                f"text-align:center;vertical-align:middle;"
-                f"height:26px;line-height:26px;padding:0 2px;overflow:hidden;"
-            )
-    
-            # Header row — add "Acc." column at the end
-            rd_headers = "".join(
-                f'<th style="{_TH_STYLE}">{rd}</th>'
-                for rd in rounds
-            )
-            acc_header = (
-                f'<th style="{_TH_STYLE}'
-                f'border-left:2px solid {C_EMPTY};">Acc.</th>'
-            )
-            rows_html.append(
-                f'<tr>'
-                f'<th style="{_TH_STYLE}text-align:left;padding:0 8px;'
-                f'position:sticky;left:0;z-index:2;">Club</th>'
-                f'{rd_headers}{acc_header}</tr>'
-            )
-    
-            # One row per team — append the team accuracy cell
-            for team in teams:
-                cells = "".join(_cell(team, rd) for rd in rounds)
-                rows_html.append(
-                    f'<tr>'
-                    f'<td style="font-family:\'{FONT_D}\',sans-serif;font-size:0.82rem;'
-                    f'font-weight:600;color:{C_INK};white-space:nowrap;padding:3px 8px;'
-                    f'position:sticky;left:0;background:{THEME["bg"]};z-index:1;'
-                    f'border-right:2px solid {C_EMPTY};">{team}</td>'
-                    f'{cells}'
-                    f'{_team_acc_cell(team)}'
-                    f'</tr>'
-                )
-    
-            # Footer row — round % cells + blank corner cell for the Acc. column
-            def _footer_cell(rd):
-                if rd not in round_acc.index:
-                    return f'<td style="background:{C_FTR_BG};border-top:2px solid {C_EMPTY};"></td>'
-                pct    = round_acc.loc[rd, "pct"]
-                bg, fg = _pct_bg(pct)
-                return (
-                    f'<td style="background:{bg};'
-                    f'font-family:\'{FONT_M}\',monospace;'
-                    f'font-size:0.68rem;font-weight:700;color:{fg};'
-                    f'text-align:center;padding:4px 2px;border-top:2px solid {C_EMPTY};">'
-                    f'{pct}%</td>'
-                )
-    
-            footer_cells = "".join(_footer_cell(rd) for rd in rounds)
-            footer_corner = (
-                f'<td style="background:{C_FTR_BG};'
-                f'border-top:2px solid {C_EMPTY};'
-                f'border-left:2px solid {C_EMPTY};"></td>'
-            )
-            rows_html.append(
-                f'<tr>'
-                f'<td style="font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
-                f'font-weight:600;color:{C_MUTED};padding:4px 8px;'
-                f'position:sticky;left:0;background:{C_FTR_BG};z-index:1;'
-                f'border-right:2px solid {C_EMPTY};border-top:2px solid {C_EMPTY};">'
-                f'Round %</td>'
-                f'{footer_cells}{footer_corner}</tr>'
-            )
-    
-            # Column widths: team name 16%, Acc. column 5%, rounds share the rest
-            n_rounds     = len(rounds)
-            team_col_pct = 16
-            acc_col_pct  = 5
-            rd_col_pct   = round((100 - team_col_pct - acc_col_pct) / n_rounds, 2) if n_rounds else 4
-    
-            col_group = (
-                f'<colgroup>'
-                f'<col style="width:{team_col_pct}%;">'
-                + "".join(f'<col style="width:{rd_col_pct}%;">' for _ in rounds)
-                + f'<col style="width:{acc_col_pct}%;">'
-                + f'</colgroup>'
-            )
-    
-            table_html = (
-                f'<div>'
-                f'<table style="border-collapse:collapse;width:100%;table-layout:fixed;">'
-                f'{col_group}'
-                f'{"".join(rows_html)}'
-                f'</table></div>'
-            )
-    
-            st.markdown(table_html, unsafe_allow_html=True)
-    
-        st.divider()
-    
-        # --- Nav cards ---
-        st.markdown("#### Explore the dashboard")
-    
-        NAV_CARDS = [
-            ("Tip Breakdown",      "Further details of each tip, including prediction drivers."),
-            ("Team Performance",   "Each club's Elo ratings, season record, and game-by-game results."),
-            ("Player Performance", "Player rankings via a custom algorithm, with performance trends over time."),
-            ("Model Performance",  "Full prediction history and accuracy breakdowns across all seasons."),
-            ("Methodology",        "End-to-end pipeline overview — from data scraping through to modelling."),
-            ("Q&A",                "Notes on modelling decisions, data quirks, and project background."),
-        ]
-    
-        # Style every nav button by its data-testid key attribute
-        nav_css = "".join(
-            f"""
-            div[data-testid="stButton"] button[kind="secondary"][data-testid="baseButton-secondary"]#nav_{title.replace(" ", "_")} {{
-                width: 100%;
-            }}
-            """
-            for title, _ in NAV_CARDS
-        )
-    
-        # Simpler and more reliable: target all buttons inside the nav section by key prefix
-        st.markdown(
-            f"""
-            <style>
-            /* Nav card buttons */
-            [data-testid="stButton"] button {{
-                width: 100%;
-                height: auto;
-                background: {THEME["surface"]};
-                border: 1px solid {THEME.get("border", HAIRLINE)};
-                border-top: 3px solid {SLATE};
-                border-radius: 6px;
-                padding: 0.75rem 1rem;
-                text-align: left;
-                white-space: pre-wrap;
-                line-height: 1.5;
-            }}
-            [data-testid="stButton"] button:hover {{
-                border-color: {GREEN};
-                border-top-color: {GREEN};
-                box-shadow: 0 0 0 1px {GREEN};
-            }}
-            </style>
+            </div>
             """,
             unsafe_allow_html=True,
         )
-    
-        row1, row2 = NAV_CARDS[:3], NAV_CARDS[3:]  # sidebar must read st.session_state for nav to work
-        for row in (row1, row2):
-            cols = st.columns(3)
-            for col, (title, desc) in zip(cols, row):
-                with col:
-                    # Button label: bold title on first line, muted desc on second
-                    label = f"**{title}**\n{desc}"
-                    if st.button(label, key=f"nav_{title}", use_container_width=True):
-                        st.session_state["nav_page"] = title
-                        st.rerun()
-            st.markdown("<div style='margin-top:0.5rem;'></div>", unsafe_allow_html=True)
+ 
+    # ===================================================
+    # MODEL ACCURACY SUMMARY
+    # ===================================================
+ 
+    st.subheader("Model accuracy")
+    st.caption("How well the tip model called it across the season.")
+ 
+    # We derive a few summary stats from meta. If your meta dict doesn't
+    # carry some of these keys, just remove those metric cells.
+    all_time_games   = meta.get("model_games_scored", 0)
+    all_time_correct = meta.get("model_all_time_correct", None)   # add to meta if available
+    latest_season    = meta.get("latest_season", "2025")
+ 
+    m1, m2, m3, m4 = st.columns(4)
+ 
+    m1.metric(
+        f"{latest_season} Accuracy",
+        acc_label,
+        help="Percentage of games where the model correctly predicted the winner.",
+    )
+    m2.metric(
+        "Games Graded",
+        f"{c_games:,}" if c_games else "—",
+    )
+    m3.metric(
+        "Correct Tips",
+        f"{c_correct:,}" if c_correct else "—",
+    )
+    m4.metric(
+        "All-Time Games",
+        f"{all_time_games:,}" if all_time_games else "—",
+    )
+ 
+    st.divider()
+ 
+    # ===================================================
+    # TEAM × ROUND PREDICTION MATRIX
+    # ===================================================
+ 
+    st.subheader("Prediction results by team & round")
+ 
+    c_model_type = meta.get("current_season_correct_label", "OLS")
+    use_logit    = "LOGIT" in str(c_model_type).upper()
+    correct_col  = "Correct_LOGIT" if use_logit else "Correct_OLS"
+ 
+    st.caption(
+        f"Each cell shows whether the model correctly predicted the game outcome ({c_model_type}). "
+        "Hover a cell for game details."
+    )
+ 
+    all_preds = dl.get_predictions()
+ 
+    season_preds = all_preds[
+        all_preds["Season"] == str(latest_season)
+    ].copy()
+ 
+    season_preds = season_preds[season_preds["Margin"].notna()]
+ 
+    if season_preds.empty:
+        st.info(f"No graded predictions found for {latest_season}.")
+    else:
+        team_col = first_col(season_preds, TEAM_COL_CANDIDATES)
+        opp_col  = first_col(season_preds, OPP_COL_CANDIDATES)
+        date_col = first_col(season_preds, DATE_COL_CANDIDATES)
+ 
+        # Numeric round, sorted
+        season_preds["RoundNumber"] = pd.to_numeric(
+            season_preds["RoundNumber"], errors="coerce"
+        )
+        rounds = sorted(season_preds["RoundNumber"].dropna().unique().astype(int).tolist())
+        teams  = sorted(season_preds[team_col].dropna().unique().tolist())
+ 
+        # Build lookup: (team, round) -> row dict
+        lookup = {}
+        for _, row in season_preds.iterrows():
+            key = (row[team_col], int(row["RoundNumber"]))
+            lookup[key] = row
+ 
+        # --- Per-round accuracy for the summary footer ---
+        round_acc = (
+            season_preds.groupby("RoundNumber")[correct_col]
+            .agg(["sum", "count"])
+            .rename(columns={"sum": "correct", "count": "total"})
+        )
+        round_acc["pct"] = (round_acc["correct"] / round_acc["total"] * 100).round(0).astype(int)
+ 
+        # --- Per-team accuracy for the summary column ---
+        team_acc = (
+            season_preds.groupby(team_col)[correct_col]
+            .agg(correct="sum", total="count")
+        )
+        team_acc["pct"] = (team_acc["correct"] / team_acc["total"] * 100).round(0).astype(int)
+ 
+        # ---- Build HTML table ----
+        C_HIT    = GREEN
+        C_MISS   = CLAY
+        C_EMPTY  = HAIRLINE
+        C_HDR_BG = THEME["sidebar_bg"]
+        C_HDR_FG = THEME["header_text"]
+        C_FTR_BG = THEME["surface"]
+        C_INK    = INK
+        C_MUTED  = SLATE
+        FONT_M   = THEME["font_mono"]
+        FONT_D   = THEME["font_display"]
+ 
+        # Shared gradient helper — used for both round footer and team column
+        all_pcts = [round_acc.loc[rd, "pct"] for rd in rounds if rd in round_acc.index]
+        all_pcts += list(team_acc["pct"])
+        pct_min  = min(all_pcts) if all_pcts else 0
+        pct_max  = max(all_pcts) if all_pcts else 100
+ 
+        def _pct_bg(pct):
+            """Interpolate Red -> White -> Green with white at the midpoint."""
+            t = (pct - pct_min) / (pct_max - pct_min) if pct_max > pct_min else 0.5
+ 
+            def hex_to_rgb(h):
+                h = h.lstrip("#")
+                return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+ 
+            r_low,  g_low,  b_low  = hex_to_rgb(C_MISS)   # red   — 0
+            r_mid,  g_mid,  b_mid  = (255, 213, 0)          # yellow — 0.5
+            r_high, g_high, b_high = hex_to_rgb(C_HIT)     # green — 1
+ 
+            if t <= 0.5:
+                s = t / 0.5   # 0→1 over the first half
+                r = int(r_low  + (r_mid  - r_low)  * s)
+                g = int(g_low  + (g_mid  - g_low)  * s)
+                b = int(b_low  + (b_mid  - b_low)  * s)
+            else:
+                s = (t - 0.5) / 0.5   # 0→1 over the second half
+                r = int(r_mid  + (r_high - r_mid)  * s)
+                g = int(g_mid  + (g_high - g_mid)  * s)
+                b = int(b_mid  + (b_high - b_mid)  * s)
+ 
+            brightness = (r * 299 + g * 587 + b * 114) / 1000
+            text_color = "#1a1a1a" if brightness > 160 else "#ffffff"
+            return f"#{r:02x}{g:02x}{b:02x}", text_color
+ 
+        _CELL_STYLE = (
+            "height:26px;"
+            "text-align:center;"
+            "vertical-align:middle;"
+            "line-height:26px;"
+            "padding:0;"
+            "font-size:0.7rem;"
+            "font-weight:700;"
+        )
+ 
+        def _cell(team, rd):
+            row = lookup.get((team, rd))
+            if row is None:
+                return (
+                    f'<td style="{_CELL_STYLE}'
+                    f'background:{C_EMPTY};border:1px solid {C_EMPTY};'
+                    f'color:{C_MUTED};">–</td>'
+                )
+ 
+            correct   = bool(row[correct_col])
+            bg        = C_HIT if correct else C_MISS
+            symbol    = "✓" if correct else "✗"
+            opp       = row.get(opp_col, "—") if opp_col else "—"
+            pts_for   = row.get("Points", row.get("For", ""))
+            pts_ag    = row.get("Opposition_Points", row.get("Against", ""))
+            score_str = f"{int(pts_for)}–{int(pts_ag)}" if pd.notna(pts_for) and pd.notna(pts_ag) else "—"
+            date_str  = (
+                pd.to_datetime(row[date_col], errors="coerce").strftime("%a %d %b")
+                if date_col and pd.notna(row.get(date_col))
+                else "—"
+            )
+            tip_label = "✓ Correct" if correct else "✗ Incorrect"
+            tooltip   = f"Date: {date_str} | vs {opp} | Score: {score_str} | {tip_label}"
+ 
+            return (
+                f'<td title="{tooltip}" style="{_CELL_STYLE}'
+                f'background:{bg};border:1px solid {THEME["bg"]};'
+                f'color:white;cursor:default;">{symbol}</td>'
+            )
+ 
+        def _team_acc_cell(team):
+            if team not in team_acc.index:
+                return f'<td style="background:{C_FTR_BG};"></td>'
+            pct    = team_acc.loc[team, "pct"]
+            bg, fg = _pct_bg(pct)
+            return (
+                f'<td style="background:{bg};'
+                f'font-family:\'{FONT_M}\',monospace;'
+                f'font-size:0.68rem;font-weight:700;color:{fg};'
+                f'text-align:center;padding:4px 4px;'
+                f'border-left:2px solid {C_EMPTY};">'
+                f'{pct}%</td>'
+            )
+ 
+        rows_html = []
+ 
+        _TH_STYLE = (
+            f"background:{C_HDR_BG};color:{C_HDR_FG};"
+            f"font-family:'{FONT_M}',monospace;font-size:0.65rem;"
+            f"text-align:center;vertical-align:middle;"
+            f"height:26px;line-height:26px;padding:0 2px;overflow:hidden;"
+        )
+ 
+        # Header row — add "Acc." column at the end
+        rd_headers = "".join(
+            f'<th style="{_TH_STYLE}">{rd}</th>'
+            for rd in rounds
+        )
+        acc_header = (
+            f'<th style="{_TH_STYLE}'
+            f'border-left:2px solid {C_EMPTY};">Acc.</th>'
+        )
+        rows_html.append(
+            f'<tr>'
+            f'<th style="{_TH_STYLE}text-align:left;padding:0 8px;'
+            f'position:sticky;left:0;z-index:2;">Club</th>'
+            f'{rd_headers}{acc_header}</tr>'
+        )
+ 
+        # One row per team — append the team accuracy cell
+        for team in teams:
+            cells = "".join(_cell(team, rd) for rd in rounds)
+            rows_html.append(
+                f'<tr>'
+                f'<td style="font-family:\'{FONT_D}\',sans-serif;font-size:0.82rem;'
+                f'font-weight:600;color:{C_INK};white-space:nowrap;padding:3px 8px;'
+                f'position:sticky;left:0;background:{THEME["bg"]};z-index:1;'
+                f'border-right:2px solid {C_EMPTY};">{team}</td>'
+                f'{cells}'
+                f'{_team_acc_cell(team)}'
+                f'</tr>'
+            )
+ 
+        # Footer row — round % cells + blank corner cell for the Acc. column
+        def _footer_cell(rd):
+            if rd not in round_acc.index:
+                return f'<td style="background:{C_FTR_BG};border-top:2px solid {C_EMPTY};"></td>'
+            pct    = round_acc.loc[rd, "pct"]
+            bg, fg = _pct_bg(pct)
+            return (
+                f'<td style="background:{bg};'
+                f'font-family:\'{FONT_M}\',monospace;'
+                f'font-size:0.68rem;font-weight:700;color:{fg};'
+                f'text-align:center;padding:4px 2px;border-top:2px solid {C_EMPTY};">'
+                f'{pct}%</td>'
+            )
+ 
+        footer_cells = "".join(_footer_cell(rd) for rd in rounds)
+        footer_corner = (
+            f'<td style="background:{C_FTR_BG};'
+            f'border-top:2px solid {C_EMPTY};'
+            f'border-left:2px solid {C_EMPTY};"></td>'
+        )
+        rows_html.append(
+            f'<tr>'
+            f'<td style="font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
+            f'font-weight:600;color:{C_MUTED};padding:4px 8px;'
+            f'position:sticky;left:0;background:{C_FTR_BG};z-index:1;'
+            f'border-right:2px solid {C_EMPTY};border-top:2px solid {C_EMPTY};">'
+            f'Round %</td>'
+            f'{footer_cells}{footer_corner}</tr>'
+        )
+ 
+        # Column widths: team name 16%, Acc. column 5%, rounds share the rest
+        n_rounds     = len(rounds)
+        team_col_pct = 16
+        acc_col_pct  = 5
+        rd_col_pct   = round((100 - team_col_pct - acc_col_pct) / n_rounds, 2) if n_rounds else 4
+ 
+        col_group = (
+            f'<colgroup>'
+            f'<col style="width:{team_col_pct}%;">'
+            + "".join(f'<col style="width:{rd_col_pct}%;">' for _ in rounds)
+            + f'<col style="width:{acc_col_pct}%;">'
+            + f'</colgroup>'
+        )
+ 
+        table_html = (
+            f'<div>'
+            f'<table style="border-collapse:collapse;width:100%;table-layout:fixed;">'
+            f'{col_group}'
+            f'{"".join(rows_html)}'
+            f'</table></div>'
+        )
+ 
+        st.markdown(table_html, unsafe_allow_html=True)
+ 
+    st.divider()
+ 
+    # --- Nav cards ---
+    st.markdown("#### Explore the dashboard")
+ 
+    NAV_CARDS = [
+        ("Tip Breakdown",      "Further details of each tip, including prediction drivers."),
+        ("Team Performance",   "Each club's Elo ratings, season record, and game-by-game results."),
+        ("Player Performance", "Player rankings via a custom algorithm, with performance trends over time."),
+        ("Model Performance",  "Full prediction history and accuracy breakdowns across all seasons."),
+        ("Methodology",        "End-to-end pipeline overview — from data scraping through to modelling."),
+        ("Q&A",                "Notes on modelling decisions, data quirks, and project background."),
+    ]
+ 
+    # Style every nav button by its data-testid key attribute
+    nav_css = "".join(
+        f"""
+        div[data-testid="stButton"] button[kind="secondary"][data-testid="baseButton-secondary"]#nav_{title.replace(" ", "_")} {{
+            width: 100%;
+        }}
+        """
+        for title, _ in NAV_CARDS
+    )
+ 
+    # Simpler and more reliable: target all buttons inside the nav section by key prefix
+    st.markdown(
+        f"""
+        <style>
+        /* Nav card buttons */
+        [data-testid="stButton"] button {{
+            width: 100%;
+            height: auto;
+            background: {THEME["surface"]};
+            border: 1px solid {THEME.get("border", HAIRLINE)};
+            border-top: 3px solid {SLATE};
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }}
+        [data-testid="stButton"] button:hover {{
+            border-color: {GREEN};
+            border-top-color: {GREEN};
+            box-shadow: 0 0 0 1px {GREEN};
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+ 
+    row1, row2 = NAV_CARDS[:3], NAV_CARDS[3:]  # sidebar must read st.session_state for nav to work
+    for row in (row1, row2):
+        cols = st.columns(3)
+        for col, (title, desc) in zip(cols, row):
+            with col:
+                # Button label: bold title on first line, muted desc on second
+                label = f"**{title}**\n{desc}"
+                if st.button(label, key=f"nav_{title}", use_container_width=True):
+                    st.session_state["nav_page"] = title
+                    st.rerun()
+        st.markdown("<div style='margin-top:0.5rem;'></div>", unsafe_allow_html=True)
 
 # # ========================================================================
 # # HOME
