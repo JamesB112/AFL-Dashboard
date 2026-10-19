@@ -757,10 +757,10 @@ if page == "Home":
         st.markdown(
             f"""
             <style>
-            /* Nav card buttons */
             [data-testid="stButton"] button {{
                 width: 100%;
-                height: auto;
+                min-height: 80px;        /* enough for two lines */
+                height: auto !important; /* override any Streamlit default */
                 background: {THEME["surface"]};
                 border: 1px solid {THEME.get("border", HAIRLINE)};
                 border-top: 3px solid {SLATE};
