@@ -90,17 +90,13 @@ st.markdown(f"""
 <style>
 @import url('{THEME["google_fonts_url"]}');
 
-/* Global zoom — scale down without leaving dead space */
-html, body {{
-    height: 100%;
-    overflow: hidden;
-}}
-[data-testid="stAppViewContainer"] {{
-    transform: scale(0.85);
-    transform-origin: top left;
-    width: calc(100% / 0.85);
+/* Global zoom — shrink UI to fit more content */
+html {{
+    zoom: 0.85;
     height: calc(100% / 0.85);
-    overflow-y: auto;
+}}
+body {{
+    min-height: calc(100% / 0.85);
 }}
 
 /* Page background */
