@@ -13,7 +13,6 @@ import base64
 from pathlib import Path
 
 import data_loader as dl
-from streamlit_scroll_to_top import scroll_to_here
 
 # set_page_config MUST be the first st call
 st.set_page_config(
