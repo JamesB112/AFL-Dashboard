@@ -743,37 +743,38 @@ if page == "Home":
         ]
 
             
-        # Style every nav button by its data-testid key attribute
-        nav_css = "".join(
-            f"""
-            div[data-testid="stButton"] button[kind="secondary"][data-testid="baseButton-secondary"]#nav_{title.replace(" ", "_")} {{
-                width: 100%;
-            }}
-            """
-            for title, _ in NAV_CARDS
-        )
-    
-        # Simpler and more reliable: target all buttons inside the nav section by key prefix
         st.markdown(
             f"""
             <style>
+            /* Nav card buttons — cloud-safe with !important overrides */
             [data-testid="stButton"] button {{
-                width: 100%;
-                min-height: 80px;        /* enough for two lines */
-                height: auto !important; /* override any Streamlit default */
-                background: {THEME["surface"]};
-                border: 1px solid {THEME.get("border", HAIRLINE)};
-                border-top: 3px solid {SLATE};
-                border-radius: 6px;
-                padding: 0.75rem 1rem;
-                text-align: left;
-                white-space: pre-wrap;
-                line-height: 1.5;
+                width: 100% !important;
+                height: auto !important;
+                min-height: 80px !important;
+                background: {THEME["surface"]} !important;
+                border: 1px solid {THEME.get("border", HAIRLINE)} !important;
+                border-top: 3px solid {SLATE} !important;
+                border-radius: 6px !important;
+                padding: 0.75rem 1rem !important;
+                text-align: left !important;
+                white-space: pre-wrap !important;
+                line-height: 1.5 !important;
+                display: flex !important;
+                align-items: flex-start !important;
+            }}
+            /* Target the inner p tag Streamlit wraps button text in */
+            [data-testid="stButton"] button p {{
+                white-space: pre-wrap !important;
+                overflow: visible !important;
+                text-overflow: unset !important;
+                display: block !important;
+                margin: 0 !important;
+                line-height: 1.5 !important;
             }}
             [data-testid="stButton"] button:hover {{
-                border-color: {GREEN};
-                border-top-color: {GREEN};
-                box-shadow: 0 0 0 1px {GREEN};
+                border-color: {GREEN} !important;
+                border-top-color: {GREEN} !important;
+                box-shadow: 0 0 0 1px {GREEN} !important;
             }}
             </style>
             """,
@@ -2107,51 +2108,52 @@ elif page == "Methodology":
     )
     st.divider()
     st.markdown("""
-### 1. Web Scraping & Data Collection
+    ### 1. Web Scraping & Data Collection
 
-Primary AFL datasets, including player statistics, coaches’ votes, match results, and historical performance, 
-are sourced via the Fitzroy R package, supplemented by custom scrapers for:
-                
-- Player bios (Footywire)
-- Market odds (OddsPortal)
+    Primary AFL datasets, including player statistics, coaches’ votes, match results, and historical performance, 
+    are sourced via the Fitzroy R package, supplemented by custom scrapers for:
+                    
+    - Player bios (Footywire)
+    - Market odds (OddsPortal)
 
-### 2. Data Standardisation, Adjustments & Imputation
+    ### 2. Data Standardisation, Adjustments & Imputation
 
-Due to variations in the source data, a structured process has been delevoped to ensure compatibility, as well as applying certain adjustments.
-                
-This process includes:
-                
-- **Standardisation**: Alignment of round numbers, team names and venue labels.
-- **Name Matching Framework**: A multi layered system iterates from strict (exact match) to flexible (fuzzy match) methods, with a validation layer that flags uncertain cases for manual review.
-- **Data Adjustments**: Targeted corrections are applied to account for:
-    - Early game injuries
-    - Non standard seasons (e.g., shortened quarters in 2020)
-    - Ambiguous or inconsistent positional data (e.g., substitutes)
-- **Imputation**: Where datasets are incomplete for specific games, imputation strategies have been applied, including:
-    - Scoreworm simulations based on historical team scoring profiles
-    - Coaches’ votes inferred from player performance metrics
+    Due to variations in the source data, a structured process has been delevoped to ensure compatibility, as well as applying certain adjustments.
+                    
+    This process includes:
+                    
+    - **Standardisation**: Alignment of round numbers, team names and venue labels.
+    - **Name Matching Framework**: A multi layered system iterates from strict (exact match) to flexible (fuzzy match) methods, with a validation layer that flags uncertain cases for manual review.
+    - **Data Adjustments**: Targeted corrections are applied to account for:
+        - Early game injuries
+        - Non standard seasons (e.g., shortened quarters in 2020)
+        - Ambiguous or inconsistent positional data (e.g., substitutes)
+    - **Imputation**: Where datasets are incomplete for specific games, imputation strategies have been applied, including:
+        - Scoreworm simulations based on historical team scoring profiles
+        - Coaches’ votes inferred from player performance metrics
 
-### 3. Feature Engineering
+    ### 3. Feature Engineering
 
-Features are generated across four major domains:
-                
-- **Player Statistics**: Player ratings and projected performance for listed players
-- **Team Statistics**: Team level metrics, historical form, and Elo ratings
-- **Scoreworm Dynamics**: Momentum indicators and in game scoring pattern features
-- **Game Results & Market Data**: Win/loss trends and odds movements
-                
-Features are aggregated across multiple time horizons (e.g., last 3 games) and multiple grains (e.g. venue, matchup). Additional scaling is applied using team Elo ratings, reducing inflation from strong performances against weaker opponents.
+    Features are generated across four major domains:
+                    
+    - **Player Statistics**: Player ratings and projected performance for listed players
+    - **Team Statistics**: Team level metrics, historical form, and Elo ratings
+    - **Scoreworm Dynamics**: Momentum indicators and in game scoring pattern features
+    - **Game Results & Market Data**: Win/loss trends and odds movements
+                    
+    Features are aggregated across multiple time horizons (e.g., last 3 games) and multiple grains (e.g. venue, matchup). Additional scaling is applied using team Elo ratings, reducing inflation from strong performances against weaker opponents.
 
-### 4. Feature Selection
+    ### 4. Feature Selection
 
-A cross season evaluation framework is used to identify the most predictive and consistent variables. Shapley Additive Explanations (SHAP) values had been used on refine the feature set down to 25 high impact predictors.
+    A cross season evaluation framework is used to identify the most predictive and consistent variables. Shapley Additive Explanations (SHAP) values had been used on refine the feature set down to 25 high impact predictors.
 
-### 5. Modelling & Prediction
+    ### 5. Modelling & Prediction
 
-Both the linear and logistic models are trained and deployed using a rolling season‑round window, where all matches prior to the target round form the training set. Predictions are then generated for the upcoming round, with all outputs stored and surfaced through this dashboard.
+    Both the linear and logistic models are trained and deployed using a rolling season‑round window, where all matches prior to the target round form the training set. Predictions are then generated for the upcoming round, with all outputs stored and surfaced through this dashboard.
 
-> Want further insights? See the **Q&A** page.
-""")
+    > Want further insights? See the **Q&A** page.
+    """)
+
 
 
 # ========================================================================
