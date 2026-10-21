@@ -564,39 +564,94 @@ if page == "Home":
         pct_min  = min(all_pcts) if all_pcts else 0
         pct_max  = max(all_pcts) if all_pcts else 100
  
-        def _pct_bg(pct):
-            """Interpolate Red -> White -> Green with white at the midpoint."""
-            t = (pct - pct_min) / (pct_max - pct_min) if pct_max > pct_min else 0.5
+        def _hex_to_rgb(h):
+            h = h.lstrip("#")
+            return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+        
+
+        def _make_scale(values, low, mid, high, lo=None, hi=None,
+                        exclude_outliers=True, fence=1.5):
+            """
+            Build a pct -> (bg, text_colour) function with its own colour scale.
  
-            def hex_to_rgb(h):
-                h = h.lstrip("#")
-                return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+            values    : the percentages this scale applies to (sets min/max)
+            low/mid/high : RGB tuples for the 0 / 0.5 / 1 points of the gradient
+            lo, hi    : optional fixed bounds (e.g. lo=0, hi=100) to override
+                        the auto min/max taken from `values`
+            exclude_outliers : if True, ignore outliers when setting min/max
+                        (Tukey fences: outside Q1 - fence*IQR .. Q3 + fence*IQR).
+                        Outliers still display, clamped to the end colour.
+            fence     : 1.5 is the standard; raise it (e.g. 3) to be more lenient
+            """
+            values = list(values)
  
-            r_low,  g_low,  b_low  = hex_to_rgb(C_MISS)   # red   — 0
-            r_mid,  g_mid,  b_mid  = (255, 255, 255)       # white — 0.5
-            r_high, g_high, b_high = hex_to_rgb(C_HIT)     # green — 1
+            scale_vals = values
+            if exclude_outliers and len(values) >= 4:
+                s  = pd.Series(values, dtype=float)
+                q1, q3 = s.quantile(0.25), s.quantile(0.75)
+                iqr = q3 - q1
+                kept = s[(s >= q1 - fence * iqr) & (s <= q3 + fence * iqr)]
+                if not kept.empty:
+                    scale_vals = kept.tolist()
  
-            if t <= 0.5:
-                s = t / 0.5   # 0→1 over the first half
-                r = int(r_low  + (r_mid  - r_low)  * s)
-                g = int(g_low  + (g_mid  - g_low)  * s)
-                b = int(b_low  + (b_mid  - b_low)  * s)
-            else:
-                s = (t - 0.5) / 0.5   # 0→1 over the second half
-                r = int(r_mid  + (r_high - r_mid)  * s)
-                g = int(g_mid  + (g_high - g_mid)  * s)
-                b = int(b_mid  + (b_high - b_mid)  * s)
+            v_min = lo if lo is not None else (min(scale_vals) if scale_vals else 0)
+            v_max = hi if hi is not None else (max(scale_vals) if scale_vals else 100)
  
-            brightness = (r * 299 + g * 587 + b * 114) / 1000
-            text_color = "#1a1a1a" if brightness > 160 else "#ffffff"
-            return f"#{r:02x}{g:02x}{b:02x}", text_color
+            def _scale(pct):
+                t = (pct - v_min) / (v_max - v_min) if v_max > v_min else 0.5
+                t = max(0.0, min(1.0, t))
+ 
+                if t <= 0.5:
+                    s = t / 0.5
+                    a, b_ = low, mid
+                else:
+                    s = (t - 0.5) / 0.5
+                    a, b_ = mid, high
+ 
+                r = int(a[0] + (b_[0] - a[0]) * s)
+                g = int(a[1] + (b_[1] - a[1]) * s)
+                b = int(a[2] + (b_[2] - a[2]) * s)
+ 
+                brightness = (r * 299 + g * 587 + b * 114) / 1000
+                text_color = "#1a1a1a" if brightness > 160 else "#ffffff"
+                return f"#{r:02x}{g:02x}{b:02x}", text_color
+ 
+            return _scale
+ 
+        _RED    = _hex_to_rgb(C_MISS)
+        _WHITE =(255, 255, 255)
+        _GREEN  = _hex_to_rgb(C_HIT)
+ 
+        # Round footer: scaled across the round percentages only
+        _round_bg = _make_scale(
+            [round_acc.loc[rd, "pct"] for rd in rounds if rd in round_acc.index],
+            low=_RED, mid=_WHITE, high=_GREEN,
+        )
+ 
+        # Acc. column: scaled across the team percentages only.
+        # Change low/mid/high here for a different palette, or pass lo=/hi=
+        # for fixed bounds (e.g. lo=40, hi=80).
+        _team_bg = _make_scale(
+            team_acc["pct"],
+            low=_RED, mid=_WHITE, high=_GREEN,
+        )
+ 
+        _CELL_STYLE = (
+            "height:26px;"
+            "text-align:center;"
+            "vertical-align:middle;"
+            "line-height:26px;"
+            "padding:0;"
+            "font-size:0.7rem;"
+            "font-weight:700;"
+        )
  
         def _cell(team, rd):
             row = lookup.get((team, rd))
             if row is None:
                 return (
-                    f'<td style="background:{C_EMPTY};border:1px solid {C_EMPTY};'
-                    f'height:28px;text-align:center;font-size:0.7rem;'
+                    f'<td style="{_CELL_STYLE}'
+                    f'background:{C_EMPTY};border:1px solid {C_EMPTY};'
                     f'color:{C_MUTED};">–</td>'
                 )
  
@@ -616,18 +671,16 @@ if page == "Home":
             tooltip   = f"Date: {date_str} | vs {opp} | Score: {score_str} | {tip_label}"
  
             return (
-                f'<td title="{tooltip}" style="'
+                f'<td title="{tooltip}" style="{_CELL_STYLE}'
                 f'background:{bg};border:1px solid {THEME["bg"]};'
-                f'height:28px;text-align:center;'
-                f'font-size:0.75rem;font-weight:700;color:white;'
-                f'cursor:default;">{symbol}</td>'
+                f'color:white;cursor:default;">{symbol}</td>'
             )
  
         def _team_acc_cell(team):
             if team not in team_acc.index:
                 return f'<td style="background:{C_FTR_BG};"></td>'
             pct    = team_acc.loc[team, "pct"]
-            bg, fg = _pct_bg(pct)
+            bg, fg = _team_bg(pct)
             return (
                 f'<td style="background:{bg};'
                 f'font-family:\'{FONT_M}\',monospace;'
@@ -639,25 +692,27 @@ if page == "Home":
  
         rows_html = []
  
+        _TH_STYLE = (
+            f"background:{C_HDR_BG};color:{C_HDR_FG};"
+            f"font-family:'{FONT_M}',monospace;font-size:0.65rem;"
+            f"text-align:center;vertical-align:middle;"
+            f"height:26px;line-height:26px;padding:0 2px;overflow:hidden;"
+        )
+ 
         # Header row — add "Acc." column at the end
         rd_headers = "".join(
-            f'<th style="background:{C_HDR_BG};color:{C_HDR_FG};'
-            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
-            f'text-align:center;padding:4px 2px;overflow:hidden;">'
-            f'{rd}</th>'
+            f'<th style="{_TH_STYLE}">{rd}</th>'
             for rd in rounds
         )
         acc_header = (
-            f'<th style="background:{C_HDR_BG};color:{C_HDR_FG};'
-            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
-            f'text-align:center;padding:4px 6px;'
+            f'<th style="{_TH_STYLE}'
             f'border-left:2px solid {C_EMPTY};">Acc.</th>'
         )
         rows_html.append(
-            f'<tr><th style="background:{C_HDR_BG};color:{C_HDR_FG};'
-            f'font-family:\'{FONT_M}\',monospace;font-size:0.68rem;'
-            f'text-align:left;padding:4px 8px;position:sticky;left:0;z-index:2;">'
-            f'Club</th>{rd_headers}{acc_header}</tr>'
+            f'<tr>'
+            f'<th style="{_TH_STYLE}text-align:left;padding:0 8px;'
+            f'position:sticky;left:0;z-index:2;">Club</th>'
+            f'{rd_headers}{acc_header}</tr>'
         )
  
         # One row per team — append the team accuracy cell
@@ -679,7 +734,7 @@ if page == "Home":
             if rd not in round_acc.index:
                 return f'<td style="background:{C_FTR_BG};border-top:2px solid {C_EMPTY};"></td>'
             pct    = round_acc.loc[rd, "pct"]
-            bg, fg = _pct_bg(pct)
+            bg, fg = _round_bg(pct)
             return (
                 f'<td style="background:{bg};'
                 f'font-family:\'{FONT_M}\',monospace;'
@@ -727,7 +782,7 @@ if page == "Home":
         )
  
         st.markdown(table_html, unsafe_allow_html=True)
- 
+    
         st.divider()
  
         # --- Nav cards ---
