@@ -56,9 +56,9 @@ This is still a work in process, both in terms of the dashboard itself, and the 
 
 The actual end-to-end modelling process is run separately, but some of the key tables have been uploaded here to explore if you wish.
 
-## Acknowledgements
+## Data Attrbutment
 
-I acknowledgements I have used the following data sources:
+I acknowledge I have used the following data sources as part of my process:
 
 - fitzRoy (https://cran.r-project.org/web/packages/fitzRoy/index.html)
 - Footywire (https://www.footywire.com/)
