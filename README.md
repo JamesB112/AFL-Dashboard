@@ -55,3 +55,11 @@ The following app is used to visualise some of the analysis I have been doing, i
 This is still a work in process, both in terms of the dashboard itself, and the modelling process, but still in a digestable form.
 
 The actual end-to-end modelling process is run separately, but some of the key tables have been uploaded here to explore if you wish.
+
+## Acknowledgements
+
+I acknowledgements I have used the following data sources:
+
+- fitzRoy (https://cran.r-project.org/web/packages/fitzRoy/index.html)
+- Footywire (https://www.footywire.com/)
+- Odds Portal (https://www.oddsportal.com/aussie-rules/australia/afl-2025/results/#/page/1/)
