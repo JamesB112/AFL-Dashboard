@@ -42,6 +42,16 @@ Opens at `http://localhost:8501`.
 
 ## Comments 
 
-This is a work in process, both in terms of the dashboard itself, and the modelling process.
+The following app is used to visualise some of the analysis I have been doing, including:
 
-Expect major updates when I get the change to work though implementing required changes
+1. Home - Page to summarise model performance for the season
+2. Tip breakdown - A detailed page of each tipped game, including key drivers
+3. Team Performance - A overview of how the team has been performining
+4. Player Performance - A view on how each player has been ranked, as well as their historical progression over time
+5. Model Performance - Analysis of how the model has performed across seasons and by team
+6. Methodology - A summary of my approach
+7. Q/A - Additional insights about the project
+
+This is still a work in process, both in terms of the dashboard itself, and the modelling process, but still in a digestable form.
+
+The actual end-to-end modelling process is run separately, but some of the key tables have been uploaded here to explore if you wish.
