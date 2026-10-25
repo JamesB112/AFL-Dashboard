@@ -10,22 +10,25 @@ Link to current website: https://tippo-afl-analytics.streamlit.app/
 
 ```
 afl-streamlit/
-├── app.py              ← the whole app (sidebar nav + all page sections)
-├── data_loader.py       ← cached CSV loading & aggregation
+├── app.py               ← the main application
+├── data_loader.py       ← data related functions used by the app
 ├── requirements.txt
 ├── .streamlit/
 │   └── config.toml      ← theme (paper/green editorial look)
-└── data/                ← put your CSV exports here
-    ├── Predictions.csv
-    ├── STG_Coaches_Votes.csv
-    ├── STG_Fixture.csv
-    ├── STG_Game_Lookup.csv
-    ├── STG_Game_Player_Combined.csv
-    ├── STG_Game_Positions.csv
-    ├── STG_Game_Results.csv
-    ├── STG_Game_Scoreworm.csv
-    ├── STG_Player_Linkage.csv
-    └── STG_Player_Rankings.csv
+└── data/                ← data sources used by the app, but broadly by the prediction model
+    ├── Predictions.csv                 ← all predictions
+    ├── STG_Coaches_Votes.csv           ← scraped coaches votes
+    ├── STG_Fixture.csv                 ← fixture
+    ├── STG_Game_Lookup.csv             ← lookup table for games 
+    ├── STG_Game_Player_Combined.csv    ← a player stats table with some additional data added to it (e.g. Age)
+    ├── STG_Game_Positions.csv          ← positions for each game
+    ├── STG_Game_Results.csv            ← game results
+    ├── STG_Game_Scoreworm.csv          ← the scoring timeline of a game
+    ├── STG_Player_Linkage.csv          ← a player lookup table to join from several sources
+    ├── Ladder_Projection.csv           ← the projected ladder
+    ├── FTG_Elo_Ratings.csv             ← each team's elo rating, across time
+    ├── data_version.csv                ← meta data of when data was last retrieved
+    └── STG_Player_Rankings.csv         ← my player ratings data
 ```
 
 ## Running locally
