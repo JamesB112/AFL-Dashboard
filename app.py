@@ -343,6 +343,24 @@ if not all_present:
     st.stop()
 
 # ----------------------------------------------------------------------
+# LINK Update
+# ----------------------------------------------------------------------
+
+# DEEP LINK: home matrix cell -> Tip Breakdown (game pre-selected)
+_qp = st.query_params
+if "tb_round" in _qp:
+    try:
+        st.session_state["_tb_pending"] = {
+            "season": _qp.get("tb_season", ""),
+            "round":  int(_qp["tb_round"]),
+            "match":  _qp.get("tb_match", ""),
+        }
+        st.session_state["nav_page"] = "Tip Breakdown"
+    except (TypeError, ValueError):
+        pass
+    st.query_params.clear()
+
+# ----------------------------------------------------------------------
 # SIDEBAR
 # ----------------------------------------------------------------------
 
@@ -419,9 +437,8 @@ with st.sidebar:
 #   PLOTLY_BASE, TEAM_COLORS, signed(), movement_icon(), first_col(), meta
 # It also assumes `dl` (data_loader) and standard imports are in scope.
 # ========================================================================
-
 if page == "Home":
-
+ 
     # ---------------------------------------------------
     # HERO
     # ---------------------------------------------------
@@ -455,22 +472,22 @@ if page == "Home":
     # m3.metric("Season",       str(meta["latest_season"]))
  
     st.divider()
-
+ 
     # ===================================================
     # MODEL ACCURACY SUMMARY
     # ===================================================
-
+ 
     st.subheader("Model accuracy")
     st.caption("How well the tip model called it across the season.")
-
+ 
     # We derive a few summary stats from meta. If your meta dict doesn't
     # carry some of these keys, just remove those metric cells.
     all_time_games   = meta.get("model_games_scored", 0)
     all_time_correct = meta.get("model_all_time_correct", None)   # add to meta if available
     latest_season    = meta.get("latest_season", "2026")
-
+ 
     m1, m2, m3 = st.columns(3)
-
+ 
     m1.metric(
         f"{latest_season} Accuracy",
         acc_label,
@@ -484,10 +501,10 @@ if page == "Home":
         "Correct Tips",
         f"{c_correct:,}" if c_correct else "—",
     )
-
+ 
     st.divider()
-
-
+ 
+ 
     # ===================================================
     # TEAM × ROUND PREDICTION MATRIX
     # ===================================================
@@ -499,11 +516,10 @@ if page == "Home":
     correct_col  = "Correct_LOGIT" if use_logit else "Correct_OLS"
  
     st.caption(
-        f"Each cell shows whether the model correctly predicted the game outcome ({c_model_type}). "
-        "Hover a cell for game details."
+        f"**Hover** over a cell to see game details, or **click** to view breakdown of the tip."
     )
  
-    all_preds = dl.get_predictions(filter_home= False)
+    all_preds = dl.get_predictions(filter_home=False)
  
     season_preds = all_preds[
         all_preds["Season"] == str(latest_season)
@@ -558,17 +574,10 @@ if page == "Home":
         FONT_M   = THEME["font_mono"]
         FONT_D   = THEME["font_display"]
  
-        # Shared gradient helper — used for both round footer and team column
-        all_pcts = [round_acc.loc[rd, "pct"] for rd in rounds if rd in round_acc.index]
-        all_pcts += list(team_acc["pct"])
-        pct_min  = min(all_pcts) if all_pcts else 0
-        pct_max  = max(all_pcts) if all_pcts else 100
- 
         def _hex_to_rgb(h):
             h = h.lstrip("#")
             return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
-        
-
+ 
         def _make_scale(values, low, mid, high, lo=None, hi=None,
                         exclude_outliers=True, fence=1.5):
             """
@@ -618,9 +627,9 @@ if page == "Home":
  
             return _scale
  
-        _RED    = _hex_to_rgb(C_MISS)
-        _WHITE =(255, 255, 255)
-        _GREEN  = _hex_to_rgb(C_HIT)
+        _RED   = _hex_to_rgb(C_MISS)
+        _WHITE = (255, 255, 255)
+        _GREEN = _hex_to_rgb(C_HIT)
  
         # Round footer: scaled across the round percentages only
         _round_bg = _make_scale(
@@ -646,6 +655,9 @@ if page == "Home":
             "font-weight:700;"
         )
  
+        import html as _html
+        from urllib.parse import urlencode
+ 
         def _cell(team, rd):
             row = lookup.get((team, rd))
             if row is None:
@@ -660,6 +672,7 @@ if page == "Home":
             symbol    = "✓" if correct else "✗"
             opp       = row.get(opp_col, "—") if opp_col else "—"
             pts_for   = row.get("Points", row.get("For", ""))
+            Venue     = row.get("Venue")
             pts_ag    = row.get("Opposition_Points", row.get("Against", ""))
             score_str = f"{int(pts_for)}–{int(pts_ag)}" if pd.notna(pts_for) and pd.notna(pts_ag) else "—"
             date_str  = (
@@ -668,12 +681,29 @@ if page == "Home":
                 else "—"
             )
             tip_label = "✓ Correct" if correct else "✗ Incorrect"
-            tooltip   = f"Date: {date_str} | vs {opp} | Score: {score_str} | {tip_label}"
+            tooltip   = f"{team} vs {opp} | Date: {date_str} | Venue: {Venue} | Score: {score_str} | {tip_label}"
+ 
+            # Deep link to Tip Breakdown. That page labels games "Home vs Away",
+            # and this matrix has a row for both clubs, so work out who was home.
+            is_home_val = row.get("IsHome", 1)
+            is_home     = True if pd.isna(is_home_val) else int(is_home_val) == 1
+            match_label = f"{team} vs {opp}" if is_home else f"{opp} vs {team}"
+            href = _html.escape(
+                "?" + urlencode({
+                    "tb_season": str(latest_season),
+                    "tb_round":  rd,
+                    "tb_match":  match_label,
+                }),
+                quote=True,
+            )
  
             return (
                 f'<td title="{tooltip}" style="{_CELL_STYLE}'
                 f'background:{bg};border:1px solid {THEME["bg"]};'
-                f'color:white;cursor:default;">{symbol}</td>'
+                f'color:white;">'
+                f'<a href="{href}" target="_self" '
+                f'style="display:block;color:inherit;text-decoration:none;cursor:pointer;">'
+                f'{symbol}</a></td>'
             )
  
         def _team_acc_cell(team):
@@ -782,12 +812,12 @@ if page == "Home":
         )
  
         st.markdown(table_html, unsafe_allow_html=True)
-    
+ 
         st.divider()
  
         # --- Nav cards ---
         st.markdown("#### Where to next?")
-    
+ 
         NAV_CARDS = [
             ("Tip Breakdown",      "Further details of each tip, including prediction drivers and game odds."),
             ("Team Performance",   "Each club's Elo ratings, season record, and game-by-game results."),
@@ -796,8 +826,7 @@ if page == "Home":
             ("Methodology",        "End-to-end pipeline overview from data scraping through to modelling."),
             ("Q&A",                "Notes on modelling decisions, data quirks, and project background."),
         ]
-
-            
+ 
         st.markdown(
             f"""
             <style>
@@ -835,7 +864,7 @@ if page == "Home":
             """,
             unsafe_allow_html=True,
         )
-    
+ 
         row1, row2 = NAV_CARDS[:3], NAV_CARDS[3:]
         for row in (row1, row2):
             cols = st.columns(3)
@@ -847,7 +876,7 @@ if page == "Home":
                         st.session_state["nav_page"] = title
                         st.rerun()
             st.markdown("<div style='margin-top:0.5rem;'></div>", unsafe_allow_html=True)
-
+ 
 # # ========================================================================
 # # HOME
 # # ========================================================================
@@ -1827,10 +1856,19 @@ elif page == "Tip Breakdown":
 
     tb_predictions = dl.get_predictions()
 
+    _tb_pend = st.session_state.pop("_tb_pending", None)  # set by home-matrix links
+
     sel1, sel2, sel3 = st.columns([1, 1, 2])
 
     with sel1:
+
+
+        
         tb_seasons = sorted(tb_predictions["Season"].unique().tolist(), reverse=True)
+        
+        if _tb_pend and _tb_pend["season"] in tb_seasons:
+            st.session_state["tb_season"] = _tb_pend["season"]
+
         tb_season = st.selectbox("Season", tb_seasons, index=0, key="tb_season")
 
     tb_season_games = tb_predictions[tb_predictions["Season"] == tb_season]
@@ -1853,6 +1891,11 @@ elif page == "Tip Breakdown":
         else:
             default_index = len(tb_rounds) - 1  # fallback
 
+        if _tb_pend:
+            _pend_rd = next((r for r in tb_rounds if int(r) == _tb_pend["round"]), None)
+            if _pend_rd is not None:
+                st.session_state["tb_round"] = _pend_rd
+
         tb_round = st.selectbox(
             "Round",
             tb_rounds,
@@ -1868,6 +1911,10 @@ elif page == "Tip Breakdown":
         tb_round_games["_label"] = tb_round_games["Team"] + " vs " + tb_round_games["Opposition_Team"]
 
         with sel3:
+
+            if _tb_pend and _tb_pend["match"] in tb_round_games["_label"].tolist():
+                st.session_state["tb_match"] = _tb_pend["match"]
+
             tb_label = st.selectbox("Match", tb_round_games["_label"].tolist(), key="tb_match")
 
         game = tb_round_games[tb_round_games["_label"] == tb_label].iloc[0]
